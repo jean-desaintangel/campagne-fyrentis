@@ -153,11 +153,31 @@
       "description": "Un nouveau chemin warp naissant traverse désormais le système Sanctum, perturbant les communications et les liaisons inter-systèmes. Les voyages à travers le secteur deviennent de plus en plus périlleux. L'Inquisiteur Hortis de l'Ordo Hereticus surveille de près ce phénomène inquiétant."
     },
     "key_figures": [
-      { "nom": "Horgell Dyass", "role": "Fabricator-Général — Adeptus Mechanicus", "faction": "Mechanicus" },
-      { "nom": "Grimaldus", "role": "Réclusiarche — Black Templars", "faction": "Black Templars" },
-      { "nom": "Sénéchal Manfred", "role": "Commandant en chef — Croisade Fyrentis", "faction": "Black Templars" },
-      { "nom": "Semius Hortis", "role": "Inquisiteur — Ordo Hereticus", "faction": "Inquisition" },
-      { "nom": "Zhanarius Ash-Bhaar", "role": "Fabricateur-Général successeur", "faction": "Mechanicus" }
+      {
+        "nom": "Horgell Dyass",
+        "role": "Fabricator-Général — Adeptus Mechanicus",
+        "faction": "Mechanicus"
+      },
+      {
+        "nom": "Grimaldus",
+        "role": "Réclusiarche — Black Templars",
+        "faction": "Black Templars"
+      },
+      {
+        "nom": "Sénéchal Manfred",
+        "role": "Commandant en chef — Croisade Fyrentis",
+        "faction": "Black Templars"
+      },
+      {
+        "nom": "Semius Hortis",
+        "role": "Inquisiteur — Ordo Hereticus",
+        "faction": "Inquisition"
+      },
+      {
+        "nom": "Zhanarius Ash-Bhaar",
+        "role": "Fabricateur-Général successeur",
+        "faction": "Mechanicus"
+      }
     ]
   }
 }

@@ -1,916 +1,1423 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rapport de Bataille — Brokha & IronHeart — Campagne Fyrentis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapport de Bataille — Brokha & IronHeart — Campagne Fyrentis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* ── BOUTONS NAV PAGES ─────────────────────────────────────── */
+      .nav-page-links {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .btn-nav-page {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 3px;
+        border: 1px solid;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-nav-page--carte {
+        color: #c8a028;
+        border-color: rgba(200, 160, 40, 0.45);
+        background: rgba(200, 160, 40, 0.07);
+      }
+      .btn-nav-page--carte:hover {
+        background: rgba(200, 160, 40, 0.18);
+        border-color: #c8a028;
+        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
+        color: #e8c050;
+      }
+      .btn-nav-page--inquisition {
+        color: #9b6fc4;
+        border-color: rgba(155, 111, 196, 0.45);
+        background: rgba(155, 111, 196, 0.07);
+      }
+      .btn-nav-page--inquisition:hover {
+        background: rgba(155, 111, 196, 0.18);
+        border-color: #9b6fc4;
+        box-shadow: 0 0 10px rgba(155, 111, 196, 0.25);
+        color: #bb8fe4;
+      }
+      [data-theme="light"] .btn-nav-page--carte {
+        color: #8a6800;
+        border-color: rgba(138, 104, 0, 0.4);
+        background: rgba(138, 104, 0, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--carte:hover {
+        background: rgba(138, 104, 0, 0.14);
+        border-color: #8a6800;
+      }
+      [data-theme="light"] .btn-nav-page--inquisition {
+        color: #5a2a8a;
+        border-color: rgba(90, 42, 138, 0.4);
+        background: rgba(90, 42, 138, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--inquisition:hover {
+        background: rgba(90, 42, 138, 0.14);
+        border-color: #5a2a8a;
+      }
+      @media (max-width: 600px) {
+        .nav-page-links {
+          gap: 0.35rem;
+        }
+        .btn-nav-page {
+          font-size: 0.65rem;
+          padding: 0.35rem 0.6rem;
+        }
+      }
 
-    /* ── BOUTONS NAV PAGES ─────────────────────────────────────── */
-    .nav-page-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .btn-nav-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.85rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-nav-page--carte { color: #c8a028; border-color: rgba(200,160,40,0.45); background: rgba(200,160,40,0.07); }
-    .btn-nav-page--carte:hover { background: rgba(200,160,40,0.18); border-color: #c8a028; box-shadow: 0 0 10px rgba(200,160,40,0.25); color: #e8c050; }
-    .btn-nav-page--inquisition { color: #9b6fc4; border-color: rgba(155,111,196,0.45); background: rgba(155,111,196,0.07); }
-    .btn-nav-page--inquisition:hover { background: rgba(155,111,196,0.18); border-color: #9b6fc4; box-shadow: 0 0 10px rgba(155,111,196,0.25); color: #bb8fe4; }
-    [data-theme="light"] .btn-nav-page--carte { color: #8a6800; border-color: rgba(138,104,0,0.4); background: rgba(138,104,0,0.06); }
-    [data-theme="light"] .btn-nav-page--carte:hover { background: rgba(138,104,0,0.14); border-color: #8a6800; }
-    [data-theme="light"] .btn-nav-page--inquisition { color: #5a2a8a; border-color: rgba(90,42,138,0.4); background: rgba(90,42,138,0.06); }
-    [data-theme="light"] .btn-nav-page--inquisition:hover { background: rgba(90,42,138,0.14); border-color: #5a2a8a; }
-    @media (max-width: 600px) {
-      .nav-page-links { gap: 0.35rem; }
-      .btn-nav-page { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-    }
+      /* ── HERO RAPPORT DE BATAILLE ─────────────────────────────── */
+      .bataille-hero {
+        padding: 7rem 1.5rem 3rem;
+        text-align: center;
+        background: linear-gradient(
+          180deg,
+          rgba(80, 10, 10, 0.6) 0%,
+          rgba(40, 8, 8, 0.3) 60%,
+          transparent 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .bataille-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 40% at 50% 0%,
+            rgba(180, 20, 20, 0.12) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 30% at 20% 80%,
+            rgba(100, 30, 10, 0.08) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+      }
+      [data-theme="light"] .bataille-hero {
+        background: linear-gradient(
+          180deg,
+          rgba(220, 180, 160, 0.3) 0%,
+          transparent 100%
+        );
+      }
+      .bataille-eyebrow {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #c84040;
+        margin-bottom: 0.75rem;
+        position: relative;
+        text-align: center;
+        max-width: none;
+      }
+      .bataille-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        color: var(--color-text, #cdccca);
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+      .bataille-title span {
+        color: #c84040;
+      }
+      .bataille-subtitle {
+        font-family: "Crimson Text", serif;
+        font-size: 1.05rem;
+        font-style: italic;
+        color: var(--color-text-muted, #797876);
+        max-width: 56ch;
+        margin: 0 auto 0;
+        position: relative;
+      }
+      .bataille-ornament {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.8rem auto 0;
+        max-width: 340px;
+        color: rgba(200, 60, 60, 0.55);
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        position: relative;
+      }
+      .bataille-ornament::before,
+      .bataille-ornament::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(200, 60, 60, 0.35);
+      }
 
-    /* ── HERO RAPPORT DE BATAILLE ─────────────────────────────── */
-    .bataille-hero {
-      padding: 7rem 1.5rem 3rem;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(80, 10, 10, 0.6) 0%, rgba(40,8,8,0.3) 60%, transparent 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .bataille-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(180,20,20,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(100,30,10,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    [data-theme="light"] .bataille-hero {
-      background: linear-gradient(180deg, rgba(220,180,160,0.3) 0%, transparent 100%);
-    }
-    .bataille-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #c84040;
-      margin-bottom: 0.75rem;
-      position: relative;
-      text-align: center;
-      max-width: none;
-    }
-    .bataille-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-      font-weight: 900;
-      letter-spacing: 0.05em;
-      color: var(--color-text, #cdccca);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-      position: relative;
-    }
-    .bataille-title span { color: #c84040; }
-    .bataille-subtitle {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--color-text-muted, #797876);
-      max-width: 56ch;
-      margin: 0 auto 0;
-      position: relative;
-    }
-    .bataille-ornament {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1.8rem auto 0;
-      max-width: 340px;
-      color: rgba(200,60,60,0.55);
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      position: relative;
-    }
-    .bataille-ornament::before,
-    .bataille-ornament::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(200,60,60,0.35);
-    }
+      /* ── BREADCRUMB ──────────────────────────────────────────── */
+      .breadcrumb {
+        padding: 0.6rem 1.5rem;
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .breadcrumb-inner {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .breadcrumb-inner a,
+      .breadcrumb-inner span {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      .breadcrumb-inner a {
+        color: rgba(155, 111, 196, 0.7);
+      }
+      .breadcrumb-inner a:hover {
+        color: #9b6fc4;
+      }
+      .breadcrumb-inner .sep {
+        color: rgba(200, 60, 60, 0.4);
+        font-size: 0.55rem;
+      }
+      .breadcrumb-inner .current {
+        color: rgba(200, 60, 60, 0.8);
+      }
 
-    /* ── BREADCRUMB ──────────────────────────────────────────── */
-    .breadcrumb {
-      padding: 0.6rem 1.5rem;
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .breadcrumb-inner {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .breadcrumb-inner a, .breadcrumb-inner span {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-    .breadcrumb-inner a { color: rgba(155,111,196,0.7); }
-    .breadcrumb-inner a:hover { color: #9b6fc4; }
-    .breadcrumb-inner .sep { color: rgba(200,60,60,0.4); font-size: 0.55rem; }
-    .breadcrumb-inner .current { color: rgba(200,60,60,0.8); }
+      /* ── SECTION PRINCIPALE ───────────────────────────────────── */
+      .bataille-section {
+        padding: 2rem 1.5rem 6rem;
+      }
+      .bataille-container {
+        max-width: 820px;
+        margin: 0 auto;
+      }
 
-    /* ── SECTION PRINCIPALE ───────────────────────────────────── */
-    .bataille-section {
-      padding: 2rem 1.5rem 6rem;
-    }
-    .bataille-container {
-      max-width: 820px;
-      margin: 0 auto;
-    }
+      /* ── BLOC EN-TÊTE OFFICIEL ────────────────────────────────── */
+      .rapport-doc {
+        position: relative;
+        background: rgba(35, 12, 12, 0.7);
+        border: 1px solid rgba(200, 60, 60, 0.22);
+        border-radius: 4px;
+        margin-bottom: 2.5rem;
+        overflow: hidden;
+        box-shadow:
+          0 2px 20px rgba(200, 60, 60, 0.07),
+          0 8px 40px rgba(0, 0, 0, 0.45);
+      }
+      [data-theme="light"] .rapport-doc {
+        background: rgba(255, 245, 240, 0.8);
+        border-color: rgba(139, 28, 28, 0.2);
+        box-shadow:
+          0 2px 16px rgba(139, 28, 28, 0.08),
+          0 4px 20px rgba(0, 0, 0, 0.06);
+      }
+      .rapport-doc-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.2rem 1.6rem 1rem;
+        border-bottom: 1px solid rgba(200, 60, 60, 0.2);
+        background: rgba(200, 60, 60, 0.06);
+        flex-wrap: wrap;
+      }
+      [data-theme="light"] .rapport-doc-header {
+        background: rgba(139, 28, 28, 0.05);
+        border-bottom-color: rgba(139, 28, 28, 0.15);
+      }
+      .rapport-ref {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #c84040;
+        margin-bottom: 0.25rem;
+      }
+      .rapport-title {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-text, #cdccca);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 1.3;
+      }
+      .rapport-badge {
+        display: inline-block;
+        padding: 0.2rem 0.65rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.56rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border-radius: 2px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .rapport-badge--victoire-chaos {
+        color: #e07030;
+        border: 1px solid rgba(200, 100, 30, 0.55);
+        background: rgba(200, 100, 30, 0.1);
+      }
+      .rapport-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0;
+        border-bottom: 1px solid rgba(200, 60, 60, 0.12);
+      }
+      .rapport-meta-item {
+        padding: 0.55rem 1.6rem;
+        border-right: 1px solid rgba(200, 60, 60, 0.1);
+      }
+      .rapport-meta-item:last-child {
+        border-right: none;
+      }
+      .rapport-meta-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.55rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(200, 60, 60, 0.7);
+        margin-bottom: 0.2rem;
+      }
+      .rapport-meta-value {
+        font-family: "Crimson Text", serif;
+        font-size: 0.92rem;
+        color: var(--color-text-muted, #797876);
+        line-height: 1.4;
+      }
 
-    /* ── BLOC EN-TÊTE OFFICIEL ────────────────────────────────── */
-    .rapport-doc {
-      position: relative;
-      background: rgba(35, 12, 12, 0.7);
-      border: 1px solid rgba(200,60,60,0.22);
-      border-radius: 4px;
-      margin-bottom: 2.5rem;
-      overflow: hidden;
-      box-shadow: 0 2px 20px rgba(200,60,60,0.07), 0 8px 40px rgba(0,0,0,0.45);
-    }
-    [data-theme="light"] .rapport-doc {
-      background: rgba(255,245,240,0.8);
-      border-color: rgba(139,28,28,0.2);
-      box-shadow: 0 2px 16px rgba(139,28,28,0.08), 0 4px 20px rgba(0,0,0,0.06);
-    }
-    .rapport-doc-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1.2rem 1.6rem 1rem;
-      border-bottom: 1px solid rgba(200,60,60,0.2);
-      background: rgba(200,60,60,0.06);
-      flex-wrap: wrap;
-    }
-    [data-theme="light"] .rapport-doc-header {
-      background: rgba(139,28,28,0.05);
-      border-bottom-color: rgba(139,28,28,0.15);
-    }
-    .rapport-ref {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #c84040;
-      margin-bottom: 0.25rem;
-    }
-    .rapport-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--color-text, #cdccca);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      line-height: 1.3;
-    }
-    .rapport-badge {
-      display: inline-block;
-      padding: 0.2rem 0.65rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.56rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border-radius: 2px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .rapport-badge--victoire-chaos {
-      color: #e07030;
-      border: 1px solid rgba(200,100,30,0.55);
-      background: rgba(200,100,30,0.1);
-    }
-    .rapport-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0;
-      border-bottom: 1px solid rgba(200,60,60,0.12);
-    }
-    .rapport-meta-item {
-      padding: 0.55rem 1.6rem;
-      border-right: 1px solid rgba(200,60,60,0.1);
-    }
-    .rapport-meta-item:last-child { border-right: none; }
-    .rapport-meta-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(200,60,60,0.7);
-      margin-bottom: 0.2rem;
-    }
-    .rapport-meta-value {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.92rem;
-      color: var(--color-text-muted, #797876);
-      line-height: 1.4;
-    }
+      /* ── CORPS DU RAPPORT ────────────────────────────────────── */
+      .rapport-body {
+        padding: 1.6rem 1.6rem 1.4rem;
+      }
+      .rapport-body p {
+        font-family: "Crimson Text", serif;
+        font-size: 1.05rem;
+        line-height: 1.78;
+        color: var(--color-text, #cdccca);
+        margin-bottom: 1rem;
+        max-width: 72ch;
+      }
+      .rapport-body p:last-child {
+        margin-bottom: 0;
+      }
 
-    /* ── CORPS DU RAPPORT ────────────────────────────────────── */
-    .rapport-body {
-      padding: 1.6rem 1.6rem 1.4rem;
-    }
-    .rapport-body p {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.05rem;
-      line-height: 1.78;
-      color: var(--color-text, #cdccca);
-      margin-bottom: 1rem;
-      max-width: 72ch;
-    }
-    .rapport-body p:last-child { margin-bottom: 0; }
+      /* ── ENCADRÉS D'ALERTE ────────────────────────────────────── */
+      .rapport-alerte {
+        margin: 1.2rem 0;
+        padding: 0.9rem 1.2rem;
+        border-left: 3px solid rgba(200, 60, 60, 0.65);
+        background: rgba(200, 60, 60, 0.06);
+        border-radius: 0 3px 3px 0;
+      }
+      [data-theme="light"] .rapport-alerte {
+        background: rgba(200, 60, 60, 0.04);
+      }
+      .rapport-alerte p {
+        color: #e06060 !important;
+        font-style: italic;
+        margin-bottom: 0 !important;
+      }
+      [data-theme="light"] .rapport-alerte p {
+        color: #8b1c1c !important;
+      }
 
-    /* ── ENCADRÉS D'ALERTE ────────────────────────────────────── */
-    .rapport-alerte {
-      margin: 1.2rem 0;
-      padding: 0.9rem 1.2rem;
-      border-left: 3px solid rgba(200,60,60,0.65);
-      background: rgba(200,60,60,0.06);
-      border-radius: 0 3px 3px 0;
-    }
-    [data-theme="light"] .rapport-alerte { background: rgba(200,60,60,0.04); }
-    .rapport-alerte p {
-      color: #e06060 !important;
-      font-style: italic;
-      margin-bottom: 0 !important;
-    }
-    [data-theme="light"] .rapport-alerte p { color: #8b1c1c !important; }
+      /* ── SÉPARATEURS DE THÉÂTRE ──────────────────────────────── */
+      .theatre-sep {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2.5rem 0 2rem;
+      }
+      .theatre-sep-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(200, 60, 60, 0.4),
+          transparent
+        );
+      }
+      .theatre-sep-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.58rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(200, 60, 60, 0.6);
+        white-space: nowrap;
+      }
 
-    /* ── SÉPARATEURS DE THÉÂTRE ──────────────────────────────── */
-    .theatre-sep {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 2.5rem 0 2rem;
-    }
-    .theatre-sep-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200,60,60,0.4), transparent);
-    }
-    .theatre-sep-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(200,60,60,0.6);
-      white-space: nowrap;
-    }
+      /* ── BLOCS THÉÂTRE ────────────────────────────────────────── */
+      .theatre-block {
+        background: rgba(20, 8, 8, 0.5);
+        border: 1px solid rgba(200, 60, 60, 0.16);
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+      }
+      [data-theme="light"] .theatre-block {
+        background: rgba(255, 248, 245, 0.6);
+        border-color: rgba(139, 28, 28, 0.15);
+      }
+      .theatre-block-header {
+        padding: 1rem 1.6rem 0.9rem;
+        border-bottom: 1px solid rgba(200, 60, 60, 0.16);
+        background: rgba(200, 60, 60, 0.07);
+      }
+      [data-theme="light"] .theatre-block-header {
+        background: rgba(139, 28, 28, 0.05);
+      }
+      .theatre-num {
+        font-family: "Cinzel", serif;
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(200, 60, 60, 0.65);
+        margin-bottom: 0.2rem;
+      }
+      .theatre-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--color-text, #cdccca);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .theatre-title span {
+        color: #c84040;
+      }
+      .theatre-body {
+        padding: 1.4rem 1.6rem 1.2rem;
+      }
+      .theatre-body p {
+        font-family: "Crimson Text", serif;
+        font-size: 1.05rem;
+        line-height: 1.78;
+        color: var(--color-text, #cdccca);
+        margin-bottom: 1rem;
+        max-width: 72ch;
+      }
+      .theatre-body p:last-child {
+        margin-bottom: 0;
+      }
 
-    /* ── BLOCS THÉÂTRE ────────────────────────────────────────── */
-    .theatre-block {
-      background: rgba(20,8,8,0.5);
-      border: 1px solid rgba(200,60,60,0.16);
-      border-radius: 4px;
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
-    [data-theme="light"] .theatre-block {
-      background: rgba(255,248,245,0.6);
-      border-color: rgba(139,28,28,0.15);
-    }
-    .theatre-block-header {
-      padding: 1rem 1.6rem 0.9rem;
-      border-bottom: 1px solid rgba(200,60,60,0.16);
-      background: rgba(200,60,60,0.07);
-    }
-    [data-theme="light"] .theatre-block-header { background: rgba(139,28,28,0.05); }
-    .theatre-num {
-      font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(200,60,60,0.65);
-      margin-bottom: 0.2rem;
-    }
-    .theatre-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--color-text, #cdccca);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .theatre-title span { color: #c84040; }
-    .theatre-body {
-      padding: 1.4rem 1.6rem 1.2rem;
-    }
-    .theatre-body p {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.05rem;
-      line-height: 1.78;
-      color: var(--color-text, #cdccca);
-      margin-bottom: 1rem;
-      max-width: 72ch;
-    }
-    .theatre-body p:last-child { margin-bottom: 0; }
+      /* ── ORDRE DE BATAILLE ────────────────────────────────────── */
+      .oddb-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border: 1px solid rgba(200, 60, 60, 0.15);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1.2rem 0 1.4rem;
+      }
+      @media (max-width: 540px) {
+        .oddb-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .oddb-col {
+        padding: 0.9rem 1.2rem;
+      }
+      .oddb-col--imperial {
+        background: rgba(30, 40, 60, 0.45);
+        border-right: 1px solid rgba(200, 60, 60, 0.12);
+      }
+      .oddb-col--chaos {
+        background: rgba(60, 15, 10, 0.45);
+      }
+      [data-theme="light"] .oddb-col--imperial {
+        background: rgba(200, 215, 240, 0.25);
+      }
+      [data-theme="light"] .oddb-col--chaos {
+        background: rgba(240, 200, 190, 0.3);
+      }
+      .oddb-col-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 0.6rem;
+      }
+      .oddb-col--imperial .oddb-col-title {
+        color: #6080c0;
+      }
+      .oddb-col--chaos .oddb-col-title {
+        color: #c84040;
+      }
+      .oddb-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .oddb-col ul li {
+        font-family: "Crimson Text", serif;
+        font-size: 0.9rem;
+        color: var(--color-text-muted, #797876);
+        line-height: 1.6;
+        padding-left: 1rem;
+        position: relative;
+      }
+      .oddb-col--imperial ul li::before {
+        content: "†";
+        position: absolute;
+        left: 0;
+        color: rgba(96, 128, 192, 0.6);
+        font-size: 0.75rem;
+        top: 0.1rem;
+      }
+      .oddb-col--chaos ul li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: rgba(200, 60, 60, 0.5);
+        font-size: 0.65rem;
+        top: 0.2rem;
+      }
+      .oddb-col ul li strong {
+        color: var(--color-text, #cdccca);
+        font-weight: 600;
+      }
 
-    /* ── ORDRE DE BATAILLE ────────────────────────────────────── */
-    .oddb-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid rgba(200,60,60,0.15);
-      border-radius: 4px;
-      overflow: hidden;
-      margin: 1.2rem 0 1.4rem;
-    }
-    @media (max-width: 540px) { .oddb-grid { grid-template-columns: 1fr; } }
-    .oddb-col { padding: 0.9rem 1.2rem; }
-    .oddb-col--imperial {
-      background: rgba(30,40,60,0.45);
-      border-right: 1px solid rgba(200,60,60,0.12);
-    }
-    .oddb-col--chaos { background: rgba(60,15,10,0.45); }
-    [data-theme="light"] .oddb-col--imperial { background: rgba(200,215,240,0.25); }
-    [data-theme="light"] .oddb-col--chaos { background: rgba(240,200,190,0.3); }
-    .oddb-col-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .oddb-col--imperial .oddb-col-title { color: #6080c0; }
-    .oddb-col--chaos .oddb-col-title { color: #c84040; }
-    .oddb-col ul { list-style: none; padding: 0; margin: 0; }
-    .oddb-col ul li {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.9rem;
-      color: var(--color-text-muted, #797876);
-      line-height: 1.6;
-      padding-left: 1rem;
-      position: relative;
-    }
-    .oddb-col--imperial ul li::before { content: '†'; position: absolute; left: 0; color: rgba(96,128,192,0.6); font-size: 0.75rem; top: 0.1rem; }
-    .oddb-col--chaos ul li::before { content: '✦'; position: absolute; left: 0; color: rgba(200,60,60,0.5); font-size: 0.65rem; top: 0.2rem; }
-    .oddb-col ul li strong { color: var(--color-text, #cdccca); font-weight: 600; }
+      /* ── TIMELINE DES PHASES ─────────────────────────────────── */
+      .phase-timeline {
+        margin: 1.4rem 0 0.5rem;
+        padding-left: 0;
+        list-style: none;
+      }
+      .phase-item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+        position: relative;
+      }
+      .phase-item::before {
+        content: "";
+        position: absolute;
+        left: 1.1rem;
+        top: 2rem;
+        bottom: -1.2rem;
+        width: 1px;
+        background: rgba(200, 60, 60, 0.2);
+      }
+      .phase-item:last-child::before {
+        display: none;
+      }
+      .phase-dot {
+        flex-shrink: 0;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 50%;
+        border: 1px solid rgba(200, 60, 60, 0.5);
+        background: rgba(200, 60, 60, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cinzel", serif;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: #c84040;
+        margin-top: 0.1rem;
+      }
+      .phase-content {
+        padding-top: 0.15rem;
+        flex: 1;
+      }
+      .phase-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(200, 60, 60, 0.7);
+        margin-bottom: 0.25rem;
+      }
+      .phase-text {
+        font-family: "Crimson Text", serif;
+        font-size: 1.02rem;
+        line-height: 1.72;
+        color: var(--color-text, #cdccca);
+      }
+      .phase-text strong {
+        color: #e06060;
+        font-weight: 600;
+      }
 
-    /* ── TIMELINE DES PHASES ─────────────────────────────────── */
-    .phase-timeline {
-      margin: 1.4rem 0 0.5rem;
-      padding-left: 0;
-      list-style: none;
-    }
-    .phase-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-      position: relative;
-    }
-    .phase-item::before {
-      content: '';
-      position: absolute;
-      left: 1.1rem;
-      top: 2rem;
-      bottom: -1.2rem;
-      width: 1px;
-      background: rgba(200,60,60,0.2);
-    }
-    .phase-item:last-child::before { display: none; }
-    .phase-dot {
-      flex-shrink: 0;
-      width: 2.2rem;
-      height: 2.2rem;
-      border-radius: 50%;
-      border: 1px solid rgba(200,60,60,0.5);
-      background: rgba(200,60,60,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #c84040;
-      margin-top: 0.1rem;
-    }
-    .phase-content { padding-top: 0.15rem; flex: 1; }
-    .phase-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(200,60,60,0.7);
-      margin-bottom: 0.25rem;
-    }
-    .phase-text {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.02rem;
-      line-height: 1.72;
-      color: var(--color-text, #cdccca);
-    }
-    .phase-text strong { color: #e06060; font-weight: 600; }
+      /* ── IMAGE RAPPORT ────────────────────────────────────────── */
+      .rapport-img-block {
+        margin: 1.5rem 0;
+        border: 1px solid rgba(200, 60, 60, 0.18);
+        border-radius: 3px;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .rapport-img-block img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 420px;
+        object-fit: cover;
+        opacity: 0.92;
+      }
+      .rapport-img-caption {
+        padding: 0.5rem 1rem;
+        background: rgba(200, 60, 60, 0.06);
+        border-top: 1px solid rgba(200, 60, 60, 0.14);
+      }
+      .rapport-img-caption p {
+        font-family: "Cinzel", serif;
+        font-size: 0.55rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(200, 60, 60, 0.55);
+        text-align: center;
+        max-width: none;
+        margin: 0 auto;
+      }
 
-    /* ── IMAGE RAPPORT ────────────────────────────────────────── */
-    .rapport-img-block {
-      margin: 1.5rem 0;
-      border: 1px solid rgba(200,60,60,0.18);
-      border-radius: 3px;
-      overflow: hidden;
-      background: rgba(0,0,0,0.3);
-    }
-    .rapport-img-block img {
-      width: 100%;
-      height: auto;
-      display: block;
-      max-height: 420px;
-      object-fit: cover;
-      opacity: 0.92;
-    }
-    .rapport-img-caption {
-      padding: 0.5rem 1rem;
-      background: rgba(200,60,60,0.06);
-      border-top: 1px solid rgba(200,60,60,0.14);
-    }
-    .rapport-img-caption p {
-      font-family: 'Cinzel', serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(200,60,60,0.55);
-      text-align: center;
-      max-width: none;
-      margin: 0 auto;
-    }
+      /* ── SIGNATURE FINALE ───────────────────────────────────── */
+      .rapport-signature {
+        padding: 1.2rem 1.6rem;
+        border-top: 1px solid rgba(200, 60, 60, 0.15);
+        background: rgba(200, 60, 60, 0.03);
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .rapport-sig-formula {
+        font-family: "Crimson Text", serif;
+        font-size: 0.95rem;
+        font-style: italic;
+        color: rgba(200, 60, 60, 0.65);
+      }
+      .rapport-sig-name {
+        font-family: "Cinzel", serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: #c84040;
+        text-align: right;
+      }
+      .rapport-sig-sub {
+        font-family: "Crimson Text", serif;
+        font-size: 0.82rem;
+        color: var(--color-text-muted, #797876);
+        text-align: right;
+        margin-top: 0.1rem;
+      }
+      .rapport-footer-stamp {
+        padding: 0.5rem 1.6rem;
+        background: rgba(0, 0, 0, 0.25);
+        border-top: 1px solid rgba(200, 60, 60, 0.1);
+      }
+      [data-theme="light"] .rapport-footer-stamp {
+        background: rgba(139, 28, 28, 0.04);
+      }
+      .rapport-footer-stamp p {
+        font-family: "Cinzel", serif;
+        font-size: 0.5rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(200, 60, 60, 0.38);
+        text-align: center;
+        line-height: 1.8;
+        max-width: none;
+        margin: 0 auto;
+      }
 
-    /* ── SIGNATURE FINALE ───────────────────────────────────── */
-    .rapport-signature {
-      padding: 1.2rem 1.6rem;
-      border-top: 1px solid rgba(200,60,60,0.15);
-      background: rgba(200,60,60,0.03);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .rapport-sig-formula {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: rgba(200,60,60,0.65);
-    }
-    .rapport-sig-name {
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: #c84040;
-      text-align: right;
-    }
-    .rapport-sig-sub {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.82rem;
-      color: var(--color-text-muted, #797876);
-      text-align: right;
-      margin-top: 0.1rem;
-    }
-    .rapport-footer-stamp {
-      padding: 0.5rem 1.6rem;
-      background: rgba(0,0,0,0.25);
-      border-top: 1px solid rgba(200,60,60,0.1);
-    }
-    [data-theme="light"] .rapport-footer-stamp { background: rgba(139,28,28,0.04); }
-    .rapport-footer-stamp p {
-      font-family: 'Cinzel', serif;
-      font-size: 0.5rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(200,60,60,0.38);
-      text-align: center;
-      line-height: 1.8;
-      max-width: none;
-      margin: 0 auto;
-    }
-
-    /* ── BILAN FINAL ─────────────────────────────────────────── */
-    .bilan-block {
-      background: rgba(60,15,8,0.55);
-      border: 1px solid rgba(200,60,60,0.28);
-      border-radius: 4px;
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 2rem;
-    }
-    [data-theme="light"] .bilan-block {
-      background: rgba(255,235,228,0.6);
-      border-color: rgba(139,28,28,0.25);
-    }
-    .bilan-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #c84040;
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid rgba(200,60,60,0.2);
-    }
-    .bilan-block p {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--color-text, #cdccca);
-      margin-bottom: 0.8rem;
-      max-width: 72ch;
-    }
-    .bilan-block p:last-child { margin-bottom: 0; }
-
-  </style>
-</head>
-<body>
-
-<!-- ═══ NAVIGATION ═══ -->
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <polygon points="18,2 34,28 2,28" fill="none" stroke="currentColor" stroke-width="1.5" color="#c8a028"/>
-        <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.5" color="#8b1c1c"/>
-        <line x1="18" y1="2" x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="8.5" y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-      </svg>
-    </a>
-    <div class="nav-actions">
-      <div class="nav-page-links">
-        <a href="carte.html" class="btn-nav-page btn-nav-page--carte" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          Carte
-        </a>
-        <a href="rapports-inquisiteurs.html" class="btn-nav-page btn-nav-page--inquisition" aria-label="Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Inquisition
-        </a>
-      </div>
-      <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- ═══ HERO ═══ -->
-<header class="bataille-hero" id="top">
-  <p class="bataille-eyebrow">Rapport de Bataille · Système Sanctum · Archives Militaires — Ref. B335-C/BROKHA</p>
-  <h1 class="bataille-title">Fer et <span>Sang</span> sur Brokha</h1>
-  <p class="bataille-subtitle">L'<em>Ironheart</em> gronde encore — les murailles de Brokha ont été éventrées.</p>
-  <div class="bataille-ornament">du sang pour le Dieu du sang</div>
-</header>
-
-<!-- ═══ CONTENU PRINCIPAL ═══ -->
-<main class="bataille-section">
-  <div class="bataille-container">
-
-    <!-- EN-TÊTE OFFICIEL DU RAPPORT -->
-    <article class="rapport-doc" aria-labelledby="rapport-brokha-titre">
-
-      <div class="rapport-doc-header">
-        <div>
-          <p class="rapport-ref">Réf. B335-C/BROKHA · Rapport d'engagement militaire · Daté 216.M42 · Cogitator-crâne B334-C</p>
-          <h2 class="rapport-title" id="rapport-brokha-titre">Vaisseau Amiral <em>Ironheart</em> &amp; Lune de Brokha</h2>
-        </div>
-        <span class="rapport-badge rapport-badge--victoire-chaos">⚔ Victoire Chaos</span>
-      </div>
-
-      <div class="rapport-meta-grid">
-        <div class="rapport-meta-item">
-          <p class="rapport-meta-label">Émetteur</p>
-          <p class="rapport-meta-value">Cogitator-crâne B334-C<br>Compilation de rapports vox</p>
-        </div>
-        <div class="rapport-meta-item">
-          <p class="rapport-meta-label">Théâtres</p>
-          <p class="rapport-meta-value">Vaisseau amiral <em>Ironheart</em><br>Lune Brokha</p>
-        </div>
-        <div class="rapport-meta-item">
-          <p class="rapport-meta-label">Factions engagées</p>
-          <p class="rapport-meta-value">Black Templars<br>vs. Iron Warriors · World Eaters</p>
-        </div>
-        <div class="rapport-meta-item">
-          <p class="rapport-meta-label">Issue</p>
-          <p class="rapport-meta-value">Victoire hérétique — Mur d'enceinte fracturé<br>Relais du bouclier menacé</p>
-        </div>
-      </div>
-
-      <div class="rapport-body">
-        <p>Les événements du <strong style="color:#e06060;">216.M42</strong> s'inscrivent parmi les plus sinistres présages de la défense du système Sanctum. Tandis que les Black Templars frappaient au cœur du vaisseau amiral ennemi, la lune de <strong>Brokha</strong> voyait ses remparts baignés de feu, de fureur et de sang.</p>
-        <p>Selon les relevés officiels, les loyalistes ont infligé des pertes cruelles aux assaillants, mais la rage hérétique n'a point été contenue. Une brèche a été ouverte dans le <strong>premier mur d'enceinte</strong>, et le <strong>relais du bouclier</strong> de la cité-forteresse a vacillé sous l'assaut du Métabrutus.</p>
-        <div class="rapport-alerte">
-          <p>Le premier mur est rompu. Le relais du bouclier n'est plus qu'à une poussée sanglante de l'anéantissement.</p>
-        </div>
-      </div>
-
-    </article>
-
-    <!-- IMAGE VUE GÉNÉRALE -->
-    <figure class="rapport-img-block">
-      <img
-        src="assets/img/rapport/sanctum/combat-general.jpg"
-        alt="Vue générale de la bataille sur Brokha — convergence des rhinos et du Land Raider Iron Warriors vers la porte fortifiée défendue par les Black Templars et l'Astra Militarum"
-        width="820"
-        height="420"
-        loading="lazy"
-        decoding="async"
-      >
-      <figcaption class="rapport-img-caption">
-        <p>Cliché servo-crâne capturé depuis le bastion nord de Brokha — Convergence hérétique sur la ligne de défense · Réf. IMG-B335-01</p>
-      </figcaption>
-    </figure>
-
-    <!-- THÉÂTRE 1 -->
-    <div class="theatre-sep">
-      <div class="theatre-sep-line"></div>
-      <span class="theatre-sep-label">⚔ Théâtre I — Vaisseau Amiral Ironheart</span>
-      <div class="theatre-sep-line"></div>
-    </div>
-
-    <section class="theatre-block" aria-labelledby="theatre-ironheart">
-
-      <div class="theatre-block-header">
-        <h3 class="theatre-title" id="theatre-ironheart">Assaut Surprise sur l'<span>Ironheart</span></h3>
-      </div>
-
-      <div class="theatre-body">
-
-        <p>L'<em>Ironheart</em>, forteresse de guerre et cathédrale d'airain profané, fut frappé en son sein par l'audace des fils de Dorn. Le <strong>Sénéchal Gildar</strong>, ses frères d'épées <strong>Terminators</strong>, et le <strong>Maître de la Forge Hans</strong> portèrent l'assaut dans les entrailles du navire, et partout où leurs pas résonnèrent, les hérétiques furent abattus sans merci.</p>
-
-        <div class="oddb-grid" role="region" aria-label="Ordre de bataille Ironheart">
-          <div class="oddb-col oddb-col--imperial">
-            <p class="oddb-col-title">⚔ Forces d'Assaut Impériales</p>
-            <ul>
-              <li><strong>Sénéchal Gildar</strong> — Commandement de la frappe</li>
-              <li><strong>Frères d'épées Terminators</strong> — Téléportation dans les ponts de tir</li>
-              <li><strong>Maître de la Forge Hans</strong> — Soutien technique et destruction des hérétiques</li>
-            </ul>
-          </div>
-          <div class="oddb-col oddb-col--chaos">
-            <p class="oddb-col-title">☠ Défenseurs Hérétiques</p>
-            <ul>
-              <li><strong>Berzerks World Eaters</strong> — Garnison interne</li>
-              <li><strong>Servants et équipages armés</strong> — Défense du pont de tir</li>
-              <li><strong>Forces disséminées d'Iron Warriors</strong> — Exterminées au contact</li>
-            </ul>
-          </div>
-        </div>
-
-        <figure class="rapport-img-block">
-          <img
-            src="assets/img/rapport/sanctum/combat-dans-IronHeart-filtre.jpg"
-            alt="Combat dans les ponts inférieurs du vaisseau amiral Ironheart — Terminators Black Templars face aux berserks de Khorne dans les coursives industrielles du navire"
-            width="820"
-            height="400"
-            loading="lazy"
-            decoding="async"
+      /* ── BILAN FINAL ─────────────────────────────────────────── */
+      .bilan-block {
+        background: rgba(60, 15, 8, 0.55);
+        border: 1px solid rgba(200, 60, 60, 0.28);
+        border-radius: 4px;
+        padding: 1.4rem 1.6rem;
+        margin-bottom: 2rem;
+      }
+      [data-theme="light"] .bilan-block {
+        background: rgba(255, 235, 228, 0.6);
+        border-color: rgba(139, 28, 28, 0.25);
+      }
+      .bilan-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #c84040;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid rgba(200, 60, 60, 0.2);
+      }
+      .bilan-block p {
+        font-family: "Crimson Text", serif;
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--color-text, #cdccca);
+        margin-bottom: 0.8rem;
+        max-width: 72ch;
+      }
+      .bilan-block p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══ NAVIGATION ═══ -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis">
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
           >
-          <figcaption class="rapport-img-caption">
-            <p>Ponts intérieurs de l'Ironheart — Reconstitution d'après les relevés vox récupérés sur les frères d'épées · Réf. IMG-B335-02</p>
-          </figcaption>
-        </figure>
-
-        <ul class="phase-timeline">
-          <li class="phase-item">
-            <div class="phase-dot">I</div>
-            <div class="phase-content">
-              <p class="phase-label">Frappe de Téléportation</p>
-              <p class="phase-text">Le <strong>Sénéchal Gildar</strong>, ses <strong>Terminators</strong> et le <strong>Maître de la Forge Hans</strong> furent projetés dans les ponts de l'<em>Ironheart</em> comme une sentence d'acier. Ils avancèrent sans hésitation à travers fumées, alarmes et prières hérétiques, semant la mort au nom du Trône d'Or.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">II</div>
-            <div class="phase-content">
-              <p class="phase-label">Extermination des Défenseurs</p>
-              <p class="phase-text">Toutes les forces hérétiques rencontrées sur leur route furent <strong>exterminées</strong>. Nulle contre-charge ne tint face au fanatisme des Black Templars ; nulle herse, nulle coursive, nulle soute ne put préserver les maudits de la juste colère impériale.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">III</div>
-            <div class="phase-content">
-              <p class="phase-label">Le Tir Plasma Malheureux</p>
-              <p class="phase-text">Pourtant, dans l'agonie d'un dernier affrontement, un <strong>Berzerk</strong> décocha un tir plasma funeste. Le trait incandescent frappa le <strong>pont de tir</strong>, et celui-ci explosa dans un ouragan de feu et de métal consumés.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">IV</div>
-            <div class="phase-content">
-              <p class="phase-label">Canons en Réparation</p>
-              <p class="phase-text">L'<em>Ironheart</em>, bien que purgé de ses occupants immédiats, doit désormais attendre la <strong>réparation de ses canons</strong>. Les chroniqueurs murmurent que les Black Templars ont traîné plus qu'il ne convenait, et qu'au loin déjà approche la flotte du <strong>Haut-Sénéchal Helbrecht</strong>, dans le silence terrible de desseins encore tus.</p>
-            </div>
-          </li>
-        </ul>
-
-        <p>L'<em>Ironheart</em> demeure donc vivant, blessé mais non abattu, suspendu dans l'ombre et l'attente. Sur ses ponts meurtris flotte encore l'odeur de l'ozone, du sang et des mystères que nul vox n'ose entièrement traduire.</p>
-
-      </div>
-    </section>
-
-    <!-- THÉÂTRE 2 -->
-    <div class="theatre-sep">
-      <div class="theatre-sep-line"></div>
-      <span class="theatre-sep-label">⚔ Théâtre II — Lune de Brokha</span>
-      <div class="theatre-sep-line"></div>
-    </div>
-
-    <section class="theatre-block" aria-labelledby="theatre-brokha">
-
-      <div class="theatre-block-header">
-        <p class="theatre-num">Théâtre d'opération II · Porte fortifiée — Surface lunaire</p>
-        <h3 class="theatre-title" id="theatre-brokha">La <span>Porte</span> de Brokha</h3>
-      </div>
-
-      <div class="theatre-body">
-
-        <div class="oddb-grid" role="region" aria-label="Ordre de bataille Brokha">
-          <div class="oddb-col oddb-col--imperial">
-            <p class="oddb-col-title">⚔ Forces Impériales</p>
-            <ul>
-              <li><strong>Sénéchal Manfred</strong> + 20 Croisés Black Templars</li>
-              <li><strong>Romuald</strong> — Second du Sénéchal</li>
-              <li><strong>Dreadnought Thaddeus</strong> — Vétéran de la Croisade</li>
-              <li><strong>Char Leman Russ</strong> — Appui blindé</li>
-              <li><strong>Détachement Astra Militarum</strong> — Défense du portail</li>
-              <li><strong>Tourelles Tarentules</strong> — Protection du relais du bouclier</li>
-            </ul>
+            <polygon
+              points="18,2 34,28 2,28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#c8a028"
+            />
+            <circle
+              cx="18"
+              cy="18"
+              r="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#8b1c1c"
+            />
+            <line
+              x1="18"
+              y1="2"
+              x2="18"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="18"
+              y1="24"
+              x2="18"
+              y2="28"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="8.5"
+              y1="22.3"
+              x2="13.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="27.5"
+              y1="22.3"
+              x2="22.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+          </svg>
+        </a>
+        <div class="nav-actions">
+          <div class="nav-page-links">
+            <a
+              href="carte.html"
+              class="btn-nav-page btn-nav-page--carte"
+              aria-label="Voir la Carte du secteur"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              Carte
+            </a>
+            <a
+              href="rapports-inquisiteurs.html"
+              class="btn-nav-page btn-nav-page--inquisition"
+              aria-label="Rapports Inquisitoriaux"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              Inquisition
+            </a>
           </div>
-          <div class="oddb-col oddb-col--chaos">
-            <p class="oddb-col-title">☠ Forces Hérétiques</p>
-            <ul>
-              <li><strong>Rhino I :</strong> Berzerks World Eaters</li>
-              <li><strong>Rhino II :</strong> Berzerks World Eaters</li>
-              <li><strong>Morgath l'Exécuteur</strong> et ses Berzerks</li>
-              <li><strong>Land Raider hérétique</strong></li>
-              <li><strong>Métabrutus</strong> — Abomination de rage Warp</li>
-            </ul>
-          </div>
+          <button
+            class="btn-theme"
+            data-theme-toggle
+            aria-label="Basculer le thème"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="nav-mobile-toggle"
+            id="nav-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
         </div>
+      </div>
+    </nav>
 
-        <ul class="phase-timeline">
-          <li class="phase-item">
-            <div class="phase-dot">I</div>
-            <div class="phase-content">
-              <p class="phase-label">Feu d'Approche — Le Land Raider endomagé</p>
-              <p class="phase-text">Tandis que les colonnes hérétiques s'avançaient sous les cieux morts de Brokha, <strong>Thaddeus</strong>, l'<strong>Astra Militarum</strong> et les <strong>tourelles Tarentules</strong> unifièrent leur courroux mécanique. Sous cette grêle d'obus et de faisceaux, le <strong>Land Raider hérétique</strong> fut gravement endomagé.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">II</div>
-            <div class="phase-content">
-              <p class="phase-label">Le Bain de Sang de Manfred</p>
-              <p class="phase-text">Au centre du massacre, les <strong>Croisés du Sénéchal Manfred</strong>, secondés par <strong>Romuald</strong> s'abattirent sur les rhinos contenant <strong>Morgath l'Exécuteur, Kharak le sanguinaire </strong> et ses <strong>Berzerks</strong>, dans un carnage qui sembla durer <strong>des heures</strong>. Boucliers rompus, lames noyées de sang, serments hurlés à travers les vox embrasés : telle fut la liturgie de cet affrontement. Dans un moment de faiblesse, Morgath recula devant le Sénéchal, non sans qu'un de ses Berzerks n'eût l'honneur infâme de <strong>blesser l'officier loyaliste</strong> ; et Khorne, depuis son trône de crânes, nota cette lâcheté d'un œil sans pitié.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">III</div>
-            <div class="phase-content">
-              <p class="phase-label">Mort Atroce de l'Apothicaire</p>
-              <p class="phase-text">Dans l'un des tableaux les plus atroces de la bataille, l'<strong>Apothicaire Black Templar</strong> fut pris entre les <strong>moissonneuses des deux Rhinos World Eater</strong>. Sa fin ne fut ni noble ni pure : il fut broyé, écrasé, laminé entre les gueules d'acier des blindés en marche, et sa mémoire elle-même semble protester encore dans les circuits des auspex.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">IV</div>
-            <div class="phase-content">
-              <p class="phase-label">Le Retour de Thaddeus</p>
-              <p class="phase-text"><strong>Thaddeus</strong> était dans une rage sacrée contre les hérétiques, et tint le <strong>centre du champ de bataille</strong>, tel un rempart vivant dressé devant les infidèles. Mais si le vénérable Dreadnought ne céda point dans l'instant, les blessures qu'il reçut furent telles qu'il dut ensuite être <strong>retiré du champ de bataille</strong>, son sarcophage réduit au silence par l'excès des dommages subis.</p>
-            </div>
-          </li>
-          <li class="phase-item">
-            <div class="phase-dot">V</div>
-            <div class="phase-content">
-              <p class="phase-label">Le Métabrutus — bélier vivante</p>
-              <p class="phase-text">Harcelé par les <strong>tirs laser</strong> et blessé par <strong>Thaddeus</strong>, le <strong>Métabrutus</strong> entra dans une fureur telle qu'il se fit lui-même <strong>bélier vivant</strong>. Il ravagea d'abord les <strong>tourelles Tarentules</strong> protégeant le <strong>relais du bouclier</strong>, puis percuta dans un cataclysme de chair et de fer le relai. Cette déflagration ouvrit une <strong>brèche dans le premier mur d'enceinte</strong> de la cité-forteresse, et l'air même de Brokha sembla saigner.</p>
-            </div>
-          </li>
-        </ul>
+    <!-- ═══ HERO ═══ -->
+    <header class="bataille-hero" id="top">
+      <p class="bataille-eyebrow">
+        Rapport de Bataille · Système Sanctum · Archives Militaires — Ref.
+        B335-C/BROKHA
+      </p>
+      <h1 class="bataille-title">Fer et <span>Sang</span> sur Brokha</h1>
+      <p class="bataille-subtitle">
+        L'<em>Ironheart</em> gronde encore — les murailles de Brokha ont été
+        éventrées.
+      </p>
+      <div class="bataille-ornament">du sang pour le Dieu du sang</div>
+    </header>
 
+    <!-- ═══ CONTENU PRINCIPAL ═══ -->
+    <main class="bataille-section">
+      <div class="bataille-container">
+        <!-- EN-TÊTE OFFICIEL DU RAPPORT -->
+        <article class="rapport-doc" aria-labelledby="rapport-brokha-titre">
+          <div class="rapport-doc-header">
+            <div>
+              <p class="rapport-ref">
+                Réf. B335-C/BROKHA · Rapport d'engagement militaire · Daté
+                216.M42 · Cogitator-crâne B334-C
+              </p>
+              <h2 class="rapport-title" id="rapport-brokha-titre">
+                Vaisseau Amiral <em>Ironheart</em> &amp; Lune de Brokha
+              </h2>
+            </div>
+            <span class="rapport-badge rapport-badge--victoire-chaos"
+              >⚔ Victoire Chaos</span
+            >
+          </div>
+
+          <div class="rapport-meta-grid">
+            <div class="rapport-meta-item">
+              <p class="rapport-meta-label">Émetteur</p>
+              <p class="rapport-meta-value">
+                Cogitator-crâne B334-C<br />Compilation de rapports vox
+              </p>
+            </div>
+            <div class="rapport-meta-item">
+              <p class="rapport-meta-label">Théâtres</p>
+              <p class="rapport-meta-value">
+                Vaisseau amiral <em>Ironheart</em><br />Lune Brokha
+              </p>
+            </div>
+            <div class="rapport-meta-item">
+              <p class="rapport-meta-label">Factions engagées</p>
+              <p class="rapport-meta-value">
+                Black Templars<br />vs. Iron Warriors · World Eaters
+              </p>
+            </div>
+            <div class="rapport-meta-item">
+              <p class="rapport-meta-label">Issue</p>
+              <p class="rapport-meta-value">
+                Victoire hérétique — Mur d'enceinte fracturé<br />Relais du
+                bouclier menacé
+              </p>
+            </div>
+          </div>
+
+          <div class="rapport-body">
+            <p>
+              Les événements du
+              <strong style="color: #e06060">216.M42</strong> s'inscrivent parmi
+              les plus sinistres présages de la défense du système Sanctum.
+              Tandis que les Black Templars frappaient au cœur du vaisseau
+              amiral ennemi, la lune de <strong>Brokha</strong> voyait ses
+              remparts baignés de feu, de fureur et de sang.
+            </p>
+            <p>
+              Selon les relevés officiels, les loyalistes ont infligé des pertes
+              cruelles aux assaillants, mais la rage hérétique n'a point été
+              contenue. Une brèche a été ouverte dans le
+              <strong>premier mur d'enceinte</strong>, et le
+              <strong>relais du bouclier</strong> de la cité-forteresse a
+              vacillé sous l'assaut du Métabrutus.
+            </p>
+            <div class="rapport-alerte">
+              <p>
+                Le premier mur est rompu. Le relais du bouclier n'est plus qu'à
+                une poussée sanglante de l'anéantissement.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- IMAGE VUE GÉNÉRALE -->
         <figure class="rapport-img-block">
           <img
-            src="assets/img/rapport/sanctum/metabrutus-vs-char.jpg"
-            alt="Le Métabrutus Iron Warriors de Khorne sur la lune de Brokha, son blindage criblé d'impacts, à l'instant où sa rage Warp atteint son paroxysme"
+            src="assets/img/rapport/sanctum/combat-general.jpg"
+            alt="Vue générale de la bataille sur Brokha — convergence des rhinos et du Land Raider Iron Warriors vers la porte fortifiée défendue par les Black Templars et l'Astra Militarum"
             width="820"
             height="420"
             loading="lazy"
             decoding="async"
-          >
+          />
           <figcaption class="rapport-img-caption">
-            <p>Le Métabrutus à l'instant de détruire le char — relevé servo-crâne incomplet · Réf. IMG-B335-03</p>
+            <p>
+              Cliché servo-crâne capturé depuis le bastion nord de Brokha —
+              Convergence hérétique sur la ligne de défense · Réf. IMG-B335-01
+            </p>
           </figcaption>
         </figure>
-      </div>
-    </section>
 
-    <!-- BILAN FINAL -->
-    <div class="theatre-sep">
-      <div class="theatre-sep-line"></div>
-      <span class="theatre-sep-label">✦ Bilan & Conclusion</span>
-      <div class="theatre-sep-line"></div>
-    </div>
+        <!-- THÉÂTRE 1 -->
+        <div class="theatre-sep">
+          <div class="theatre-sep-line"></div>
+          <span class="theatre-sep-label"
+            >⚔ Théâtre I — Vaisseau Amiral Ironheart</span
+          >
+          <div class="theatre-sep-line"></div>
+        </div>
 
-    <div class="bilan-block" role="region" aria-labelledby="bilan-titre">
-      <p class="bilan-title" id="bilan-titre">✦ Analyse Post-Engagement — Cogitator B334-C</p>
-      <p>La stratégie impériale du 216.M42 n'était point dénuée de grandeur : frapper l'<em>Ironheart</em> en son sein, tout en tenant Brokha jusqu'à l'arrivée des renforts. Sur le vaisseau amiral, <strong>Gildar</strong>, ses <strong>Terminators</strong> et le <strong>Maître de la Forge Hans</strong> ont exterminé les hérétiques rencontrés, et l'explosion du pont de tir a retardé l'entrée en action des canons du navire.</p>
-      <p>Sur Brokha, les pertes furent atroces mais la vérité est plus nuancée que ne le prétendaient certains relevés corrompus : <strong>Thaddeus</strong> a tenu le centre durant l'affrontement, mais il a dû être <strong>retiré du champ de bataille</strong> tant ses blessures étaient graves ; le <strong>Land Raider hérétique</strong> a  été détruit par le feu conjugué de l'<strong>Astra Militarum</strong> et des <strong>Tarentules</strong> ; en revanche, la rage du <strong>Métabrutus</strong> a annihilé ces mêmes défenses et ouvert une <strong>brèche dans le premier mur d'enceinte</strong>.</p>
-      <div class="rapport-alerte">
-        <p>Alerte maximale : brèche confirmée dans le premier mur d'enceinte. Relais du bouclier en péril. Demande de renforts urgente transmise à la flotte et au Haut-Sénéchal Helbrecht.</p>
-      </div>
-    </div>
+        <section class="theatre-block" aria-labelledby="theatre-ironheart">
+          <div class="theatre-block-header">
+            <h3 class="theatre-title" id="theatre-ironheart">
+              Assaut Surprise sur l'<span>Ironheart</span>
+            </h3>
+          </div>
 
-    <!-- SIGNATURE -->
-    <div class="rapport-doc">
-      <div class="rapport-signature">
-        <p class="rapport-sig-formula">Que l'Empereur guide nos lames et protège les survivants.</p>
-        <div>
-          <p class="rapport-sig-name">Cogitator-Crâne B334-C</p>
-          <p class="rapport-sig-sub">Compilation automatisée — Sources : vox Astartes, servo-crânes et transmissions Astra Militarum<br>Système Sanctum — Lune Brokha — 216.M42</p>
+          <div class="theatre-body">
+            <p>
+              L'<em>Ironheart</em>, forteresse de guerre et cathédrale d'airain
+              profané, fut frappé en son sein par l'audace des fils de Dorn. Le
+              <strong>Sénéchal Gildar</strong>, ses frères d'épées
+              <strong>Terminators</strong>, et le
+              <strong>Maître de la Forge Hans</strong> portèrent l'assaut dans
+              les entrailles du navire, et partout où leurs pas résonnèrent, les
+              hérétiques furent abattus sans merci.
+            </p>
+
+            <div
+              class="oddb-grid"
+              role="region"
+              aria-label="Ordre de bataille Ironheart"
+            >
+              <div class="oddb-col oddb-col--imperial">
+                <p class="oddb-col-title">⚔ Forces d'Assaut Impériales</p>
+                <ul>
+                  <li>
+                    <strong>Sénéchal Gildar</strong> — Commandement de la frappe
+                  </li>
+                  <li>
+                    <strong>Frères d'épées Terminators</strong> — Téléportation
+                    dans les ponts de tir
+                  </li>
+                  <li>
+                    <strong>Maître de la Forge Hans</strong> — Soutien technique
+                    et destruction des hérétiques
+                  </li>
+                </ul>
+              </div>
+              <div class="oddb-col oddb-col--chaos">
+                <p class="oddb-col-title">☠ Défenseurs Hérétiques</p>
+                <ul>
+                  <li>
+                    <strong>Berzerks World Eaters</strong> — Garnison interne
+                  </li>
+                  <li>
+                    <strong>Servants et équipages armés</strong> — Défense du
+                    pont de tir
+                  </li>
+                  <li>
+                    <strong>Forces disséminées d'Iron Warriors</strong> —
+                    Exterminées au contact
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <figure class="rapport-img-block">
+              <img
+                src="assets/img/rapport/sanctum/combat-dans-IronHeart-filtre.jpg"
+                alt="Combat dans les ponts inférieurs du vaisseau amiral Ironheart — Terminators Black Templars face aux berserks de Khorne dans les coursives industrielles du navire"
+                width="820"
+                height="400"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="rapport-img-caption">
+                <p>
+                  Ponts intérieurs de l'Ironheart — Reconstitution d'après les
+                  relevés vox récupérés sur les frères d'épées · Réf.
+                  IMG-B335-02
+                </p>
+              </figcaption>
+            </figure>
+
+            <ul class="phase-timeline">
+              <li class="phase-item">
+                <div class="phase-dot">I</div>
+                <div class="phase-content">
+                  <p class="phase-label">Frappe de Téléportation</p>
+                  <p class="phase-text">
+                    Le <strong>Sénéchal Gildar</strong>, ses
+                    <strong>Terminators</strong> et le
+                    <strong>Maître de la Forge Hans</strong> furent projetés
+                    dans les ponts de l'<em>Ironheart</em> comme une sentence
+                    d'acier. Ils avancèrent sans hésitation à travers fumées,
+                    alarmes et prières hérétiques, semant la mort au nom du
+                    Trône d'Or.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">II</div>
+                <div class="phase-content">
+                  <p class="phase-label">Extermination des Défenseurs</p>
+                  <p class="phase-text">
+                    Toutes les forces hérétiques rencontrées sur leur route
+                    furent <strong>exterminées</strong>. Nulle contre-charge ne
+                    tint face au fanatisme des Black Templars ; nulle herse,
+                    nulle coursive, nulle soute ne put préserver les maudits de
+                    la juste colère impériale.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">III</div>
+                <div class="phase-content">
+                  <p class="phase-label">Le Tir Plasma Malheureux</p>
+                  <p class="phase-text">
+                    Pourtant, dans l'agonie d'un dernier affrontement, un
+                    <strong>Berzerk</strong> décocha un tir plasma funeste. Le
+                    trait incandescent frappa le <strong>pont de tir</strong>,
+                    et celui-ci explosa dans un ouragan de feu et de métal
+                    consumés.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">IV</div>
+                <div class="phase-content">
+                  <p class="phase-label">Canons en Réparation</p>
+                  <p class="phase-text">
+                    L'<em>Ironheart</em>, bien que purgé de ses occupants
+                    immédiats, doit désormais attendre la
+                    <strong>réparation de ses canons</strong>. Les chroniqueurs
+                    murmurent que les Black Templars ont traîné plus qu'il ne
+                    convenait, et qu'au loin déjà approche la flotte du
+                    <strong>Haut-Sénéchal Helbrecht</strong>, dans le silence
+                    terrible de desseins encore tus.
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <p>
+              L'<em>Ironheart</em> demeure donc vivant, blessé mais non abattu,
+              suspendu dans l'ombre et l'attente. Sur ses ponts meurtris flotte
+              encore l'odeur de l'ozone, du sang et des mystères que nul vox
+              n'ose entièrement traduire.
+            </p>
+          </div>
+        </section>
+
+        <!-- THÉÂTRE 2 -->
+        <div class="theatre-sep">
+          <div class="theatre-sep-line"></div>
+          <span class="theatre-sep-label">⚔ Théâtre II — Lune de Brokha</span>
+          <div class="theatre-sep-line"></div>
+        </div>
+
+        <section class="theatre-block" aria-labelledby="theatre-brokha">
+          <div class="theatre-block-header">
+            <p class="theatre-num">
+              Théâtre d'opération II · Porte fortifiée — Surface lunaire
+            </p>
+            <h3 class="theatre-title" id="theatre-brokha">
+              La <span>Porte</span> de Brokha
+            </h3>
+          </div>
+
+          <div class="theatre-body">
+            <div
+              class="oddb-grid"
+              role="region"
+              aria-label="Ordre de bataille Brokha"
+            >
+              <div class="oddb-col oddb-col--imperial">
+                <p class="oddb-col-title">⚔ Forces Impériales</p>
+                <ul>
+                  <li>
+                    <strong>Sénéchal Manfred</strong> + 20 Croisés Black
+                    Templars
+                  </li>
+                  <li><strong>Romuald</strong> — Second du Sénéchal</li>
+                  <li>
+                    <strong>Dreadnought Thaddeus</strong> — Vétéran de la
+                    Croisade
+                  </li>
+                  <li><strong>Char Leman Russ</strong> — Appui blindé</li>
+                  <li>
+                    <strong>Détachement Astra Militarum</strong> — Défense du
+                    portail
+                  </li>
+                  <li>
+                    <strong>Tourelles Tarentules</strong> — Protection du relais
+                    du bouclier
+                  </li>
+                </ul>
+              </div>
+              <div class="oddb-col oddb-col--chaos">
+                <p class="oddb-col-title">☠ Forces Hérétiques</p>
+                <ul>
+                  <li><strong>Rhino I :</strong> Berzerks World Eaters</li>
+                  <li><strong>Rhino II :</strong> Berzerks World Eaters</li>
+                  <li><strong>Morgath l'Exécuteur</strong> et ses Berzerks</li>
+                  <li><strong>Land Raider hérétique</strong></li>
+                  <li>
+                    <strong>Métabrutus</strong> — Abomination de rage Warp
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <ul class="phase-timeline">
+              <li class="phase-item">
+                <div class="phase-dot">I</div>
+                <div class="phase-content">
+                  <p class="phase-label">
+                    Feu d'Approche — Le Land Raider endomagé
+                  </p>
+                  <p class="phase-text">
+                    Tandis que les colonnes hérétiques s'avançaient sous les
+                    cieux morts de Brokha, <strong>Thaddeus</strong>, l'<strong
+                      >Astra Militarum</strong
+                    >
+                    et les <strong>tourelles Tarentules</strong> unifièrent leur
+                    courroux mécanique. Sous cette grêle d'obus et de faisceaux,
+                    le <strong>Land Raider hérétique</strong> fut gravement
+                    endomagé.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">II</div>
+                <div class="phase-content">
+                  <p class="phase-label">Le Bain de Sang de Manfred</p>
+                  <p class="phase-text">
+                    Au centre du massacre, les
+                    <strong>Croisés du Sénéchal Manfred</strong>, secondés par
+                    <strong>Romuald</strong> s'abattirent sur les rhinos
+                    contenant
+                    <strong>Morgath l'Exécuteur, Kharak le sanguinaire </strong>
+                    et ses <strong>Berzerks</strong>, dans un carnage qui sembla
+                    durer <strong>des heures</strong>. Boucliers rompus, lames
+                    noyées de sang, serments hurlés à travers les vox embrasés :
+                    telle fut la liturgie de cet affrontement. Dans un moment de
+                    faiblesse, Morgath recula devant le Sénéchal, non sans qu'un
+                    de ses Berzerks n'eût l'honneur infâme de
+                    <strong>blesser l'officier loyaliste</strong> ; et Khorne,
+                    depuis son trône de crânes, nota cette lâcheté d'un œil sans
+                    pitié.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">III</div>
+                <div class="phase-content">
+                  <p class="phase-label">Mort Atroce de l'Apothicaire</p>
+                  <p class="phase-text">
+                    Dans l'un des tableaux les plus atroces de la bataille,
+                    l'<strong>Apothicaire Black Templar</strong> fut pris entre
+                    les
+                    <strong>moissonneuses des deux Rhinos World Eater</strong>.
+                    Sa fin ne fut ni noble ni pure : il fut broyé, écrasé,
+                    laminé entre les gueules d'acier des blindés en marche, et
+                    sa mémoire elle-même semble protester encore dans les
+                    circuits des auspex.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">IV</div>
+                <div class="phase-content">
+                  <p class="phase-label">Le Retour de Thaddeus</p>
+                  <p class="phase-text">
+                    <strong>Thaddeus</strong> était dans une rage sacrée contre
+                    les hérétiques, et tint le
+                    <strong>centre du champ de bataille</strong>, tel un rempart
+                    vivant dressé devant les infidèles. Mais si le vénérable
+                    Dreadnought ne céda point dans l'instant, les blessures
+                    qu'il reçut furent telles qu'il dut ensuite être
+                    <strong>retiré du champ de bataille</strong>, son sarcophage
+                    réduit au silence par l'excès des dommages subis.
+                  </p>
+                </div>
+              </li>
+              <li class="phase-item">
+                <div class="phase-dot">V</div>
+                <div class="phase-content">
+                  <p class="phase-label">Le Métabrutus — bélier vivante</p>
+                  <p class="phase-text">
+                    Harcelé par les <strong>tirs laser</strong> et blessé par
+                    <strong>Thaddeus</strong>, le
+                    <strong>Métabrutus</strong> entra dans une fureur telle
+                    qu'il se fit lui-même <strong>bélier vivant</strong>. Il
+                    ravagea d'abord les
+                    <strong>tourelles Tarentules</strong> protégeant le
+                    <strong>relais du bouclier</strong>, puis percuta dans un
+                    cataclysme de chair et de fer le relai. Cette déflagration
+                    ouvrit une
+                    <strong>brèche dans le premier mur d'enceinte</strong> de la
+                    cité-forteresse, et l'air même de Brokha sembla saigner.
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <figure class="rapport-img-block">
+              <img
+                src="assets/img/rapport/sanctum/metabrutus-vs-char.jpg"
+                alt="Le Métabrutus Iron Warriors de Khorne sur la lune de Brokha, son blindage criblé d'impacts, à l'instant où sa rage Warp atteint son paroxysme"
+                width="820"
+                height="420"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption class="rapport-img-caption">
+                <p>
+                  Le Métabrutus à l'instant de détruire le char — relevé
+                  servo-crâne incomplet · Réf. IMG-B335-03
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- BILAN FINAL -->
+        <div class="theatre-sep">
+          <div class="theatre-sep-line"></div>
+          <span class="theatre-sep-label">✦ Bilan & Conclusion</span>
+          <div class="theatre-sep-line"></div>
+        </div>
+
+        <div class="bilan-block" role="region" aria-labelledby="bilan-titre">
+          <p class="bilan-title" id="bilan-titre">
+            ✦ Analyse Post-Engagement — Cogitator B334-C
+          </p>
+          <p>
+            La stratégie impériale du 216.M42 n'était point dénuée de grandeur :
+            frapper l'<em>Ironheart</em> en son sein, tout en tenant Brokha
+            jusqu'à l'arrivée des renforts. Sur le vaisseau amiral,
+            <strong>Gildar</strong>, ses <strong>Terminators</strong> et le
+            <strong>Maître de la Forge Hans</strong> ont exterminé les
+            hérétiques rencontrés, et l'explosion du pont de tir a retardé
+            l'entrée en action des canons du navire.
+          </p>
+          <p>
+            Sur Brokha, les pertes furent atroces mais la vérité est plus
+            nuancée que ne le prétendaient certains relevés corrompus :
+            <strong>Thaddeus</strong> a tenu le centre durant l'affrontement,
+            mais il a dû être <strong>retiré du champ de bataille</strong> tant
+            ses blessures étaient graves ; le
+            <strong>Land Raider hérétique</strong> a été détruit par le feu
+            conjugué de l'<strong>Astra Militarum</strong> et des
+            <strong>Tarentules</strong> ; en revanche, la rage du
+            <strong>Métabrutus</strong> a annihilé ces mêmes défenses et ouvert
+            une <strong>brèche dans le premier mur d'enceinte</strong>.
+          </p>
+          <div class="rapport-alerte">
+            <p>
+              Alerte maximale : brèche confirmée dans le premier mur d'enceinte.
+              Relais du bouclier en péril. Demande de renforts urgente transmise
+              à la flotte et au Haut-Sénéchal Helbrecht.
+            </p>
+          </div>
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="rapport-doc">
+          <div class="rapport-signature">
+            <p class="rapport-sig-formula">
+              Que l'Empereur guide nos lames et protège les survivants.
+            </p>
+            <div>
+              <p class="rapport-sig-name">Cogitator-Crâne B334-C</p>
+              <p class="rapport-sig-sub">
+                Compilation automatisée — Sources : vox Astartes, servo-crânes
+                et transmissions Astra Militarum<br />Système Sanctum — Lune
+                Brokha — 216.M42
+              </p>
+            </div>
+          </div>
+          <div class="rapport-footer-stamp">
+            <p>
+              Rapport Militaire Classifié — Accès restreint aux commandants de
+              niveau Alpha et supérieur — Archives de la Croisade Fyrentis
+            </p>
+            <p>
+              Réf. B335-C/BROKHA · Classification : Extremis Secunda · Segmentum
+              Obscurus — Sous-secteur Fyrentis — Système Sanctum
+            </p>
+            <p>
+              +++ Fin de transmission — Intégrité des données : 97,2 % +++
+              [Perturbations Warp mineures — 2,8 % de données dégradées]
+            </p>
+          </div>
         </div>
       </div>
-      <div class="rapport-footer-stamp">
-        <p>Rapport Militaire Classifié — Accès restreint aux commandants de niveau Alpha et supérieur — Archives de la Croisade Fyrentis</p>
-        <p>Réf. B335-C/BROKHA · Classification : Extremis Secunda · Segmentum Obscurus — Sous-secteur Fyrentis — Système Sanctum</p>
-        <p>+++ Fin de transmission — Intégrité des données : 97,2 % +++ [Perturbations Warp mineures — 2,8 % de données dégradées]</p>
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Sous-Secteur Fyrentis</div>
+        <p class="footer-line">
+          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
+        </p>
+        <p class="footer-line">
+          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
+        </p>
       </div>
-    </div>
+    </footer>
 
-  </div>
-</main>
+    <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </a>
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <div class="container">
-    <div class="footer-logo">Sous-Secteur Fyrentis</div>
-    <p class="footer-line">« Dans le futur sombre de l'humanité, il n'y a que la guerre. »</p>
-    <p class="footer-line">Warhammer 40 000 • Campagne Narrative • 41ème Millénaire</p>
-  </div>
-</footer>
-
-<a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-</a>
-
-<script>
-(function () {
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let theme = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.setAttribute('data-theme', theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute('aria-label', 'Basculer vers le mode ' + (theme === 'dark' ? 'clair' : 'sombre'));
-  }
-  updateThemeBtn();
-  if (themeBtn) themeBtn.addEventListener('click', () => {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', theme);
-    updateThemeBtn();
-  });
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
-})();
-</script>
-
-</body>
+    <script>
+      (function () {
+        const themeBtn = document.querySelector("[data-theme-toggle]");
+        const root = document.documentElement;
+        let theme =
+          root.getAttribute("data-theme") ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        root.setAttribute("data-theme", theme);
+        function updateThemeBtn() {
+          if (!themeBtn) return;
+          themeBtn.innerHTML =
+            theme === "dark"
+              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+          themeBtn.setAttribute(
+            "aria-label",
+            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
+          );
+        }
+        updateThemeBtn();
+        if (themeBtn)
+          themeBtn.addEventListener("click", () => {
+            theme = theme === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", theme);
+            updateThemeBtn();
+          });
+        const nav = document.getElementById("nav");
+        window.addEventListener(
+          "scroll",
+          () => {
+            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
+            document
+              .getElementById("back-top")
+              .classList.toggle("visible", window.scrollY > 300);
+          },
+          { passive: true },
+        );
+      })();
+    </script>
+  </body>
 </html>

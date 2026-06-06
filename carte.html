@@ -1,629 +1,1593 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carte — Sous-Secteur Fyrentis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:        #0d0b09;
-      --surface:   #151210;
-      --surface-2: #1c1815;
-      --border:    #2e2820;
-      --text:      #d4c9b8;
-      --muted:     #7a6f60;
-      --faint:     #3d342a;
-      --gold:      #c8a028;
-      --gold-dim:  #8a6b18;
-      --red:       #8b1c1c;
-      --red-bright:#c43030;
-      --blue:      #2255aa;
-      --blue-bright:#4488dd;
-      --green:     #2a6b30;
-      --green-bright:#55aa66;
-      --purple:    #5b2d8a;
-      --purple-bright:#9055cc;
-      --teal:      #1a5f5f;
-      --teal-bright:#33aaaa;
-      --chaos:     #6b1a1a;
-      --imperium:  #1a3a6b;
-      --necron:    #1a6b3a;
-    }
-    html { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); height: 100%; }
-    body { min-height: 100dvh; display: flex; flex-direction: column; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carte — Sous-Secteur Fyrentis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0d0b09;
+        --surface: #151210;
+        --surface-2: #1c1815;
+        --border: #2e2820;
+        --text: #d4c9b8;
+        --muted: #7a6f60;
+        --faint: #3d342a;
+        --gold: #c8a028;
+        --gold-dim: #8a6b18;
+        --red: #8b1c1c;
+        --red-bright: #c43030;
+        --blue: #2255aa;
+        --blue-bright: #4488dd;
+        --green: #2a6b30;
+        --green-bright: #55aa66;
+        --purple: #5b2d8a;
+        --purple-bright: #9055cc;
+        --teal: #1a5f5f;
+        --teal-bright: #33aaaa;
+        --chaos: #6b1a1a;
+        --imperium: #1a3a6b;
+        --necron: #1a6b3a;
+      }
+      html {
+        font-family: "Crimson Text", Georgia, serif;
+        background: var(--bg);
+        color: var(--text);
+        height: 100%;
+      }
+      body {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
 
-    /* NAV */
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-    .nav-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); letter-spacing: 0.05em; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a.active { color: var(--gold); }
+      /* NAV */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-title {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        color: var(--gold);
+        letter-spacing: 0.05em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a.active {
+        color: var(--gold);
+      }
 
-    /* LAYOUT */
-    .page { display: grid; grid-template-columns: 1fr 320px; flex: 1; overflow: hidden; height: calc(100dvh - 49px); }
-    @media (max-width: 900px) { .page { grid-template-columns: 1fr; height: auto; } }
+      /* LAYOUT */
+      .page {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        flex: 1;
+        overflow: hidden;
+        height: calc(100dvh - 49px);
+      }
+      @media (max-width: 900px) {
+        .page {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+      }
 
-    /* MAP ZONE */
-    .map-zone { position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 50%, #1a1208 0%, #0d0b09 70%); }
-    .map-zone::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,200,0.15) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.15;
-      pointer-events: none;
-    }
-    #map-svg { width: 100%; height: 100%; cursor: grab; }
-    #map-svg:active { cursor: grabbing; }
+      /* MAP ZONE */
+      .map-zone {
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(
+          ellipse at 50% 50%,
+          #1a1208 0%,
+          #0d0b09 70%
+        );
+      }
+      .map-zone::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 200, 0.15) 1px,
+          transparent 1px
+        );
+        background-size: 40px 40px;
+        opacity: 0.15;
+        pointer-events: none;
+      }
+      #map-svg {
+        width: 100%;
+        height: 100%;
+        cursor: grab;
+      }
+      #map-svg:active {
+        cursor: grabbing;
+      }
 
-    /* SYSTEM NODES */
-    .sys-group { cursor: pointer; }
-    .sys-group:hover .sys-ring { opacity: 0.8; r: 28; transition: r 0.2s; }
-    .sys-bg { transition: all 0.2s; }
-    .sys-ring { transition: all 0.2s; }
-    .sys-label { font-family: 'Cinzel', serif; font-size: 11px; fill: var(--text); pointer-events: none; }
-    .sys-sublabel { font-size: 9px; fill: var(--muted); pointer-events: none; font-family: 'Crimson Text', serif; }
-    .sys-group.selected .sys-bg { filter: drop-shadow(0 0 8px currentColor); }
-    .sys-group.selected .sys-ring { r: 30; }
+      /* SYSTEM NODES */
+      .sys-group {
+        cursor: pointer;
+      }
+      .sys-group:hover .sys-ring {
+        opacity: 0.8;
+        r: 28;
+        transition: r 0.2s;
+      }
+      .sys-bg {
+        transition: all 0.2s;
+      }
+      .sys-ring {
+        transition: all 0.2s;
+      }
+      .sys-label {
+        font-family: "Cinzel", serif;
+        font-size: 11px;
+        fill: var(--text);
+        pointer-events: none;
+      }
+      .sys-sublabel {
+        font-size: 9px;
+        fill: var(--muted);
+        pointer-events: none;
+        font-family: "Crimson Text", serif;
+      }
+      .sys-group.selected .sys-bg {
+        filter: drop-shadow(0 0 8px currentColor);
+      }
+      .sys-group.selected .sys-ring {
+        r: 30;
+      }
 
-    /* ROUTES */
-    .route { fill: none; stroke-width: 1.5; opacity: 0.5; stroke-dasharray: 6 4; }
-    .route--warp { stroke: var(--gold); }
-    .route--contested { stroke: var(--red-bright); stroke-dasharray: 4 4; opacity: 0.7; }
-    .route--chaos { stroke: var(--red); stroke-dasharray: 3 6; }
-    .route--unknown { stroke: var(--muted); stroke-dasharray: 2 8; opacity: 0.35; }
-    .route-label { font-size: 8px; fill: var(--gold-dim); font-family: 'Crimson Text', serif; font-style: italic; }
+      /* ROUTES */
+      .route {
+        fill: none;
+        stroke-width: 1.5;
+        opacity: 0.5;
+        stroke-dasharray: 6 4;
+      }
+      .route--warp {
+        stroke: var(--gold);
+      }
+      .route--contested {
+        stroke: var(--red-bright);
+        stroke-dasharray: 4 4;
+        opacity: 0.7;
+      }
+      .route--chaos {
+        stroke: var(--red);
+        stroke-dasharray: 3 6;
+      }
+      .route--unknown {
+        stroke: var(--muted);
+        stroke-dasharray: 2 8;
+        opacity: 0.35;
+      }
+      .route-label {
+        font-size: 8px;
+        fill: var(--gold-dim);
+        font-family: "Crimson Text", serif;
+        font-style: italic;
+      }
 
-    /* SIDEBAR */
-    .sidebar { background: var(--surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
-    .sidebar-header { padding: 1.25rem 1.25rem 0.75rem; border-bottom: 1px solid var(--border); }
-    .sidebar-header h2 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); margin-bottom: 0.25rem; }
-    .sidebar-header p { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+      /* SIDEBAR */
+      .sidebar {
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .sidebar-header {
+        padding: 1.25rem 1.25rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .sidebar-header h2 {
+        font-family: "Cinzel", serif;
+        font-size: 0.95rem;
+        color: var(--gold);
+        margin-bottom: 0.25rem;
+      }
+      .sidebar-header p {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.4;
+      }
 
-    .system-detail { padding: 1.25rem; display: none; flex: 1; }
-    .system-detail.active { display: block; }
-    .detail-eyebrow { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.35rem; }
-    .detail-name { font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--gold); line-height: 1.2; margin-bottom: 0.15rem; }
-    .detail-status { display: inline-block; font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 999px; margin-bottom: 0.9rem; font-family: 'Cinzel', serif; letter-spacing: 0.04em; }
-    .status--imperium { background: rgba(26,58,107,0.35); color: var(--blue-bright); border: 1px solid var(--blue); }
-    .status--chaos { background: rgba(107,26,26,0.35); color: var(--red-bright); border: 1px solid var(--red); }
-    .status--contested { background: rgba(139,28,28,0.2); color: #ff8844; border: 1px solid #883322; }
-    .status--necron { background: rgba(26,107,58,0.35); color: var(--green-bright); border: 1px solid var(--green); }
-    .status--unknown { background: rgba(50,42,35,0.5); color: var(--muted); border: 1px solid var(--faint); }
+      .system-detail {
+        padding: 1.25rem;
+        display: none;
+        flex: 1;
+      }
+      .system-detail.active {
+        display: block;
+      }
+      .detail-eyebrow {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-bottom: 0.35rem;
+      }
+      .detail-name {
+        font-family: "Cinzel", serif;
+        font-size: 1.3rem;
+        color: var(--gold);
+        line-height: 1.2;
+        margin-bottom: 0.15rem;
+      }
+      .detail-status {
+        display: inline-block;
+        font-size: 0.72rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        margin-bottom: 0.9rem;
+        font-family: "Cinzel", serif;
+        letter-spacing: 0.04em;
+      }
+      .status--imperium {
+        background: rgba(26, 58, 107, 0.35);
+        color: var(--blue-bright);
+        border: 1px solid var(--blue);
+      }
+      .status--chaos {
+        background: rgba(107, 26, 26, 0.35);
+        color: var(--red-bright);
+        border: 1px solid var(--red);
+      }
+      .status--contested {
+        background: rgba(139, 28, 28, 0.2);
+        color: #ff8844;
+        border: 1px solid #883322;
+      }
+      .status--necron {
+        background: rgba(26, 107, 58, 0.35);
+        color: var(--green-bright);
+        border: 1px solid var(--green);
+      }
+      .status--unknown {
+        background: rgba(50, 42, 35, 0.5);
+        color: var(--muted);
+        border: 1px solid var(--faint);
+      }
 
-    .detail-desc { font-size: 0.9rem; line-height: 1.6; color: var(--text); margin-bottom: 1rem; }
-    .detail-section { margin-bottom: 0.9rem; }
-    .detail-section h4 { font-family: 'Cinzel', serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.45rem; }
-    .detail-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .tag { font-size: 0.72rem; padding: 0.18rem 0.5rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: var(--surface-2); }
-    .tag--red { border-color: var(--red); color: var(--red-bright); background: rgba(139,28,28,0.15); }
-    .tag--gold { border-color: var(--gold-dim); color: var(--gold); background: rgba(200,160,40,0.1); }
-    .tag--blue { border-color: var(--blue); color: var(--blue-bright); background: rgba(34,85,170,0.15); }
-    .tag--green { border-color: var(--green); color: var(--green-bright); background: rgba(42,107,48,0.15); }
-    .tag--purple { border-color: var(--purple); color: var(--purple-bright); background: rgba(91,45,138,0.15); }
-    .tag--teal { border-color: var(--teal); color: var(--teal-bright); background: rgba(26,95,95,0.15); }
+      .detail-desc {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+      .detail-section {
+        margin-bottom: 0.9rem;
+      }
+      .detail-section h4 {
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold-dim);
+        margin-bottom: 0.45rem;
+      }
+      .detail-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+      .tag {
+        font-size: 0.72rem;
+        padding: 0.18rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--text);
+        background: var(--surface-2);
+      }
+      .tag--red {
+        border-color: var(--red);
+        color: var(--red-bright);
+        background: rgba(139, 28, 28, 0.15);
+      }
+      .tag--gold {
+        border-color: var(--gold-dim);
+        color: var(--gold);
+        background: rgba(200, 160, 40, 0.1);
+      }
+      .tag--blue {
+        border-color: var(--blue);
+        color: var(--blue-bright);
+        background: rgba(34, 85, 170, 0.15);
+      }
+      .tag--green {
+        border-color: var(--green);
+        color: var(--green-bright);
+        background: rgba(42, 107, 48, 0.15);
+      }
+      .tag--purple {
+        border-color: var(--purple);
+        color: var(--purple-bright);
+        background: rgba(91, 45, 138, 0.15);
+      }
+      .tag--teal {
+        border-color: var(--teal);
+        color: var(--teal-bright);
+        background: rgba(26, 95, 95, 0.15);
+      }
 
-    .detail-battles { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .battle-item { font-size: 0.82rem; padding: 0.5rem 0.6rem; border-radius: 4px; border-left: 2px solid var(--gold-dim); background: var(--surface-2); line-height: 1.4; }
-    .battle-item strong { color: var(--gold); display: block; font-size: 0.78rem; font-family: 'Cinzel', serif; }
+      .detail-battles {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .battle-item {
+        font-size: 0.82rem;
+        padding: 0.5rem 0.6rem;
+        border-radius: 4px;
+        border-left: 2px solid var(--gold-dim);
+        background: var(--surface-2);
+        line-height: 1.4;
+      }
+      .battle-item strong {
+        color: var(--gold);
+        display: block;
+        font-size: 0.78rem;
+        font-family: "Cinzel", serif;
+      }
 
-    .empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: var(--muted); gap: 0.75rem; }
-    .empty-state-icon { font-size: 2.5rem; opacity: 0.4; }
-    .empty-state p { font-size: 0.85rem; line-height: 1.5; }
+      .empty-state {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+        color: var(--muted);
+        gap: 0.75rem;
+      }
+      .empty-state-icon {
+        font-size: 2.5rem;
+        opacity: 0.4;
+      }
+      .empty-state p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
 
-    /* LEGEND */
-    .legend { padding: 1rem 1.25rem; border-top: 1px solid var(--border); margin-top: auto; }
-    .legend h4 { font-family: 'Cinzel', serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.6rem; }
-    .legend-items { display: flex; flex-direction: column; gap: 0.3rem; }
-    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--muted); }
-    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .legend-line { width: 18px; height: 2px; flex-shrink: 0; border-radius: 1px; }
+      /* LEGEND */
+      .legend {
+        padding: 1rem 1.25rem;
+        border-top: 1px solid var(--border);
+        margin-top: auto;
+      }
+      .legend h4 {
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold-dim);
+        margin-bottom: 0.6rem;
+      }
+      .legend-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .legend-line {
+        width: 18px;
+        height: 2px;
+        flex-shrink: 0;
+        border-radius: 1px;
+      }
 
-    /* CONTROLS */
-    .map-controls { position: absolute; bottom: 1rem; left: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
-    .ctrl-btn { width: 32px; height: 32px; background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 4px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; }
-    .ctrl-btn:hover { background: var(--surface-2); color: var(--gold); }
+      /* CONTROLS */
+      .map-controls {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .ctrl-btn {
+        width: 32px;
+        height: 32px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .ctrl-btn:hover {
+        background: var(--surface-2);
+        color: var(--gold);
+      }
 
-    /* ANIMÉ */
-    @keyframes pulse-ring { 0%,100%{opacity:0.3;} 50%{opacity:0.7;} }
-    .sys-contested .sys-ring { animation: pulse-ring 2s ease-in-out infinite; }
-    @keyframes warp-flow { 0%{stroke-dashoffset:0;} 100%{stroke-dashoffset:-40;} }
-    .route--warp { animation: warp-flow 3s linear infinite; }
-    .route--chaos { animation: warp-flow 2s linear infinite reverse; }
-  </style>
-</head>
-<body>
+      /* ANIMÉ */
+      @keyframes pulse-ring {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+      .sys-contested .sys-ring {
+        animation: pulse-ring 2s ease-in-out infinite;
+      }
+      @keyframes warp-flow {
+        0% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: -40;
+        }
+      }
+      .route--warp {
+        animation: warp-flow 3s linear infinite;
+      }
+      .route--chaos {
+        animation: warp-flow 2s linear infinite reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span class="nav-title">⚔ Sous-Secteur Fyrentis</span>
+      <ul class="nav-links">
+        <li><a href="index.html">Campagne</a></li>
+        <li><a href="sanctum.html">Sanctum</a></li>
+      </ul>
+    </nav>
 
-<nav>
-  <span class="nav-title">⚔ Sous-Secteur Fyrentis</span>
-  <ul class="nav-links">
-    <li><a href="index.html">Campagne</a></li>
-    <li><a href="sanctum.html">Sanctum</a></li>
-  </ul>
-</nav>
+    <div class="page">
+      <!-- MAP SVG -->
+      <div class="map-zone">
+        <svg
+          id="map-svg"
+          viewBox="0 0 900 650"
+          preserveAspectRatio="xMidYMid meet"
+          aria-label="Carte du sous-secteur Fyrentis"
+          role="img"
+        >
+          <defs>
+            <radialGradient id="glow-gold" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c8a028" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#c8a028" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="glow-red" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c43030" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#c43030" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="glow-blue" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#4488dd" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#4488dd" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="glow-green" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#55aa66" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#55aa66" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="glow-purple" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#9055cc" stop-opacity="0.6" />
+              <stop offset="100%" stop-color="#9055cc" stop-opacity="0" />
+            </radialGradient>
+            <filter id="blur-glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
-<div class="page">
+          <!-- ══ ROUTES WARP ══ -->
+          <!-- Balvarum ↔ Fyrentis -->
+          <line class="route route--warp" x1="155" y1="210" x2="290" y2="270" />
+          <!-- Fyrentis ↔ Riga -->
+          <line class="route route--warp" x1="330" y1="255" x2="510" y2="115" />
+          <!-- Riga ↔ Brazzyk -->
+          <line class="route route--warp" x1="555" y1="110" x2="720" y2="195" />
+          <!-- Riga ↔ Kuvak -->
+          <line class="route route--warp" x1="555" y1="130" x2="720" y2="330" />
+          <!-- Brazzyk ↔ Kuvak -->
+          <line class="route route--warp" x1="740" y1="220" x2="740" y2="305" />
+          <!-- Kuvak ↔ Charyss -->
+          <line class="route route--warp" x1="720" y1="355" x2="660" y2="490" />
+          <!-- Jakku ↔ Fyrentis -->
+          <line class="route route--warp" x1="345" y1="420" x2="310" y2="285" />
+          <!-- Jakku ↔ Brazzyk (long) -->
+          <path
+            class="route route--warp"
+            d="M 370 415 Q 590 380 720 215"
+            fill="none"
+          />
+          <!-- Jakku ↔ Kuvak -->
+          <line class="route route--warp" x1="380" y1="430" x2="710" y2="345" />
+          <!-- Sanctum ↔ Jakku (chemin secondaire) -->
+          <line
+            class="route route--contested"
+            x1="185"
+            y1="355"
+            x2="325"
+            y2="415"
+          />
+          <!-- Inconnu ↔ ??? -->
+          <line
+            class="route route--unknown"
+            x1="500"
+            y1="340"
+            x2="650"
+            y2="490"
+          />
+          <line
+            class="route route--unknown"
+            x1="500"
+            y1="330"
+            x2="380"
+            y2="430"
+          />
+          <!-- Label route -->
+          <text
+            class="route-label"
+            x="205"
+            y="285"
+            transform="rotate(-15,205,285)"
+          >
+            Chemin de Bonne Volonté
+          </text>
 
-  <!-- MAP SVG -->
-  <div class="map-zone">
-    <svg id="map-svg" viewBox="0 0 900 650" preserveAspectRatio="xMidYMid meet" aria-label="Carte du sous-secteur Fyrentis" role="img">
-      <defs>
-        <radialGradient id="glow-gold" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#c8a028" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#c8a028" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="glow-red" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#c43030" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#c43030" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="glow-blue" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#4488dd" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#4488dd" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="glow-green" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#55aa66" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#55aa66" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="glow-purple" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#9055cc" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#9055cc" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="blur-glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
+          <!-- ══ SYSTÈMES ══ -->
 
-      <!-- ══ ROUTES WARP ══ -->
-      <!-- Balvarum ↔ Fyrentis -->
-      <line class="route route--warp" x1="155" y1="210" x2="290" y2="270"/>
-      <!-- Fyrentis ↔ Riga -->
-      <line class="route route--warp" x1="330" y1="255" x2="510" y2="115"/>
-      <!-- Riga ↔ Brazzyk -->
-      <line class="route route--warp" x1="555" y1="110" x2="720" y2="195"/>
-      <!-- Riga ↔ Kuvak -->
-      <line class="route route--warp" x1="555" y1="130" x2="720" y2="330"/>
-      <!-- Brazzyk ↔ Kuvak -->
-      <line class="route route--warp" x1="740" y1="220" x2="740" y2="305"/>
-      <!-- Kuvak ↔ Charyss -->
-      <line class="route route--warp" x1="720" y1="355" x2="660" y2="490"/>
-      <!-- Jakku ↔ Fyrentis -->
-      <line class="route route--warp" x1="345" y1="420" x2="310" y2="285"/>
-      <!-- Jakku ↔ Brazzyk (long) -->
-      <path class="route route--warp" d="M 370 415 Q 590 380 720 215" fill="none"/>
-      <!-- Jakku ↔ Kuvak -->
-      <line class="route route--warp" x1="380" y1="430" x2="710" y2="345"/>
-      <!-- Sanctum ↔ Jakku (chemin secondaire) -->
-      <line class="route route--contested" x1="185" y1="355" x2="325" y2="415"/>
-      <!-- Inconnu ↔ ??? -->
-      <line class="route route--unknown" x1="500" y1="340" x2="650" y2="490"/>
-      <line class="route route--unknown" x1="500" y1="330" x2="380" y2="430"/>
-      <!-- Label route -->
-      <text class="route-label" x="205" y="285" transform="rotate(-15,205,285)">Chemin de Bonne Volonté</text>
+          <!-- BALVARUM — Impérium / Black Templars -->
+          <g
+            class="sys-group"
+            data-sys="balvarum"
+            tabindex="0"
+            role="button"
+            aria-label="Système Balvarum"
+          >
+            <circle
+              cx="155"
+              cy="210"
+              r="36"
+              fill="url(#glow-gold)"
+              opacity="0.3"
+            />
+            <circle
+              class="sys-bg"
+              cx="155"
+              cy="210"
+              r="22"
+              fill="#1a2a50"
+              stroke="#4488dd"
+              stroke-width="1.5"
+            />
+            <circle
+              class="sys-ring"
+              cx="155"
+              cy="210"
+              r="26"
+              fill="none"
+              stroke="#4488dd"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <!-- Aquila stylisé -->
+            <text
+              x="155"
+              y="215"
+              text-anchor="middle"
+              font-size="14"
+              fill="#4488dd"
+            >
+              ⚜
+            </text>
+            <text class="sys-label" x="155" y="246" text-anchor="middle">
+              Balvarum
+            </text>
+            <text class="sys-sublabel" x="155" y="257" text-anchor="middle">
+              Impérium Sanctus
+            </text>
+          </g>
 
-      <!-- ══ SYSTÈMES ══ -->
+          <!-- FYRENTIS — Impérium / Silver Templars -->
+          <g
+            class="sys-group"
+            data-sys="fyrentis"
+            tabindex="0"
+            role="button"
+            aria-label="Système Fyrentis"
+          >
+            <circle
+              cx="310"
+              cy="270"
+              r="36"
+              fill="url(#glow-gold)"
+              opacity="0.3"
+            />
+            <circle
+              class="sys-bg"
+              cx="310"
+              cy="270"
+              r="22"
+              fill="#1a2a50"
+              stroke="#c8a028"
+              stroke-width="1.5"
+            />
+            <circle
+              class="sys-ring"
+              cx="310"
+              cy="270"
+              r="26"
+              fill="none"
+              stroke="#c8a028"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <text
+              x="310"
+              y="275"
+              text-anchor="middle"
+              font-size="14"
+              fill="#c8a028"
+            >
+              ⚜
+            </text>
+            <text class="sys-label" x="310" y="300" text-anchor="middle">
+              Fyrentis
+            </text>
+            <text class="sys-sublabel" x="310" y="311" text-anchor="middle">
+              Impérium Militias
+            </text>
+          </g>
 
-      <!-- BALVARUM — Impérium / Black Templars -->
-      <g class="sys-group" data-sys="balvarum" tabindex="0" role="button" aria-label="Système Balvarum">
-        <circle cx="155" cy="210" r="36" fill="url(#glow-gold)" opacity="0.3"/>
-        <circle class="sys-bg" cx="155" cy="210" r="22" fill="#1a2a50" stroke="#4488dd" stroke-width="1.5"/>
-        <circle class="sys-ring" cx="155" cy="210" r="26" fill="none" stroke="#4488dd" stroke-width="0.8" opacity="0.4"/>
-        <!-- Aquila stylisé -->
-        <text x="155" y="215" text-anchor="middle" font-size="14" fill="#4488dd">⚜</text>
-        <text class="sys-label" x="155" y="246" text-anchor="middle">Balvarum</text>
-        <text class="sys-sublabel" x="155" y="257" text-anchor="middle">Impérium Sanctus</text>
-      </g>
+          <!-- RIGA — Impérium / Mécanicus -->
+          <g
+            class="sys-group"
+            data-sys="riga"
+            tabindex="0"
+            role="button"
+            aria-label="Système Riga"
+          >
+            <circle
+              cx="530"
+              cy="110"
+              r="36"
+              fill="url(#glow-gold)"
+              opacity="0.25"
+            />
+            <circle
+              class="sys-bg"
+              cx="530"
+              cy="110"
+              r="22"
+              fill="#1a1a2a"
+              stroke="#8899cc"
+              stroke-width="1.5"
+            />
+            <circle
+              class="sys-ring"
+              cx="530"
+              cy="110"
+              r="26"
+              fill="none"
+              stroke="#8899cc"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <text
+              x="530"
+              y="116"
+              text-anchor="middle"
+              font-size="13"
+              fill="#8899cc"
+            >
+              ⚙
+            </text>
+            <text class="sys-label" x="530" y="141" text-anchor="middle">
+              Riga
+            </text>
+            <text class="sys-sublabel" x="530" y="152" text-anchor="middle">
+              Impérium Militias
+            </text>
+          </g>
 
-      <!-- FYRENTIS — Impérium / Silver Templars -->
-      <g class="sys-group" data-sys="fyrentis" tabindex="0" role="button" aria-label="Système Fyrentis">
-        <circle cx="310" cy="270" r="36" fill="url(#glow-gold)" opacity="0.3"/>
-        <circle class="sys-bg" cx="310" cy="270" r="22" fill="#1a2a50" stroke="#c8a028" stroke-width="1.5"/>
-        <circle class="sys-ring" cx="310" cy="270" r="26" fill="none" stroke="#c8a028" stroke-width="0.8" opacity="0.4"/>
-        <text x="310" y="275" text-anchor="middle" font-size="14" fill="#c8a028">⚜</text>
-        <text class="sys-label" x="310" y="300" text-anchor="middle">Fyrentis</text>
-        <text class="sys-sublabel" x="310" y="311" text-anchor="middle">Impérium Militias</text>
-      </g>
+          <!-- SANCTUM — Impérium / Black Templars -->
+          <g
+            class="sys-group"
+            data-sys="sanctum"
+            tabindex="0"
+            role="button"
+            aria-label="Système Sanctum"
+          >
+            <circle
+              cx="165"
+              cy="355"
+              r="36"
+              fill="url(#glow-blue)"
+              opacity="0.3"
+            />
+            <circle
+              class="sys-bg"
+              cx="165"
+              cy="355"
+              r="24"
+              fill="#0f0f1a"
+              stroke="#000000"
+              stroke-width="2.5"
+            />
+            <circle
+              class="sys-ring"
+              cx="165"
+              cy="355"
+              r="28"
+              fill="none"
+              stroke="#555555"
+              stroke-width="0.8"
+              opacity="0.5"
+            />
+            <!-- Croix des Black Templars -->
+            <text
+              x="165"
+              y="362"
+              text-anchor="middle"
+              font-size="16"
+              fill="#ffffff"
+            >
+              ✠
+            </text>
+            <text class="sys-label" x="165" y="391" text-anchor="middle">
+              Sanctum
+            </text>
+            <text class="sys-sublabel" x="165" y="402" text-anchor="middle">
+              Impérium Sanctus
+            </text>
+          </g>
 
-      <!-- RIGA — Impérium / Mécanicus -->
-      <g class="sys-group" data-sys="riga" tabindex="0" role="button" aria-label="Système Riga">
-        <circle cx="530" cy="110" r="36" fill="url(#glow-gold)" opacity="0.25"/>
-        <circle class="sys-bg" cx="530" cy="110" r="22" fill="#1a1a2a" stroke="#8899cc" stroke-width="1.5"/>
-        <circle class="sys-ring" cx="530" cy="110" r="26" fill="none" stroke="#8899cc" stroke-width="0.8" opacity="0.4"/>
-        <text x="530" y="116" text-anchor="middle" font-size="13" fill="#8899cc">⚙</text>
-        <text class="sys-label" x="530" y="141" text-anchor="middle">Riga</text>
-        <text class="sys-sublabel" x="530" y="152" text-anchor="middle">Impérium Militias</text>
-      </g>
+          <!-- JAKKU — Contesté / QG Campagne -->
+          <g
+            class="sys-group sys-contested"
+            data-sys="jakku"
+            tabindex="0"
+            role="button"
+            aria-label="Système Jakku"
+          >
+            <circle
+              cx="355"
+              cy="428"
+              r="40"
+              fill="url(#glow-red)"
+              opacity="0.35"
+            />
+            <circle
+              class="sys-bg"
+              cx="355"
+              cy="428"
+              r="26"
+              fill="#200a0a"
+              stroke="#c43030"
+              stroke-width="2"
+            />
+            <circle
+              class="sys-ring"
+              cx="355"
+              cy="428"
+              r="31"
+              fill="none"
+              stroke="#c43030"
+              stroke-width="1"
+              opacity="0.6"
+            />
+            <text
+              x="355"
+              y="435"
+              text-anchor="middle"
+              font-size="14"
+              fill="#c43030"
+            >
+              ⚜
+            </text>
+            <text class="sys-label" x="355" y="463" text-anchor="middle">
+              Jakku
+            </text>
+            <text class="sys-sublabel" x="355" y="474" text-anchor="middle">
+              Front principal
+            </text>
+          </g>
 
-      <!-- SANCTUM — Impérium / Black Templars -->
-      <g class="sys-group" data-sys="sanctum" tabindex="0" role="button" aria-label="Système Sanctum">
-        <circle cx="165" cy="355" r="36" fill="url(#glow-blue)" opacity="0.3"/>
-        <circle class="sys-bg" cx="165" cy="355" r="24" fill="#0f0f1a" stroke="#000000" stroke-width="2.5"/>
-        <circle class="sys-ring" cx="165" cy="355" r="28" fill="none" stroke="#555555" stroke-width="0.8" opacity="0.5"/>
-        <!-- Croix des Black Templars -->
-        <text x="165" y="362" text-anchor="middle" font-size="16" fill="#ffffff">✠</text>
-        <text class="sys-label" x="165" y="391" text-anchor="middle">Sanctum</text>
-        <text class="sys-sublabel" x="165" y="402" text-anchor="middle">Impérium Sanctus</text>
-      </g>
+          <!-- SYSTÈME INCONNU -->
+          <g
+            class="sys-group"
+            data-sys="inconnu"
+            tabindex="0"
+            role="button"
+            aria-label="Système Inconnu"
+          >
+            <circle
+              cx="500"
+              cy="340"
+              r="30"
+              fill="rgba(50,42,35,0.2)"
+              opacity="0.5"
+            />
+            <circle
+              class="sys-bg"
+              cx="500"
+              cy="340"
+              r="20"
+              fill="#130f0a"
+              stroke="#3d342a"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+            />
+            <text
+              x="500"
+              y="347"
+              text-anchor="middle"
+              font-size="16"
+              fill="#4a3f30"
+            >
+              ?
+            </text>
+            <text
+              class="sys-label"
+              x="500"
+              y="370"
+              text-anchor="middle"
+              fill="#4a3f30"
+            >
+              Inconnu
+            </text>
+            <text class="sys-sublabel" x="500" y="381" text-anchor="middle">
+              Non exploré
+            </text>
+          </g>
 
-      <!-- JAKKU — Contesté / QG Campagne -->
-      <g class="sys-group sys-contested" data-sys="jakku" tabindex="0" role="button" aria-label="Système Jakku">
-        <circle cx="355" cy="428" r="40" fill="url(#glow-red)" opacity="0.35"/>
-        <circle class="sys-bg" cx="355" cy="428" r="26" fill="#200a0a" stroke="#c43030" stroke-width="2"/>
-        <circle class="sys-ring" cx="355" cy="428" r="31" fill="none" stroke="#c43030" stroke-width="1" opacity="0.6"/>
-        <text x="355" y="435" text-anchor="middle" font-size="14" fill="#c43030">⚜</text>
-        <text class="sys-label" x="355" y="463" text-anchor="middle">Jakku</text>
-        <text class="sys-sublabel" x="355" y="474" text-anchor="middle">Front principal</text>
-      </g>
+          <!-- BRAZZYK — Impérium (disputé) -->
+          <g
+            class="sys-group"
+            data-sys="brazzyk"
+            tabindex="0"
+            role="button"
+            aria-label="Système Brazzyk"
+          >
+            <circle
+              cx="740"
+              cy="205"
+              r="32"
+              fill="url(#glow-gold)"
+              opacity="0.2"
+            />
+            <circle
+              class="sys-bg"
+              cx="740"
+              cy="205"
+              r="20"
+              fill="#1a1a1a"
+              stroke="#777"
+              stroke-width="1.5"
+            />
+            <circle
+              class="sys-ring"
+              cx="740"
+              cy="205"
+              r="24"
+              fill="none"
+              stroke="#777"
+              stroke-width="0.8"
+              opacity="0.3"
+            />
+            <text
+              x="740"
+              y="212"
+              text-anchor="middle"
+              font-size="12"
+              fill="#aaa"
+            >
+              ?
+            </text>
+            <text class="sys-label" x="740" y="234" text-anchor="middle">
+              Brazzyk
+            </text>
+            <text class="sys-sublabel" x="740" y="245" text-anchor="middle">
+              Impérium Militias
+            </text>
+          </g>
 
-      <!-- SYSTÈME INCONNU -->
-      <g class="sys-group" data-sys="inconnu" tabindex="0" role="button" aria-label="Système Inconnu">
-        <circle cx="500" cy="340" r="30" fill="rgba(50,42,35,0.2)" opacity="0.5"/>
-        <circle class="sys-bg" cx="500" cy="340" r="20" fill="#130f0a" stroke="#3d342a" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <text x="500" y="347" text-anchor="middle" font-size="16" fill="#4a3f30">?</text>
-        <text class="sys-label" x="500" y="370" text-anchor="middle" fill="#4a3f30">Inconnu</text>
-        <text class="sys-sublabel" x="500" y="381" text-anchor="middle">Non exploré</text>
-      </g>
+          <!-- KUVAK — Chaos / Iron Warriors -->
+          <g
+            class="sys-group sys-contested"
+            data-sys="kuvak"
+            tabindex="0"
+            role="button"
+            aria-label="Système Kuvak"
+          >
+            <circle
+              cx="750"
+              cy="340"
+              r="34"
+              fill="url(#glow-red)"
+              opacity="0.4"
+            />
+            <circle
+              class="sys-bg"
+              cx="750"
+              cy="340"
+              r="22"
+              fill="#1e0808"
+              stroke="#c43030"
+              stroke-width="2"
+            />
+            <circle
+              class="sys-ring"
+              cx="750"
+              cy="340"
+              r="27"
+              fill="none"
+              stroke="#c43030"
+              stroke-width="0.8"
+              opacity="0.5"
+            />
+            <text
+              x="750"
+              y="347"
+              text-anchor="middle"
+              font-size="13"
+              fill="#c43030"
+            >
+              ?
+            </text>
+            <text class="sys-label" x="750" y="371" text-anchor="middle">
+              Kuvak
+            </text>
+            <text class="sys-sublabel" x="750" y="382" text-anchor="middle">
+              Impérium Militias
+            </text>
+          </g>
 
-      <!-- BRAZZYK — Impérium (disputé) -->
-      <g class="sys-group" data-sys="brazzyk" tabindex="0" role="button" aria-label="Système Brazzyk">
-        <circle cx="740" cy="205" r="32" fill="url(#glow-gold)" opacity="0.2"/>
-        <circle class="sys-bg" cx="740" cy="205" r="20" fill="#1a1a1a" stroke="#777" stroke-width="1.5"/>
-        <circle class="sys-ring" cx="740" cy="205" r="24" fill="none" stroke="#777" stroke-width="0.8" opacity="0.3"/>
-        <text x="740" y="212" text-anchor="middle" font-size="12" fill="#aaa">?</text>
-        <text class="sys-label" x="740" y="234" text-anchor="middle">Brazzyk</text>
-        <text class="sys-sublabel" x="740" y="245" text-anchor="middle">Impérium Militias</text>
-      </g>
+          <!-- CHARYSS — Nécrons -->
+          <g
+            class="sys-group"
+            data-sys="charyss"
+            tabindex="0"
+            role="button"
+            aria-label="Système Charyss"
+          >
+            <circle
+              cx="655"
+              cy="510"
+              r="32"
+              fill="url(#glow-green)"
+              opacity="0.3"
+            />
+            <circle
+              class="sys-bg"
+              cx="655"
+              cy="510"
+              r="20"
+              fill="#050f08"
+              stroke="#33aa55"
+              stroke-width="1.5"
+            />
+            <circle
+              class="sys-ring"
+              cx="655"
+              cy="510"
+              r="24"
+              fill="none"
+              stroke="#33aa55"
+              stroke-width="0.8"
+              opacity="0.4"
+            />
+            <text
+              x="655"
+              y="517"
+              text-anchor="middle"
+              font-size="12"
+              fill="#33aa55"
+            >
+              ?
+            </text>
+            <text class="sys-label" x="655" y="539" text-anchor="middle">
+              Charyss
+            </text>
+            <text class="sys-sublabel" x="655" y="550" text-anchor="middle">
+              Inconnu
+            </text>
+          </g>
 
-      <!-- KUVAK — Chaos / Iron Warriors -->
-      <g class="sys-group sys-contested" data-sys="kuvak" tabindex="0" role="button" aria-label="Système Kuvak">
-        <circle cx="750" cy="340" r="34" fill="url(#glow-red)" opacity="0.4"/>
-        <circle class="sys-bg" cx="750" cy="340" r="22" fill="#1e0808" stroke="#c43030" stroke-width="2"/>
-        <circle class="sys-ring" cx="750" cy="340" r="27" fill="none" stroke="#c43030" stroke-width="0.8" opacity="0.5"/>
-        <text x="750" y="347" text-anchor="middle" font-size="13" fill="#c43030">?</text>
-        <text class="sys-label" x="750" y="371" text-anchor="middle">Kuvak</text>
-        <text class="sys-sublabel" x="750" y="382" text-anchor="middle">Impérium Militias</text>
-      </g>
+          <!-- TITRE -->
+          <text
+            x="450"
+            y="35"
+            text-anchor="middle"
+            font-family="'Cinzel', serif"
+            font-size="16"
+            fill="#c8a028"
+            letter-spacing="0.12em"
+          >
+            SOUS-SECTEUR FYRENTIS
+          </text>
+          <text
+            x="450"
+            y="52"
+            text-anchor="middle"
+            font-family="'Crimson Text', serif"
+            font-size="11"
+            fill="#7a6f60"
+            font-style="italic"
+          >
+            41ème Millénaire — Carte Stellaire Interactive
+          </text>
 
-      <!-- CHARYSS — Nécrons -->
-      <g class="sys-group" data-sys="charyss" tabindex="0" role="button" aria-label="Système Charyss">
-        <circle cx="655" cy="510" r="32" fill="url(#glow-green)" opacity="0.3"/>
-        <circle class="sys-bg" cx="655" cy="510" r="20" fill="#050f08" stroke="#33aa55" stroke-width="1.5"/>
-        <circle class="sys-ring" cx="655" cy="510" r="24" fill="none" stroke="#33aa55" stroke-width="0.8" opacity="0.4"/>
-        <text x="655" y="517" text-anchor="middle" font-size="12" fill="#33aa55">?</text>
-        <text class="sys-label" x="655" y="539" text-anchor="middle">Charyss</text>
-        <text class="sys-sublabel" x="655" y="550" text-anchor="middle">Inconnu</text>
-      </g>
+          <!-- BOUSSOLE -->
+          <g transform="translate(840,590)">
+            <circle r="18" fill="none" stroke="#3d342a" stroke-width="1" />
+            <line
+              x1="0"
+              y1="-14"
+              x2="0"
+              y2="14"
+              stroke="#7a6f60"
+              stroke-width="0.8"
+            />
+            <line
+              x1="-14"
+              y1="0"
+              x2="14"
+              y2="0"
+              stroke="#7a6f60"
+              stroke-width="0.8"
+            />
+            <text
+              y="-18"
+              text-anchor="middle"
+              font-size="7"
+              fill="#c8a028"
+              font-family="'Cinzel',serif"
+            >
+              N
+            </text>
+          </g>
+        </svg>
 
-      <!-- TITRE -->
-      <text x="450" y="35" text-anchor="middle" font-family="'Cinzel', serif" font-size="16" fill="#c8a028" letter-spacing="0.12em">SOUS-SECTEUR FYRENTIS</text>
-      <text x="450" y="52" text-anchor="middle" font-family="'Crimson Text', serif" font-size="11" fill="#7a6f60" font-style="italic">41ème Millénaire — Carte Stellaire Interactive</text>
+        <!-- CONTRÔLES ZOOM -->
+        <div class="map-controls">
+          <button class="ctrl-btn" id="zoom-in" aria-label="Zoom avant">
+            +
+          </button>
+          <button class="ctrl-btn" id="zoom-out" aria-label="Zoom arrière">
+            −
+          </button>
+          <button
+            class="ctrl-btn"
+            id="zoom-reset"
+            aria-label="Réinitialiser"
+            title="Reset"
+          >
+            ⌖
+          </button>
+        </div>
+      </div>
 
-      <!-- BOUSSOLE -->
-      <g transform="translate(840,590)">
-        <circle r="18" fill="none" stroke="#3d342a" stroke-width="1"/>
-        <line x1="0" y1="-14" x2="0" y2="14" stroke="#7a6f60" stroke-width="0.8"/>
-        <line x1="-14" y1="0" x2="14" y2="0" stroke="#7a6f60" stroke-width="0.8"/>
-        <text y="-18" text-anchor="middle" font-size="7" fill="#c8a028" font-family="'Cinzel',serif">N</text>
-      </g>
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Systèmes Stellaires</h2>
+          <p>Clique sur un système pour afficher ses informations tactiques.</p>
+        </div>
 
-    </svg>
+        <!-- ÉTAT VIDE -->
+        <div class="empty-state" id="empty-state">
+          <div class="empty-state-icon">✦</div>
+          <p>
+            Sélectionne un système stellaire sur la carte pour consulter les
+            données tactiques et l'historique des batailles.
+          </p>
+        </div>
 
-    <!-- CONTRÔLES ZOOM -->
-    <div class="map-controls">
-      <button class="ctrl-btn" id="zoom-in" aria-label="Zoom avant">+</button>
-      <button class="ctrl-btn" id="zoom-out" aria-label="Zoom arrière">−</button>
-      <button class="ctrl-btn" id="zoom-reset" aria-label="Réinitialiser" title="Reset">⌖</button>
+        <!-- DÉTAIL BALVARUM -->
+        <div class="system-detail" id="detail-balvarum">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Balvarum</h3>
+          <span class="detail-status status--imperium">Impérium — Sanctus</span>
+          <p class="detail-desc">
+            Fief des Black Templars, Balvarum est un système fortifié servant de
+            point d'ancrage à la croisade dans le sous-secteur. Sa position
+            stratégique en fait le verrou occidental de la Voie de Bonne
+            Volonté.
+          </p>
+          <div class="detail-section">
+            <h4>Garnison</h4>
+            <div class="detail-tags">
+              <span class="tag tag--gold">✠ Black Templars</span>
+              <span class="tag tag--blue">Milice Impériale</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Statut tactique</h4>
+            <div class="detail-tags">
+              <span class="tag tag--blue">Base arrière sécurisée</span>
+              <span class="tag">Approvisionnement actif</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉTAIL FYRENTIS -->
+        <div class="system-detail" id="detail-fyrentis">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Fyrentis</h3>
+          <span class="detail-status status--imperium"
+            >Impérium — Militias</span
+          >
+          <p class="detail-desc">
+            Épicentre du sous-secteur éponyme, Fyrentis abrite les quartiers
+            généraux de la campagne. Les Silver Templars y coordonnent les
+            opérations militaires tout en cherchant à maintenir l'ordre face aux
+            incursions du Chaos.
+          </p>
+          <div class="detail-section">
+            <h4>Garnison</h4>
+            <div class="detail-tags">
+              <span class="tag tag--gold">⚜ Silver Templars</span>
+              <span class="tag tag--blue"
+                >Garde Impériale — Régiment Fyrentis</span
+              >
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Statut tactique</h4>
+            <div class="detail-tags">
+              <span class="tag tag--blue">QG du Secteur</span>
+              <span class="tag">Menace warp surveillée</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉTAIL RIGA -->
+        <div class="system-detail" id="detail-riga">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Riga</h3>
+          <span class="detail-status status--imperium"
+            >Impérium — Militias</span
+          >
+          <p class="detail-desc">
+            Système à forte présence Adeptus Mechanicus. Ses forges et ses
+            astéroïdes miniers fournissent les munitions et le matériel de
+            guerre à l'ensemble du sous-secteur. Nœud stratégique des routes
+            warp orientales.
+          </p>
+          <div class="detail-section">
+            <h4>Installations</h4>
+            <div class="detail-tags">
+              <span class="tag tag--teal">⚙ Forges Mechanicus</span>
+              <span class="tag">Mines d'astéroïdes</span>
+              <span class="tag">Dépôt de munitions</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Statut tactique</h4>
+            <div class="detail-tags">
+              <span class="tag tag--blue">Arrière-pays sécurisé</span>
+              <span class="tag">Production de guerre active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉTAIL SANCTUM -->
+        <div class="system-detail" id="detail-sanctum">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Sanctum</h3>
+          <span class="detail-status status--imperium">Impérium — Sanctus</span>
+          <p class="detail-desc">
+            Sanctum est le cœur spirituel et militaire du sous-secteur. La
+            planète principale, protégée par la forteresse-monastère des Black
+            Templars sur la lune Brokha, constitue un point de rassemblement
+            crucial pour les forces impériales.
+          </p>
+          <div class="detail-section">
+            <h4>Lieux clés</h4>
+            <div class="detail-tags">
+              <span class="tag tag--gold">✠ Forteresse Brokha</span>
+              <span class="tag">Bastion Alpha</span>
+              <span class="tag">Bastion Beta</span>
+              <span class="tag tag--teal">Station orbitale</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Commandement</h4>
+            <div class="detail-tags">
+              <span class="tag tag--gold">✠ Horgell Dyass</span>
+              <span class="tag tag--gold">Zhanarius Ash-Bhaar</span>
+              <span class="tag tag--blue">Inquisiteur Hortis</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Batailles</h4>
+            <ul class="detail-battles">
+              <li class="battle-item">
+                <strong>Défense orbitale</strong>Repoussement des premières
+                sondes Death Guard en orbite basse.
+              </li>
+              <li class="battle-item">
+                <strong>Siège de Brokha</strong>Les Black Templars tiennent la
+                forteresse contre les assauts répétés.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DÉTAIL JAKKU -->
+        <div class="system-detail" id="detail-jakku">
+          <p class="detail-eyebrow">Système Stellaire — Front Principal</p>
+          <h3 class="detail-name">Jakku</h3>
+          <span class="detail-status status--contested">⚔ Contesté</span>
+          <p class="detail-desc">
+            Jakku est le principal théâtre de guerre du sous-secteur. Les forces
+            du Chaos (World Eaters, Death Guard, Iron Warriors) s'affrontent aux
+            défenseurs impériaux (Blood Angels, Black Templars, Garde Impériale)
+            pour le contrôle de ses agro-stations stratégiques.
+          </p>
+          <div class="detail-section">
+            <h4>Factions présentes</h4>
+            <div class="detail-tags">
+              <span class="tag tag--red">🪓 World Eaters</span>
+              <span class="tag tag--red">☣ Death Guard</span>
+              <span class="tag tag--purple">⚙ Iron Warriors (Khorne)</span>
+              <span class="tag tag--blue">🩸 Blood Angels</span>
+              <span class="tag tag--gold">✠ Black Templars</span>
+              <span class="tag tag--green">🦅 Garde Impériale</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Enjeux</h4>
+            <div class="detail-tags">
+              <span class="tag">Agro-stations (approvisionnement)</span>
+              <span class="tag tag--red">Titan Syrgalah déployé</span>
+              <span class="tag">Routes warp vers Kuvak</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <h4>Batailles récentes</h4>
+            <ul class="detail-battles">
+              <li class="battle-item">
+                <strong>Bataille des Plaines de Cendre</strong>Première grande
+                confrontation. World Eaters et Blood Angels s'affrontent dans le
+                secteur nord.
+              </li>
+              <li class="battle-item">
+                <strong>Siège de l'Agro-Station VII</strong>La Death Guard
+                empoisonne les réserves alimentaires. Intervention d'urgence des
+                Black Templars.
+              </li>
+              <li class="battle-item">
+                <strong>Offensive du Titan Syrgalah</strong>Le Titan Warhound
+                ravage les lignes de défense ennemies lors de la percée
+                centrale.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DÉTAIL INCONNU -->
+        <div class="system-detail" id="detail-inconnu">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Système Inconnu</h3>
+          <span class="detail-status status--unknown">Non Identifié</span>
+          <p class="detail-desc">
+            Ce système n'apparaît sur aucune carte impériale connue. Les
+            quelques sondes envoyées n'ont pas transmis de retour. Les augures
+            détectent une activité anormale compatible avec une présence Nécron
+            ou une perturbation warp majeure.
+          </p>
+          <div class="detail-section">
+            <h4>Données disponibles</h4>
+            <div class="detail-tags">
+              <span class="tag">Signal anomal détecté</span>
+              <span class="tag tag--green">Signature Nécron possible</span>
+              <span class="tag">Aucune sonde revenue</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉTAIL BRAZZYK -->
+        <div class="system-detail" id="detail-brazzyk">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Brazzyk</h3>
+          <span class="detail-status status--imperium"
+            >Impérium — Militias</span
+          >
+          <p class="detail-desc">
+            Système périphérique à la lisière du sous-secteur. Sa position sur
+            les routes warp en fait un relais logistique important mais exposé.
+            La garnison locale manque de renforts depuis le début des
+            hostilités.
+          </p>
+          <div class="detail-section">
+            <h4>Statut tactique</h4>
+            <div class="detail-tags">
+              <span class="tag">Relais logistique</span>
+              <span class="tag tag--red">Garnison affaiblie</span>
+              <span class="tag">Demande de renforts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉTAIL KUVAK -->
+        <div class="system-detail" id="detail-kuvak">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Kuvak</h3>
+          <span class="detail-status status--contested">⚔ Contesté</span>
+          <p class="detail-desc">
+            Kuvak est un système disputé entre les forces impériales et les
+            forces du Chaos. Sa proximité avec Brazzyk et les routes warp vers
+            Jakku en fait un objectif stratégique de premier ordre.
+          </p>
+          <div class="detail-section">
+            <h4>Statut tactique</h4>
+            <div class="detail-tags">
+              <span class="tag tag--red">Front actif</span>
+              <span class="tag">Objectif stratégique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÉTAIL CHARYSS -->
+        <div class="system-detail" id="detail-charyss">
+          <p class="detail-eyebrow">Système Stellaire</p>
+          <h3 class="detail-name">Charyss</h3>
+          <span class="detail-status status--unknown">Inconnu</span>
+          <p class="detail-desc">
+            Système mystérieux au sud du sous-secteur. Des communications
+            sporadiques évoquent des tombeaux anciens et des silhouettes
+            métalliques. Aucune force impériale n'a pu y établir de présence
+            durable.
+          </p>
+          <div class="detail-section">
+            <h4>Indices</h4>
+            <div class="detail-tags">
+              <span class="tag tag--green">☥ Présence Nécron suspectée</span>
+              <span class="tag">Tombeaux détectés</span>
+              <span class="tag tag--red">Expéditions disparues</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LÉGENDE -->
+        <div class="legend">
+          <h4>Légende</h4>
+          <div class="legend-items">
+            <div class="legend-item">
+              <div
+                class="legend-dot"
+                style="background: #4488dd; border: 1px solid #4488dd"
+              ></div>
+              Impérium Sanctus
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-dot"
+                style="background: #c8a028; border: 1px solid #c8a028"
+              ></div>
+              Impérium Militias
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-dot"
+                style="background: #c43030; border: 1px solid #c43030"
+              ></div>
+              Contesté / Chaos
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-dot"
+                style="background: #33aa55; border: 1px solid #33aa55"
+              ></div>
+              Nécrons / Inconnu
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-line"
+                style="
+                  background: linear-gradient(90deg, #c8a028, #8a6b18);
+                  opacity: 0.8;
+                "
+              ></div>
+              Route Warp
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-line"
+                style="background: var(--red-bright); opacity: 0.7"
+              ></div>
+              Zone contestée
+            </div>
+            <div class="legend-item">
+              <div
+                class="legend-line"
+                style="background: var(--muted); opacity: 0.4"
+              ></div>
+              Route inconnue
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
-  </div>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h2>Systèmes Stellaires</h2>
-      <p>Clique sur un système pour afficher ses informations tactiques.</p>
-    </div>
+    <script>
+      (function () {
+        // ── SÉLECTION SYSTÈME ──────────────────────────────────────────
+        const groups = document.querySelectorAll(".sys-group");
+        const details = document.querySelectorAll(".system-detail");
+        const emptyState = document.getElementById("empty-state");
 
-    <!-- ÉTAT VIDE -->
-    <div class="empty-state" id="empty-state">
-      <div class="empty-state-icon">✦</div>
-      <p>Sélectionne un système stellaire sur la carte pour consulter les données tactiques et l'historique des batailles.</p>
-    </div>
+        function selectSystem(id) {
+          groups.forEach((g) =>
+            g.classList.toggle("selected", g.dataset.sys === id),
+          );
+          details.forEach((d) => d.classList.remove("active"));
+          const detail = document.getElementById("detail-" + id);
+          if (detail) {
+            detail.classList.add("active");
+            emptyState.style.display = "none";
+          }
+        }
 
-    <!-- DÉTAIL BALVARUM -->
-    <div class="system-detail" id="detail-balvarum">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Balvarum</h3>
-      <span class="detail-status status--imperium">Impérium — Sanctus</span>
-      <p class="detail-desc">Fief des Black Templars, Balvarum est un système fortifié servant de point d'ancrage à la croisade dans le sous-secteur. Sa position stratégique en fait le verrou occidental de la Voie de Bonne Volonté.</p>
-      <div class="detail-section">
-        <h4>Garnison</h4>
-        <div class="detail-tags">
-          <span class="tag tag--gold">✠ Black Templars</span>
-          <span class="tag tag--blue">Milice Impériale</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Statut tactique</h4>
-        <div class="detail-tags">
-          <span class="tag tag--blue">Base arrière sécurisée</span>
-          <span class="tag">Approvisionnement actif</span>
-        </div>
-      </div>
-    </div>
+        groups.forEach((g) => {
+          g.addEventListener("click", () => selectSystem(g.dataset.sys));
+          g.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              selectSystem(g.dataset.sys);
+            }
+          });
+        });
 
-    <!-- DÉTAIL FYRENTIS -->
-    <div class="system-detail" id="detail-fyrentis">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Fyrentis</h3>
-      <span class="detail-status status--imperium">Impérium — Militias</span>
-      <p class="detail-desc">Épicentre du sous-secteur éponyme, Fyrentis abrite les quartiers généraux de la campagne. Les Silver Templars y coordonnent les opérations militaires tout en cherchant à maintenir l'ordre face aux incursions du Chaos.</p>
-      <div class="detail-section">
-        <h4>Garnison</h4>
-        <div class="detail-tags">
-          <span class="tag tag--gold">⚜ Silver Templars</span>
-          <span class="tag tag--blue">Garde Impériale — Régiment Fyrentis</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Statut tactique</h4>
-        <div class="detail-tags">
-          <span class="tag tag--blue">QG du Secteur</span>
-          <span class="tag">Menace warp surveillée</span>
-        </div>
-      </div>
-    </div>
+        // ── ZOOM / PAN SVG ──────────────────────────────────────────────
+        const svg = document.getElementById("map-svg");
+        let scale = 1,
+          tx = 0,
+          ty = 0;
+        let isDragging = false,
+          startX = 0,
+          startY = 0,
+          startTx = 0,
+          startTy = 0;
 
-    <!-- DÉTAIL RIGA -->
-    <div class="system-detail" id="detail-riga">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Riga</h3>
-      <span class="detail-status status--imperium">Impérium — Militias</span>
-      <p class="detail-desc">Système à forte présence Adeptus Mechanicus. Ses forges et ses astéroïdes miniers fournissent les munitions et le matériel de guerre à l'ensemble du sous-secteur. Nœud stratégique des routes warp orientales.</p>
-      <div class="detail-section">
-        <h4>Installations</h4>
-        <div class="detail-tags">
-          <span class="tag tag--teal">⚙ Forges Mechanicus</span>
-          <span class="tag">Mines d'astéroïdes</span>
-          <span class="tag">Dépôt de munitions</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Statut tactique</h4>
-        <div class="detail-tags">
-          <span class="tag tag--blue">Arrière-pays sécurisé</span>
-          <span class="tag">Production de guerre active</span>
-        </div>
-      </div>
-    </div>
+        function applyTransform() {
+          const g = svg.querySelector("g#map-content") || svg;
+          svg.style.transformOrigin = "0 0";
+        }
 
-    <!-- DÉTAIL SANCTUM -->
-    <div class="system-detail" id="detail-sanctum">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Sanctum</h3>
-      <span class="detail-status status--imperium">Impérium — Sanctus</span>
-      <p class="detail-desc">Sanctum est le cœur spirituel et militaire du sous-secteur. La planète principale, protégée par la forteresse-monastère des Black Templars sur la lune Brokha, constitue un point de rassemblement crucial pour les forces impériales.</p>
-      <div class="detail-section">
-        <h4>Lieux clés</h4>
-        <div class="detail-tags">
-          <span class="tag tag--gold">✠ Forteresse Brokha</span>
-          <span class="tag">Bastion Alpha</span>
-          <span class="tag">Bastion Beta</span>
-          <span class="tag tag--teal">Station orbitale</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Commandement</h4>
-        <div class="detail-tags">
-          <span class="tag tag--gold">✠ Horgell Dyass</span>
-          <span class="tag tag--gold">Zhanarius Ash-Bhaar</span>
-          <span class="tag tag--blue">Inquisiteur Hortis</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Batailles</h4>
-        <ul class="detail-battles">
-          <li class="battle-item"><strong>Défense orbitale</strong>Repoussement des premières sondes Death Guard en orbite basse.</li>
-          <li class="battle-item"><strong>Siège de Brokha</strong>Les Black Templars tiennent la forteresse contre les assauts répétés.</li>
-        </ul>
-      </div>
-    </div>
+        function setViewBox() {
+          const vw = 900,
+            vh = 650;
+          const x = -tx / scale,
+            y = -ty / scale;
+          const w = vw / scale,
+            h = vh / scale;
+          svg.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
+        }
 
-    <!-- DÉTAIL JAKKU -->
-    <div class="system-detail" id="detail-jakku">
-      <p class="detail-eyebrow">Système Stellaire — Front Principal</p>
-      <h3 class="detail-name">Jakku</h3>
-      <span class="detail-status status--contested">⚔ Contesté</span>
-      <p class="detail-desc">Jakku est le principal théâtre de guerre du sous-secteur. Les forces du Chaos (World Eaters, Death Guard, Iron Warriors) s'affrontent aux défenseurs impériaux (Blood Angels, Black Templars, Garde Impériale) pour le contrôle de ses agro-stations stratégiques.</p>
-      <div class="detail-section">
-        <h4>Factions présentes</h4>
-        <div class="detail-tags">
-          <span class="tag tag--red">🪓 World Eaters</span>
-          <span class="tag tag--red">☣ Death Guard</span>
-          <span class="tag tag--purple">⚙ Iron Warriors (Khorne)</span>
-          <span class="tag tag--blue">🩸 Blood Angels</span>
-          <span class="tag tag--gold">✠ Black Templars</span>
-          <span class="tag tag--green">🦅 Garde Impériale</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Enjeux</h4>
-        <div class="detail-tags">
-          <span class="tag">Agro-stations (approvisionnement)</span>
-          <span class="tag tag--red">Titan Syrgalah déployé</span>
-          <span class="tag">Routes warp vers Kuvak</span>
-        </div>
-      </div>
-      <div class="detail-section">
-        <h4>Batailles récentes</h4>
-        <ul class="detail-battles">
-          <li class="battle-item"><strong>Bataille des Plaines de Cendre</strong>Première grande confrontation. World Eaters et Blood Angels s'affrontent dans le secteur nord.</li>
-          <li class="battle-item"><strong>Siège de l'Agro-Station VII</strong>La Death Guard empoisonne les réserves alimentaires. Intervention d'urgence des Black Templars.</li>
-          <li class="battle-item"><strong>Offensive du Titan Syrgalah</strong>Le Titan Warhound ravage les lignes de défense ennemies lors de la percée centrale.</li>
-        </ul>
-      </div>
-    </div>
+        document.getElementById("zoom-in").addEventListener("click", () => {
+          scale = Math.min(scale * 1.3, 4);
+          setViewBox();
+        });
+        document.getElementById("zoom-out").addEventListener("click", () => {
+          scale = Math.max(scale / 1.3, 0.5);
+          setViewBox();
+        });
+        document.getElementById("zoom-reset").addEventListener("click", () => {
+          scale = 1;
+          tx = 0;
+          ty = 0;
+          svg.setAttribute("viewBox", "0 0 900 650");
+        });
 
-    <!-- DÉTAIL INCONNU -->
-    <div class="system-detail" id="detail-inconnu">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Système Inconnu</h3>
-      <span class="detail-status status--unknown">Non Identifié</span>
-      <p class="detail-desc">Ce système n'apparaît sur aucune carte impériale connue. Les quelques sondes envoyées n'ont pas transmis de retour. Les augures détectent une activité anormale compatible avec une présence Nécron ou une perturbation warp majeure.</p>
-      <div class="detail-section">
-        <h4>Données disponibles</h4>
-        <div class="detail-tags">
-          <span class="tag">Signal anomal détecté</span>
-          <span class="tag tag--green">Signature Nécron possible</span>
-          <span class="tag">Aucune sonde revenue</span>
-        </div>
-      </div>
-    </div>
+        svg.addEventListener(
+          "wheel",
+          (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? 0.85 : 1.18;
+            const rect = svg.getBoundingClientRect();
+            const mx = ((e.clientX - rect.left) / rect.width) * 900;
+            const my = ((e.clientY - rect.top) / rect.height) * 650;
+            const [ox, oy, ow, oh] = svg
+              .getAttribute("viewBox")
+              .split(" ")
+              .map(Number);
+            const nx = mx - (mx - ox) * delta;
+            const ny = my - (my - oy) * delta;
+            const nw = Math.min(Math.max(ow * delta, 300), 1800);
+            const nh = Math.min(Math.max(oh * delta, 200), 1300);
+            svg.setAttribute("viewBox", `${nx} ${ny} ${nw} ${nh}`);
+          },
+          { passive: false },
+        );
 
-    <!-- DÉTAIL BRAZZYK -->
-    <div class="system-detail" id="detail-brazzyk">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Brazzyk</h3>
-      <span class="detail-status status--imperium">Impérium — Militias</span>
-      <p class="detail-desc">Système périphérique à la lisière du sous-secteur. Sa position sur les routes warp en fait un relais logistique important mais exposé. La garnison locale manque de renforts depuis le début des hostilités.</p>
-      <div class="detail-section">
-        <h4>Statut tactique</h4>
-        <div class="detail-tags">
-          <span class="tag">Relais logistique</span>
-          <span class="tag tag--red">Garnison affaiblie</span>
-          <span class="tag">Demande de renforts</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÉTAIL KUVAK -->
-    <div class="system-detail" id="detail-kuvak">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Kuvak</h3>
-      <span class="detail-status status--contested">⚔ Contesté</span>
-      <p class="detail-desc">Kuvak est un système disputé entre les forces impériales et les forces du Chaos. Sa proximité avec Brazzyk et les routes warp vers Jakku en fait un objectif stratégique de premier ordre.</p>
-      <div class="detail-section">
-        <h4>Statut tactique</h4>
-        <div class="detail-tags">
-          <span class="tag tag--red">Front actif</span>
-          <span class="tag">Objectif stratégique</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÉTAIL CHARYSS -->
-    <div class="system-detail" id="detail-charyss">
-      <p class="detail-eyebrow">Système Stellaire</p>
-      <h3 class="detail-name">Charyss</h3>
-      <span class="detail-status status--unknown">Inconnu</span>
-      <p class="detail-desc">Système mystérieux au sud du sous-secteur. Des communications sporadiques évoquent des tombeaux anciens et des silhouettes métalliques. Aucune force impériale n'a pu y établir de présence durable.</p>
-      <div class="detail-section">
-        <h4>Indices</h4>
-        <div class="detail-tags">
-          <span class="tag tag--green">☥ Présence Nécron suspectée</span>
-          <span class="tag">Tombeaux détectés</span>
-          <span class="tag tag--red">Expéditions disparues</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- LÉGENDE -->
-    <div class="legend">
-      <h4>Légende</h4>
-      <div class="legend-items">
-        <div class="legend-item"><div class="legend-dot" style="background:#4488dd; border:1px solid #4488dd"></div> Impérium Sanctus</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#c8a028; border:1px solid #c8a028"></div> Impérium Militias</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#c43030; border:1px solid #c43030"></div> Contesté / Chaos</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#33aa55; border:1px solid #33aa55"></div> Nécrons / Inconnu</div>
-        <div class="legend-item"><div class="legend-line" style="background:linear-gradient(90deg,#c8a028,#8a6b18); opacity:0.8"></div> Route Warp</div>
-        <div class="legend-item"><div class="legend-line" style="background:var(--red-bright); opacity:0.7"></div> Zone contestée</div>
-        <div class="legend-item"><div class="legend-line" style="background:var(--muted); opacity:0.4"></div> Route inconnue</div>
-      </div>
-    </div>
-  </aside>
-</div>
-
-<script>
-(function () {
-
-  // ── SÉLECTION SYSTÈME ──────────────────────────────────────────
-  const groups   = document.querySelectorAll('.sys-group');
-  const details  = document.querySelectorAll('.system-detail');
-  const emptyState = document.getElementById('empty-state');
-
-  function selectSystem(id) {
-    groups.forEach(g => g.classList.toggle('selected', g.dataset.sys === id));
-    details.forEach(d => d.classList.remove('active'));
-    const detail = document.getElementById('detail-' + id);
-    if (detail) {
-      detail.classList.add('active');
-      emptyState.style.display = 'none';
-    }
-  }
-
-  groups.forEach(g => {
-    g.addEventListener('click', () => selectSystem(g.dataset.sys));
-    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectSystem(g.dataset.sys); } });
-  });
-
-  // ── ZOOM / PAN SVG ──────────────────────────────────────────────
-  const svg  = document.getElementById('map-svg');
-  let scale  = 1, tx = 0, ty = 0;
-  let isDragging = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
-
-  function applyTransform() {
-    const g = svg.querySelector('g#map-content') || svg;
-    svg.style.transformOrigin = '0 0';
-  }
-
-  function setViewBox() {
-    const vw = 900, vh = 650;
-    const x = -tx / scale, y = -ty / scale;
-    const w = vw / scale, h = vh / scale;
-    svg.setAttribute('viewBox', `${x} ${y} ${w} ${h}`);
-  }
-
-  document.getElementById('zoom-in').addEventListener('click', () => { scale = Math.min(scale * 1.3, 4); setViewBox(); });
-  document.getElementById('zoom-out').addEventListener('click', () => { scale = Math.max(scale / 1.3, 0.5); setViewBox(); });
-  document.getElementById('zoom-reset').addEventListener('click', () => { scale = 1; tx = 0; ty = 0; svg.setAttribute('viewBox', '0 0 900 650'); });
-
-  svg.addEventListener('wheel', e => {
-    e.preventDefault();
-    const delta = e.deltaY > 0 ? 0.85 : 1.18;
-    const rect = svg.getBoundingClientRect();
-    const mx = (e.clientX - rect.left) / rect.width  * 900;
-    const my = (e.clientY - rect.top)  / rect.height * 650;
-    const [ox, oy, ow, oh] = svg.getAttribute('viewBox').split(' ').map(Number);
-    const nx = mx - (mx - ox) * delta;
-    const ny = my - (my - oy) * delta;
-    const nw = Math.min(Math.max(ow * delta, 300), 1800);
-    const nh = Math.min(Math.max(oh * delta, 200), 1300);
-    svg.setAttribute('viewBox', `${nx} ${ny} ${nw} ${nh}`);
-  }, { passive: false });
-
-  // Pan
-  svg.addEventListener('mousedown', e => {
-    if (e.target.closest('.sys-group')) return;
-    isDragging = true; startX = e.clientX; startY = e.clientY;
-    const [ox, oy, ow, oh] = svg.getAttribute('viewBox').split(' ').map(Number);
-    startTx = ox; startTy = oy;
-  });
-  window.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const rect = svg.getBoundingClientRect();
-    const [,, ow, oh] = svg.getAttribute('viewBox').split(' ').map(Number);
-    const dx = -(e.clientX - startX) / rect.width  * ow;
-    const dy = -(e.clientY - startY) / rect.height * oh;
-    svg.setAttribute('viewBox', `${startTx + dx} ${startTy + dy} ${ow} ${oh}`);
-  });
-  window.addEventListener('mouseup', () => { isDragging = false; });
-
-})();
-</script>
-
-</body>
+        // Pan
+        svg.addEventListener("mousedown", (e) => {
+          if (e.target.closest(".sys-group")) return;
+          isDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          const [ox, oy, ow, oh] = svg
+            .getAttribute("viewBox")
+            .split(" ")
+            .map(Number);
+          startTx = ox;
+          startTy = oy;
+        });
+        window.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          const rect = svg.getBoundingClientRect();
+          const [, , ow, oh] = svg
+            .getAttribute("viewBox")
+            .split(" ")
+            .map(Number);
+          const dx = (-(e.clientX - startX) / rect.width) * ow;
+          const dy = (-(e.clientY - startY) / rect.height) * oh;
+          svg.setAttribute(
+            "viewBox",
+            `${startTx + dx} ${startTy + dy} ${ow} ${oh}`,
+          );
+        });
+        window.addEventListener("mouseup", () => {
+          isDragging = false;
+        });
+      })();
+    </script>
+  </body>
 </html>

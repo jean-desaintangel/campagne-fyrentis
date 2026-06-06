@@ -1,667 +1,1241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Système Sanctum — Fyrentis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:        #0d0b09;
-      --surface:   #151210;
-      --surface-2: #1c1815;
-      --border:    #2e2820;
-      --text:      #d4c9b8;
-      --muted:     #7a6f60;
-      --faint:     #3d342a;
-      --gold:      #c8a028;
-      --gold-dim:  #8a6b18;
-      --red:       #8b1c1c;
-      --red-bright:#c43030;
-      --blue:      #2255aa;
-      --blue-bright:#4488dd;
-      --green:     #2a6b30;
-      --green-bright:#55aa66;
-      --orange:    #c85a1a;
-      --orange-bright:#e07030;
-      --purple:    #7a5c9e;
-      --teal:      #1a5f5f;
-      --teal-bright:#33aaaa;
-    }
-    html { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); height: 100%; }
-    body { min-height: 100dvh; display: flex; flex-direction: column; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Système Sanctum — Fyrentis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0d0b09;
+        --surface: #151210;
+        --surface-2: #1c1815;
+        --border: #2e2820;
+        --text: #d4c9b8;
+        --muted: #7a6f60;
+        --faint: #3d342a;
+        --gold: #c8a028;
+        --gold-dim: #8a6b18;
+        --red: #8b1c1c;
+        --red-bright: #c43030;
+        --blue: #2255aa;
+        --blue-bright: #4488dd;
+        --green: #2a6b30;
+        --green-bright: #55aa66;
+        --orange: #c85a1a;
+        --orange-bright: #e07030;
+        --purple: #7a5c9e;
+        --teal: #1a5f5f;
+        --teal-bright: #33aaaa;
+      }
+      html {
+        font-family: "Crimson Text", Georgia, serif;
+        background: var(--bg);
+        color: var(--text);
+        height: 100%;
+      }
+      body {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
 
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; gap: 1rem; }
-    .nav-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); letter-spacing: 0.05em; white-space: nowrap; }
-    .nav-links { display: flex; gap: 1.25rem; list-style: none; flex-wrap: wrap; }
-    .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        gap: 1rem;
+      }
+      .nav-title {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        color: var(--gold);
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.25rem;
+        list-style: none;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--gold);
+      }
 
-    .page-layout { display: grid; grid-template-columns: 1fr 340px; flex: 1; overflow: hidden; height: calc(100dvh - 49px); }
-    @media (max-width: 960px) { .page-layout { grid-template-columns: 1fr; height: auto; overflow: visible; } }
+      .page-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        flex: 1;
+        overflow: hidden;
+        height: calc(100dvh - 49px);
+      }
+      @media (max-width: 960px) {
+        .page-layout {
+          grid-template-columns: 1fr;
+          height: auto;
+          overflow: visible;
+        }
+      }
 
-    .orrery-zone { position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 50%, #10100a 0%, #0d0b09 80%); display: flex; flex-direction: column; }
-    .orrery-zone::before { content:''; position:absolute; inset:0; background-image: radial-gradient(circle, rgba(255,255,200,0.12) 1px, transparent 1px); background-size: 35px 35px; opacity: 0.12; pointer-events: none; }
-    .orrery-header { padding: 1.2rem 1.5rem 0.5rem; position: relative; z-index: 1; }
-    .orrery-title { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold); letter-spacing: 0.1em; }
-    .orrery-subtitle { font-size: 0.8rem; color: var(--muted); font-style: italic; margin-top: 0.2rem; }
-    #orrery-svg { width: 100%; flex: 1; cursor: default; }
+      .orrery-zone {
+        position: relative;
+        overflow: hidden;
+        background: radial-gradient(
+          ellipse at 50% 50%,
+          #10100a 0%,
+          #0d0b09 80%
+        );
+        display: flex;
+        flex-direction: column;
+      }
+      .orrery-zone::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 200, 0.12) 1px,
+          transparent 1px
+        );
+        background-size: 35px 35px;
+        opacity: 0.12;
+        pointer-events: none;
+      }
+      .orrery-header {
+        padding: 1.2rem 1.5rem 0.5rem;
+        position: relative;
+        z-index: 1;
+      }
+      .orrery-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.1rem;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+      }
+      .orrery-subtitle {
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-style: italic;
+        margin-top: 0.2rem;
+      }
+      #orrery-svg {
+        width: 100%;
+        flex: 1;
+        cursor: default;
+      }
 
-    .orbit-ring { fill: none; stroke: var(--faint); stroke-width: 0.8; stroke-dasharray: 4 6; opacity: 0.5; }
-    .warp-path { fill: none; stroke: var(--purple); stroke-width: 1.5; stroke-dasharray: 6 5; opacity: 0.55; }
-    @keyframes warp-pulse { 0%,100%{stroke-dashoffset:0;} 100%{stroke-dashoffset:-44;} }
-    .warp-path { animation: warp-pulse 4s linear infinite; }
+      .orbit-ring {
+        fill: none;
+        stroke: var(--faint);
+        stroke-width: 0.8;
+        stroke-dasharray: 4 6;
+        opacity: 0.5;
+      }
+      .warp-path {
+        fill: none;
+        stroke: var(--purple);
+        stroke-width: 1.5;
+        stroke-dasharray: 6 5;
+        opacity: 0.55;
+      }
+      @keyframes warp-pulse {
+        0%,
+        100% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: -44;
+        }
+      }
+      .warp-path {
+        animation: warp-pulse 4s linear infinite;
+      }
 
-    .planet-group { cursor: pointer; }
-    .planet-group:focus { outline: none; }
-    .planet-bg { transition: filter 0.25s, r 0.25s; }
-    .planet-group:hover .planet-bg, .planet-group:focus .planet-bg { filter: brightness(1.35); }
-    .planet-group.selected .planet-bg { filter: drop-shadow(0 0 6px currentColor) brightness(1.4); }
-    .planet-label { font-family: 'Cinzel', serif; font-size: 8px; fill: var(--text); pointer-events: none; }
-    .planet-sublabel { font-size: 7px; fill: var(--muted); pointer-events: none; font-family: 'Crimson Text', serif; font-style: italic; }
+      .planet-group {
+        cursor: pointer;
+      }
+      .planet-group:focus {
+        outline: none;
+      }
+      .planet-bg {
+        transition:
+          filter 0.25s,
+          r 0.25s;
+      }
+      .planet-group:hover .planet-bg,
+      .planet-group:focus .planet-bg {
+        filter: brightness(1.35);
+      }
+      .planet-group.selected .planet-bg {
+        filter: drop-shadow(0 0 6px currentColor) brightness(1.4);
+      }
+      .planet-label {
+        font-family: "Cinzel", serif;
+        font-size: 8px;
+        fill: var(--text);
+        pointer-events: none;
+      }
+      .planet-sublabel {
+        font-size: 7px;
+        fill: var(--muted);
+        pointer-events: none;
+        font-family: "Crimson Text", serif;
+        font-style: italic;
+      }
 
-    @keyframes danger-blink { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
-    .danger-4 .planet-bg { animation: danger-blink 1.8s ease-in-out infinite; }
+      @keyframes danger-blink {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .danger-4 .planet-bg {
+        animation: danger-blink 1.8s ease-in-out infinite;
+      }
 
-    .flag-group { cursor: context-menu; }
-    .flag-group:hover { filter: brightness(1.15); }
-    .flag-label { font-family: 'Cinzel', serif; font-size: 7px; fill: var(--text); pointer-events: none; }
-    .ship-token { cursor: grab; }
-    .ship-token.dragging { cursor: grabbing; }
-    .ship-body { stroke: #111; stroke-width: 0.9; }
-    .ship-label { font-size: 5.8px; fill: var(--text); pointer-events: none; font-family: 'Crimson Text', serif; }
-    .ship-hitbox { fill: transparent; }
+      .flag-group {
+        cursor: context-menu;
+      }
+      .flag-group:hover {
+        filter: brightness(1.15);
+      }
+      .flag-label {
+        font-family: "Cinzel", serif;
+        font-size: 7px;
+        fill: var(--text);
+        pointer-events: none;
+      }
+      .ship-token {
+        cursor: grab;
+      }
+      .ship-token.dragging {
+        cursor: grabbing;
+      }
+      .ship-body {
+        stroke: #111;
+        stroke-width: 0.9;
+      }
+      .ship-label {
+        font-size: 5.8px;
+        fill: var(--text);
+        pointer-events: none;
+        font-family: "Crimson Text", serif;
+      }
+      .ship-hitbox {
+        fill: transparent;
+      }
 
-    .sidebar { background: var(--surface); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
-    .sidebar-top { padding: 1.25rem 1.25rem 0.75rem; border-bottom: 1px solid var(--border); }
-    .sidebar-top h2 { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); margin-bottom: 0.2rem; }
-    .sidebar-top p { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+      .sidebar {
+        background: var(--surface);
+        border-left: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .sidebar-top {
+        padding: 1.25rem 1.25rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .sidebar-top h2 {
+        font-family: "Cinzel", serif;
+        font-size: 0.95rem;
+        color: var(--gold);
+        margin-bottom: 0.2rem;
+      }
+      .sidebar-top p {
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.4;
+      }
 
-    .planet-detail { padding: 1.25rem; display: none; }
-    .planet-detail.active { display: block; }
-    .pd-eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.3rem; }
-    .pd-name { font-family: 'Cinzel', serif; font-size: 1.35rem; color: var(--gold); line-height: 1.15; margin-bottom: 0.2rem; }
-    .pd-type { font-size: 0.82rem; color: var(--muted); font-style: italic; margin-bottom: 0.75rem; }
-    .pd-status { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; padding: 0.2rem 0.65rem; border-radius: 999px; margin-bottom: 1rem; font-family: 'Cinzel', serif; letter-spacing: 0.04em; }
-    .pd-status.imp { background: rgba(26,58,107,0.3); color: var(--blue-bright); border: 1px solid var(--blue); }
-    .pd-status.mech { background: rgba(26,95,95,0.3); color: var(--teal-bright); border: 1px solid var(--teal); }
-    .pd-status.contested { background: rgba(139,28,28,0.25); color: var(--red-bright); border: 1px solid var(--red); }
-    .pd-status.ok { background: rgba(42,107,48,0.2); color: var(--green-bright); border: 1px solid var(--green); }
-    .pd-status.warn { background: rgba(200,90,26,0.2); color: var(--orange-bright); border: 1px solid var(--orange); }
-    .pd-desc { font-size: 0.88rem; line-height: 1.65; color: var(--text); margin-bottom: 1rem; }
-    .pd-section { margin-bottom: 0.85rem; }
-    .pd-section h4 { font-family: 'Cinzel', serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.4rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-    .tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text); background: var(--surface-2); }
-    .tag.gold { border-color: var(--gold-dim); color: var(--gold); background: rgba(200,160,40,0.08); }
-    .tag.red { border-color: var(--red); color: var(--red-bright); background: rgba(139,28,28,0.12); }
-    .tag.teal { border-color: var(--teal); color: var(--teal-bright); background: rgba(26,95,95,0.12); }
-    .tag.blue { border-color: var(--blue); color: var(--blue-bright); background: rgba(34,85,170,0.12); }
-    .tag.green { border-color: var(--green); color: var(--green-bright); background: rgba(42,107,48,0.12); }
-    .danger-bar { display: flex; gap: 3px; margin-top: 0.5rem; }
-    .danger-pip { width: 14px; height: 6px; border-radius: 2px; background: var(--faint); }
-    .danger-pip.on { background: var(--red-bright); }
-    .flag-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.55rem; }
-    .inline-action-btn { background: rgba(139,28,28,0.12); color: var(--red-bright); border: 1px solid var(--red); padding: 0.35rem 0.65rem; border-radius: 4px; font-size: 0.76rem; cursor: pointer; transition: 0.2s ease; }
-    .inline-action-btn:hover { background: rgba(139,28,28,0.22); }
-    .inline-help { font-size: 0.72rem; color: var(--muted); line-height: 1.4; margin-top: 0.45rem; }
+      .planet-detail {
+        padding: 1.25rem;
+        display: none;
+      }
+      .planet-detail.active {
+        display: block;
+      }
+      .pd-eyebrow {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-bottom: 0.3rem;
+      }
+      .pd-name {
+        font-family: "Cinzel", serif;
+        font-size: 1.35rem;
+        color: var(--gold);
+        line-height: 1.15;
+        margin-bottom: 0.2rem;
+      }
+      .pd-type {
+        font-size: 0.82rem;
+        color: var(--muted);
+        font-style: italic;
+        margin-bottom: 0.75rem;
+      }
+      .pd-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.72rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+        font-family: "Cinzel", serif;
+        letter-spacing: 0.04em;
+      }
+      .pd-status.imp {
+        background: rgba(26, 58, 107, 0.3);
+        color: var(--blue-bright);
+        border: 1px solid var(--blue);
+      }
+      .pd-status.mech {
+        background: rgba(26, 95, 95, 0.3);
+        color: var(--teal-bright);
+        border: 1px solid var(--teal);
+      }
+      .pd-status.contested {
+        background: rgba(139, 28, 28, 0.25);
+        color: var(--red-bright);
+        border: 1px solid var(--red);
+      }
+      .pd-status.ok {
+        background: rgba(42, 107, 48, 0.2);
+        color: var(--green-bright);
+        border: 1px solid var(--green);
+      }
+      .pd-status.warn {
+        background: rgba(200, 90, 26, 0.2);
+        color: var(--orange-bright);
+        border: 1px solid var(--orange);
+      }
+      .pd-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+      .pd-section {
+        margin-bottom: 0.85rem;
+      }
+      .pd-section h4 {
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold-dim);
+        margin-bottom: 0.4rem;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+      .tag {
+        font-size: 0.7rem;
+        padding: 0.15rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--text);
+        background: var(--surface-2);
+      }
+      .tag.gold {
+        border-color: var(--gold-dim);
+        color: var(--gold);
+        background: rgba(200, 160, 40, 0.08);
+      }
+      .tag.red {
+        border-color: var(--red);
+        color: var(--red-bright);
+        background: rgba(139, 28, 28, 0.12);
+      }
+      .tag.teal {
+        border-color: var(--teal);
+        color: var(--teal-bright);
+        background: rgba(26, 95, 95, 0.12);
+      }
+      .tag.blue {
+        border-color: var(--blue);
+        color: var(--blue-bright);
+        background: rgba(34, 85, 170, 0.12);
+      }
+      .tag.green {
+        border-color: var(--green);
+        color: var(--green-bright);
+        background: rgba(42, 107, 48, 0.12);
+      }
+      .danger-bar {
+        display: flex;
+        gap: 3px;
+        margin-top: 0.5rem;
+      }
+      .danger-pip {
+        width: 14px;
+        height: 6px;
+        border-radius: 2px;
+        background: var(--faint);
+      }
+      .danger-pip.on {
+        background: var(--red-bright);
+      }
+      .flag-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.55rem;
+      }
+      .inline-action-btn {
+        background: rgba(139, 28, 28, 0.12);
+        color: var(--red-bright);
+        border: 1px solid var(--red);
+        padding: 0.35rem 0.65rem;
+        border-radius: 4px;
+        font-size: 0.76rem;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+      .inline-action-btn:hover {
+        background: rgba(139, 28, 28, 0.22);
+      }
+      .inline-help {
+        font-size: 0.72rem;
+        color: var(--muted);
+        line-height: 1.4;
+        margin-top: 0.45rem;
+      }
 
-    .editor-section { padding: 1rem 1.25rem 1.25rem; border-top: 1px solid var(--border); }
-    .editor-section h3 { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.7rem; }
-    .editor-row { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.75rem; }
-    .editor-row label { font-size: 0.74rem; color: var(--muted); }
-    .editor-row select { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); padding: 0.45rem 0.55rem; border-radius: 4px; font-family: 'Crimson Text', serif; font-size: 0.85rem; }
-    .editor-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.5rem; }
-    .editor-actions button { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); padding: 0.4rem 0.7rem; border-radius: 4px; font-size: 0.78rem; cursor: pointer; transition: 0.2s ease; }
-    .editor-actions button:hover { border-color: var(--gold-dim); color: var(--gold); }
-    .editor-help { font-size: 0.74rem; color: var(--muted); line-height: 1.45; margin-top: 0.75rem; }
+      .editor-section {
+        padding: 1rem 1.25rem 1.25rem;
+        border-top: 1px solid var(--border);
+      }
+      .editor-section h3 {
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold-dim);
+        margin-bottom: 0.7rem;
+      }
+      .editor-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        margin-bottom: 0.75rem;
+      }
+      .editor-row label {
+        font-size: 0.74rem;
+        color: var(--muted);
+      }
+      .editor-row select {
+        background: var(--surface-2);
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 0.45rem 0.55rem;
+        border-radius: 4px;
+        font-family: "Crimson Text", serif;
+        font-size: 0.85rem;
+      }
+      .editor-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.5rem;
+      }
+      .editor-actions button {
+        background: var(--surface-2);
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 0.4rem 0.7rem;
+        border-radius: 4px;
+        font-size: 0.78rem;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+      .editor-actions button:hover {
+        border-color: var(--gold-dim);
+        color: var(--gold);
+      }
+      .editor-help {
+        font-size: 0.74rem;
+        color: var(--muted);
+        line-height: 1.45;
+        margin-top: 0.75rem;
+      }
 
-    .warp-alert { margin: 0.75rem 1.25rem 1rem; padding: 0.65rem 0.85rem; background: rgba(122,92,158,0.12); border: 1px solid rgba(122,92,158,0.4); border-radius: 4px; }
-    .warp-alert-title { font-family: 'Cinzel', serif; font-size: 0.72rem; color: #a080cc; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.3rem; }
-    .warp-alert-text { font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+      .warp-alert {
+        margin: 0.75rem 1.25rem 1rem;
+        padding: 0.65rem 0.85rem;
+        background: rgba(122, 92, 158, 0.12);
+        border: 1px solid rgba(122, 92, 158, 0.4);
+        border-radius: 4px;
+      }
+      .warp-alert-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        color: #a080cc;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        margin-bottom: 0.3rem;
+      }
+      .warp-alert-text {
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
 
-    .figures-section { padding: 0.75rem 1.25rem 1.25rem; border-top: 1px solid var(--border); }
-    .figures-section h3 { font-family: 'Cinzel', serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dim); margin-bottom: 0.6rem; }
-    .figure-item { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.45rem; }
-    .figure-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
-    .figure-info p { font-size: 0.8rem; color: var(--text); line-height: 1.3; }
-    .figure-info span { font-size: 0.72rem; color: var(--muted); }
+      .figures-section {
+        padding: 0.75rem 1.25rem 1.25rem;
+        border-top: 1px solid var(--border);
+      }
+      .figures-section h3 {
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--gold-dim);
+        margin-bottom: 0.6rem;
+      }
+      .figure-item {
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+        margin-bottom: 0.45rem;
+      }
+      .figure-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        flex-shrink: 0;
+      }
+      .figure-info p {
+        font-size: 0.8rem;
+        color: var(--text);
+        line-height: 1.3;
+      }
+      .figure-info span {
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
 
-    .empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: var(--muted); gap: 0.6rem; }
-    .empty-state-icon { font-size: 2rem; opacity: 0.35; }
-    .empty-state p { font-size: 0.83rem; line-height: 1.5; }
-  </style>
-</head>
-<body>
+      .empty-state {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+        color: var(--muted);
+        gap: 0.6rem;
+      }
+      .empty-state-icon {
+        font-size: 2rem;
+        opacity: 0.35;
+      }
+      .empty-state p {
+        font-size: 0.83rem;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span class="nav-title">⚙ Système Sanctum</span>
+      <ul class="nav-links">
+        <li><a href="index.html">Campagne</a></li>
+        <li><a href="carte.html">Carte</a></li>
+      </ul>
+    </nav>
 
-<nav>
-  <span class="nav-title">⚙ Système Sanctum</span>
-  <ul class="nav-links">
-    <li><a href="index.html">Campagne</a></li>
-    <li><a href="carte.html">Carte</a></li>
-  </ul>
-</nav>
-
-<div class="page-layout">
-
-  <div class="orrery-zone">
-    <div class="orrery-header">
-      <div class="orrery-title" id="star-name">Chargement…</div>
-      <div class="orrery-subtitle" id="star-type"></div>
-    </div>
-    <svg id="orrery-svg" viewBox="0 0 700 560" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Orrerie du système Sanctum">
-      <defs>
-        <radialGradient id="star-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffe87a" stop-opacity="1"/>
-          <stop offset="40%" stop-color="#f0a820" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#c87010" stop-opacity="0"/>
-        </radialGradient>
-        <filter id="planet-glow">
-          <feGaussianBlur stdDeviation="2.5" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-    </svg>
-  </div>
-
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-top">
-      <h2 id="sb-title">Système Sanctum</h2>
-      <p id="sb-sub">Sélectionne un monde pour afficher ses données de reconnaissance.</p>
-    </div>
-
-    <div id="detail-zone">
-      <div class="empty-state" id="empty-state">
-        <div class="empty-state-icon">◈</div>
-        <p>Sélectionne un monde sur la carte pour afficher les données de reconnaissance.</p>
+    <div class="page-layout">
+      <div class="orrery-zone">
+        <div class="orrery-header">
+          <div class="orrery-title" id="star-name">Chargement…</div>
+          <div class="orrery-subtitle" id="star-type"></div>
+        </div>
+        <svg
+          id="orrery-svg"
+          viewBox="0 0 700 560"
+          preserveAspectRatio="xMidYMid meet"
+          role="img"
+          aria-label="Orrerie du système Sanctum"
+        >
+          <defs>
+            <radialGradient id="star-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffe87a" stop-opacity="1" />
+              <stop offset="40%" stop-color="#f0a820" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#c87010" stop-opacity="0" />
+            </radialGradient>
+            <filter id="planet-glow">
+              <feGaussianBlur stdDeviation="2.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
       </div>
+
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <h2 id="sb-title">Système Sanctum</h2>
+          <p id="sb-sub">
+            Sélectionne un monde pour afficher ses données de reconnaissance.
+          </p>
+        </div>
+
+        <div id="detail-zone">
+          <div class="empty-state" id="empty-state">
+            <div class="empty-state-icon">◈</div>
+            <p>
+              Sélectionne un monde sur la carte pour afficher les données de
+              reconnaissance.
+            </p>
+          </div>
+        </div>
+
+        <div id="warp-alert-zone"></div>
+
+        <div class="editor-section" id="editor-section">
+          <h3>Éditeur tactique</h3>
+          <div class="editor-row">
+            <label for="faction-select">Faction</label>
+            <select id="faction-select">
+              <option value="black-templars">Black Templars</option>
+              <option value="silver-templars">Silver Templars</option>
+              <option value="death-guard">Death Guard</option>
+              <option value="necrons">Nécrons</option>
+              <option value="adeptus-mechanicus">Adeptus Mechanicus</option>
+              <option value="votann">Votann</option>
+              <option value="world-eaters">World Eaters</option>
+              <option value="blood-angels">Blood Angels</option>
+              <option value="iron-warriors">Iron Warriors de Khorne</option>
+              <option value="garde-imperiale">Garde Impériale</option>
+            </select>
+          </div>
+          <div class="editor-row">
+            <label for="ship-type">Type de vaisseau</label>
+            <select id="ship-type">
+              <option value="barge-bataille">Barge de bataille</option>
+              <option value="croiseur-attaque">Croiseur d'attaque</option>
+              <option value="croiseur-lourd">Croiseur lourd</option>
+              <option value="cuirasse-classe-gloriana">
+                Cuirassé de classe Gloriana
+              </option>
+              <option value="destroyer-classe-gladius">
+                Destroyer de classe Gladius
+              </option>
+              <option value="destroyer-classe-hunter">
+                Destroyer de classe Hunter
+              </option>
+              <option value="destroyer-classe-nova">
+                Destroyer de classe Nova
+              </option>
+              <option value="forteresse-monastere">Forteresse monastère</option>
+              <option value="transport-logistique">Transport logistique</option>
+              <option value="transport-troupe">Transport de troupe</option>
+              <option value="vaisseau-commandement">
+                Vaisseau de commandement
+              </option>
+            </select>
+          </div>
+          <div class="editor-actions">
+            <button type="button" id="add-ship-btn">
+              + Ajouter un vaisseau
+            </button>
+            <button type="button" id="clear-ships-btn">
+              Retirer les vaisseaux
+            </button>
+            <button type="button" id="clear-flags-btn">
+              Retirer les drapeaux
+            </button>
+          </div>
+          <p class="editor-help">
+            Clic droit sur une planète pour y planter le drapeau de la faction
+            sélectionnée. Clic droit sur un drapeau existant pour le retirer.
+            Fais glisser un vaisseau pour le déplacer.
+            <strong style="color: var(--gold-dim)"
+              >Clic droit sur un vaisseau</strong
+            >
+            pour le supprimer instantanément.
+          </p>
+        </div>
+
+        <div class="figures-section" id="figures-section" style="display: none">
+          <h3>Personnages Clés</h3>
+          <div id="figures-list"></div>
+        </div>
+      </aside>
     </div>
 
-    <div id="warp-alert-zone"></div>
+    <script>
+      (function () {
+        const STORAGE_KEY = "fyrentis-sanctum-tactical-state-v3";
+        const LEGACY_STORAGE_KEYS = [
+          "fyrentis-sanctum-tactical-state",
+          "fyrentis-sanctum-tactical-state-v2",
+        ];
 
-    <div class="editor-section" id="editor-section">
-      <h3>Éditeur tactique</h3>
-      <div class="editor-row">
-        <label for="faction-select">Faction</label>
-        <select id="faction-select">
-          <option value="black-templars">Black Templars</option>
-          <option value="silver-templars">Silver Templars</option>
-          <option value="death-guard">Death Guard</option>
-          <option value="necrons">Nécrons</option>
-          <option value="adeptus-mechanicus">Adeptus Mechanicus</option>
-          <option value="votann">Votann</option>
-          <option value="world-eaters">World Eaters</option>
-          <option value="blood-angels">Blood Angels</option>
-          <option value="iron-warriors">Iron Warriors de Khorne</option>
-          <option value="garde-imperiale">Garde Impériale</option>
-        </select>
-      </div>
-      <div class="editor-row">
-        <label for="ship-type">Type de vaisseau</label>
-        <select id="ship-type">
-          <option value="barge-bataille">Barge de bataille</option>
-          <option value="croiseur-attaque">Croiseur d'attaque</option>
-          <option value="croiseur-lourd">Croiseur lourd</option>
-          <option value="cuirasse-classe-gloriana">Cuirassé de classe Gloriana</option>
-          <option value="destroyer-classe-gladius">Destroyer de classe Gladius</option>
-          <option value="destroyer-classe-hunter">Destroyer de classe Hunter</option>
-          <option value="destroyer-classe-nova">Destroyer de classe Nova</option>
-          <option value="forteresse-monastere">Forteresse monastère</option>
-          <option value="transport-logistique">Transport logistique</option>
-          <option value="transport-troupe">Transport de troupe</option>
-          <option value="vaisseau-commandement">Vaisseau de commandement</option>
-        </select>
-      </div>
-      <div class="editor-actions">
-        <button type="button" id="add-ship-btn">+ Ajouter un vaisseau</button>
-        <button type="button" id="clear-ships-btn">Retirer les vaisseaux</button>
-        <button type="button" id="clear-flags-btn">Retirer les drapeaux</button>
-      </div>
-      <p class="editor-help">Clic droit sur une planète pour y planter le drapeau de la faction sélectionnée. Clic droit sur un drapeau existant pour le retirer. Fais glisser un vaisseau pour le déplacer. <strong style="color:var(--gold-dim)">Clic droit sur un vaisseau</strong> pour le supprimer instantanément.</p>
-    </div>
+        const FACTION_ICONS = {
+          Mechanicus: "⚙",
+          "Black Templars": "✠",
+          Inquisition: "☩",
+          "Blood Angels": "🩸",
+          "Garde Impériale": "⚔",
+          default: "★",
+        };
 
-    <div class="figures-section" id="figures-section" style="display:none">
-      <h3>Personnages Clés</h3>
-      <div id="figures-list"></div>
-    </div>
-  </aside>
-</div>
+        const FACTION_FLAG_STYLES = {
+          "black-templars": {
+            label: "Black Templars",
+            color: "#c8a028",
+            short: "BT",
+          },
+          "silver-templars": {
+            label: "Silver Templars",
+            color: "#aaccff",
+            short: "ST",
+          },
+          "death-guard": {
+            label: "Death Guard",
+            color: "#6b8c3a",
+            short: "DG",
+          },
+          necrons: { label: "Nécrons", color: "#33ffcc", short: "NEC" },
+          "adeptus-mechanicus": {
+            label: "Adeptus Mechanicus",
+            color: "#33aaaa",
+            short: "AM",
+          },
+          votann: { label: "Votann", color: "#d4882a", short: "VOT" },
+          "world-eaters": {
+            label: "World Eaters",
+            color: "#c43030",
+            short: "WE",
+          },
+          "blood-angels": {
+            label: "Blood Angels",
+            color: "#cc1111",
+            short: "BA",
+          },
+          "iron-warriors": {
+            label: "Iron Warriors de Khorne",
+            color: "#8855cc",
+            short: "IW",
+          },
+          "garde-imperiale": {
+            label: "Garde Impériale",
+            color: "#4488dd",
+            short: "GI",
+          },
+        };
 
-<script>
-(function () {
+        const SHIP_STYLES = {
+          "barge-bataille": { color: "#c43030", short: "BB" },
+          "croiseur-attaque": { color: "#4488dd", short: "CA" },
+          "croiseur-lourd": { color: "#e07030", short: "CL" },
+          "cuirasse-classe-gloriana": { color: "#bb88ff", short: "CG" },
+          "destroyer-classe-gladius": { color: "#c8a028", short: "DGD" },
+          "destroyer-classe-hunter": { color: "#55aa66", short: "DH" },
+          "destroyer-classe-nova": { color: "#33aaaa", short: "DN" },
+          "forteresse-monastere": { color: "#8b1c1c", short: "FM" },
+          "transport-logistique": { color: "#6b8c3a", short: "TL" },
+          "transport-troupe": { color: "#d4882a", short: "TT" },
+          "vaisseau-commandement": { color: "#aaccff", short: "VC" },
+        };
 
-  const STORAGE_KEY = 'fyrentis-sanctum-tactical-state-v3';
-  const LEGACY_STORAGE_KEYS = ['fyrentis-sanctum-tactical-state', 'fyrentis-sanctum-tactical-state-v2'];
+        const SHIP_TYPE_LABELS = {
+          "barge-bataille": "Barge de Bataille",
+          "croiseur-attaque": "Croiseur d'Attaque",
+          "croiseur-lourd": "Croiseur Lourd",
+          "cuirasse-classe-gloriana": "Cuirassé Gloriana",
+          "destroyer-classe-gladius": "Destroyer Gladius",
+          "destroyer-classe-hunter": "Destroyer Hunter",
+          "destroyer-classe-nova": "Destroyer Nova",
+          "forteresse-monastere": "Forteresse Monastère",
+          "transport-logistique": "Transport Logistique",
+          "transport-troupe": "Transport de Troupe",
+          "vaisseau-commandement": "Vaisseau de Commandement",
+        };
 
-  const FACTION_ICONS = {
-    'Mechanicus': '⚙', 'Black Templars': '✠', 'Inquisition': '☩',
-    'Blood Angels': '🩸', 'Garde Impériale': '⚔', 'default': '★'
-  };
+        const LEGACY_SHIP_TYPE_MAP = {
+          escorteur: "destroyer-classe-gladius",
+          escorte: "destroyer-classe-gladius",
+          croiseur: "croiseur-attaque",
+          "croiseur-attaque": "croiseur-attaque",
+          "barge-bataille": "barge-bataille",
+          "croiseur-lourd": "croiseur-lourd",
+          cuirasse: "cuirasse-classe-gloriana",
+          transport: "transport-logistique",
+          gloriana: "cuirasse-classe-gloriana",
+          "forteresse-monastere": "forteresse-monastere",
+        };
 
-  const FACTION_FLAG_STYLES = {
-    'black-templars':    { label: 'Black Templars',           color: '#c8a028', short: 'BT'  },
-    'silver-templars':   { label: 'Silver Templars',          color: '#aaccff', short: 'ST'  },
-    'death-guard':       { label: 'Death Guard',              color: '#6b8c3a', short: 'DG'  },
-    'necrons':           { label: 'Nécrons',                  color: '#33ffcc', short: 'NEC' },
-    'adeptus-mechanicus':{ label: 'Adeptus Mechanicus',       color: '#33aaaa', short: 'AM'  },
-    'votann':            { label: 'Votann',                   color: '#d4882a', short: 'VOT' },
-    'world-eaters':      { label: 'World Eaters',             color: '#c43030', short: 'WE'  },
-    'blood-angels':      { label: 'Blood Angels',             color: '#cc1111', short: 'BA'  },
-    'iron-warriors':     { label: 'Iron Warriors de Khorne',  color: '#8855cc', short: 'IW'  },
-    'garde-imperiale':   { label: 'Garde Impériale',          color: '#4488dd', short: 'GI'  }
-  };
+        const SPECIAL_POSITIONS = {
+          near_inner: null,
+          near_outer: null,
+          brokha_moon: null,
+        };
 
-  const SHIP_STYLES = {
-    'barge-bataille':           { color: '#c43030', short: 'BB'  },
-    'croiseur-attaque':         { color: '#4488dd', short: 'CA'  },
-    'croiseur-lourd':           { color: '#e07030', short: 'CL'  },
-    'cuirasse-classe-gloriana': { color: '#bb88ff', short: 'CG'  },
-    'destroyer-classe-gladius': { color: '#c8a028', short: 'DGD' },
-    'destroyer-classe-hunter':  { color: '#55aa66', short: 'DH'  },
-    'destroyer-classe-nova':    { color: '#33aaaa', short: 'DN'  },
-    'forteresse-monastere':     { color: '#8b1c1c', short: 'FM'  },
-    'transport-logistique':     { color: '#6b8c3a', short: 'TL'  },
-    'transport-troupe':         { color: '#d4882a', short: 'TT'  },
-    'vaisseau-commandement':    { color: '#aaccff', short: 'VC'  }
-  };
+        function normalizeShipType(type) {
+          if (SHIP_STYLES[type]) return type;
+          if (LEGACY_SHIP_TYPE_MAP[type]) return LEGACY_SHIP_TYPE_MAP[type];
+          return "croiseur-attaque";
+        }
 
-  const SHIP_TYPE_LABELS = {
-    'barge-bataille':           'Barge de Bataille',
-    'croiseur-attaque':         "Croiseur d'Attaque",
-    'croiseur-lourd':           'Croiseur Lourd',
-    'cuirasse-classe-gloriana': 'Cuirassé Gloriana',
-    'destroyer-classe-gladius': 'Destroyer Gladius',
-    'destroyer-classe-hunter':  'Destroyer Hunter',
-    'destroyer-classe-nova':    'Destroyer Nova',
-    'forteresse-monastere':     'Forteresse Monastère',
-    'transport-logistique':     'Transport Logistique',
-    'transport-troupe':         'Transport de Troupe',
-    'vaisseau-commandement':    'Vaisseau de Commandement'
-  };
+        function normalizeShips(ships) {
+          if (!Array.isArray(ships)) return [];
+          return ships.map((ship) => ({
+            ...ship,
+            type: normalizeShipType(ship.type),
+          }));
+        }
 
-  const LEGACY_SHIP_TYPE_MAP = {
-    'escorteur': 'destroyer-classe-gladius',
-    'escorte': 'destroyer-classe-gladius',
-    'croiseur': 'croiseur-attaque',
-    'croiseur-attaque': 'croiseur-attaque',
-    'barge-bataille': 'barge-bataille',
-    'croiseur-lourd': 'croiseur-lourd',
-    'cuirasse': 'cuirasse-classe-gloriana',
-    'transport': 'transport-logistique',
-    'gloriana': 'cuirasse-classe-gloriana',
-    'forteresse-monastere': 'forteresse-monastere'
-  };
+        function purgeLegacyStorage() {
+          LEGACY_STORAGE_KEYS.forEach((key) => {
+            try {
+              localStorage.removeItem(key);
+            } catch (e) {
+              console.warn("Purge stockage legacy impossible :", e);
+            }
+          });
+        }
 
-  const SPECIAL_POSITIONS = {
-    'near_inner': null,
-    'near_outer': null,
-    'brokha_moon': null
-  };
+        function saveTacticalState() {
+          try {
+            localStorage.setItem(
+              STORAGE_KEY,
+              JSON.stringify({
+                flags: state.flags,
+                ships: state.ships,
+                shipCounter: state.shipCounter,
+              }),
+            );
+          } catch (e) {
+            console.warn("Sauvegarde impossible :", e);
+          }
+        }
 
-  function normalizeShipType(type) {
-    if (SHIP_STYLES[type]) return type;
-    if (LEGACY_SHIP_TYPE_MAP[type]) return LEGACY_SHIP_TYPE_MAP[type];
-    return 'croiseur-attaque';
-  }
+        function loadTacticalState() {
+          try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            return {
+              flags:
+                parsed.flags && typeof parsed.flags === "object"
+                  ? parsed.flags
+                  : null,
+              ships: normalizeShips(parsed.ships),
+              shipCounter: Number.isFinite(parsed.shipCounter)
+                ? parsed.shipCounter
+                : null,
+            };
+          } catch (e) {
+            console.warn("Chargement sauvegarde impossible :", e);
+            return null;
+          }
+        }
 
-  function normalizeShips(ships) {
-    if (!Array.isArray(ships)) return [];
-    return ships.map(ship => ({
-      ...ship,
-      type: normalizeShipType(ship.type)
-    }));
-  }
+        function statusClass(status) {
+          if (!status) return "imp";
+          const s = status.toLowerCase();
+          if (s.includes("mechanicus")) return "mech";
+          if (s.includes("chaos") || s.includes("contesté")) return "contested";
+          if (s.includes("inachevé") || s.includes("vulnérable")) return "warn";
+          if (s.includes("opérationnel")) return "ok";
+          return "imp";
+        }
 
-  function purgeLegacyStorage() {
-    LEGACY_STORAGE_KEYS.forEach(key => {
-      try { localStorage.removeItem(key); } catch (e) { console.warn('Purge stockage legacy impossible :', e); }
-    });
-  }
+        function dangerPips(level) {
+          let h = '<div class="danger-bar">';
+          for (let i = 1; i <= 5; i++)
+            h += `<div class="danger-pip${i <= level ? " on" : ""}"></div>`;
+          return h + "</div>";
+        }
 
-  function saveTacticalState() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        flags: state.flags,
-        ships: state.ships,
-        shipCounter: state.shipCounter
-      }));
-    } catch (e) { console.warn('Sauvegarde impossible :', e); }
-  }
+        const CX = 350,
+          CY = 280;
+        const RADII = [70, 120, 185, 255, 330];
+        const ANGLES = [-90, 45, 160, -30, 110];
 
-  function loadTacticalState() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      return {
-        flags: parsed.flags && typeof parsed.flags === 'object' ? parsed.flags : null,
-        ships: normalizeShips(parsed.ships),
-        shipCounter: Number.isFinite(parsed.shipCounter) ? parsed.shipCounter : null
-      };
-    } catch (e) { console.warn('Chargement sauvegarde impossible :', e); return null; }
-  }
+        const state = {
+          system: null,
+          planetPositions: {},
+          flags: {},
+          ships: [],
+          shipCounter: 0,
+          drag: null,
+          selectedPid: null,
+        };
 
-  function statusClass(status) {
-    if (!status) return 'imp';
-    const s = status.toLowerCase();
-    if (s.includes('mechanicus')) return 'mech';
-    if (s.includes('chaos') || s.includes('contesté')) return 'contested';
-    if (s.includes('inachevé') || s.includes('vulnérable')) return 'warn';
-    if (s.includes('opérationnel')) return 'ok';
-    return 'imp';
-  }
+        function polar(r, angleDeg) {
+          const a = (angleDeg * Math.PI) / 180;
+          return { x: CX + r * Math.cos(a), y: CY + r * Math.sin(a) };
+        }
 
-  function dangerPips(level) {
-    let h = '<div class="danger-bar">';
-    for (let i = 1; i <= 5; i++) h += `<div class="danger-pip${i <= level ? ' on' : ''}"></div>`;
-    return h + '</div>';
-  }
+        function svgPoint(evt, svg) {
+          const pt = svg.createSVGPoint();
+          pt.x = evt.clientX;
+          pt.y = evt.clientY;
+          // getScreenCTM() retourne null si le SVG n'est pas encore dans le flux de rendu
+          // (chargement en cours, test automatisé, SVG display:none).
+          // Sans ce garde, null.inverse() lèverait un TypeError et bloquerait tout drag.
+          const ctm = svg.getScreenCTM();
+          if (!ctm) return { x: 0, y: 0 };
+          return pt.matrixTransform(ctm.inverse());
+        }
 
-  const CX = 350, CY = 280;
-  const RADII = [70, 120, 185, 255, 330];
-  const ANGLES = [-90, 45, 160, -30, 110];
+        function buildOrrery(data) {
+          const svg = document.getElementById("orrery-svg");
+          let html = "";
 
-  const state = { system: null, planetPositions: {}, flags: {}, ships: [], shipCounter: 0, drag: null, selectedPid: null };
+          // RADII et ANGLES définissent 5 orbites. Si le JSON ajoute une 6ᵉ planète orbitale,
+          // RADII[5] serait undefined et polar() produirait des coordonnées NaN —
+          // la planète deviendrait invisible sans aucun message d'erreur.
+          // On tronque au nombre d'orbites disponibles pour rester dans les bornes du tableau.
+          const orbitalPlanets = data.planets
+            .filter(
+              (p) =>
+                p.orbital_position !== null && p.orbital_position !== undefined,
+            )
+            .slice(0, RADII.length);
+          orbitalPlanets.forEach((_, i) => {
+            html += `<circle class="orbit-ring" cx="${CX}" cy="${CY}" r="${RADII[i]}"/>`;
+          });
 
-  function polar(r, angleDeg) {
-    const a = angleDeg * Math.PI / 180;
-    return { x: CX + r * Math.cos(a), y: CY + r * Math.sin(a) };
-  }
+          html += `<circle cx="${CX}" cy="${CY}" r="38" fill="url(#star-glow)" opacity="0.5"/>`;
+          html += `<circle cx="${CX}" cy="${CY}" r="20" fill="#ffe87a" filter="url(#planet-glow)"/>`;
+          html += `<text x="${CX}" y="${CY + 34}" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#c8a028" letter-spacing="0.05em">${data.star.name}</text>`;
 
-  function svgPoint(evt, svg) {
-    const pt = svg.createSVGPoint();
-    pt.x = evt.clientX; pt.y = evt.clientY;
-    // getScreenCTM() retourne null si le SVG n'est pas encore dans le flux de rendu
-    // (chargement en cours, test automatisé, SVG display:none).
-    // Sans ce garde, null.inverse() lèverait un TypeError et bloquerait tout drag.
-    const ctm = svg.getScreenCTM();
-    if (!ctm) return { x: 0, y: 0 };
-    return pt.matrixTransform(ctm.inverse());
-  }
-
-  function buildOrrery(data) {
-    const svg = document.getElementById('orrery-svg');
-    let html = '';
-
-    // RADII et ANGLES définissent 5 orbites. Si le JSON ajoute une 6ᵉ planète orbitale,
-    // RADII[5] serait undefined et polar() produirait des coordonnées NaN —
-    // la planète deviendrait invisible sans aucun message d'erreur.
-    // On tronque au nombre d'orbites disponibles pour rester dans les bornes du tableau.
-    const orbitalPlanets = data.planets
-      .filter(p => p.orbital_position !== null && p.orbital_position !== undefined)
-      .slice(0, RADII.length);
-    orbitalPlanets.forEach((_, i) => {
-      html += `<circle class="orbit-ring" cx="${CX}" cy="${CY}" r="${RADII[i]}"/>`;
-    });
-
-    html += `<circle cx="${CX}" cy="${CY}" r="38" fill="url(#star-glow)" opacity="0.5"/>`;
-    html += `<circle cx="${CX}" cy="${CY}" r="20" fill="#ffe87a" filter="url(#planet-glow)"/>`;
-    html += `<text x="${CX}" y="${CY+34}" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" fill="#c8a028" letter-spacing="0.05em">${data.star.name}</text>`;
-
-    orbitalPlanets.forEach((p, i) => {
-      const pos = polar(RADII[i], ANGLES[i]);
-      state.planetPositions[String(p.id)] = { x: pos.x, y: pos.y };
-      const r = i === 2 ? 12 : i >= 3 ? 8 : 10;
-      const dangerCls = p.danger_level >= 4 ? ' danger-4' : '';
-      html += `
+          orbitalPlanets.forEach((p, i) => {
+            const pos = polar(RADII[i], ANGLES[i]);
+            state.planetPositions[String(p.id)] = { x: pos.x, y: pos.y };
+            const r = i === 2 ? 12 : i >= 3 ? 8 : 10;
+            const dangerCls = p.danger_level >= 4 ? " danger-4" : "";
+            html += `
         <g class="planet-group${dangerCls}" data-pid="${p.id}" tabindex="0" role="button" aria-label="${p.name}">
-          <circle cx="${pos.x}" cy="${pos.y}" r="${r+8}" fill="${p.color_hex}" opacity="0.08"/>
+          <circle cx="${pos.x}" cy="${pos.y}" r="${r + 8}" fill="${p.color_hex}" opacity="0.08"/>
           <circle class="planet-bg" cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${p.color_hex}" stroke="${p.color_hex}" stroke-width="0.8" filter="url(#planet-glow)"/>
           <text class="planet-label" x="${pos.x}" y="${pos.y + r + 11}" text-anchor="middle">${p.name}</text>
-          <text class="planet-sublabel" x="${pos.x}" y="${pos.y + r + 20}" text-anchor="middle">${p.type.split('—')[0].trim()}</text>
+          <text class="planet-sublabel" x="${pos.x}" y="${pos.y + r + 20}" text-anchor="middle">${p.type.split("—")[0].trim()}</text>
         </g>`;
 
-      if (p.id === 1) {
-        state.planetPositions['brokha'] = { x: pos.x + 18, y: pos.y - 14 };
-        html += `
+            if (p.id === 1) {
+              state.planetPositions["brokha"] = {
+                x: pos.x + 18,
+                y: pos.y - 14,
+              };
+              html += `
           <g class="planet-group" data-pid="brokha" tabindex="0" role="button" aria-label="Lune Brokha">
-            <circle cx="${pos.x+18}" cy="${pos.y-14}" r="5" fill="#aaaaaa" opacity="0.8" filter="url(#planet-glow)"/>
-            <text class="planet-sublabel" x="${pos.x+18}" y="${pos.y-5}" text-anchor="middle">Brokha</text>
+            <circle cx="${pos.x + 18}" cy="${pos.y - 14}" r="5" fill="#aaaaaa" opacity="0.8" filter="url(#planet-glow)"/>
+            <text class="planet-sublabel" x="${pos.x + 18}" y="${pos.y - 5}" text-anchor="middle">Brokha</text>
           </g>`;
-      }
-    });
+            }
+          });
 
-    const specialPositions = {
-      'near_inner': polar(RADII[0] - 30, 60),
-      'near_outer': polar(RADII[1] + 30, 200),
-      'brokha_moon': (() => {
-        const sanctum = orbitalPlanets.find(p => p.id === 1);
-        if (!sanctum) return { x: CX + 40, y: CY - 50 };
-        const sp = polar(RADII[0], ANGLES[0]);
-        return { x: sp.x + 18, y: sp.y - 14 };
-      })()
-    };
+          const specialPositions = {
+            near_inner: polar(RADII[0] - 30, 60),
+            near_outer: polar(RADII[1] + 30, 200),
+            brokha_moon: (() => {
+              const sanctum = orbitalPlanets.find((p) => p.id === 1);
+              if (!sanctum) return { x: CX + 40, y: CY - 50 };
+              const sp = polar(RADII[0], ANGLES[0]);
+              return { x: sp.x + 18, y: sp.y - 14 };
+            })(),
+          };
 
-    const specialPlanets = data.planets.filter(p => p.svg_position);
-    specialPlanets.forEach(p => {
-      const pos = specialPositions[p.svg_position] || { x: CX + 50, y: CY - 50 };
-      state.planetPositions[String(p.id)] = { x: pos.x, y: pos.y };
-      const r = 7;
-      const dangerCls = p.danger_level >= 4 ? ' danger-4' : '';
-      const shortLabel = p.name.length > 12 ? p.name.split(' ')[0] + '…' : p.name;
-      html += `
+          const specialPlanets = data.planets.filter((p) => p.svg_position);
+          specialPlanets.forEach((p) => {
+            const pos = specialPositions[p.svg_position] || {
+              x: CX + 50,
+              y: CY - 50,
+            };
+            state.planetPositions[String(p.id)] = { x: pos.x, y: pos.y };
+            const r = 7;
+            const dangerCls = p.danger_level >= 4 ? " danger-4" : "";
+            const shortLabel =
+              p.name.length > 12 ? p.name.split(" ")[0] + "…" : p.name;
+            html += `
         <g class="planet-group${dangerCls}" data-pid="${p.id}" tabindex="0" role="button" aria-label="${p.name}">
-          <circle cx="${pos.x}" cy="${pos.y}" r="${r+8}" fill="${p.color_hex}" opacity="0.08"/>
+          <circle cx="${pos.x}" cy="${pos.y}" r="${r + 8}" fill="${p.color_hex}" opacity="0.08"/>
           <circle class="planet-bg" cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${p.color_hex}" stroke="${p.color_hex}" stroke-width="0.8" filter="url(#planet-glow)"/>
           <text class="planet-label" x="${pos.x}" y="${pos.y + r + 11}" text-anchor="middle">${shortLabel}</text>
-          <text class="planet-sublabel" x="${pos.x}" y="${pos.y + r + 20}" text-anchor="middle">${p.type.split('—')[0].trim()}</text>
+          <text class="planet-sublabel" x="${pos.x}" y="${pos.y + r + 20}" text-anchor="middle">${p.type.split("—")[0].trim()}</text>
         </g>`;
-    });
+          });
 
-    html += `<g id="flags-layer"></g>`;
-    html += `<g id="ships-layer"></g>`;
-    svg.insertAdjacentHTML('beforeend', html);
-  }
+          html += `<g id="flags-layer"></g>`;
+          html += `<g id="ships-layer"></g>`;
+          svg.insertAdjacentHTML("beforeend", html);
+        }
 
-  function bindFlagInteractions() {
-    document.querySelectorAll('.flag-group').forEach(el => {
-      el.addEventListener('contextmenu', ev => {
-        ev.preventDefault();
-        ev.stopPropagation();
-        const pid = el.dataset.flagFor;
-        removePlanetFlag(pid);
-      });
-    });
-  }
+        function bindFlagInteractions() {
+          document.querySelectorAll(".flag-group").forEach((el) => {
+            el.addEventListener("contextmenu", (ev) => {
+              ev.preventDefault();
+              ev.stopPropagation();
+              const pid = el.dataset.flagFor;
+              removePlanetFlag(pid);
+            });
+          });
+        }
 
-  function renderFlags() {
-    const layer = document.getElementById('flags-layer');
-    if (!layer) return;
-    let html = '';
-    Object.entries(state.flags).forEach(([pid, factionKey]) => {
-      const pos = state.planetPositions[pid];
-      const faction = FACTION_FLAG_STYLES[factionKey];
-      if (!pos || !faction) return;
-      const fx = pos.x + 12, fy = pos.y - 18;
-      html += `
+        function renderFlags() {
+          const layer = document.getElementById("flags-layer");
+          if (!layer) return;
+          let html = "";
+          Object.entries(state.flags).forEach(([pid, factionKey]) => {
+            const pos = state.planetPositions[pid];
+            const faction = FACTION_FLAG_STYLES[factionKey];
+            if (!pos || !faction) return;
+            const fx = pos.x + 12,
+              fy = pos.y - 18;
+            html += `
         <g class="flag-group" data-flag-for="${pid}" role="button" aria-label="Retirer le drapeau de ${pid}">
-          <line x1="${fx}" y1="${fy}" x2="${fx}" y2="${fy+18}" stroke="${faction.color}" stroke-width="1.4"/>
-          <path d="M ${fx} ${fy} L ${fx+13} ${fy+4} L ${fx} ${fy+8} Z" fill="${faction.color}" stroke="#111" stroke-width="0.5"/>
-          <text class="flag-label" x="${fx+16}" y="${fy+7}">${faction.short}</text>
+          <line x1="${fx}" y1="${fy}" x2="${fx}" y2="${fy + 18}" stroke="${faction.color}" stroke-width="1.4"/>
+          <path d="M ${fx} ${fy} L ${fx + 13} ${fy + 4} L ${fx} ${fy + 8} Z" fill="${faction.color}" stroke="#111" stroke-width="0.5"/>
+          <text class="flag-label" x="${fx + 16}" y="${fy + 7}">${faction.short}</text>
         </g>`;
-    });
-    layer.innerHTML = html;
-    bindFlagInteractions();
-  }
+          });
+          layer.innerHTML = html;
+          bindFlagInteractions();
+        }
 
-  function renderShips() {
-    const layer = document.getElementById('ships-layer');
-    if (!layer) return;
+        function renderShips() {
+          const layer = document.getElementById("ships-layer");
+          if (!layer) return;
 
-    let html = '';
-    state.ships.forEach(ship => {
-      const normalizedType = normalizeShipType(ship.type);
-      // Si le type normalisé est absent de SHIP_STYLES (localStorage corrompu,
-      // JSON mis à jour avec un nouveau type non encore déclaré ici),
-      // on utilise 'croiseur-attaque' comme style de repli plutôt que de crasher
-      // sur `undefined.short` et de perdre l'affichage de tous les vaisseaux.
-      const style = SHIP_STYLES[normalizedType] || SHIP_STYLES['croiseur-attaque'];
-      const displayName = ship.name || style.short;
+          let html = "";
+          state.ships.forEach((ship) => {
+            const normalizedType = normalizeShipType(ship.type);
+            // Si le type normalisé est absent de SHIP_STYLES (localStorage corrompu,
+            // JSON mis à jour avec un nouveau type non encore déclaré ici),
+            // on utilise 'croiseur-attaque' comme style de repli plutôt que de crasher
+            // sur `undefined.short` et de perdre l'affichage de tous les vaisseaux.
+            const style =
+              SHIP_STYLES[normalizedType] || SHIP_STYLES["croiseur-attaque"];
+            const displayName = ship.name || style.short;
 
-      html += `
+            html += `
         <g class="ship-token" data-ship-id="${ship.id}" transform="translate(${ship.x}, ${ship.y})">
           <circle class="ship-hitbox" cx="0" cy="0" r="14"></circle>
           <path class="ship-body" d="M -8 0 L 0 -6 L 8 0 L 0 6 Z" fill="${style.color}"></path>
           <circle cx="0" cy="0" r="2.2" fill="#111"></circle>
           <text class="ship-label" x="0" y="20" text-anchor="middle">${displayName}</text>
         </g>`;
-    });
+          });
 
-    layer.innerHTML = html;
+          layer.innerHTML = html;
 
-    // On re-lie le pointerdown sur les nouveaux éléments SVG (ils viennent d'être
-    // recréés via innerHTML). En revanche, on N'appelle PAS bindShipDragging() ici :
-    // les listeners SVG-niveau (pointermove / pointerup) sont liés une seule fois
-    // au démarrage. Les appeler à chaque rendu empilérait des handlers en cascade.
-    bindShipPointerDown();
+          // On re-lie le pointerdown sur les nouveaux éléments SVG (ils viennent d'être
+          // recréés via innerHTML). En revanche, on N'appelle PAS bindShipDragging() ici :
+          // les listeners SVG-niveau (pointermove / pointerup) sont liés une seule fois
+          // au démarrage. Les appeler à chaque rendu empilérait des handlers en cascade.
+          bindShipPointerDown();
 
-    layer.querySelectorAll('.ship-token').forEach(el => {
-      el.addEventListener('contextmenu', ev => {
-        ev.preventDefault();
-        ev.stopPropagation();
+          layer.querySelectorAll(".ship-token").forEach((el) => {
+            el.addEventListener("contextmenu", (ev) => {
+              ev.preventDefault();
+              ev.stopPropagation();
 
-        const id = el.dataset.shipId;
-        state.ships = state.ships.filter(s => s.id !== id);
+              const id = el.dataset.shipId;
+              state.ships = state.ships.filter((s) => s.id !== id);
 
-        renderShips();
-        saveTacticalState();
-      });
-    });
-  }
+              renderShips();
+              saveTacticalState();
+            });
+          });
+        }
 
-  // Relie le handler pointerdown sur chaque token du layer.
-  // Doit être appelé après chaque renderShips() car innerHTML recrée les éléments SVG.
-  function bindShipPointerDown() {
-    const svg = document.getElementById('orrery-svg');
-    document.querySelectorAll('.ship-token').forEach(el => {
-      el.addEventListener('pointerdown', ev => {
-        ev.stopPropagation();
-        const ship = state.ships.find(s => s.id === el.dataset.shipId);
-        if (!ship) return;
-        const p = svgPoint(ev, svg);
-        state.drag = { id: el.dataset.shipId, dx: p.x - ship.x, dy: p.y - ship.y };
-        el.classList.add('dragging');
-        el.setPointerCapture(ev.pointerId);
-      });
-    });
-  }
+        // Relie le handler pointerdown sur chaque token du layer.
+        // Doit être appelé après chaque renderShips() car innerHTML recrée les éléments SVG.
+        function bindShipPointerDown() {
+          const svg = document.getElementById("orrery-svg");
+          document.querySelectorAll(".ship-token").forEach((el) => {
+            el.addEventListener("pointerdown", (ev) => {
+              ev.stopPropagation();
+              const ship = state.ships.find((s) => s.id === el.dataset.shipId);
+              if (!ship) return;
+              const p = svgPoint(ev, svg);
+              state.drag = {
+                id: el.dataset.shipId,
+                dx: p.x - ship.x,
+                dy: p.y - ship.y,
+              };
+              el.classList.add("dragging");
+              el.setPointerCapture(ev.pointerId);
+            });
+          });
+        }
 
-  function addShip() {
-    const type = normalizeShipType(document.getElementById('ship-type').value);
-    const factionKey = document.getElementById('faction-select').value;
-    const factionLabel = FACTION_FLAG_STYLES[factionKey]
-      ? FACTION_FLAG_STYLES[factionKey].label
-      : factionKey;
-    const typeLabel = SHIP_TYPE_LABELS[type] || type;
-    const shipName = typeLabel + ' – ' + factionLabel;
+        function addShip() {
+          const type = normalizeShipType(
+            document.getElementById("ship-type").value,
+          );
+          const factionKey = document.getElementById("faction-select").value;
+          const factionLabel = FACTION_FLAG_STYLES[factionKey]
+            ? FACTION_FLAG_STYLES[factionKey].label
+            : factionKey;
+          const typeLabel = SHIP_TYPE_LABELS[type] || type;
+          const shipName = typeLabel + " – " + factionLabel;
 
-    state.shipCounter += 1;
-    state.ships.push({
-      id: 'ship-' + state.shipCounter,
-      type,
-      name: shipName,
-      x: CX + 140,
-      y: CY - 120
-    });
+          state.shipCounter += 1;
+          state.ships.push({
+            id: "ship-" + state.shipCounter,
+            type,
+            name: shipName,
+            x: CX + 140,
+            y: CY - 120,
+          });
 
-    renderShips();
-    saveTacticalState();
-  }
+          renderShips();
+          saveTacticalState();
+        }
 
-  function clearShips() {
-    state.ships = [];
-    renderShips();
-    saveTacticalState();
-  }
+        function clearShips() {
+          state.ships = [];
+          renderShips();
+          saveTacticalState();
+        }
 
-  function clearFlags() {
-    state.flags = {};
-    renderFlags();
-    if (state.selectedPid) showDetail(state.system, state.selectedPid);
-    saveTacticalState();
-  }
+        function clearFlags() {
+          state.flags = {};
+          renderFlags();
+          if (state.selectedPid) showDetail(state.system, state.selectedPid);
+          saveTacticalState();
+        }
 
-  function setPlanetFlag(pid) {
-    const faction = document.getElementById('faction-select').value;
-    state.flags[pid] = faction;
-    renderFlags();
-    showDetail(state.system, pid);
-    saveTacticalState();
-  }
+        function setPlanetFlag(pid) {
+          const faction = document.getElementById("faction-select").value;
+          state.flags[pid] = faction;
+          renderFlags();
+          showDetail(state.system, pid);
+          saveTacticalState();
+        }
 
-  function removePlanetFlag(pid) {
-    // `in` teste l'existence de la clé, pas sa valeur.
-    // L'ancienne garde `!state.flags[pid]` aurait bloqué la suppression si la valeur
-    // du drapeau était une chaîne vide '' ou toute autre valeur falsy.
-    if (!(pid in state.flags)) return;
-    delete state.flags[pid];
-    renderFlags();
-    showDetail(state.system, pid);
-    saveTacticalState();
-  }
+        function removePlanetFlag(pid) {
+          // `in` teste l'existence de la clé, pas sa valeur.
+          // L'ancienne garde `!state.flags[pid]` aurait bloqué la suppression si la valeur
+          // du drapeau était une chaîne vide '' ou toute autre valeur falsy.
+          if (!(pid in state.flags)) return;
+          delete state.flags[pid];
+          renderFlags();
+          showDetail(state.system, pid);
+          saveTacticalState();
+        }
 
-  // Appelée UNE SEULE FOIS au démarrage (dans le bloc fetch, jamais depuis renderShips).
-  // Elle attache les listeners de niveau SVG qui gèrent le déplacement et la fin du drag.
-  //
-  // Pourquoi cette séparation est cruciale :
-  //   Avant, bindShipDragging() était appelée depuis renderShips(), et le handler
-  //   pointermove appelait renderShips() → chaque pixel de drag ajoutait UN NOUVEAU
-  //   listener pointermove sur le SVG. Après 50 pixels : 50 handlers actifs en parallèle,
-  //   le vaisseau sautait et le navigateur devenait inutilisable.
-  function bindShipDragging() {
-    const svg = document.getElementById('orrery-svg');
+        // Appelée UNE SEULE FOIS au démarrage (dans le bloc fetch, jamais depuis renderShips).
+        // Elle attache les listeners de niveau SVG qui gèrent le déplacement et la fin du drag.
+        //
+        // Pourquoi cette séparation est cruciale :
+        //   Avant, bindShipDragging() était appelée depuis renderShips(), et le handler
+        //   pointermove appelait renderShips() → chaque pixel de drag ajoutait UN NOUVEAU
+        //   listener pointermove sur le SVG. Après 50 pixels : 50 handlers actifs en parallèle,
+        //   le vaisseau sautait et le navigateur devenait inutilisable.
+        function bindShipDragging() {
+          const svg = document.getElementById("orrery-svg");
 
-    svg.addEventListener('pointermove', ev => {
-      if (!state.drag) return;
-      const ship = state.ships.find(s => s.id === state.drag.id);
-      if (!ship) return;
-      const p = svgPoint(ev, svg);
-      ship.x = Math.max(20, Math.min(680, p.x - state.drag.dx));
-      ship.y = Math.max(20, Math.min(540, p.y - state.drag.dy));
-      // Mise à jour directe de l'attribut SVG transform au lieu de reconstruire
-      // tout le innerHTML : plus rapide et évite de recréer des listeners à chaque frame.
-      const token = document.querySelector(`.ship-token[data-ship-id="${state.drag.id}"]`);
-      if (token) token.setAttribute('transform', `translate(${ship.x}, ${ship.y})`);
-    });
+          svg.addEventListener("pointermove", (ev) => {
+            if (!state.drag) return;
+            const ship = state.ships.find((s) => s.id === state.drag.id);
+            if (!ship) return;
+            const p = svgPoint(ev, svg);
+            ship.x = Math.max(20, Math.min(680, p.x - state.drag.dx));
+            ship.y = Math.max(20, Math.min(540, p.y - state.drag.dy));
+            // Mise à jour directe de l'attribut SVG transform au lieu de reconstruire
+            // tout le innerHTML : plus rapide et évite de recréer des listeners à chaque frame.
+            const token = document.querySelector(
+              `.ship-token[data-ship-id="${state.drag.id}"]`,
+            );
+            if (token)
+              token.setAttribute(
+                "transform",
+                `translate(${ship.x}, ${ship.y})`,
+              );
+          });
 
-    const endDrag = () => {
-      if (state.drag) saveTacticalState();
-      state.drag = null;
-      document.querySelectorAll('.ship-token.dragging').forEach(el => el.classList.remove('dragging'));
-    };
-    svg.addEventListener('pointerup', endDrag);
-    svg.addEventListener('pointerleave', endDrag);
-  }
+          const endDrag = () => {
+            if (state.drag) saveTacticalState();
+            state.drag = null;
+            document
+              .querySelectorAll(".ship-token.dragging")
+              .forEach((el) => el.classList.remove("dragging"));
+          };
+          svg.addEventListener("pointerup", endDrag);
+          svg.addEventListener("pointerleave", endDrag);
+        }
 
-  function bindDetailActions() {
-    const removeBtn = document.getElementById('remove-flag-btn');
-    if (removeBtn) {
-      removeBtn.addEventListener('click', () => {
-        const pid = removeBtn.dataset.pid;
-        removePlanetFlag(pid);
-      });
-    }
-  }
+        function bindDetailActions() {
+          const removeBtn = document.getElementById("remove-flag-btn");
+          if (removeBtn) {
+            removeBtn.addEventListener("click", () => {
+              const pid = removeBtn.dataset.pid;
+              removePlanetFlag(pid);
+            });
+          }
+        }
 
-  function showDetail(data, pid) {
-    state.selectedPid = pid;
-    document.querySelectorAll('.planet-group').forEach(g => g.classList.remove('selected'));
-    document.querySelectorAll('[data-pid="' + pid + '"]').forEach(g => g.classList.add('selected'));
+        function showDetail(data, pid) {
+          state.selectedPid = pid;
+          document
+            .querySelectorAll(".planet-group")
+            .forEach((g) => g.classList.remove("selected"));
+          document
+            .querySelectorAll('[data-pid="' + pid + '"]')
+            .forEach((g) => g.classList.add("selected"));
 
-    const zone = document.getElementById('detail-zone');
-    let html = '';
+          const zone = document.getElementById("detail-zone");
+          let html = "";
 
-    const currentFlag = state.flags[pid];
-    const flagInfo = currentFlag ? FACTION_FLAG_STYLES[currentFlag] : null;
-    const flagBlock = flagInfo
-      ? `<div class="pd-section"><h4>Occupation visible</h4><div class="tags"><span class="tag gold">Drapeau : ${flagInfo.label}</span></div><div class="flag-actions"><button type="button" class="inline-action-btn" id="remove-flag-btn" data-pid="${pid}">Retirer le drapeau</button></div><p class="inline-help">Astuce : fais un clic droit sur le drapeau directement dans l'orrérie pour le retirer.</p></div>`
-      : '';
+          const currentFlag = state.flags[pid];
+          const flagInfo = currentFlag
+            ? FACTION_FLAG_STYLES[currentFlag]
+            : null;
+          const flagBlock = flagInfo
+            ? `<div class="pd-section"><h4>Occupation visible</h4><div class="tags"><span class="tag gold">Drapeau : ${flagInfo.label}</span></div><div class="flag-actions"><button type="button" class="inline-action-btn" id="remove-flag-btn" data-pid="${pid}">Retirer le drapeau</button></div><p class="inline-help">Astuce : fais un clic droit sur le drapeau directement dans l'orrérie pour le retirer.</p></div>`
+            : "";
 
-    if (pid === 'brokha') {
-      html = `<div class="planet-detail active">
+          if (pid === "brokha") {
+            html = `<div class="planet-detail active">
         <p class="pd-eyebrow">Lune de Sanctum — Fortification</p>
         <h3 class="pd-name">Brokha</h3>
         <p class="pd-type">Lune — Fortification Chapitrale</p>
@@ -671,20 +1245,22 @@
         <div class="pd-section"><h4>Installations</h4><div class="tags"><span class="tag gold">✠ QG Croisade</span><span class="tag">Forteresse stellaire lourde</span><span class="tag">Garnison Astartes</span></div></div>
         <div class="pd-section"><h4>Niveau de danger</h4>${dangerPips(1)}</div>
       </div>`;
-    } else {
-      const p = data.planets.find(pl => String(pl.id) === String(pid));
-      if (p) {
-        const scls = statusClass(p.imperial_status);
-        // notable_features peut être absent ou null si une planète du JSON ne déclare
-        // pas ce champ — `|| []` garantit que .map() ne lève pas de TypeError.
-        const featuresHTML = (p.notable_features || []).map(f => `<span class="tag">${f}</span>`).join('');
-        const eyebrow = p.orbital_position
-          ? `Corps Céleste — Orbite ${p.orbital_position}`
-          : `Fortification — Système Sanctum`;
-        const subtitle = p.orbital_distance_au
-          ? `${p.type} &mdash; ${p.orbital_distance_au} UA`
-          : p.type;
-        html = `<div class="planet-detail active">
+          } else {
+            const p = data.planets.find((pl) => String(pl.id) === String(pid));
+            if (p) {
+              const scls = statusClass(p.imperial_status);
+              // notable_features peut être absent ou null si une planète du JSON ne déclare
+              // pas ce champ — `|| []` garantit que .map() ne lève pas de TypeError.
+              const featuresHTML = (p.notable_features || [])
+                .map((f) => `<span class="tag">${f}</span>`)
+                .join("");
+              const eyebrow = p.orbital_position
+                ? `Corps Céleste — Orbite ${p.orbital_position}`
+                : `Fortification — Système Sanctum`;
+              const subtitle = p.orbital_distance_au
+                ? `${p.type} &mdash; ${p.orbital_distance_au} UA`
+                : p.type;
+              html = `<div class="planet-detail active">
           <p class="pd-eyebrow">${eyebrow}</p>
           <h3 class="pd-name">${p.name}</h3>
           <p class="pd-type">${subtitle}</p>
@@ -694,112 +1270,134 @@
           <div class="pd-section"><h4>Caractéristiques</h4><div class="tags">${featuresHTML}</div></div>
           <div class="pd-section"><h4>Niveau de danger</h4>${dangerPips(p.danger_level)}</div>
         </div>`;
-      }
-    }
+            }
+          }
 
-    zone.innerHTML = html || '<div class="empty-state"><div class="empty-state-icon">◈</div><p>Aucune donnée disponible.</p></div>';
-    bindDetailActions();
-  }
-
-  function bindClicks(data) {
-    document.querySelectorAll('.planet-group').forEach(g => {
-      g.addEventListener('click', () => {
-        const pid = g.dataset.pid;
-        showDetail(data, pid);
-      });
-      g.addEventListener('contextmenu', ev => { ev.preventDefault();
-        const pid = g.dataset.pid;
-        showDetail(data, pid);
-        if (state.flags[pid]) {
-          removePlanetFlag(pid);
-        } else {
-          setPlanetFlag(pid);
+          zone.innerHTML =
+            html ||
+            '<div class="empty-state"><div class="empty-state-icon">◈</div><p>Aucune donnée disponible.</p></div>';
+          bindDetailActions();
         }
-      });
-      g.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const pid = g.dataset.pid;
-          showDetail(data, pid);
-        }
-      });
-    });
-  }
 
-  function renderWarpAlert(warp) {
-    if (!warp) return;
-    document.getElementById('warp-alert-zone').innerHTML =
-      `<div class="warp-alert">
+        function bindClicks(data) {
+          document.querySelectorAll(".planet-group").forEach((g) => {
+            g.addEventListener("click", () => {
+              const pid = g.dataset.pid;
+              showDetail(data, pid);
+            });
+            g.addEventListener("contextmenu", (ev) => {
+              ev.preventDefault();
+              const pid = g.dataset.pid;
+              showDetail(data, pid);
+              if (state.flags[pid]) {
+                removePlanetFlag(pid);
+              } else {
+                setPlanetFlag(pid);
+              }
+            });
+            g.addEventListener("keydown", (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                const pid = g.dataset.pid;
+                showDetail(data, pid);
+              }
+            });
+          });
+        }
+
+        function renderWarpAlert(warp) {
+          if (!warp) return;
+          document.getElementById("warp-alert-zone").innerHTML =
+            `<div class="warp-alert">
         <div class="warp-alert-title">⚠ ${warp.name} — ${warp.status}</div>
         <p class="warp-alert-text">${warp.description}</p>
       </div>`;
-  }
+        }
 
-  function renderFigures(figures) {
-    if (!figures || !figures.length) return;
-    document.getElementById('figures-section').style.display = '';
-    document.getElementById('figures-list').innerHTML = figures.map(f => {
-      const icon = FACTION_ICONS[f.faction] || FACTION_ICONS.default;
-      return `<div class="figure-item">
+        function renderFigures(figures) {
+          if (!figures || !figures.length) return;
+          document.getElementById("figures-section").style.display = "";
+          document.getElementById("figures-list").innerHTML = figures
+            .map((f) => {
+              const icon = FACTION_ICONS[f.faction] || FACTION_ICONS.default;
+              return `<div class="figure-item">
         <div class="figure-icon">${icon}</div>
         <div class="figure-info"><p>${f.nom}</p><span>${f.role}</span></div>
       </div>`;
-    }).join('');
-  }
+            })
+            .join("");
+        }
 
-  function bindEditor() {
-    document.getElementById('add-ship-btn').addEventListener('click', addShip);
-    document.getElementById('clear-ships-btn').addEventListener('click', clearShips);
-    document.getElementById('clear-flags-btn').addEventListener('click', clearFlags);
-  }
+        function bindEditor() {
+          document
+            .getElementById("add-ship-btn")
+            .addEventListener("click", addShip);
+          document
+            .getElementById("clear-ships-btn")
+            .addEventListener("click", clearShips);
+          document
+            .getElementById("clear-flags-btn")
+            .addEventListener("click", clearFlags);
+        }
 
-  purgeLegacyStorage();
+        purgeLegacyStorage();
 
-  fetch('assets/data/sanctum.json')
-    .then(r => r.json())
-    .then(d => {
-      const sys = d.system;
-      state.system = sys;
-      document.getElementById('star-name').textContent = sys.star.name;
-      document.getElementById('star-type').textContent = sys.star.type;
-      document.getElementById('sb-title').textContent = sys.name;
-      buildOrrery(sys);
+        fetch("assets/data/sanctum.json")
+          .then((r) => r.json())
+          .then((d) => {
+            const sys = d.system;
+            state.system = sys;
+            document.getElementById("star-name").textContent = sys.star.name;
+            document.getElementById("star-type").textContent = sys.star.type;
+            document.getElementById("sb-title").textContent = sys.name;
+            buildOrrery(sys);
 
-      if (sys.planets) sys.planets.forEach(p => { if (p.occupation_flag) state.flags[String(p.id)] = p.occupation_flag; });
-      if (sys.ships) { state.ships = normalizeShips(sys.ships.map(s => ({ ...s }))); state.shipCounter = sys.ships.length; }
+            if (sys.planets)
+              sys.planets.forEach((p) => {
+                if (p.occupation_flag)
+                  state.flags[String(p.id)] = p.occupation_flag;
+              });
+            if (sys.ships) {
+              state.ships = normalizeShips(sys.ships.map((s) => ({ ...s })));
+              state.shipCounter = sys.ships.length;
+            }
 
-      const savedState = loadTacticalState();
-      if (savedState) {
-        if (savedState.flags) state.flags = savedState.flags;
-        if (savedState.ships) state.ships = normalizeShips(savedState.ships);
-        // != null (comparaison lâche) couvre null ET undefined.
-      // L'ancienne vérification `!== null` (stricte) laissait passer undefined,
-      // ce qui se produit quand l'état vient d'une version antérieure du code sans
-      // shipCounter. Résultat : state.shipCounter = undefined, puis addShip() produisait
-      // l'id 'ship-NaN' — tous les vaisseaux portaient le même id.
-      if (savedState.shipCounter != null) state.shipCounter = savedState.shipCounter;
-      }
+            const savedState = loadTacticalState();
+            if (savedState) {
+              if (savedState.flags) state.flags = savedState.flags;
+              if (savedState.ships)
+                state.ships = normalizeShips(savedState.ships);
+              // != null (comparaison lâche) couvre null ET undefined.
+              // L'ancienne vérification `!== null` (stricte) laissait passer undefined,
+              // ce qui se produit quand l'état vient d'une version antérieure du code sans
+              // shipCounter. Résultat : state.shipCounter = undefined, puis addShip() produisait
+              // l'id 'ship-NaN' — tous les vaisseaux portaient le même id.
+              if (savedState.shipCounter != null)
+                state.shipCounter = savedState.shipCounter;
+            }
 
-      bindClicks(sys);
-      bindEditor();
-      // bindShipDragging() est appelé ICI, une seule fois, pour attacher les listeners
-      // de niveau SVG (pointermove / pointerup). renderShips() ne doit JAMAIS l'appeler,
-      // sous peine d'empiler des dizaines de handlers à chaque pixel de drag.
-      bindShipDragging();
-      renderWarpAlert(sys.warp_route);
-      renderFigures(sys.key_figures);
-      renderFlags();
-      renderShips();
-      saveTacticalState();
-    })
-    .catch(err => {
-      console.error('Erreur chargement sanctum.json :', err);
-      document.getElementById('orrery-svg').insertAdjacentHTML('beforeend',
-        '<text x="350" y="280" text-anchor="middle" font-size="14" fill="#c43030">Erreur de chargement</text>');
-    });
-
-})();
-</script>
-
-</body>
+            bindClicks(sys);
+            bindEditor();
+            // bindShipDragging() est appelé ICI, une seule fois, pour attacher les listeners
+            // de niveau SVG (pointermove / pointerup). renderShips() ne doit JAMAIS l'appeler,
+            // sous peine d'empiler des dizaines de handlers à chaque pixel de drag.
+            bindShipDragging();
+            renderWarpAlert(sys.warp_route);
+            renderFigures(sys.key_figures);
+            renderFlags();
+            renderShips();
+            saveTacticalState();
+          })
+          .catch((err) => {
+            console.error("Erreur chargement sanctum.json :", err);
+            document
+              .getElementById("orrery-svg")
+              .insertAdjacentHTML(
+                "beforeend",
+                '<text x="350" y="280" text-anchor="middle" font-size="14" fill="#c43030">Erreur de chargement</text>',
+              );
+          });
+      })();
+    </script>
+  </body>
 </html>

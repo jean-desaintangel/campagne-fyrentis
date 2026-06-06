@@ -11,7 +11,14 @@
       "role": "Maître du jeu",
       "couleur": "gold",
       "delai": 2,
-      "armees": ["Black Templars", "Silver Templars", "Death Guard", "Nécrons", "Adeptus Mechanicus", "Votann"]
+      "armees": [
+        "Black Templars",
+        "Silver Templars",
+        "Death Guard",
+        "Nécrons",
+        "Adeptus Mechanicus",
+        "Votann"
+      ]
     },
     {
       "nom": "Jean",
@@ -82,10 +89,26 @@
       "image": "assets/img/jakku.png",
       "image_alt": "Bataille sur Jakku - les agro-stations en flammes",
       "stations": [
-        { "num": "02", "proprietaire": "Black Templars", "classe": "station-owner--bt" },
-        { "num": "04", "proprietaire": "Silver Templars", "classe": "station-owner--st" },
-        { "num": "06", "proprietaire": "Death Guard", "classe": "station-owner--dg" },
-        { "num": "08", "proprietaire": "Inconnue", "classe": "station-owner--ruine" }
+        {
+          "num": "02",
+          "proprietaire": "Black Templars",
+          "classe": "station-owner--bt"
+        },
+        {
+          "num": "04",
+          "proprietaire": "Silver Templars",
+          "classe": "station-owner--st"
+        },
+        {
+          "num": "06",
+          "proprietaire": "Death Guard",
+          "classe": "station-owner--dg"
+        },
+        {
+          "num": "08",
+          "proprietaire": "Inconnue",
+          "classe": "station-owner--ruine"
+        }
       ],
       "batailles": [
         {
@@ -161,7 +184,10 @@
           "classe": "battle-entry--victory",
           "factions": [
             { "label": "World Eaters Victoire", "classe": "faction-tag--we" },
-            { "label": "Black Templars Défaite Partielle", "classe": "faction-tag--bt" }
+            {
+              "label": "Black Templars Défaite Partielle",
+              "classe": "faction-tag--bt"
+            }
           ]
         },
         {
@@ -170,7 +196,10 @@
           "texte": "Angron libère un techno-prêtre corrompu de haut rang qui l'aide à percer les lignes DCA de Sanctum. En échange : les codes secrets du monde-forge au moment opportun. Une ville-forge mineure dédiée aux armes et munitions est infiltrée. L'usine d'équipement Astartes est sous surveillance.",
           "classe": "battle-entry--contested",
           "factions": [
-            { "label": "World Eaters Progression", "classe": "faction-tag--we" },
+            {
+              "label": "World Eaters Progression",
+              "classe": "faction-tag--we"
+            },
             { "label": "Sanctum Alerte", "classe": "faction-tag--bt" }
           ]
         },

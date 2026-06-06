@@ -1,702 +1,1422 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Règles Narratives — Fyrentis</title>
-  <meta name="description" content="Règles narratives de la campagne Fyrentis, version avril 2026.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────────────────── */
-    .nav-page-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .btn-nav-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.85rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-nav-page--carte {
-      color: #c8a028;
-      border-color: rgba(200, 160, 40, 0.45);
-      background: rgba(200, 160, 40, 0.07);
-    }
-    .btn-nav-page--carte:hover {
-      background: rgba(200, 160, 40, 0.18);
-      border-color: #c8a028;
-      box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-      color: #e8c050;
-    }
-    .btn-nav-page--sanctum {
-      color: #c84040;
-      border-color: rgba(200, 60, 60, 0.45);
-      background: rgba(200, 60, 60, 0.07);
-    }
-    .btn-nav-page--sanctum:hover {
-      background: rgba(200, 60, 60, 0.18);
-      border-color: #c84040;
-      box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-      color: #e06060;
-    }
-    .btn-nav-page--regles {
-      color: #3aa0d8;
-      border-color: rgba(58, 160, 216, 0.55);
-      background: rgba(58, 160, 216, 0.10);
-    }
-    .btn-nav-page--regles:hover,
-    .btn-nav-page--regles.active {
-      background: rgba(58, 160, 216, 0.20);
-      border-color: #3aa0d8;
-      box-shadow: 0 0 10px rgba(58, 160, 216, 0.30);
-      color: #78c8f0;
-    }
-    .btn-nav-page--inquisition {
-      color: #9b6fc4;
-      border-color: rgba(155, 111, 196, 0.45);
-      background: rgba(155, 111, 196, 0.07);
-    }
-    .btn-nav-page--inquisition:hover {
-      background: rgba(155, 111, 196, 0.18);
-      border-color: #9b6fc4;
-      box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-      color: #c090e8;
-    }
-    [data-theme="light"] .btn-nav-page--carte {
-      color: #8a6800;
-      border-color: rgba(138, 104, 0, 0.4);
-      background: rgba(138, 104, 0, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--carte:hover {
-      background: rgba(138, 104, 0, 0.14);
-      border-color: #8a6800;
-    }
-    [data-theme="light"] .btn-nav-page--sanctum {
-      color: #8b1c1c;
-      border-color: rgba(139, 28, 28, 0.4);
-      background: rgba(139, 28, 28, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--sanctum:hover {
-      background: rgba(139, 28, 28, 0.14);
-      border-color: #8b1c1c;
-    }
-    [data-theme="light"] .btn-nav-page--regles {
-      color: #0d6c9f;
-      border-color: rgba(13, 108, 159, 0.4);
-      background: rgba(13, 108, 159, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--regles:hover,
-    [data-theme="light"] .btn-nav-page--regles.active {
-      background: rgba(13, 108, 159, 0.16);
-      border-color: #0d6c9f;
-      color: #084e74;
-    }
-    [data-theme="light"] .btn-nav-page--inquisition {
-      color: #5a2a8a;
-      border-color: rgba(90, 42, 138, 0.4);
-      background: rgba(90, 42, 138, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--inquisition:hover {
-      background: rgba(90, 42, 138, 0.14);
-      border-color: #5a2a8a;
-    }
-    @media (max-width: 600px) {
-      .nav-page-links { gap: 0.35rem; }
-      .btn-nav-page { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Règles Narratives — Fyrentis</title>
+    <meta
+      name="description"
+      content="Règles narratives de la campagne Fyrentis, version avril 2026."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────────────────── */
+      .nav-page-links {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .btn-nav-page {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 3px;
+        border: 1px solid;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-nav-page--carte {
+        color: #c8a028;
+        border-color: rgba(200, 160, 40, 0.45);
+        background: rgba(200, 160, 40, 0.07);
+      }
+      .btn-nav-page--carte:hover {
+        background: rgba(200, 160, 40, 0.18);
+        border-color: #c8a028;
+        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
+        color: #e8c050;
+      }
+      .btn-nav-page--sanctum {
+        color: #c84040;
+        border-color: rgba(200, 60, 60, 0.45);
+        background: rgba(200, 60, 60, 0.07);
+      }
+      .btn-nav-page--sanctum:hover {
+        background: rgba(200, 60, 60, 0.18);
+        border-color: #c84040;
+        box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
+        color: #e06060;
+      }
+      .btn-nav-page--regles {
+        color: #3aa0d8;
+        border-color: rgba(58, 160, 216, 0.55);
+        background: rgba(58, 160, 216, 0.1);
+      }
+      .btn-nav-page--regles:hover,
+      .btn-nav-page--regles.active {
+        background: rgba(58, 160, 216, 0.2);
+        border-color: #3aa0d8;
+        box-shadow: 0 0 10px rgba(58, 160, 216, 0.3);
+        color: #78c8f0;
+      }
+      .btn-nav-page--inquisition {
+        color: #9b6fc4;
+        border-color: rgba(155, 111, 196, 0.45);
+        background: rgba(155, 111, 196, 0.07);
+      }
+      .btn-nav-page--inquisition:hover {
+        background: rgba(155, 111, 196, 0.18);
+        border-color: #9b6fc4;
+        box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
+        color: #c090e8;
+      }
+      [data-theme="light"] .btn-nav-page--carte {
+        color: #8a6800;
+        border-color: rgba(138, 104, 0, 0.4);
+        background: rgba(138, 104, 0, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--carte:hover {
+        background: rgba(138, 104, 0, 0.14);
+        border-color: #8a6800;
+      }
+      [data-theme="light"] .btn-nav-page--sanctum {
+        color: #8b1c1c;
+        border-color: rgba(139, 28, 28, 0.4);
+        background: rgba(139, 28, 28, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--sanctum:hover {
+        background: rgba(139, 28, 28, 0.14);
+        border-color: #8b1c1c;
+      }
+      [data-theme="light"] .btn-nav-page--regles {
+        color: #0d6c9f;
+        border-color: rgba(13, 108, 159, 0.4);
+        background: rgba(13, 108, 159, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--regles:hover,
+      [data-theme="light"] .btn-nav-page--regles.active {
+        background: rgba(13, 108, 159, 0.16);
+        border-color: #0d6c9f;
+        color: #084e74;
+      }
+      [data-theme="light"] .btn-nav-page--inquisition {
+        color: #5a2a8a;
+        border-color: rgba(90, 42, 138, 0.4);
+        background: rgba(90, 42, 138, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--inquisition:hover {
+        background: rgba(90, 42, 138, 0.14);
+        border-color: #5a2a8a;
+      }
+      @media (max-width: 600px) {
+        .nav-page-links {
+          gap: 0.35rem;
+        }
+        .btn-nav-page {
+          font-size: 0.65rem;
+          padding: 0.35rem 0.6rem;
+        }
+      }
 
-    /* ── LAYOUT PAGE ─────────────────────────────────────────────────────── */
-    :root {
-      --bg:        #0d0b09;
-      --surface:   #151210;
-      --surface-2: #1c1815;
-      --border:    #2e2820;
-      --text:      #d4c9b8;
-      --muted:     #7a6f60;
-      --faint:     #3d342a;
-      --gold:      #c8a028;
-      --gold-dim:  #8a6b18;
-      --red:       #8b1c1c;
-      --red-bright:#c43030;
-    }
-    [data-theme="light"] {
-      --bg:        #f5f2ec;
-      --surface:   #ede9e0;
-      --surface-2: #e4dfd4;
-      --border:    #ccc4b0;
-      --text:      #2a2218;
-      --muted:     #6a5f4a;
-      --faint:     #bfb8a8;
-      --gold:      #8a6800;
-      --gold-dim:  #6a5000;
-      --red:       #8b1c1c;
-      --red-bright:#a02020;
-    }
+      /* ── LAYOUT PAGE ─────────────────────────────────────────────────────── */
+      :root {
+        --bg: #0d0b09;
+        --surface: #151210;
+        --surface-2: #1c1815;
+        --border: #2e2820;
+        --text: #d4c9b8;
+        --muted: #7a6f60;
+        --faint: #3d342a;
+        --gold: #c8a028;
+        --gold-dim: #8a6b18;
+        --red: #8b1c1c;
+        --red-bright: #c43030;
+      }
+      [data-theme="light"] {
+        --bg: #f5f2ec;
+        --surface: #ede9e0;
+        --surface-2: #e4dfd4;
+        --border: #ccc4b0;
+        --text: #2a2218;
+        --muted: #6a5f4a;
+        --faint: #bfb8a8;
+        --gold: #8a6800;
+        --gold-dim: #6a5000;
+        --red: #8b1c1c;
+        --red-bright: #a02020;
+      }
 
-    body { background: var(--bg); color: var(--text); font-family: 'Crimson Text', Georgia, serif; min-height: 100dvh; display: flex; flex-direction: column; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Crimson Text", Georgia, serif;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
 
-    .page-wrap { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; flex: 1; }
+      .page-wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+        flex: 1;
+      }
 
-    /* PAGE HEADER */
-    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-    .page-eyebrow { font-family: 'Cinzel', serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-dim); margin-bottom: 0.5rem; }
-    .page-title { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); color: var(--gold); line-height: 1.15; margin-bottom: 0.75rem; }
-    .page-version { font-size: 0.8rem; color: var(--muted); font-style: italic; }
+      /* PAGE HEADER */
+      .page-header {
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .page-eyebrow {
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--gold-dim);
+        margin-bottom: 0.5rem;
+      }
+      .page-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        color: var(--gold);
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
+      }
+      .page-version {
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-style: italic;
+      }
 
-    /* TOC */
-    .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
-    .toc-title { font-family: 'Cinzel', serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dim); margin-bottom: 0.75rem; }
-    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-    .toc-list a { font-size: 0.88rem; color: var(--muted); text-decoration: none; transition: color 0.18s; }
-    .toc-list a:hover { color: var(--gold); }
-    .toc-list .toc-sub { padding-left: 1rem; font-size: 0.82rem; }
+      /* TOC */
+      .toc {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .toc-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-dim);
+        margin-bottom: 0.75rem;
+      }
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .toc-list a {
+        font-size: 0.88rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.18s;
+      }
+      .toc-list a:hover {
+        color: var(--gold);
+      }
+      .toc-list .toc-sub {
+        padding-left: 1rem;
+        font-size: 0.82rem;
+      }
 
-    /* SECTIONS */
-    .rules-section { margin-bottom: 3rem; scroll-margin-top: 4rem; }
-    .rules-section + .rules-section { border-top: 1px solid var(--border); padding-top: 2.5rem; }
-    .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.05rem, 2.5vw, 1.4rem); color: var(--gold); letter-spacing: 0.06em; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
-    .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--gold-dim), transparent); opacity: 0.4; }
-    .subsection { margin-bottom: 1.75rem; }
-    .subsection-title { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--faint); }
+      /* SECTIONS */
+      .rules-section {
+        margin-bottom: 3rem;
+        scroll-margin-top: 4rem;
+      }
+      .rules-section + .rules-section {
+        border-top: 1px solid var(--border);
+        padding-top: 2.5rem;
+      }
+      .section-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, var(--gold-dim), transparent);
+        opacity: 0.4;
+      }
+      .subsection {
+        margin-bottom: 1.75rem;
+      }
+      .subsection-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.9rem;
+        color: var(--text);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--faint);
+      }
 
-    /* APTITUDE CARDS */
-    .aptitudes-grid { display: flex; flex-direction: column; gap: 0.55rem; }
-    .aptitude-row { display: grid; grid-template-columns: 220px 1fr; gap: 0 1rem; padding: 0.55rem 0.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; align-items: baseline; }
-    @media (max-width: 600px) { .aptitude-row { grid-template-columns: 1fr; gap: 0.2rem; } }
-    .aptitude-key { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--gold); white-space: nowrap; }
-    .aptitude-key .bracket { color: var(--gold-dim); }
-    .aptitude-val { font-size: 0.9rem; color: var(--text); line-height: 1.5; }
-    .aptitude-val .narratif { color: var(--red-bright); font-style: italic; }
+      /* APTITUDE CARDS */
+      .aptitudes-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+      .aptitude-row {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 0 1rem;
+        padding: 0.55rem 0.75rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        align-items: baseline;
+      }
+      @media (max-width: 600px) {
+        .aptitude-row {
+          grid-template-columns: 1fr;
+          gap: 0.2rem;
+        }
+      }
+      .aptitude-key {
+        font-family: "Cinzel", serif;
+        font-size: 0.82rem;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+      .aptitude-key .bracket {
+        color: var(--gold-dim);
+      }
+      .aptitude-val {
+        font-size: 0.9rem;
+        color: var(--text);
+        line-height: 1.5;
+      }
+      .aptitude-val .narratif {
+        color: var(--red-bright);
+        font-style: italic;
+      }
 
-    /* RULE BLOCKS */
-    .rule-block { padding: 0.75rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 3px; margin-bottom: 0.55rem; font-size: 0.92rem; line-height: 1.6; }
-    .rule-block strong { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--gold-dim); display: block; margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.06em; }
-    .rule-block ul { padding-left: 1.25rem; margin-top: 0.3rem; }
-    .rule-block ul li { margin-bottom: 0.3rem; }
-    .rule-block .narratif-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red-bright); border: 1px solid rgba(196,48,48,0.35); border-radius: 2px; padding: 0.1rem 0.4rem; margin-bottom: 0.4rem; }
-    .rule-highlight { background: rgba(200,160,40,0.07); border-color: rgba(200,160,40,0.3); }
-    .rule-alert { background: rgba(139,28,28,0.1); border-color: rgba(139,28,28,0.35); }
+      /* RULE BLOCKS */
+      .rule-block {
+        padding: 0.75rem 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        margin-bottom: 0.55rem;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+      .rule-block strong {
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        color: var(--gold-dim);
+        display: block;
+        margin-bottom: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .rule-block ul {
+        padding-left: 1.25rem;
+        margin-top: 0.3rem;
+      }
+      .rule-block ul li {
+        margin-bottom: 0.3rem;
+      }
+      .rule-block .narratif-tag {
+        display: inline-block;
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--red-bright);
+        border: 1px solid rgba(196, 48, 48, 0.35);
+        border-radius: 2px;
+        padding: 0.1rem 0.4rem;
+        margin-bottom: 0.4rem;
+      }
+      .rule-highlight {
+        background: rgba(200, 160, 40, 0.07);
+        border-color: rgba(200, 160, 40, 0.3);
+      }
+      .rule-alert {
+        background: rgba(139, 28, 28, 0.1);
+        border-color: rgba(139, 28, 28, 0.35);
+      }
 
-    /* PLAYER TAG */
-    .player-tag { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.15rem 0.5rem; border-radius: 2px; margin-right: 0.35rem; }
-    .player-jeremy { background: rgba(34,85,170,0.15); color: #4488dd; border: 1px solid rgba(34,85,170,0.4); }
+      /* PLAYER TAG */
+      .player-tag {
+        display: inline-block;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 0.15rem 0.5rem;
+        border-radius: 2px;
+        margin-right: 0.35rem;
+      }
+      .player-jeremy {
+        background: rgba(34, 85, 170, 0.15);
+        color: #4488dd;
+        border: 1px solid rgba(34, 85, 170, 0.4);
+      }
 
-    /* PROSE */
-    .prose { font-size: 0.95rem; line-height: 1.7; color: var(--text); margin-bottom: 0.75rem; }
-    .prose em { color: var(--muted); }
+      /* PROSE */
+      .prose {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--text);
+        margin-bottom: 0.75rem;
+      }
+      .prose em {
+        color: var(--muted);
+      }
 
-    /* ORNAMENT */
-    .ornament { text-align: center; margin: 2rem 0 1.5rem; }
-    .ornament span { font-family: 'Cinzel', serif; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); padding: 0 1rem; position: relative; }
-    .ornament span::before, .ornament span::after { content: ''; position: absolute; top: 50%; width: 60px; height: 1px; background: var(--faint); }
-    .ornament span::before { right: 100%; }
-    .ornament span::after { left: 100%; }
+      /* ORNAMENT */
+      .ornament {
+        text-align: center;
+        margin: 2rem 0 1.5rem;
+      }
+      .ornament span {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+        padding: 0 1rem;
+        position: relative;
+      }
+      .ornament span::before,
+      .ornament span::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 60px;
+        height: 1px;
+        background: var(--faint);
+      }
+      .ornament span::before {
+        right: 100%;
+      }
+      .ornament span::after {
+        left: 100%;
+      }
 
-    /* FOOTER */
-    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 1.5rem; text-align: center; }
-    .footer-line { font-size: 0.78rem; color: var(--muted); font-style: italic; }
-  </style>
-</head>
-<body>
+      /* FOOTER */
+      footer {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .footer-line {
+        font-size: 0.78rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis">
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
+          >
+            <polygon
+              points="18,2 34,28 2,28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#c8a028"
+            />
+            <circle
+              cx="18"
+              cy="18"
+              r="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#8b1c1c"
+            />
+            <line
+              x1="18"
+              y1="2"
+              x2="18"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="18"
+              y1="24"
+              x2="18"
+              y2="28"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="8.5"
+              y1="22.3"
+              x2="13.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="27.5"
+              y1="22.3"
+              x2="22.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+          </svg>
+          <div>
+            <span class="nav-logo-text">Fyrentis</span>
+            <span class="nav-logo-sub">Campagne 40K</span>
+          </div>
+        </a>
+        <div class="nav-actions">
+          <div class="nav-page-links">
+            <a
+              href="carte.html"
+              class="btn-nav-page btn-nav-page--carte"
+              aria-label="Voir la Carte du secteur"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              Carte
+            </a>
+            <a
+              href="sanctum.html"
+              class="btn-nav-page btn-nav-page--sanctum"
+              aria-label="Accéder au Sanctum"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Sanctum
+            </a>
+            <a
+              href="rapports-inquisiteurs.html"
+              class="btn-nav-page btn-nav-page--inquisition"
+              aria-label="Lire les Rapports Inquisitoriaux"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Inquisition
+            </a>
+          </div>
+          <button
+            class="btn-theme"
+            data-theme-toggle
+            aria-label="Basculer le thème"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="nav-mobile-toggle"
+            id="nav-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <polygon points="18,2 34,28 2,28" fill="none" stroke="currentColor" stroke-width="1.5" color="#c8a028"/>
-        <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.5" color="#8b1c1c"/>
-        <line x1="18" y1="2" x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="8.5" y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
+    <main class="page-wrap">
+      <header class="page-header">
+        <p class="page-eyebrow">Warhammer 40 000 • Campagne Narrative</p>
+        <h1 class="page-title">Règles Narratives</h1>
+        <p class="page-version">Version avril 2026</p>
+      </header>
+
+      <nav class="toc" aria-label="Table des matières">
+        <p class="toc-title">Table des matières</p>
+        <ul class="toc-list">
+          <li><a href="#aptitudes-armes">Aptitudes spéciales des armes</a></li>
+          <li class="toc-sub"><a href="#cac">CAC uniquement</a></li>
+          <li class="toc-sub"><a href="#tir">TIR uniquement</a></li>
+          <li class="toc-sub"><a href="#universelles">Universelles</a></li>
+          <li><a href="#phases">Phases de jeu</a></li>
+          <li class="toc-sub"><a href="#deploiement">Déploiement</a></li>
+          <li class="toc-sub">
+            <a href="#commandement">Phase de Commandement</a>
+          </li>
+          <li class="toc-sub"><a href="#mouvement">Phase de Mouvement</a></li>
+          <li class="toc-sub"><a href="#tir-phase">Phase de Tir</a></li>
+          <li class="toc-sub"><a href="#charge">Phase de Charge</a></li>
+          <li class="toc-sub"><a href="#combat">Phase de Combat</a></li>
+          <li class="toc-sub">
+            <a href="#generiques">Capacités génériques hors phases</a>
+          </li>
+          <li><a href="#decors">Règles des décors</a></li>
+        </ul>
+      </nav>
+
+      <section class="rules-section" id="aptitudes-armes">
+        <h2 class="section-title">Aptitudes spéciales des armes</h2>
+
+        <div class="subsection" id="cac">
+          <p class="subsection-title">CAC uniquement</p>
+          <div class="aptitudes-grid">
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Lance
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >offre +1 à la blesse après une charge réussie.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Attaque bonus
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >ajoute x A d'une arme secondaire.</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection" id="tir">
+          <p class="subsection-title">TIR uniquement</p>
+          <div class="aptitudes-grid">
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Tir rapide x
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val">ajoute x A si tir à mi-portée.</span>
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Tir indirect
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >cibler unité non visible mais avec –1 CT (cible obtient +1
+                Svg).</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Pistolet
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val">permet de tirer au CAC !</span>
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Torrent
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >touche auto !
+                <span class="narratif"
+                  >EFFET NARRATIF = brûle les décors végétaux !</span
+                ></span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Lourd
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >si l'unité est restée immobile elle obtient +1 CT avec cette
+                arme.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Fusion x
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >ajoute x dégâts si tir à mi-portée.
+                <span class="narratif"
+                  >EFFET NARRATIF = peut détruire décors !</span
+                ></span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Assaut
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >offre la possibilité de tirer après un mouvement
+                d'Avance.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Déflagration
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >offre +1A par paquet de 5 figurines présentes dans l'unité
+                ciblée / inutilisable au CAC.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Ignore couvert
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val">annule tout bonus de couvert !</span>
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> A risque
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >après tir 1d6, si 1 la fig meurt (PERSO/ monstre/ véhi eux
+                subissent 3 BM).</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection" id="universelles">
+          <p class="subsection-title">Universelles</p>
+          <div class="aptitudes-grid">
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Jumelé
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >offre relance du jet de blessure.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Touche fatale
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >un jet de 6 à la Touche blesse auto !</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Touche soutenue x
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >ajoute x touches si on obtient un 6 à la Touche.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Blessure dévastatrice
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >si 6 à la blesse les dégâts sont des BM !</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Précision
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >permet de cibler un PERSONNAGE même s'il mène une unité !</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key"
+                ><span class="bracket">[</span> Anti x +
+                <span class="bracket">]</span></span
+              >
+              <span class="aptitude-val"
+                >un jet "x +" correspond à un 6 à la blesse.</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rules-section" id="phases">
+        <h2 class="section-title">Phases de jeu</h2>
+
+        <div class="subsection" id="deploiement">
+          <p class="subsection-title">Déploiement</p>
+          <div class="aptitudes-grid">
+            <div class="aptitude-row">
+              <span class="aptitude-key">( Eclaireur x ps )</span>
+              <span class="aptitude-val"
+                >avant le 1er tour l'unité peut réaliser x ps M (transport lié
+                inclus).</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key">( Infiltrateur )</span>
+              <span class="aptitude-val"
+                >peut être placé n'importe où à plus de 9 ps des unités
+                ennemies.</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection" id="commandement">
+          <p class="subsection-title">Phase de Commandement</p>
+          <div class="rule-block">
+            <p class="prose">
+              Compétences d'armées = Astra Militarum avec Ordres / World Eater
+              avec Bénédictions de Khorne / Space Marines (hors BT) avec le
+              Serment de l'instant…
+            </p>
+            <p class="prose">
+              Chaque joueur gagne 1 PC (pas de limite de gain de PC).
+            </p>
+            <p class="prose">
+              Les unités à demi-effectif (ou mi-PV pour
+              PERSO-monstres-véhicules) doivent réaliser un jet d'ébranlement.
+              Si égal ou supérieur au Cd le jet est réussi. En cas d'échec
+              l'unité ne peut pas être ciblée par un stratagème et ne peut pas
+              contrôler d'objectif ! Elle ne pourra pas non plus réaliser
+              d'action !
+            </p>
+            <p class="prose">
+              <span class="player-tag player-jeremy">Jeremy</span> les Ordres de
+              l'Astra Militarum n'ont plus d'effets sur les unités ébranlées !
+            </p>
+          </div>
+          <div class="rule-block rule-alert">
+            <span class="narratif-tag">Ajout Narratif</span>
+            <strong>Maniement du Warp !</strong>
+            <ul>
+              <li>
+                Unités avec mot clé PSYKER peuvent jeter des sorts (listes et
+                détails à voir avec moi pour garder le secret).
+              </li>
+              <li>
+                Comment jeter un sort ? → Jet de difficulté à réaliser (chaque
+                sort aura son score à réaliser).
+              </li>
+              <li>
+                Périls du Warp = jet de Cd à réaliser après le lancement du
+                sort. Si échec… surprise !
+              </li>
+              <li>
+                Des bonus spécifiques pour renforcer les effets sont possibles
+                mais il y aura des conditions supplémentaires à remplir selon
+                culte (par exemple Nurgle demande le chiffre 7).
+              </li>
+              <li>→ infos via un Codex Librarium plus tard.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection" id="mouvement">
+          <p class="subsection-title">Phase de Mouvement</p>
+          <div class="rule-block">
+            <strong>Bouger ses unités</strong>
+            <ul>
+              <li>Mouvement normal (M de la datasheet).</li>
+              <li>Avance (M + D6).</li>
+              <li>
+                Battre en retraite (au maximum du M de l'unité si voulu) =
+                empêche de tirer et de charger. La retraite d'une unité ébranlée
+                est dangereuse : D6 par fig de l'unité, sur 1-2 une fig est tuée
+                (frappé dans le dos par l'unité engagée au cac).
+              </li>
+              <li>
+                Les décors de plus de 3 ps doivent être comptés comme escaladés
+                donc déduis du total du mouvement.
+              </li>
+            </ul>
+            <p class="prose" style="margin-top: 0.6rem">
+              ( Vol ) = ignore les unités ennemies et les décors dans son
+              déplacement (compté à l'horizontal seulement, l'horizontalité des
+              décors ne compte pas).
+            </p>
+          </div>
+          <div class="rule-block">
+            <strong>Arrivée des renforts</strong>
+            <p class="prose">
+              Les Frappe en profondeur (téléportation ou vol) et les unités
+              arrivant à pied seront à la discrétion du scénario.
+            </p>
+            <p class="prose">
+              Véhicules / Monstre v10 supprimé : pas de pivot compté dans le
+              mouvement !
+            </p>
+          </div>
+          <div class="rule-block">
+            <strong>Transport</strong>
+            <ul>
+              <li>
+                Une unité réalisant un M, une Avance ou une Retraite arrivant à
+                3 ps du véhicule peut embarquer (on rentre !).
+              </li>
+              <li>
+                Unité dans transport peut débarquer à 3 ps de lui (on sort !).
+              </li>
+              <li>
+                Une unité ne peut pas débarquer d'un transport ayant fait une
+                Avance ou une Retraite (le conducteur manœuvre chef !).
+              </li>
+              <li>
+                S'il est détruit les unités embarquées comptent comme ayant fait
+                un mouvement pour ce round en débarquant ! En plus de subir les
+                affres de la destruction : D6 par fig, si 1 une fig subit 1 BM.
+              </li>
+            </ul>
+          </div>
+          <div class="rule-block rule-alert">
+            <span class="narratif-tag">Ajout Narratif</span>
+            <strong>"Charger à travers les flammes" (0 PC)</strong>
+            <p class="prose">
+              Permet à une unité de réaliser une Avance ou une Charge (si unité
+              ennemie à 12 ps) lorsque son transport est détruit mais elle
+              subira ceci : ébranlée et D3 BM obligatoire. Si elle traverse une
+              unité ennemie pour réaliser cette action ça sera D6 BM !
+            </p>
+          </div>
+          <div class="rule-block rule-alert">
+            <span class="narratif-tag">Ajout Narratif</span>
+            <strong
+              >Stratagème "On y vas !" — Charger depuis un transport</strong
+            >
+            <p class="prose">
+              Une unité ne peut pas charger d'un transport qui vient de bouger,
+              cela dit elle peut débarquer de celui-ci (hors "rampe d'assaut").
+              Le stratagème générique <em>"On y vas !"</em> permet de charger
+              malgré tout à certaines conditions :
+            </p>
+            <ul>
+              <li>Jet de Cd réussi</li>
+              <li>Ennemi à 12 ps</li>
+              <li>Réussir le jet de charge</li>
+            </ul>
+            <p class="prose" style="margin-top: 0.5rem">
+              ⚠️ Bonus pour l'adversaire : s'il décide d'utiliser le stratagème
+              <em>"Tir en état d'alerte"</em>, le jet pour toucher sera de
+              <strong>5+</strong> au lieu de 6+ (sans autre bonus cumulable
+              possible) — descendez les avant qu'ils n'approchent !
+            </p>
+          </div>
+        </div>
+
+        <div class="subsection" id="tir-phase">
+          <p class="subsection-title">Phase de Tir</p>
+          <div class="rule-block">
+            <p class="prose">
+              Une unité ne peut pas tirer si elle a réalisé une Avance ou une
+              Retraite.
+            </p>
+          </div>
+          <div class="rule-block">
+            <strong>Paradis des gros calibres</strong>
+            <ul>
+              <li>
+                Un Monstre ou un Véhicule peut tirer avec ses armes au CAC.
+              </li>
+              <li>
+                Il peut cibler une autre unité avec qui il n'est pas au CAC mais
+                avec un malus de – 1 CT.
+              </li>
+              <li>
+                Il peut être ciblé par une unité adverse (non engagée au CAC)
+                mais avec un malus de – 1 CT (tirez sur le gros mais gaffe aux
+                copains !)
+              </li>
+            </ul>
+            <p class="prose" style="margin-top: 0.6rem">
+              ( Agent solitaire ) = unité inciblable à plus de 12 ps.<br />
+              ( Discrétion ) = -1 à la CT pour cibler cette unité.<br />
+              Les malus et bonus à la CT sont cumulables (plus y en a, mieux
+              c'est…) !
+            </p>
+          </div>
+          <div class="rule-block rule-highlight">
+            <strong>INSPI V11 + narratif</strong>
+            <ul>
+              <li>
+                Une unité TITANESQUE qui tire sur une cible n'ayant pas ce mot
+                clé obtient un bonus de +1 CT (écraser les fourmis !).
+              </li>
+              <li>
+                Une unité étant à 5 ps de hauteur de plus que sa cible aura +1
+                CT contre elle.
+              </li>
+              <li>
+                Une unité étant dans un décor et n'ayant pas tiré est inciblable
+                à plus de 15 ps ! (chut, ils ne nous ont pas vue…).
+              </li>
+            </ul>
+            <p class="prose" style="margin-top: 0.6rem">
+              Arme psychique = cela sera à la discrétion du scénario et au cas
+              par cas avec moi mais le plus souvent cela correspondra à un effet
+              appliqué ou plus de dégâts.
+            </p>
+          </div>
+          <div class="rule-block rule-alert">
+            <span class="narratif-tag">Ajout Narratif</span>
+            <strong>"Tir miraculeux"</strong>
+            <p class="prose">
+              Peut être tenté par une unité si elle cible une cible unique et
+              que cette cible est un Monstre ou un Véhicule (ou autres cas
+              particuliers) : auquel cas si un jet de touche de 6 est réalisé,
+              la cible sera la victime d'un acte décrit par le tireur (viser les
+              réservoirs, les roues, la tête etc) !
+            </p>
+            <p class="prose">
+              Un bonus de +1 peut être offert si l'unité réussit un jet de Cd
+              mais si elle échoue l'action est impossible… à vous de voir entre
+              la sécurité et le panache !
+            </p>
+          </div>
+        </div>
+
+        <div class="subsection" id="charge">
+          <p class="subsection-title">Phase de Charge</p>
+          <div class="rule-block rule-highlight">
+            <strong>Inspi V11</strong>
+            <p class="prose">
+              Pour qu'une unité réalise une charge il n'y a plus à annoncer la
+              cible, s'il y a des unités à 12 ps alors on jette et si un score
+              permet d'engager au CAC l'unité fonce vers la cible choisie après
+              le jet ! Le jet se fait donc avant tout ciblage ou réflexion de la
+              part du joueur sur qui ou quoi charger. Cependant l'unité pourra
+              se manger un Tir en état d'alerte.
+            </p>
+            <p class="prose">
+              Réaliser une charge demande de jeter 2D6 et une unité ennemie à 12
+              ps.
+            </p>
+            <p class="prose">
+              Certains décors auront cet effet (je préciserai quand ça sera le
+              cas) = si décors de plus de 3 ps de haut à franchir (bloque pour
+              une raison ou une autre la charge), il ralenti la course et doit
+              compter dans le total de la charge.
+            </p>
+            <p class="prose">
+              Réussir une charge offre Combat en premier à l'unité.
+            </p>
+          </div>
+        </div>
+
+        <div class="subsection" id="combat">
+          <p class="subsection-title">Phase de Combat</p>
+          <div class="rule-block">
+            <strong>Ordre de passage</strong>
+            <p class="prose">Unités ayant Combat en premier / Autres unités.</p>
+            <p class="prose">
+              Le mouvement d'engagement de 3 ps s'effectue à l'activation de
+              l'unité concernée. Ce mouvement correspond à l'engagement du corps
+              à corps par l'unité et permet d'engluer l'adversaire (ou de
+              préparer une fuite…).
+            </p>
+          </div>
+          <div class="rule-block rule-alert">
+            <span class="narratif-tag">Ajout Narratif</span>
+            <p class="prose">
+              La consolidation (mouvement de 3ps) se fait en une seule fois pour
+              chaque armée tout en respectant l'ordre de passage des unités.
+            </p>
+            <p class="prose">
+              Une unité peut consolider vers un objectif ou l'unité ennemie la
+              plus proche.
+            </p>
+            <p class="prose">
+              Arme psychique = cela sera à la discrétion du scénario et au cas
+              par cas avec moi mais le plus souvent cela correspondra à un effet
+              appliqué ou plus de dégâts.
+            </p>
+          </div>
+        </div>
+
+        <div class="subsection" id="generiques">
+          <p class="subsection-title">Capacités génériques hors phases</p>
+          <div class="aptitudes-grid">
+            <div class="aptitude-row">
+              <span class="aptitude-key">( Aura )</span>
+              <span class="aptitude-val"
+                >affecte unités à 6 ps ainsi que l'unité ayant cette
+                aptitude.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key">( Insensible à la douleur x+ )</span>
+              <span class="aptitude-val"
+                >quand doit perdre des PV, cette unité jette 1D6 : sur "x+" le
+                PV n'est pas perdu (il a le cuir épais le salaud !).</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key">( Destruction néfaste )</span>
+              <span class="aptitude-val"
+                >si l'unité est détruite, elle inflige x BM à 6 ps sur un
+                6.</span
+              >
+            </div>
+            <div class="aptitude-row">
+              <span class="aptitude-key">( Pont de tir x )</span>
+              <span class="aptitude-val"
+                >permet à x fig d'une unité embarquée de tirer via le
+                transport.</span
+              >
+            </div>
+          </div>
+          <div class="rule-block rule-alert" style="margin-top: 0.75rem">
+            <span class="narratif-tag">Modifications Narratif</span>
+            <ul>
+              <li>
+                Un PERSONNAGE garde ses capacités de meneur même quand son
+                escorte (unité menée) est anéantie.
+              </li>
+              <li>
+                Tenir un objectif sera à la discrétion du scénario et on oublie
+                les règles classiques (cela sera plus proche de l'annonce de la
+                V11).
+              </li>
+            </ul>
+          </div>
+          <div class="rule-block rule-highlight" style="margin-top: 0.55rem">
+            <strong>Stratagème Grenade</strong>
+            <p class="prose">
+              Le stratagème Grenade n'implique qu'une figurine d'une unité, mais
+              cette figurine ne peut pas tirer ni combattre hormis si c'est un
+              Personnage (une chef ça c'est tout faire !).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rules-section" id="decors">
+        <h2 class="section-title">Règles des décors</h2>
+
+        <div class="subsection">
+          <p class="subsection-title">Le couvert</p>
+          <div class="rule-block">
+            <p class="prose">
+              Offre + 1 Svg à l'unité. Si celle-ci à une Svg de 3+ et que l'arme
+              utilisée n'a aucune PA alors il n'y a aucun bonus (quand on a une
+              armure énergétique on ne craint pas les balles classiques !).
+            </p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <p class="subsection-title">Monstres et Véhicules contre le décor</p>
+          <div class="rule-block">
+            <p class="prose">
+              Une unité ayant ce mot-clé peut défoncer les décors !
+            </p>
+            <strong>Comment cela se passe ?</strong>
+            <p class="prose">
+              Un mastodonte souhaite défoncer un mur et passer à travers le
+              décor qu'il ne peut normalement pas traverser. Il doit réaliser un
+              jet selon son E : si moins de 9 E 2D6 et si +10 E 3D6.
+            </p>
+            <ul>
+              <li>
+                Si le score obtenu est inférieur à l'E de l'unité : aie le
+                bâtiment était plus solide que prévu et l'unité subit 1D3 BM.
+                Son mouvement est stoppé au point d'impact et elle ne peut plus
+                bouger pour ce tour.
+              </li>
+              <li>
+                Si le score obtenu est égal ou supérieur à l'E : le mur est
+                passé et cela compte comme un tir lourd encaissé par le décor !
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <p class="subsection-title">Armes lourdes contre le décor</p>
+          <div class="rule-block">
+            <p class="prose">
+              Une arme ayant une F de 10 + pourra exploser les décors ciblés !
+              Les armes ayant [Fusion] ont le même effet.
+            </p>
+            <strong>Comment cela se passe ?</strong>
+            <p class="prose">
+              Si par deux fois, une arme F 10+ cible une unité dans un décors
+              alors le décor subira un jet spécial (à ma discrétion) : 2D6 → 1-4
+              le décor s'effondre (voir plus bas) ! / 5-8 des décombres tombent
+              sur les unités placées dedans et celles-ci subissent D3 BM / 9-12
+              rien ne se passe.
+            </p>
+            <p class="prose">
+              Donc il faut minimum deux tirs lourds réussis ciblant un décor
+              pour que cela arrive.
+            </p>
+            <strong>Un décor s'effondre — que se passe-t-il ?</strong>
+            <p class="prose">
+              Catastrophe, le bâtiment ne supporte pas la puissance de l'impact
+              ! Les unités dedans pourront tenter un jet d'Avance "Vite, sortons
+              !" (M + D6) pour évacuer mais du coup compteront comme ayant
+              avancé et donc pas de charge ni de mouvement à ce round.
+            </p>
+            <p class="prose">
+              Si les unités ne bouge pas elles subissent D6 BM par étage de
+              chute. Si au contraire elles sont au rez-de-chaussée elles
+              subiront D3 BM par étage leur tombant dessus.
+            </p>
+          </div>
+        </div>
+
+        <div class="ornament"><span>Types de décors</span></div>
+
+        <div class="rule-block">
+          <strong>Forêts / bois / zones végétales épaisses</strong>
+          <ul>
+            <li>Offre un couvert.</li>
+            <li>
+              Ce décor peut être détruit par une arme type lance-flamme
+              (torrent) !
+            </li>
+            <li>
+              Les unités placées dedans alors que le décor brûle subiront 1BM
+              par fig !
+            </li>
+            <li>
+              Selon la planète / scénario certaines zones végétales bloqueront
+              les Monstres et Véhicules.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <strong>Cratères</strong>
+          <ul>
+            <li>Offre un couvert.</li>
+            <li>Franchissable par les unités comme s'il n'y avait rien.</li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <strong
+            >Barricades / décors de 2 ps de haut type tuyaux ou autres</strong
+          >
+          <ul>
+            <li>
+              Offre couvert selon l'axe d'observation et si l'unité est située
+              entièrement à 3 ps.
+            </li>
+            <li>
+              Offre + 1 ps de portée au CAC (en gros l'unité qui vient impacter
+              porte ses coups par-delà le décors).
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <strong>Statues ou monuments proches</strong>
+          <ul>
+            <li>Offre couvert selon l'axe d'observation.</li>
+            <li>Si détruite =</li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <strong
+            >Ruines de bâtiments ouvertes (unités peuvent être placée
+            dedans)</strong
+          >
+          <ul>
+            <li>Offre un couvert (dedans ou selon l'axe d'observation).</li>
+            <li>
+              M compté pour monter aux possibles étages (petit rappel : un char
+              ne monte pas un escalier héhé).
+            </li>
+            <li>Bloque les Véhicules et les Monstres.</li>
+            <li>Si détruite =</li>
+          </ul>
+        </div>
+
+        <div class="rule-block rule-alert">
+          <strong>Bâtiments narratifs</strong>
+          <p class="prose">
+            auront des règles et des effets selon le scénario.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Sous-Secteur Fyrentis</div>
+        <p class="footer-line">
+          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
+        </p>
+        <p class="footer-line">
+          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
+        </p>
+      </div>
+    </footer>
+
+    <a href="#" class="back-top" id="back-top" aria-label="Retour en haut">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 12 9 6 15" />
       </svg>
-      <div>
-        <span class="nav-logo-text">Fyrentis</span>
-        <span class="nav-logo-sub">Campagne 40K</span>
-      </div>
     </a>
-    <div class="nav-actions">
-      <div class="nav-page-links">
-        <a href="carte.html" class="btn-nav-page btn-nav-page--carte" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          Carte
-        </a>
-        <a href="sanctum.html" class="btn-nav-page btn-nav-page--sanctum" aria-label="Accéder au Sanctum">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Sanctum
-        </a>
-        <a href="rapports-inquisiteurs.html" class="btn-nav-page btn-nav-page--inquisition" aria-label="Lire les Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Inquisition
-        </a>
-      </div>
-      <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
 
-<main class="page-wrap">
+    <script>
+      (function () {
+        // ── THEME TOGGLE
+        const themeBtn = document.querySelector("[data-theme-toggle]");
+        const root = document.documentElement;
+        let theme =
+          root.getAttribute("data-theme") ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        root.setAttribute("data-theme", theme);
+        function updateThemeBtn() {
+          if (!themeBtn) return;
+          themeBtn.innerHTML =
+            theme === "dark"
+              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+          themeBtn.setAttribute(
+            "aria-label",
+            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
+          );
+        }
+        updateThemeBtn();
+        if (themeBtn)
+          themeBtn.addEventListener("click", () => {
+            theme = theme === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", theme);
+            updateThemeBtn();
+          });
 
-  <header class="page-header">
-    <p class="page-eyebrow">Warhammer 40 000 • Campagne Narrative</p>
-    <h1 class="page-title">Règles Narratives</h1>
-    <p class="page-version">Version avril 2026</p>
-  </header>
+        // ── MOBILE NAV
+        const navToggle = document.getElementById("nav-toggle");
+        const navLinks = document.getElementById("nav-links");
+        if (navToggle && navLinks) {
+          navToggle.addEventListener("click", () => {
+            const open = navLinks.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", open);
+          });
+          navLinks.querySelectorAll("a").forEach((a) =>
+            a.addEventListener("click", () => {
+              navLinks.classList.remove("open");
+              navToggle.setAttribute("aria-expanded", "false");
+            }),
+          );
+        }
 
-  <nav class="toc" aria-label="Table des matières">
-    <p class="toc-title">Table des matières</p>
-    <ul class="toc-list">
-      <li><a href="#aptitudes-armes">Aptitudes spéciales des armes</a></li>
-      <li class="toc-sub"><a href="#cac">CAC uniquement</a></li>
-      <li class="toc-sub"><a href="#tir">TIR uniquement</a></li>
-      <li class="toc-sub"><a href="#universelles">Universelles</a></li>
-      <li><a href="#phases">Phases de jeu</a></li>
-      <li class="toc-sub"><a href="#deploiement">Déploiement</a></li>
-      <li class="toc-sub"><a href="#commandement">Phase de Commandement</a></li>
-      <li class="toc-sub"><a href="#mouvement">Phase de Mouvement</a></li>
-      <li class="toc-sub"><a href="#tir-phase">Phase de Tir</a></li>
-      <li class="toc-sub"><a href="#charge">Phase de Charge</a></li>
-      <li class="toc-sub"><a href="#combat">Phase de Combat</a></li>
-      <li class="toc-sub"><a href="#generiques">Capacités génériques hors phases</a></li>
-      <li><a href="#decors">Règles des décors</a></li>
-    </ul>
-  </nav>
-
-  <section class="rules-section" id="aptitudes-armes">
-    <h2 class="section-title">Aptitudes spéciales des armes</h2>
-
-    <div class="subsection" id="cac">
-      <p class="subsection-title">CAC uniquement</p>
-      <div class="aptitudes-grid">
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Lance <span class="bracket">]</span></span>
-          <span class="aptitude-val">offre +1 à la blesse après une charge réussie.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Attaque bonus <span class="bracket">]</span></span>
-          <span class="aptitude-val">ajoute x A d'une arme secondaire.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection" id="tir">
-      <p class="subsection-title">TIR uniquement</p>
-      <div class="aptitudes-grid">
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Tir rapide x <span class="bracket">]</span></span>
-          <span class="aptitude-val">ajoute x A si tir à mi-portée.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Tir indirect <span class="bracket">]</span></span>
-          <span class="aptitude-val">cibler unité non visible mais avec –1 CT (cible obtient +1 Svg).</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Pistolet <span class="bracket">]</span></span>
-          <span class="aptitude-val">permet de tirer au CAC !</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Torrent <span class="bracket">]</span></span>
-          <span class="aptitude-val">touche auto ! <span class="narratif">EFFET NARRATIF = brûle les décors végétaux !</span></span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Lourd <span class="bracket">]</span></span>
-          <span class="aptitude-val">si l'unité est restée immobile elle obtient +1 CT avec cette arme.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Fusion x <span class="bracket">]</span></span>
-          <span class="aptitude-val">ajoute x dégâts si tir à mi-portée. <span class="narratif">EFFET NARRATIF = peut détruire décors !</span></span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Assaut <span class="bracket">]</span></span>
-          <span class="aptitude-val">offre la possibilité de tirer après un mouvement d'Avance.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Déflagration <span class="bracket">]</span></span>
-          <span class="aptitude-val">offre +1A par paquet de 5 figurines présentes dans l'unité ciblée / inutilisable au CAC.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Ignore couvert <span class="bracket">]</span></span>
-          <span class="aptitude-val">annule tout bonus de couvert !</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> A risque <span class="bracket">]</span></span>
-          <span class="aptitude-val">après tir 1d6, si 1 la fig meurt (PERSO/ monstre/ véhi eux subissent 3 BM).</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection" id="universelles">
-      <p class="subsection-title">Universelles</p>
-      <div class="aptitudes-grid">
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Jumelé <span class="bracket">]</span></span>
-          <span class="aptitude-val">offre relance du jet de blessure.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Touche fatale <span class="bracket">]</span></span>
-          <span class="aptitude-val">un jet de 6 à la Touche blesse auto !</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Touche soutenue x <span class="bracket">]</span></span>
-          <span class="aptitude-val">ajoute x touches si on obtient un 6 à la Touche.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Blessure dévastatrice <span class="bracket">]</span></span>
-          <span class="aptitude-val">si 6 à la blesse les dégâts sont des BM !</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Précision <span class="bracket">]</span></span>
-          <span class="aptitude-val">permet de cibler un PERSONNAGE même s'il mène une unité !</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key"><span class="bracket">[</span> Anti x + <span class="bracket">]</span></span>
-          <span class="aptitude-val">un jet "x +" correspond à un 6 à la blesse.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="rules-section" id="phases">
-    <h2 class="section-title">Phases de jeu</h2>
-
-    <div class="subsection" id="deploiement">
-      <p class="subsection-title">Déploiement</p>
-      <div class="aptitudes-grid">
-        <div class="aptitude-row">
-          <span class="aptitude-key">( Eclaireur x ps )</span>
-          <span class="aptitude-val">avant le 1er tour l'unité peut réaliser x ps M (transport lié inclus).</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key">( Infiltrateur )</span>
-          <span class="aptitude-val">peut être placé n'importe où à plus de 9 ps des unités ennemies.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection" id="commandement">
-      <p class="subsection-title">Phase de Commandement</p>
-      <div class="rule-block">
-        <p class="prose">Compétences d'armées = Astra Militarum avec Ordres / World Eater avec Bénédictions de Khorne / Space Marines (hors BT) avec le Serment de l'instant…</p>
-        <p class="prose">Chaque joueur gagne 1 PC (pas de limite de gain de PC).</p>
-        <p class="prose">Les unités à demi-effectif (ou mi-PV pour PERSO-monstres-véhicules) doivent réaliser un jet d'ébranlement. Si égal ou supérieur au Cd le jet est réussi. En cas d'échec l'unité ne peut pas être ciblée par un stratagème et ne peut pas contrôler d'objectif ! Elle ne pourra pas non plus réaliser d'action !</p>
-        <p class="prose"><span class="player-tag player-jeremy">Jeremy</span> les Ordres de l'Astra Militarum n'ont plus d'effets sur les unités ébranlées !</p>
-      </div>
-      <div class="rule-block rule-alert">
-        <span class="narratif-tag">Ajout Narratif</span>
-        <strong>Maniement du Warp !</strong>
-        <ul>
-          <li>Unités avec mot clé PSYKER peuvent jeter des sorts (listes et détails à voir avec moi pour garder le secret).</li>
-          <li>Comment jeter un sort ? → Jet de difficulté à réaliser (chaque sort aura son score à réaliser).</li>
-          <li>Périls du Warp = jet de Cd à réaliser après le lancement du sort. Si échec… surprise !</li>
-          <li>Des bonus spécifiques pour renforcer les effets sont possibles mais il y aura des conditions supplémentaires à remplir selon culte (par exemple Nurgle demande le chiffre 7).</li>
-          <li>→ infos via un Codex Librarium plus tard.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="subsection" id="mouvement">
-      <p class="subsection-title">Phase de Mouvement</p>
-      <div class="rule-block">
-        <strong>Bouger ses unités</strong>
-        <ul>
-          <li>Mouvement normal (M de la datasheet).</li>
-          <li>Avance (M + D6).</li>
-          <li>Battre en retraite (au maximum du M de l'unité si voulu) = empêche de tirer et de charger. La retraite d'une unité ébranlée est dangereuse : D6 par fig de l'unité, sur 1-2 une fig est tuée (frappé dans le dos par l'unité engagée au cac).</li>
-          <li>Les décors de plus de 3 ps doivent être comptés comme escaladés donc déduis du total du mouvement.</li>
-        </ul>
-        <p class="prose" style="margin-top:0.6rem">( Vol ) = ignore les unités ennemies et les décors dans son déplacement (compté à l'horizontal seulement, l'horizontalité des décors ne compte pas).</p>
-      </div>
-      <div class="rule-block">
-        <strong>Arrivée des renforts</strong>
-        <p class="prose">Les Frappe en profondeur (téléportation ou vol) et les unités arrivant à pied seront à la discrétion du scénario.</p>
-        <p class="prose">Véhicules / Monstre v10 supprimé : pas de pivot compté dans le mouvement !</p>
-      </div>
-      <div class="rule-block">
-        <strong>Transport</strong>
-        <ul>
-          <li>Une unité réalisant un M, une Avance ou une Retraite arrivant à 3 ps du véhicule peut embarquer (on rentre !).</li>
-          <li>Unité dans transport peut débarquer à 3 ps de lui (on sort !).</li>
-          <li>Une unité ne peut pas débarquer d'un transport ayant fait une Avance ou une Retraite (le conducteur manœuvre chef !).</li>
-          <li>S'il est détruit les unités embarquées comptent comme ayant fait un mouvement pour ce round en débarquant ! En plus de subir les affres de la destruction : D6 par fig, si 1 une fig subit 1 BM.</li>
-        </ul>
-      </div>
-      <div class="rule-block rule-alert">
-        <span class="narratif-tag">Ajout Narratif</span>
-        <strong>"Charger à travers les flammes" (0 PC)</strong>
-        <p class="prose">Permet à une unité de réaliser une Avance ou une Charge (si unité ennemie à 12 ps) lorsque son transport est détruit mais elle subira ceci : ébranlée et D3 BM obligatoire. Si elle traverse une unité ennemie pour réaliser cette action ça sera D6 BM !</p>
-      </div>
-      <div class="rule-block rule-alert">
-        <span class="narratif-tag">Ajout Narratif</span>
-        <strong>Stratagème "On y vas !" — Charger depuis un transport</strong>
-        <p class="prose">Une unité ne peut pas charger d'un transport qui vient de bouger, cela dit elle peut débarquer de celui-ci (hors "rampe d'assaut"). Le stratagème générique <em>"On y vas !"</em> permet de charger malgré tout à certaines conditions :</p>
-        <ul>
-          <li>Jet de Cd réussi</li>
-          <li>Ennemi à 12 ps</li>
-          <li>Réussir le jet de charge</li>
-        </ul>
-        <p class="prose" style="margin-top:0.5rem">⚠️ Bonus pour l'adversaire : s'il décide d'utiliser le stratagème <em>"Tir en état d'alerte"</em>, le jet pour toucher sera de <strong>5+</strong> au lieu de 6+ (sans autre bonus cumulable possible) — descendez les avant qu'ils n'approchent !</p>
-      </div>
-    </div>
-
-    <div class="subsection" id="tir-phase">
-      <p class="subsection-title">Phase de Tir</p>
-      <div class="rule-block">
-        <p class="prose">Une unité ne peut pas tirer si elle a réalisé une Avance ou une Retraite.</p>
-      </div>
-      <div class="rule-block">
-        <strong>Paradis des gros calibres</strong>
-        <ul>
-          <li>Un Monstre ou un Véhicule peut tirer avec ses armes au CAC.</li>
-          <li>Il peut cibler une autre unité avec qui il n'est pas au CAC mais avec un malus de – 1 CT.</li>
-          <li>Il peut être ciblé par une unité adverse (non engagée au CAC) mais avec un malus de – 1 CT (tirez sur le gros mais gaffe aux copains !)</li>
-        </ul>
-        <p class="prose" style="margin-top:0.6rem">( Agent solitaire ) = unité inciblable à plus de 12 ps.<br>
-        ( Discrétion ) = -1 à la CT pour cibler cette unité.<br>
-        Les malus et bonus à la CT sont cumulables (plus y en a, mieux c'est…) !</p>
-      </div>
-      <div class="rule-block rule-highlight">
-        <strong>INSPI V11 + narratif</strong>
-        <ul>
-          <li>Une unité TITANESQUE qui tire sur une cible n'ayant pas ce mot clé obtient un bonus de +1 CT (écraser les fourmis !).</li>
-          <li>Une unité étant à 5 ps de hauteur de plus que sa cible aura +1 CT contre elle.</li>
-          <li>Une unité étant dans un décor et n'ayant pas tiré est inciblable à plus de 15 ps ! (chut, ils ne nous ont pas vue…).</li>
-        </ul>
-        <p class="prose" style="margin-top:0.6rem">Arme psychique = cela sera à la discrétion du scénario et au cas par cas avec moi mais le plus souvent cela correspondra à un effet appliqué ou plus de dégâts.</p>
-      </div>
-      <div class="rule-block rule-alert">
-        <span class="narratif-tag">Ajout Narratif</span>
-        <strong>"Tir miraculeux"</strong>
-        <p class="prose">Peut être tenté par une unité si elle cible une cible unique et que cette cible est un Monstre ou un Véhicule (ou autres cas particuliers) : auquel cas si un jet de touche de 6 est réalisé, la cible sera la victime d'un acte décrit par le tireur (viser les réservoirs, les roues, la tête etc) !</p>
-        <p class="prose">Un bonus de +1 peut être offert si l'unité réussit un jet de Cd mais si elle échoue l'action est impossible… à vous de voir entre la sécurité et le panache !</p>
-      </div>
-    </div>
-
-    <div class="subsection" id="charge">
-      <p class="subsection-title">Phase de Charge</p>
-      <div class="rule-block rule-highlight">
-        <strong>Inspi V11</strong>
-        <p class="prose">Pour qu'une unité réalise une charge il n'y a plus à annoncer la cible, s'il y a des unités à 12 ps alors on jette et si un score permet d'engager au CAC l'unité fonce vers la cible choisie après le jet ! Le jet se fait donc avant tout ciblage ou réflexion de la part du joueur sur qui ou quoi charger. Cependant l'unité pourra se manger un Tir en état d'alerte.</p>
-        <p class="prose">Réaliser une charge demande de jeter 2D6 et une unité ennemie à 12 ps.</p>
-        <p class="prose">Certains décors auront cet effet (je préciserai quand ça sera le cas) = si décors de plus de 3 ps de haut à franchir (bloque pour une raison ou une autre la charge), il ralenti la course et doit compter dans le total de la charge.</p>
-        <p class="prose">Réussir une charge offre Combat en premier à l'unité.</p>
-      </div>
-    </div>
-
-    <div class="subsection" id="combat">
-      <p class="subsection-title">Phase de Combat</p>
-      <div class="rule-block">
-        <strong>Ordre de passage</strong>
-        <p class="prose">Unités ayant Combat en premier / Autres unités.</p>
-        <p class="prose">Le mouvement d'engagement de 3 ps s'effectue à l'activation de l'unité concernée. Ce mouvement correspond à l'engagement du corps à corps par l'unité et permet d'engluer l'adversaire (ou de préparer une fuite…).</p>
-      </div>
-      <div class="rule-block rule-alert">
-        <span class="narratif-tag">Ajout Narratif</span>
-        <p class="prose">La consolidation (mouvement de 3ps) se fait en une seule fois pour chaque armée tout en respectant l'ordre de passage des unités.</p>
-        <p class="prose">Une unité peut consolider vers un objectif ou l'unité ennemie la plus proche.</p>
-        <p class="prose">Arme psychique = cela sera à la discrétion du scénario et au cas par cas avec moi mais le plus souvent cela correspondra à un effet appliqué ou plus de dégâts.</p>
-      </div>
-    </div>
-
-    <div class="subsection" id="generiques">
-      <p class="subsection-title">Capacités génériques hors phases</p>
-      <div class="aptitudes-grid">
-        <div class="aptitude-row">
-          <span class="aptitude-key">( Aura )</span>
-          <span class="aptitude-val">affecte unités à 6 ps ainsi que l'unité ayant cette aptitude.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key">( Insensible à la douleur x+ )</span>
-          <span class="aptitude-val">quand doit perdre des PV, cette unité jette 1D6 : sur "x+" le PV n'est pas perdu (il a le cuir épais le salaud !).</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key">( Destruction néfaste )</span>
-          <span class="aptitude-val">si l'unité est détruite, elle inflige x BM à 6 ps sur un 6.</span>
-        </div>
-        <div class="aptitude-row">
-          <span class="aptitude-key">( Pont de tir x )</span>
-          <span class="aptitude-val">permet à x fig d'une unité embarquée de tirer via le transport.</span>
-        </div>
-      </div>
-      <div class="rule-block rule-alert" style="margin-top:0.75rem">
-        <span class="narratif-tag">Modifications Narratif</span>
-        <ul>
-          <li>Un PERSONNAGE garde ses capacités de meneur même quand son escorte (unité menée) est anéantie.</li>
-          <li>Tenir un objectif sera à la discrétion du scénario et on oublie les règles classiques (cela sera plus proche de l'annonce de la V11).</li>
-        </ul>
-      </div>
-      <div class="rule-block rule-highlight" style="margin-top:0.55rem">
-        <strong>Stratagème Grenade</strong>
-        <p class="prose">Le stratagème Grenade n'implique qu'une figurine d'une unité, mais cette figurine ne peut pas tirer ni combattre hormis si c'est un Personnage (une chef ça c'est tout faire !).</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="rules-section" id="decors">
-    <h2 class="section-title">Règles des décors</h2>
-
-    <div class="subsection">
-      <p class="subsection-title">Le couvert</p>
-      <div class="rule-block">
-        <p class="prose">Offre + 1 Svg à l'unité. Si celle-ci à une Svg de 3+ et que l'arme utilisée n'a aucune PA alors il n'y a aucun bonus (quand on a une armure énergétique on ne craint pas les balles classiques !).</p>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <p class="subsection-title">Monstres et Véhicules contre le décor</p>
-      <div class="rule-block">
-        <p class="prose">Une unité ayant ce mot-clé peut défoncer les décors !</p>
-        <strong>Comment cela se passe ?</strong>
-        <p class="prose">Un mastodonte souhaite défoncer un mur et passer à travers le décor qu'il ne peut normalement pas traverser. Il doit réaliser un jet selon son E : si moins de 9 E 2D6 et si +10 E 3D6.</p>
-        <ul>
-          <li>Si le score obtenu est inférieur à l'E de l'unité : aie le bâtiment était plus solide que prévu et l'unité subit 1D3 BM. Son mouvement est stoppé au point d'impact et elle ne peut plus bouger pour ce tour.</li>
-          <li>Si le score obtenu est égal ou supérieur à l'E : le mur est passé et cela compte comme un tir lourd encaissé par le décor !</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <p class="subsection-title">Armes lourdes contre le décor</p>
-      <div class="rule-block">
-        <p class="prose">Une arme ayant une F de 10 + pourra exploser les décors ciblés ! Les armes ayant [Fusion] ont le même effet.</p>
-        <strong>Comment cela se passe ?</strong>
-        <p class="prose">Si par deux fois, une arme F 10+ cible une unité dans un décors alors le décor subira un jet spécial (à ma discrétion) : 2D6 → 1-4 le décor s'effondre (voir plus bas) ! / 5-8 des décombres tombent sur les unités placées dedans et celles-ci subissent D3 BM / 9-12 rien ne se passe.</p>
-        <p class="prose">Donc il faut minimum deux tirs lourds réussis ciblant un décor pour que cela arrive.</p>
-        <strong>Un décor s'effondre — que se passe-t-il ?</strong>
-        <p class="prose">Catastrophe, le bâtiment ne supporte pas la puissance de l'impact ! Les unités dedans pourront tenter un jet d'Avance "Vite, sortons !" (M + D6) pour évacuer mais du coup compteront comme ayant avancé et donc pas de charge ni de mouvement à ce round.</p>
-        <p class="prose">Si les unités ne bouge pas elles subissent D6 BM par étage de chute. Si au contraire elles sont au rez-de-chaussée elles subiront D3 BM par étage leur tombant dessus.</p>
-      </div>
-    </div>
-
-    <div class="ornament"><span>Types de décors</span></div>
-
-    <div class="rule-block">
-      <strong>Forêts / bois / zones végétales épaisses</strong>
-      <ul>
-        <li>Offre un couvert.</li>
-        <li>Ce décor peut être détruit par une arme type lance-flamme (torrent) !</li>
-        <li>Les unités placées dedans alors que le décor brûle subiront 1BM par fig !</li>
-        <li>Selon la planète / scénario certaines zones végétales bloqueront les Monstres et Véhicules.</li>
-      </ul>
-    </div>
-
-    <div class="rule-block">
-      <strong>Cratères</strong>
-      <ul>
-        <li>Offre un couvert.</li>
-        <li>Franchissable par les unités comme s'il n'y avait rien.</li>
-      </ul>
-    </div>
-
-    <div class="rule-block">
-      <strong>Barricades / décors de 2 ps de haut type tuyaux ou autres</strong>
-      <ul>
-        <li>Offre couvert selon l'axe d'observation et si l'unité est située entièrement à 3 ps.</li>
-        <li>Offre + 1 ps de portée au CAC (en gros l'unité qui vient impacter porte ses coups par-delà le décors).</li>
-      </ul>
-    </div>
-
-    <div class="rule-block">
-      <strong>Statues ou monuments proches</strong>
-      <ul>
-        <li>Offre couvert selon l'axe d'observation.</li>
-        <li>Si détruite =</li>
-      </ul>
-    </div>
-
-    <div class="rule-block">
-      <strong>Ruines de bâtiments ouvertes (unités peuvent être placée dedans)</strong>
-      <ul>
-        <li>Offre un couvert (dedans ou selon l'axe d'observation).</li>
-        <li>M compté pour monter aux possibles étages (petit rappel : un char ne monte pas un escalier héhé).</li>
-        <li>Bloque les Véhicules et les Monstres.</li>
-        <li>Si détruite =</li>
-      </ul>
-    </div>
-
-    <div class="rule-block rule-alert">
-      <strong>Bâtiments narratifs</strong>
-      <p class="prose">auront des règles et des effets selon le scénario.</p>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-logo">Sous-Secteur Fyrentis</div>
-    <p class="footer-line">« Dans le futur sombre de l'humanité, il n'y a que la guerre. »</p>
-    <p class="footer-line">Warhammer 40 000 • Campagne Narrative • 41ème Millénaire</p>
-  </div>
-</footer>
-
-<a href="#" class="back-top" id="back-top" aria-label="Retour en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-</a>
-
-<script>
-(function () {
-  // ── THEME TOGGLE
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let theme = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.setAttribute('data-theme', theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute('aria-label', 'Basculer vers le mode ' + (theme === 'dark' ? 'clair' : 'sombre'));
-  }
-  updateThemeBtn();
-  if (themeBtn) themeBtn.addEventListener('click', () => {
-    theme = theme === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', theme);
-    updateThemeBtn();
-  });
-
-  // ── MOBILE NAV
-  const navToggle = document.getElementById('nav-toggle');
-  const navLinks  = document.getElementById('nav-links');
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', open);
-    });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }));
-  }
-
-  // ── NAV SCROLL + BACK-TO-TOP
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
-})();
-</script>
-
-</body>
+        // ── NAV SCROLL + BACK-TO-TOP
+        const nav = document.getElementById("nav");
+        window.addEventListener(
+          "scroll",
+          () => {
+            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
+            document
+              .getElementById("back-top")
+              .classList.toggle("visible", window.scrollY > 300);
+          },
+          { passive: true },
+        );
+      })();
+    </script>
+  </body>
 </html>

@@ -98,6 +98,7 @@ git log --oneline
 Le site est déployé automatiquement depuis la branche `master` via **GitHub Pages**.
 
 Pour activer ou vérifier le déploiement :
+
 1. Aller dans **Settings** du dépôt sur GitHub
 2. Section **Pages** → Source : `Deploy from a branch` → branche `master` → dossier `/ (root)`
 3. Le site est accessible à l'adresse : `https://djaunie.github.io/campagne-fyrentis-2`
@@ -128,14 +129,14 @@ git push origin master
 
 ## Commandes Git utiles
 
-| Commande | Description |
-|---|---|
-| `git status` | Voir les fichiers modifiés / non suivis |
-| `git add .` | Ajouter tous les changements à l'index |
-| `git commit -m "message"` | Créer un commit |
-| `git push origin master` | Envoyer les commits vers GitHub |
-| `git pull origin master` | Récupérer les derniers commits depuis GitHub |
-| `git log --oneline` | Historique des commits (format court) |
-| `git diff` | Voir les modifications non encore commitées |
-| `git restore nom-fichier` | Annuler les modifications d'un fichier |
-| `git clone <url>` | Cloner le dépôt en local |
+| Commande                  | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `git status`              | Voir les fichiers modifiés / non suivis      |
+| `git add .`               | Ajouter tous les changements à l'index       |
+| `git commit -m "message"` | Créer un commit                              |
+| `git push origin master`  | Envoyer les commits vers GitHub              |
+| `git pull origin master`  | Récupérer les derniers commits depuis GitHub |
+| `git log --oneline`       | Historique des commits (format court)        |
+| `git diff`                | Voir les modifications non encore commitées  |
+| `git restore nom-fichier` | Annuler les modifications d'un fichier       |
+| `git clone <url>`         | Cloner le dépôt en local                     |

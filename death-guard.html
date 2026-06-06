@@ -1,818 +1,1287 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Death Guard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────── */
-    .nav-page-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .btn-nav-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.85rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-nav-page--carte {
-      color: #c8a028;
-      border-color: rgba(200, 160, 40, 0.45);
-      background: rgba(200, 160, 40, 0.07);
-    }
-    .btn-nav-page--carte:hover {
-      background: rgba(200, 160, 40, 0.18);
-      border-color: #c8a028;
-      box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-      color: #e8c050;
-    }
-    .btn-nav-page--sanctum {
-      color: #c84040;
-      border-color: rgba(200, 60, 60, 0.45);
-      background: rgba(200, 60, 60, 0.07);
-    }
-    .btn-nav-page--sanctum:hover {
-      background: rgba(200, 60, 60, 0.18);
-      border-color: #c84040;
-      box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-      color: #e06060;
-    }
-    .btn-nav-page--inquisition {
-      color: #9b6fc4;
-      border-color: rgba(155, 111, 196, 0.45);
-      background: rgba(155, 111, 196, 0.07);
-    }
-    .btn-nav-page--inquisition:hover {
-      background: rgba(155, 111, 196, 0.18);
-      border-color: #9b6fc4;
-      box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-      color: #c090e8;
-    }
-    [data-theme="light"] .btn-nav-page--carte { color: #8a6800; border-color: rgba(138, 104, 0, 0.4); background: rgba(138, 104, 0, 0.06); }
-    [data-theme="light"] .btn-nav-page--carte:hover { background: rgba(138, 104, 0, 0.14); border-color: #8a6800; }
-    [data-theme="light"] .btn-nav-page--sanctum { color: #8b1c1c; border-color: rgba(139, 28, 28, 0.4); background: rgba(139, 28, 28, 0.06); }
-    [data-theme="light"] .btn-nav-page--sanctum:hover { background: rgba(139, 28, 28, 0.14); border-color: #8b1c1c; }
-    [data-theme="light"] .btn-nav-page--inquisition { color: #5a2a8a; border-color: rgba(90, 42, 138, 0.4); background: rgba(90, 42, 138, 0.06); }
-    [data-theme="light"] .btn-nav-page--inquisition:hover { background: rgba(90, 42, 138, 0.14); border-color: #5a2a8a; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Death Guard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────── */
+      .nav-page-links {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .btn-nav-page {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 3px;
+        border: 1px solid;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-nav-page--carte {
+        color: #c8a028;
+        border-color: rgba(200, 160, 40, 0.45);
+        background: rgba(200, 160, 40, 0.07);
+      }
+      .btn-nav-page--carte:hover {
+        background: rgba(200, 160, 40, 0.18);
+        border-color: #c8a028;
+        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
+        color: #e8c050;
+      }
+      .btn-nav-page--sanctum {
+        color: #c84040;
+        border-color: rgba(200, 60, 60, 0.45);
+        background: rgba(200, 60, 60, 0.07);
+      }
+      .btn-nav-page--sanctum:hover {
+        background: rgba(200, 60, 60, 0.18);
+        border-color: #c84040;
+        box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
+        color: #e06060;
+      }
+      .btn-nav-page--inquisition {
+        color: #9b6fc4;
+        border-color: rgba(155, 111, 196, 0.45);
+        background: rgba(155, 111, 196, 0.07);
+      }
+      .btn-nav-page--inquisition:hover {
+        background: rgba(155, 111, 196, 0.18);
+        border-color: #9b6fc4;
+        box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
+        color: #c090e8;
+      }
+      [data-theme="light"] .btn-nav-page--carte {
+        color: #8a6800;
+        border-color: rgba(138, 104, 0, 0.4);
+        background: rgba(138, 104, 0, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--carte:hover {
+        background: rgba(138, 104, 0, 0.14);
+        border-color: #8a6800;
+      }
+      [data-theme="light"] .btn-nav-page--sanctum {
+        color: #8b1c1c;
+        border-color: rgba(139, 28, 28, 0.4);
+        background: rgba(139, 28, 28, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--sanctum:hover {
+        background: rgba(139, 28, 28, 0.14);
+        border-color: #8b1c1c;
+      }
+      [data-theme="light"] .btn-nav-page--inquisition {
+        color: #5a2a8a;
+        border-color: rgba(90, 42, 138, 0.4);
+        background: rgba(90, 42, 138, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--inquisition:hover {
+        background: rgba(90, 42, 138, 0.14);
+        border-color: #5a2a8a;
+      }
 
-    /* ── COULEUR THÉMATIQUE DEATH GUARD : VERT FLÉTRISSURE & ROUILLE ── */
-    :root {
-      --dg-green: #4a7a2e;
-      --dg-green-light: #6fa845;
-      --dg-green-dim: rgba(74, 122, 46, 0.45);
-      --dg-green-bg: rgba(74, 122, 46, 0.07);
-      --dg-green-hover-bg: rgba(74, 122, 46, 0.18);
-      --dg-green-glow: rgba(74, 122, 46, 0.35);
-      --dg-rust: #8c4a1a;
-      --dg-rust-dim: rgba(140, 74, 26, 0.35);
-    }
-    [data-theme="light"] {
-      --dg-green: #2e5a18;
-      --dg-green-light: #1e3d0a;
-      --dg-green-dim: rgba(46, 90, 24, 0.4);
-      --dg-green-bg: rgba(46, 90, 24, 0.06);
-      --dg-green-hover-bg: rgba(46, 90, 24, 0.14);
-      --dg-green-glow: rgba(46, 90, 24, 0.2);
-      --dg-rust: #7a3a10;
-      --dg-rust-dim: rgba(122, 58, 16, 0.3);
-    }
+      /* ── COULEUR THÉMATIQUE DEATH GUARD : VERT FLÉTRISSURE & ROUILLE ── */
+      :root {
+        --dg-green: #4a7a2e;
+        --dg-green-light: #6fa845;
+        --dg-green-dim: rgba(74, 122, 46, 0.45);
+        --dg-green-bg: rgba(74, 122, 46, 0.07);
+        --dg-green-hover-bg: rgba(74, 122, 46, 0.18);
+        --dg-green-glow: rgba(74, 122, 46, 0.35);
+        --dg-rust: #8c4a1a;
+        --dg-rust-dim: rgba(140, 74, 26, 0.35);
+      }
+      [data-theme="light"] {
+        --dg-green: #2e5a18;
+        --dg-green-light: #1e3d0a;
+        --dg-green-dim: rgba(46, 90, 24, 0.4);
+        --dg-green-bg: rgba(46, 90, 24, 0.06);
+        --dg-green-hover-bg: rgba(46, 90, 24, 0.14);
+        --dg-green-glow: rgba(46, 90, 24, 0.2);
+        --dg-rust: #7a3a10;
+        --dg-rust-dim: rgba(122, 58, 16, 0.3);
+      }
 
-    /* ── HERO MINI ──────────────────────────────────────────── */
-    .page-hero {
-      padding: 5rem 0 3rem;
-      text-align: center;
-      background: radial-gradient(ellipse at center top, rgba(74,122,46,0.16) 0%, transparent 65%);
-      border-bottom: 1px solid rgba(74,122,46,0.25);
-    }
-    .page-hero .section-eyebrow { margin-bottom: 0.5rem; }
-    .page-hero .section-title   { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 0.75rem; }
-    .page-hero .section-desc    { max-width: 60ch; margin: 0 auto; }
+      /* ── HERO MINI ──────────────────────────────────────────── */
+      .page-hero {
+        padding: 5rem 0 3rem;
+        text-align: center;
+        background: radial-gradient(
+          ellipse at center top,
+          rgba(74, 122, 46, 0.16) 0%,
+          transparent 65%
+        );
+        border-bottom: 1px solid rgba(74, 122, 46, 0.25);
+      }
+      .page-hero .section-eyebrow {
+        margin-bottom: 0.5rem;
+      }
+      .page-hero .section-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+      .page-hero .section-desc {
+        max-width: 60ch;
+        margin: 0 auto;
+      }
 
-    /* ── LIEN RETOUR ───────────────────────────────────────── */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin: 1.5rem 0 0;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--dg-green);
-      border: 1px solid var(--dg-green-dim);
-      background: var(--dg-green-bg);
-      padding: 0.45rem 1rem;
-      border-radius: 3px;
-      transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-    }
-    .back-link:hover {
-      background: var(--dg-green-hover-bg);
-      border-color: var(--dg-green);
-      box-shadow: 0 0 12px var(--dg-green-glow);
-      color: var(--dg-green-light);
-    }
+      /* ── LIEN RETOUR ───────────────────────────────────────── */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin: 1.5rem 0 0;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--dg-green);
+        border: 1px solid var(--dg-green-dim);
+        background: var(--dg-green-bg);
+        padding: 0.45rem 1rem;
+        border-radius: 3px;
+        transition:
+          background 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+      .back-link:hover {
+        background: var(--dg-green-hover-bg);
+        border-color: var(--dg-green);
+        box-shadow: 0 0 12px var(--dg-green-glow);
+        color: var(--dg-green-light);
+      }
 
-    /* ── BLOC CENSURÉ ────────────────────────────────────────── */
-    .censure-section {
-      padding: clamp(3rem, 7vw, 6rem) 0;
-    }
-    .censure-wrapper {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .censure-stamp {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-    }
+      /* ── BLOC CENSURÉ ────────────────────────────────────────── */
+      .censure-section {
+        padding: clamp(3rem, 7vw, 6rem) 0;
+      }
+      .censure-wrapper {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .censure-stamp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+      }
 
-    .inquisition-seal {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      opacity: 0.92;
-    }
-    .inquisition-seal-icon {
-      width: 72px;
-      height: 72px;
-      color: var(--dg-green);
-      filter: drop-shadow(0 0 12px var(--dg-green-glow));
-    }
-    .inquisition-seal-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--dg-green);
-    }
+      .inquisition-seal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        opacity: 0.92;
+      }
+      .inquisition-seal-icon {
+        width: 72px;
+        height: 72px;
+        color: var(--dg-green);
+        filter: drop-shadow(0 0 12px var(--dg-green-glow));
+      }
+      .inquisition-seal-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--dg-green);
+      }
 
-    .censure-bloc {
-      width: 100%;
-      background: rgba(4, 10, 4, 0.55);
-      border: 1px solid rgba(74,122,46,0.18);
-      border-radius: 2px;
-      padding: 1.75rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .censure-bloc::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(74,122,46,0.03) 0px,
-        rgba(74,122,46,0.03) 1px,
-        transparent 1px,
-        transparent 6px
-      );
-      pointer-events: none;
-    }
-    [data-theme="light"] .censure-bloc {
-      background: rgba(232,240,228,0.6);
-      border-color: rgba(46,90,24,0.18);
-    }
+      .censure-bloc {
+        width: 100%;
+        background: rgba(4, 10, 4, 0.55);
+        border: 1px solid rgba(74, 122, 46, 0.18);
+        border-radius: 2px;
+        padding: 1.75rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .censure-bloc::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(74, 122, 46, 0.03) 0px,
+          rgba(74, 122, 46, 0.03) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+        pointer-events: none;
+      }
+      [data-theme="light"] .censure-bloc {
+        background: rgba(232, 240, 228, 0.6);
+        border-color: rgba(46, 90, 24, 0.18);
+      }
 
-    .censure-titre {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dg-green);
-      margin-bottom: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .censure-titre::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--dg-green-dim), transparent);
-    }
+      .censure-titre {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--dg-green);
+        margin-bottom: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .censure-titre::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, var(--dg-green-dim), transparent);
+      }
 
-    .censure-lignes {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .censure-ligne {
-      height: 1.1rem;
-      border-radius: 2px;
-      background: rgba(74,122,46,0.08);
-      border: 1px solid rgba(74,122,46,0.12);
-      position: relative;
-      overflow: hidden;
-    }
-    .censure-ligne::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(74,122,46,0.15) 0px,
-        rgba(74,122,46,0.15) 2px,
-        transparent 2px,
-        transparent 9px
-      );
-    }
-    .censure-ligne--court { width: 62%; }
-    .censure-ligne--moyen { width: 85%; }
-    .censure-ligne--long  { width: 100%; }
-    [data-theme="light"] .censure-ligne {
-      background: rgba(46,90,24,0.06);
-      border-color: rgba(46,90,24,0.15);
-    }
-    [data-theme="light"] .censure-ligne::after {
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(46,90,24,0.12) 0px,
-        rgba(46,90,24,0.12) 2px,
-        transparent 2px,
-        transparent 9px
-      );
-    }
+      .censure-lignes {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .censure-ligne {
+        height: 1.1rem;
+        border-radius: 2px;
+        background: rgba(74, 122, 46, 0.08);
+        border: 1px solid rgba(74, 122, 46, 0.12);
+        position: relative;
+        overflow: hidden;
+      }
+      .censure-ligne::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(74, 122, 46, 0.15) 0px,
+          rgba(74, 122, 46, 0.15) 2px,
+          transparent 2px,
+          transparent 9px
+        );
+      }
+      .censure-ligne--court {
+        width: 62%;
+      }
+      .censure-ligne--moyen {
+        width: 85%;
+      }
+      .censure-ligne--long {
+        width: 100%;
+      }
+      [data-theme="light"] .censure-ligne {
+        background: rgba(46, 90, 24, 0.06);
+        border-color: rgba(46, 90, 24, 0.15);
+      }
+      [data-theme="light"] .censure-ligne::after {
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(46, 90, 24, 0.12) 0px,
+          rgba(46, 90, 24, 0.12) 2px,
+          transparent 2px,
+          transparent 9px
+        );
+      }
 
-    .censure-bandeau {
-      width: 100%;
-      position: relative;
-      border-top: 1px solid var(--dg-green-dim);
-      border-bottom: 1px solid var(--dg-green-dim);
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      background: rgba(74,122,46,0.05);
-      overflow: hidden;
-    }
-    .censure-bandeau::before,
-    .censure-bandeau::after {
-      content: '✶';
-      font-size: 0.9rem;
-      color: var(--dg-green);
-      opacity: 0.5;
-      flex-shrink: 0;
-    }
-    .censure-bandeau-text {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dg-green);
-      text-shadow: 0 0 24px var(--dg-green-glow);
-      text-align: center;
-    }
+      .censure-bandeau {
+        width: 100%;
+        position: relative;
+        border-top: 1px solid var(--dg-green-dim);
+        border-bottom: 1px solid var(--dg-green-dim);
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: rgba(74, 122, 46, 0.05);
+        overflow: hidden;
+      }
+      .censure-bandeau::before,
+      .censure-bandeau::after {
+        content: "✶";
+        font-size: 0.9rem;
+        color: var(--dg-green);
+        opacity: 0.5;
+        flex-shrink: 0;
+      }
+      .censure-bandeau-text {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dg-green);
+        text-shadow: 0 0 24px var(--dg-green-glow);
+        text-align: center;
+      }
 
-    .censure-ref {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.82rem;
-      font-style: italic;
-      color: var(--color-text-muted, #797876);
-      text-align: center;
-      max-width: 58ch;
-      line-height: 1.7;
-    }
-    .censure-ref strong {
-      color: var(--dg-green);
-      font-style: normal;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-    }
+      .censure-ref {
+        font-family: "Crimson Text", serif;
+        font-size: 0.82rem;
+        font-style: italic;
+        color: var(--color-text-muted, #797876);
+        text-align: center;
+        max-width: 58ch;
+        line-height: 1.7;
+      }
+      .censure-ref strong {
+        color: var(--dg-green);
+        font-style: normal;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+      }
 
-    .nota-bene {
-      width: 100%;
-      border: 1px solid var(--dg-green-dim);
-      border-left: 3px solid var(--dg-green);
-      padding: 1rem 1.25rem;
-      border-radius: 2px;
-      background: rgba(74,122,46,0.04);
-    }
-    [data-theme="light"] .nota-bene {
-      background: rgba(46,90,24,0.04);
-      border-color: rgba(46,90,24,0.25);
-      border-left-color: var(--dg-green);
-    }
-    .nota-bene-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--dg-green);
-      margin-bottom: 0.45rem;
-    }
-    .nota-bene p {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.92rem;
-      line-height: 1.65;
-      color: var(--color-text-muted, #797876);
-      font-style: italic;
-      max-width: 65ch;
-    }
+      .nota-bene {
+        width: 100%;
+        border: 1px solid var(--dg-green-dim);
+        border-left: 3px solid var(--dg-green);
+        padding: 1rem 1.25rem;
+        border-radius: 2px;
+        background: rgba(74, 122, 46, 0.04);
+      }
+      [data-theme="light"] .nota-bene {
+        background: rgba(46, 90, 24, 0.04);
+        border-color: rgba(46, 90, 24, 0.25);
+        border-left-color: var(--dg-green);
+      }
+      .nota-bene-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--dg-green);
+        margin-bottom: 0.45rem;
+      }
+      .nota-bene p {
+        font-family: "Crimson Text", serif;
+        font-size: 0.92rem;
+        line-height: 1.65;
+        color: var(--color-text-muted, #797876);
+        font-style: italic;
+        max-width: 65ch;
+      }
 
-    /* ── BLOC DÉCLASSIFIÉ — VARIANTE DEATH GUARD ───────────────── */
-    .declassifie-bloc {
-      width: 100%;
-      background: rgba(4, 10, 4, 0.70);
-      border: 1px solid rgba(74,122,46,0.38);
-      border-top: 3px solid var(--dg-green);
-      border-radius: 2px;
-      padding: 1.75rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .declassifie-bloc::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(74,122,46,0.025) 0px,
-        rgba(74,122,46,0.025) 1px,
-        transparent 1px,
-        transparent 6px
-      );
-      pointer-events: none;
-    }
-    [data-theme="light"] .declassifie-bloc {
-      background: rgba(232,240,228,0.75);
-      border-color: rgba(46,90,24,0.38);
-      border-top-color: var(--dg-green);
-    }
+      /* ── BLOC DÉCLASSIFIÉ — VARIANTE DEATH GUARD ───────────────── */
+      .declassifie-bloc {
+        width: 100%;
+        background: rgba(4, 10, 4, 0.7);
+        border: 1px solid rgba(74, 122, 46, 0.38);
+        border-top: 3px solid var(--dg-green);
+        border-radius: 2px;
+        padding: 1.75rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .declassifie-bloc::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(74, 122, 46, 0.025) 0px,
+          rgba(74, 122, 46, 0.025) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+        pointer-events: none;
+      }
+      [data-theme="light"] .declassifie-bloc {
+        background: rgba(232, 240, 228, 0.75);
+        border-color: rgba(46, 90, 24, 0.38);
+        border-top-color: var(--dg-green);
+      }
 
-    .declassifie-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.4rem;
-      padding-bottom: 0.9rem;
-      border-bottom: 1px solid rgba(74,122,46,0.22);
-    }
-    .declassifie-badge {
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #040a04;
-      background: var(--dg-green);
-      padding: 0.22rem 0.6rem;
-      border-radius: 2px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .declassifie-header-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.7rem, 1.8vw, 0.88rem);
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--dg-green);
-      flex: 1;
-    }
+      .declassifie-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.4rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid rgba(74, 122, 46, 0.22);
+      }
+      .declassifie-badge {
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #040a04;
+        background: var(--dg-green);
+        padding: 0.22rem 0.6rem;
+        border-radius: 2px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .declassifie-header-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.7rem, 1.8vw, 0.88rem);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dg-green);
+        flex: 1;
+      }
 
-    .declassifie-entries {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+      .declassifie-entries {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
 
-    .declassifie-entry {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.6rem 0.85rem;
-      align-items: start;
-    }
+      .declassifie-entry {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.6rem 0.85rem;
+        align-items: start;
+      }
 
-    .declassifie-entry-icon {
-      width: 28px;
-      height: 28px;
-      border: 1px solid var(--dg-green-dim);
-      border-radius: 2px;
-      background: var(--dg-green-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--dg-green);
-      margin-top: 0.1rem;
-    }
+      .declassifie-entry-icon {
+        width: 28px;
+        height: 28px;
+        border: 1px solid var(--dg-green-dim);
+        border-radius: 2px;
+        background: var(--dg-green-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--dg-green);
+        margin-top: 0.1rem;
+      }
 
-    .declassifie-entry-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--dg-green);
-      margin-bottom: 0.22rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+      .declassifie-entry-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dg-green);
+        margin-bottom: 0.22rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
 
-    .status-tag {
-      font-family: 'Cinzel', serif;
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.12rem 0.45rem;
-      border-radius: 2px;
-      border: 1px solid;
-      white-space: nowrap;
-    }
-    .status-tag--actif {
-      color: var(--dg-green);
-      border-color: var(--dg-green-dim);
-      background: var(--dg-green-bg);
-    }
-    .status-tag--alerte {
-      color: #c88028;
-      border-color: rgba(200,128,40,0.4);
-      background: rgba(200,128,40,0.07);
-    }
-    .status-tag--critique {
-      color: #c84040;
-      border-color: rgba(200,60,60,0.4);
-      background: rgba(200,60,60,0.07);
-    }
-    [data-theme="light"] .status-tag--alerte {
-      color: #7a4800;
-      border-color: rgba(122,72,0,0.4);
-      background: rgba(122,72,0,0.06);
-    }
-    [data-theme="light"] .status-tag--critique {
-      color: #8b1c1c;
-      border-color: rgba(139,28,28,0.4);
-      background: rgba(139,28,28,0.06);
-    }
+      .status-tag {
+        font-family: "Cinzel", serif;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.12rem 0.45rem;
+        border-radius: 2px;
+        border: 1px solid;
+        white-space: nowrap;
+      }
+      .status-tag--actif {
+        color: var(--dg-green);
+        border-color: var(--dg-green-dim);
+        background: var(--dg-green-bg);
+      }
+      .status-tag--alerte {
+        color: #c88028;
+        border-color: rgba(200, 128, 40, 0.4);
+        background: rgba(200, 128, 40, 0.07);
+      }
+      .status-tag--critique {
+        color: #c84040;
+        border-color: rgba(200, 60, 60, 0.4);
+        background: rgba(200, 60, 60, 0.07);
+      }
+      [data-theme="light"] .status-tag--alerte {
+        color: #7a4800;
+        border-color: rgba(122, 72, 0, 0.4);
+        background: rgba(122, 72, 0, 0.06);
+      }
+      [data-theme="light"] .status-tag--critique {
+        color: #8b1c1c;
+        border-color: rgba(139, 28, 28, 0.4);
+        background: rgba(139, 28, 28, 0.06);
+      }
 
-    .declassifie-entry-text {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--color-text-muted, #9a9896);
-    }
-    [data-theme="light"] .declassifie-entry-text {
-      color: #4a4540;
-    }
-    .declassifie-entry-text em {
-      color: var(--dg-green-light);
-      font-style: normal;
-    }
-    [data-theme="light"] .declassifie-entry-text em {
-      color: var(--dg-green);
-    }
+      .declassifie-entry-text {
+        font-family: "Crimson Text", serif;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--color-text-muted, #9a9896);
+      }
+      [data-theme="light"] .declassifie-entry-text {
+        color: #4a4540;
+      }
+      .declassifie-entry-text em {
+        color: var(--dg-green-light);
+        font-style: normal;
+      }
+      [data-theme="light"] .declassifie-entry-text em {
+        color: var(--dg-green);
+      }
 
-    .declassifie-separator {
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(74,122,46,0.22), transparent);
-      margin: 0;
-    }
+      .declassifie-separator {
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(74, 122, 46, 0.22),
+          transparent
+        );
+        margin: 0;
+      }
 
-    .declassifie-footer {
-      margin-top: 1.3rem;
-      padding-top: 0.9rem;
-      border-top: 1px solid rgba(74,122,46,0.15);
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(74,122,46,0.45);
-      text-align: right;
-    }
+      .declassifie-footer {
+        margin-top: 1.3rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid rgba(74, 122, 46, 0.15);
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(74, 122, 46, 0.45);
+        text-align: right;
+      }
 
-    @media (max-width: 600px) {
-      .nav-page-links { gap: 0.35rem; }
-      .btn-nav-page   { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-      .censure-bloc   { padding: 1.25rem 1rem; }
-      .censure-bandeau { padding: 1rem; gap: 0.75rem; }
-      .declassifie-bloc { padding: 1.25rem 1rem; }
-      .declassifie-entry { grid-template-columns: 1fr; }
-      .declassifie-entry-icon { display: none; }
-    }
-  </style>
-</head>
-<body>
-
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis — Retour à l'accueil">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <polygon points="18,2 34,28 2,28" fill="none" stroke="currentColor" stroke-width="1.5" color="#c8a028"/>
-        <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.5" color="#8b1c1c"/>
-        <line x1="18" y1="2" x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="8.5" y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-      </svg>
-      <div>
-        <span class="nav-logo-text">Fyrentis</span>
-        <span class="nav-logo-sub">Campagne 40K</span>
-      </div>
-    </a>
-    <div class="nav-actions">
-      <div class="nav-page-links">
-        <a href="carte.html" class="btn-nav-page btn-nav-page--carte" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          Carte
-        </a>
-        <a href="sanctum.html" class="btn-nav-page btn-nav-page--sanctum" aria-label="Accéder au Sanctum">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Sanctum
-        </a>
-        <a href="rapports-inquisiteurs.html" class="btn-nav-page btn-nav-page--inquisition" aria-label="Lire les Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Inquisition
-        </a>
-      </div>
-      <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO MINI -->
-<header class="page-hero" id="top">
-  <div class="container">
-    <p class="section-eyebrow">Armée PNJ</p>
-    <h1 class="section-title"><span>DEATH GUARD</span></h1>
-    <p class="section-desc">Fils corrompus de Mortarion, porteurs de la Grâce de Nurgle. Leur dossier de campagne dans le sous-secteur Fyrentis est placé sous scellé inquisitorial.</p>
-    <a href="index.html#specificites-freddy" class="back-link">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      Retour à l'accueil
-    </a>
-  </div>
-</header>
-
-<!-- CONTENU CENSURÉ -->
-<section class="censure-section">
-  <div class="container">
-    <div class="censure-wrapper">
-      <div class="censure-stamp">
-
-        <!-- Cachet inquisitorial -->
-        <div class="inquisition-seal reveal">
-          <svg class="inquisition-seal-icon" viewBox="0 0 72 72" fill="none" aria-hidden="true">
-            <circle cx="36" cy="36" r="34" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
-            <circle cx="36" cy="36" r="26" stroke="currentColor" stroke-width="0.8" opacity="0.5"/>
-            <text x="36" y="44" text-anchor="middle" font-family="serif" font-size="26" font-weight="700" fill="currentColor">I</text>
-            <ellipse cx="36" cy="53" rx="5" ry="3.5" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-            <line x1="34" y1="56" x2="33" y2="59" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-            <line x1="38" y1="56" x2="39" y2="59" stroke="currentColor" stroke-width="0.8" opacity="0.6"/>
-            <line x1="2" y1="36" x2="10" y2="36" stroke="currentColor" stroke-width="0.8"/>
-            <line x1="62" y1="36" x2="70" y2="36" stroke="currentColor" stroke-width="0.8"/>
-            <polygon points="36,4 38,10 36,8 34,10" fill="currentColor" opacity="0.7"/>
+      @media (max-width: 600px) {
+        .nav-page-links {
+          gap: 0.35rem;
+        }
+        .btn-nav-page {
+          font-size: 0.65rem;
+          padding: 0.35rem 0.6rem;
+        }
+        .censure-bloc {
+          padding: 1.25rem 1rem;
+        }
+        .censure-bandeau {
+          padding: 1rem;
+          gap: 0.75rem;
+        }
+        .declassifie-bloc {
+          padding: 1.25rem 1rem;
+        }
+        .declassifie-entry {
+          grid-template-columns: 1fr;
+        }
+        .declassifie-entry-icon {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a
+          href="index.html"
+          class="nav-logo"
+          aria-label="Campagne Fyrentis — Retour à l'accueil"
+        >
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
+          >
+            <polygon
+              points="18,2 34,28 2,28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#c8a028"
+            />
+            <circle
+              cx="18"
+              cy="18"
+              r="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#8b1c1c"
+            />
+            <line
+              x1="18"
+              y1="2"
+              x2="18"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="18"
+              y1="24"
+              x2="18"
+              y2="28"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="8.5"
+              y1="22.3"
+              x2="13.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="27.5"
+              y1="22.3"
+              x2="22.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
           </svg>
-          <span class="inquisition-seal-title">Ordo Malleus — Inquisitoriat Impérial</span>
+          <div>
+            <span class="nav-logo-text">Fyrentis</span>
+            <span class="nav-logo-sub">Campagne 40K</span>
+          </div>
+        </a>
+        <div class="nav-actions">
+          <div class="nav-page-links">
+            <a
+              href="carte.html"
+              class="btn-nav-page btn-nav-page--carte"
+              aria-label="Voir la Carte du secteur"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              Carte
+            </a>
+            <a
+              href="sanctum.html"
+              class="btn-nav-page btn-nav-page--sanctum"
+              aria-label="Accéder au Sanctum"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Sanctum
+            </a>
+            <a
+              href="rapports-inquisiteurs.html"
+              class="btn-nav-page btn-nav-page--inquisition"
+              aria-label="Lire les Rapports Inquisitoriaux"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Inquisition
+            </a>
+          </div>
+          <button
+            class="btn-theme"
+            data-theme-toggle
+            aria-label="Basculer le thème"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="nav-mobile-toggle"
+            id="nav-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
         </div>
+      </div>
+    </nav>
 
-        <!-- Bandeau principal -->
-        <div class="censure-bandeau reveal">
-          <span class="censure-bandeau-text">Censuré par l'Inquisition</span>
-        </div>
-
-        <!-- Référence de document -->
-        <p class="censure-ref reveal">
-          <strong>Réf. Doc. :</strong> OMI-FYRENTIS-DG-██████ — Classifié <strong>Extremis Obscura</strong><br>
-          Ce dossier a été placé sous scellé inquisitorial par décision de l'Ordo Malleus, <em>en raison de la présence avérée d'entités du Chaos Immonde dans le sous-secteur Fyrentis.</em>
-          Tout personnel impérial ayant été en contact avec les porteurs de la Contagion Bénie doit se signaler immédiatement à l'Arbitre local sous peine d'exécution sommaire.
+    <!-- HERO MINI -->
+    <header class="page-hero" id="top">
+      <div class="container">
+        <p class="section-eyebrow">Armée PNJ</p>
+        <h1 class="section-title"><span>DEATH GUARD</span></h1>
+        <p class="section-desc">
+          Fils corrompus de Mortarion, porteurs de la Grâce de Nurgle. Leur
+          dossier de campagne dans le sous-secteur Fyrentis est placé sous
+          scellé inquisitorial.
         </p>
+        <a href="index.html#specificites-freddy" class="back-link">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Retour à l'accueil
+        </a>
+      </div>
+    </header>
 
-        <!-- Bloc I : Historique de campagne -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
-            Historique de Campagne — Fyrentis
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-          </div>
-        </div>
+    <!-- CONTENU CENSURÉ -->
+    <section class="censure-section">
+      <div class="container">
+        <div class="censure-wrapper">
+          <div class="censure-stamp">
+            <!-- Cachet inquisitorial -->
+            <div class="inquisition-seal reveal">
+              <svg
+                class="inquisition-seal-icon"
+                viewBox="0 0 72 72"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="36"
+                  cy="36"
+                  r="34"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-dasharray="4 3"
+                />
+                <circle
+                  cx="36"
+                  cy="36"
+                  r="26"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                  opacity="0.5"
+                />
+                <text
+                  x="36"
+                  y="44"
+                  text-anchor="middle"
+                  font-family="serif"
+                  font-size="26"
+                  font-weight="700"
+                  fill="currentColor"
+                >
+                  I
+                </text>
+                <ellipse
+                  cx="36"
+                  cy="53"
+                  rx="5"
+                  ry="3.5"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                  opacity="0.6"
+                />
+                <line
+                  x1="34"
+                  y1="56"
+                  x2="33"
+                  y2="59"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                  opacity="0.6"
+                />
+                <line
+                  x1="38"
+                  y1="56"
+                  x2="39"
+                  y2="59"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                  opacity="0.6"
+                />
+                <line
+                  x1="2"
+                  y1="36"
+                  x2="10"
+                  y2="36"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                />
+                <line
+                  x1="62"
+                  y1="36"
+                  x2="70"
+                  y2="36"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                />
+                <polygon
+                  points="36,4 38,10 36,8 34,10"
+                  fill="currentColor"
+                  opacity="0.7"
+                />
+              </svg>
+              <span class="inquisition-seal-title"
+                >Ordo Malleus — Inquisitoriat Impérial</span
+              >
+            </div>
 
-        <!-- Bloc II : Spécificités d'armée -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Spécificités de Campagne — Death Guard
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-          </div>
-        </div>
+            <!-- Bandeau principal -->
+            <div class="censure-bandeau reveal">
+              <span class="censure-bandeau-text"
+                >Censuré par l'Inquisition</span
+              >
+            </div>
 
-        <!-- Bloc III : Règles spéciales / Contagion -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Règles Spéciales &amp; Bonus de Campagne
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-          </div>
-        </div>
+            <!-- Référence de document -->
+            <p class="censure-ref reveal">
+              <strong>Réf. Doc. :</strong> OMI-FYRENTIS-DG-██████ — Classifié
+              <strong>Extremis Obscura</strong><br />
+              Ce dossier a été placé sous scellé inquisitorial par décision de
+              l'Ordo Malleus,
+              <em
+                >en raison de la présence avérée d'entités du Chaos Immonde dans
+                le sous-secteur Fyrentis.</em
+              >
+              Tout personnel impérial ayant été en contact avec les porteurs de
+              la Contagion Bénie doit se signaler immédiatement à l'Arbitre
+              local sous peine d'exécution sommaire.
+            </p>
 
-        <!-- ════════════════════════════════════════════════════
+            <!-- Bloc I : Historique de campagne -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="9" y1="9" x2="15" y2="9" />
+                  <line x1="9" y1="13" x2="15" y2="13" />
+                  <line x1="9" y1="17" x2="12" y2="17" />
+                </svg>
+                Historique de Campagne — Fyrentis
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+              </div>
+            </div>
+
+            <!-- Bloc II : Spécificités d'armée -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Spécificités de Campagne — Death Guard
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+              </div>
+            </div>
+
+            <!-- Bloc III : Règles spéciales / Contagion -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                Règles Spéciales &amp; Bonus de Campagne
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+              </div>
+            </div>
+
+            <!-- ════════════════════════════════════════════════════
              BLOC IV : DÉCLASSIFICATION PARTIELLE — MENACE BIOLOGIQUE & WARP
              ════════════════════════════════════════════════════ -->
-        <div class="declassifie-bloc reveal">
+            <div class="declassifie-bloc reveal">
+              <div class="declassifie-header">
+                <span class="declassifie-badge">Déclassifié</span>
+                <span class="declassifie-header-title"
+                  >Menace Active — Contagion &amp; Opérations Warp</span
+                >
+              </div>
 
-          <div class="declassifie-header">
-            <span class="declassifie-badge">Déclassifié</span>
-            <span class="declassifie-header-title">Menace Active — Contagion &amp; Opérations Warp</span>
+              <div class="declassifie-entries">
+                <!-- Entrée 1 : Rituels de Nurgle -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                      <path d="M12 2a10 10 0 0 1 10 10" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Rituels de Nurgle
+                      <span class="status-tag status-tag--actif"
+                        >Accès confirmé</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Les forces de la Death Guard opérant dans le sous-secteur
+                      Fyrentis ont accès à l'intégralité des
+                      <em>Rituels de Nurgle</em> homologués pour cette campagne.
+                      Parmi ceux-ci figure notamment l'arsenal personnel du
+                      Seigneur de Contagion <em>Typhus</em>, porteur du
+                      <em>Fistule du Warp</em> — relique maudite de la Fourbe
+                      Pestilentielle dont la seule présence corrompt l'éther
+                      environnant. Son emploi en campagne est considéré comme
+                      une menace de niveau Terminus par l'Ordo Malleus.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 2 : Invasion de Jakku -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                      />
+                      <path d="M9 22V12h6v10" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Agri-Monde Jakku
+                      <span class="status-tag status-tag--critique"
+                        >En cours d'invasion</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Les <em>Émissaires de Typhus</em> ont pénétré l'agri-monde
+                      <em>Jakku</em> et en entreprennent la corruption
+                      systématique. Les cultures, réseaux d'eau et bassins de
+                      population sont affectés par des vecteurs biologiques non
+                      identifiés. Les équipes d'intervention de l'Adeptus
+                      Arbites ont été déclarées <em>disparues</em> lors des
+                      opérations de reconnaissance initiales. La situation
+                      évolue rapidement — les dernières transmissions indiquent
+                      une progression de la corruption sur l'ensemble du secteur
+                      agro-occidental.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 3 : Canal Warp Ork -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polygon
+                        points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                      />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Canal Warp — Origine Ork
+                      <span class="status-tag status-tag--alerte"
+                        >Événement non planifié</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Selon les rapports préliminaires de l'Ordo Malleus, la
+                      brèche permettant l'accès des forces de Nurgle à Jakku est
+                      <em>d'origine accidentelle</em>. Les tribus Ork actives
+                      dans le secteur ont servi involontairement de
+                      <em>carburant et de ressource psycho-orgoide</em> pour
+                      l'ouverture d'un canal instable dans l'Immaterium. La
+                      violence organique des Orks aurait catalysé et déstabilisé
+                      le voile de l'Éther, créant une anomalie expéditée par les
+                      Émissaires de Typhus. Les détails complets de cet
+                      événement font l'objet d'un rapport séparé —
+                      <em>informations complémentaires à venir.</em>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 4 : État de Jakku -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                      />
+                      <line x1="12" y1="9" x2="12" y2="13" />
+                      <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      État de Corruption — Jakku
+                      <span class="status-tag status-tag--critique"
+                        >Stade avancé</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Si aucune intervention militaire impériale n'est conduite
+                      dans les délais impartis, l'agri-monde
+                      <em
+                        >Jakku sera intégralement recouvert par les « bienfaits
+                        du Grand Père »</em
+                      >. La transformation totale du monde en territoire
+                      nurglesque est projetée comme imminente selon les modèles
+                      de contagion de l'Ordo Malleus. Jakku représente désormais
+                      un <em>objectif narratif prioritaire de la campagne</em> :
+                      sa reconquête ou sa perte déterminera l'évolution de la
+                      menace dans le sous-secteur Fyrentis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- /declassifie-entries -->
+
+              <p class="declassifie-footer">
+                Extrait autorisé — OMI-FYRENTIS-DG-SITREP-02 · Déclassification
+                partielle — Informations complémentaires à venir
+              </p>
+            </div>
+            <!-- /declassifie-bloc -->
+
+            <!-- Note inquisitoriale -->
+            <div class="nota-bene reveal">
+              <p class="nota-bene-label">Nota Inquisitoriale</p>
+              <p>
+                « Les forces de la Death Guard opérant dans le sous-secteur
+                Fyrentis font l'objet d'une procédure de confinement biologique
+                de niveau Oméga de l'Ordo Malleus. Des rapports de contamination
+                par la Contagion Bénie de Nurgle ont été signalés sur Colchis
+                après leur passage. Ces informations demeureront classifiées
+                jusqu'à l'issue des opérations de purification en cours. Tout
+                territoire infecté sera soumis à une purge orbitale si
+                nécessaire. »
+              </p>
+              <p style="margin-top: 0.5rem">
+                —
+                <em
+                  >Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis
+                  Ultima</em
+                >
+              </p>
+            </div>
           </div>
-
-          <div class="declassifie-entries">
-
-            <!-- Entrée 1 : Rituels de Nurgle -->
-            <div class="declassifie-entry">
-              <div class="declassifie-entry-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10"/><circle cx="12" cy="12" r="3"/></svg>
-              </div>
-              <div class="declassifie-entry-content">
-                <p class="declassifie-entry-label">
-                  Rituels de Nurgle
-                  <span class="status-tag status-tag--actif">Accès confirmé</span>
-                </p>
-                <p class="declassifie-entry-text">
-                  Les forces de la Death Guard opérant dans le sous-secteur Fyrentis ont accès à l'intégralité des <em>Rituels de Nurgle</em> homologués pour cette campagne. Parmi ceux-ci figure notamment l'arsenal personnel du Seigneur de Contagion <em>Typhus</em>, porteur du <em>Fistule du Warp</em> — relique maudite de la Fourbe Pestilentielle dont la seule présence corrompt l'éther environnant. Son emploi en campagne est considéré comme une menace de niveau Terminus par l'Ordo Malleus.
-                </p>
-              </div>
-            </div>
-
-            <div class="declassifie-separator"></div>
-
-            <!-- Entrée 2 : Invasion de Jakku -->
-            <div class="declassifie-entry">
-              <div class="declassifie-entry-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-              </div>
-              <div class="declassifie-entry-content">
-                <p class="declassifie-entry-label">
-                  Agri-Monde Jakku
-                  <span class="status-tag status-tag--critique">En cours d'invasion</span>
-                </p>
-                <p class="declassifie-entry-text">
-                  Les <em>Émissaires de Typhus</em> ont pénétré l'agri-monde <em>Jakku</em> et en entreprennent la corruption systématique. Les cultures, réseaux d'eau et bassins de population sont affectés par des vecteurs biologiques non identifiés. Les équipes d'intervention de l'Adeptus Arbites ont été déclarées <em>disparues</em> lors des opérations de reconnaissance initiales. La situation évolue rapidement — les dernières transmissions indiquent une progression de la corruption sur l'ensemble du secteur agro-occidental.
-                </p>
-              </div>
-            </div>
-
-            <div class="declassifie-separator"></div>
-
-            <!-- Entrée 3 : Canal Warp Ork -->
-            <div class="declassifie-entry">
-              <div class="declassifie-entry-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </div>
-              <div class="declassifie-entry-content">
-                <p class="declassifie-entry-label">
-                  Canal Warp — Origine Ork
-                  <span class="status-tag status-tag--alerte">Événement non planifié</span>
-                </p>
-                <p class="declassifie-entry-text">
-                  Selon les rapports préliminaires de l'Ordo Malleus, la brèche permettant l'accès des forces de Nurgle à Jakku est <em>d'origine accidentelle</em>. Les tribus Ork actives dans le secteur ont servi involontairement de <em>carburant et de ressource psycho-orgoide</em> pour l'ouverture d'un canal instable dans l'Immaterium. La violence organique des Orks aurait catalysé et déstabilisé le voile de l'Éther, créant une anomalie expéditée par les Émissaires de Typhus. Les détails complets de cet événement font l'objet d'un rapport séparé — <em>informations complémentaires à venir.</em>
-                </p>
-              </div>
-            </div>
-
-            <div class="declassifie-separator"></div>
-
-            <!-- Entrée 4 : État de Jakku -->
-            <div class="declassifie-entry">
-              <div class="declassifie-entry-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              </div>
-              <div class="declassifie-entry-content">
-                <p class="declassifie-entry-label">
-                  État de Corruption — Jakku
-                  <span class="status-tag status-tag--critique">Stade avancé</span>
-                </p>
-                <p class="declassifie-entry-text">
-                  Si aucune intervention militaire impériale n'est conduite dans les délais impartis, l'agri-monde <em>Jakku sera intégralement recouvert par les « bienfaits du Grand Père »</em>. La transformation totale du monde en territoire nurglesque est projetée comme imminente selon les modèles de contagion de l'Ordo Malleus. Jakku représente désormais un <em>objectif narratif prioritaire de la campagne</em> : sa reconquête ou sa perte déterminera l'évolution de la menace dans le sous-secteur Fyrentis.
-                </p>
-              </div>
-            </div>
-
-          </div><!-- /declassifie-entries -->
-
-          <p class="declassifie-footer">
-            Extrait autorisé — OMI-FYRENTIS-DG-SITREP-02 · Déclassification partielle — Informations complémentaires à venir
-          </p>
-
-        </div><!-- /declassifie-bloc -->
-
-        <!-- Note inquisitoriale -->
-        <div class="nota-bene reveal">
-          <p class="nota-bene-label">Nota Inquisitoriale</p>
-          <p>
-            « Les forces de la Death Guard opérant dans le sous-secteur Fyrentis font l'objet d'une procédure de confinement biologique de niveau Oméga de l'Ordo Malleus. Des rapports de contamination par la Contagion Bénie de Nurgle ont été signalés sur Colchis après leur passage. Ces informations demeureront classifiées jusqu'à l'issue des opérations de purification en cours. Tout territoire infecté sera soumis à une purge orbitale si nécessaire. »
-          </p>
-          <p style="margin-top:0.5rem;">
-            — <em>Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis Ultima</em>
-          </p>
         </div>
-
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <div class="container">
-    <div class="footer-logo">Sous-Secteur Fyrentis</div>
-    <p class="footer-line">« Dans le futur sombre de l'humanité, il n'y a que la guerre. »</p>
-    <p class="footer-line">Warhammer 40 000 • Campagne Narrative • 41ème Millénaire</p>
-  </div>
-</footer>
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Sous-Secteur Fyrentis</div>
+        <p class="footer-line">
+          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
+        </p>
+        <p class="footer-line">
+          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
+        </p>
+      </div>
+    </footer>
 
-<a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-</a>
+    <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </a>
 
-<script>
-(function () {
+    <script>
+      (function () {
+        // ── THEME TOGGLE
+        const themeBtn = document.querySelector("[data-theme-toggle]");
+        const root = document.documentElement;
+        let theme =
+          root.getAttribute("data-theme") ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        root.setAttribute("data-theme", theme);
+        function updateThemeBtn() {
+          if (!themeBtn) return;
+          themeBtn.innerHTML =
+            theme === "dark"
+              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+          themeBtn.setAttribute(
+            "aria-label",
+            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
+          );
+        }
+        updateThemeBtn();
+        if (themeBtn)
+          themeBtn.addEventListener("click", () => {
+            theme = theme === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", theme);
+            updateThemeBtn();
+          });
 
-  // ── THEME TOGGLE
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let theme = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.setAttribute('data-theme', theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute('aria-label', 'Basculer vers le mode ' + (theme === 'dark' ? 'clair' : 'sombre'));
-  }
-  updateThemeBtn();
-  if (themeBtn) themeBtn.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', theme); updateThemeBtn(); });
+        // ── NAV SCROLL + BACK-TO-TOP
+        const nav = document.getElementById("nav");
+        window.addEventListener(
+          "scroll",
+          () => {
+            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
+            document
+              .getElementById("back-top")
+              .classList.toggle("visible", window.scrollY > 300);
+          },
+          { passive: true },
+        );
 
-  // ── NAV SCROLL + BACK-TO-TOP
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
-
-  // ── REVEAL ON SCROLL
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-})();
-</script>
-
-</body>
+        // ── REVEAL ON SCROLL
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+        );
+        document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      })();
+    </script>
+  </body>
 </html>

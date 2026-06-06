@@ -1,246 +1,482 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Eaters</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────────────────── */
-    .nav-page-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .btn-nav-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.85rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-nav-page--carte {
-      color: #c8a028;
-      border-color: rgba(200, 160, 40, 0.45);
-      background: rgba(200, 160, 40, 0.07);
-    }
-    .btn-nav-page--carte:hover {
-      background: rgba(200, 160, 40, 0.18);
-      border-color: #c8a028;
-      box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-      color: #e8c050;
-    }
-    .btn-nav-page--sanctum {
-      color: #c84040;
-      border-color: rgba(200, 60, 60, 0.45);
-      background: rgba(200, 60, 60, 0.07);
-    }
-    .btn-nav-page--sanctum:hover {
-      background: rgba(200, 60, 60, 0.18);
-      border-color: #c84040;
-      box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-      color: #e06060;
-    }
-    .btn-nav-page--inquisition {
-      color: #9b6fc4;
-      border-color: rgba(155, 111, 196, 0.45);
-      background: rgba(155, 111, 196, 0.07);
-    }
-    .btn-nav-page--inquisition:hover {
-      background: rgba(155, 111, 196, 0.18);
-      border-color: #9b6fc4;
-      box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-      color: #c090e8;
-    }
-    [data-theme="light"] .btn-nav-page--carte { color: #8a6800; border-color: rgba(138, 104, 0, 0.4); background: rgba(138, 104, 0, 0.06); }
-    [data-theme="light"] .btn-nav-page--carte:hover { background: rgba(138, 104, 0, 0.14); border-color: #8a6800; }
-    [data-theme="light"] .btn-nav-page--sanctum { color: #8b1c1c; border-color: rgba(139, 28, 28, 0.4); background: rgba(139, 28, 28, 0.06); }
-    [data-theme="light"] .btn-nav-page--sanctum:hover { background: rgba(139, 28, 28, 0.14); border-color: #8b1c1c; }
-    [data-theme="light"] .btn-nav-page--inquisition { color: #5a2a8a; border-color: rgba(90, 42, 138, 0.4); background: rgba(90, 42, 138, 0.06); }
-    [data-theme="light"] .btn-nav-page--inquisition:hover { background: rgba(90, 42, 138, 0.14); border-color: #5a2a8a; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Eaters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────────────────── */
+      .nav-page-links {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .btn-nav-page {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 3px;
+        border: 1px solid;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-nav-page--carte {
+        color: #c8a028;
+        border-color: rgba(200, 160, 40, 0.45);
+        background: rgba(200, 160, 40, 0.07);
+      }
+      .btn-nav-page--carte:hover {
+        background: rgba(200, 160, 40, 0.18);
+        border-color: #c8a028;
+        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
+        color: #e8c050;
+      }
+      .btn-nav-page--sanctum {
+        color: #c84040;
+        border-color: rgba(200, 60, 60, 0.45);
+        background: rgba(200, 60, 60, 0.07);
+      }
+      .btn-nav-page--sanctum:hover {
+        background: rgba(200, 60, 60, 0.18);
+        border-color: #c84040;
+        box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
+        color: #e06060;
+      }
+      .btn-nav-page--inquisition {
+        color: #9b6fc4;
+        border-color: rgba(155, 111, 196, 0.45);
+        background: rgba(155, 111, 196, 0.07);
+      }
+      .btn-nav-page--inquisition:hover {
+        background: rgba(155, 111, 196, 0.18);
+        border-color: #9b6fc4;
+        box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
+        color: #c090e8;
+      }
+      [data-theme="light"] .btn-nav-page--carte {
+        color: #8a6800;
+        border-color: rgba(138, 104, 0, 0.4);
+        background: rgba(138, 104, 0, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--carte:hover {
+        background: rgba(138, 104, 0, 0.14);
+        border-color: #8a6800;
+      }
+      [data-theme="light"] .btn-nav-page--sanctum {
+        color: #8b1c1c;
+        border-color: rgba(139, 28, 28, 0.4);
+        background: rgba(139, 28, 28, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--sanctum:hover {
+        background: rgba(139, 28, 28, 0.14);
+        border-color: #8b1c1c;
+      }
+      [data-theme="light"] .btn-nav-page--inquisition {
+        color: #5a2a8a;
+        border-color: rgba(90, 42, 138, 0.4);
+        background: rgba(90, 42, 138, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--inquisition:hover {
+        background: rgba(90, 42, 138, 0.14);
+        border-color: #5a2a8a;
+      }
 
-    /* ── HERO MINI ──────────────────────────────────────────────────── */
-    .page-hero {
-      padding: 5rem 0 3rem;
-      text-align: center;
-      background: radial-gradient(ellipse at center top, rgba(139,28,28,0.18) 0%, transparent 65%);
-      border-bottom: 1px solid rgba(139,28,28,0.2);
-    }
-    .page-hero .section-eyebrow { margin-bottom: 0.5rem; }
-    .page-hero .section-title   { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 0.75rem; }
-    .page-hero .section-desc    { max-width: 60ch; margin: 0 auto; }
+      /* ── HERO MINI ──────────────────────────────────────────────────── */
+      .page-hero {
+        padding: 5rem 0 3rem;
+        text-align: center;
+        background: radial-gradient(
+          ellipse at center top,
+          rgba(139, 28, 28, 0.18) 0%,
+          transparent 65%
+        );
+        border-bottom: 1px solid rgba(139, 28, 28, 0.2);
+      }
+      .page-hero .section-eyebrow {
+        margin-bottom: 0.5rem;
+      }
+      .page-hero .section-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+      .page-hero .section-desc {
+        max-width: 60ch;
+        margin: 0 auto;
+      }
 
-    /* ── LIEN RETOUR ────────────────────────────────────────────────────── */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin: 1.5rem 0 0;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: #c84040;
-      border: 1px solid rgba(200,60,60,0.4);
-      background: rgba(200,60,60,0.07);
-      padding: 0.45rem 1rem;
-      border-radius: 3px;
-      transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-    }
-    .back-link:hover {
-      background: rgba(200,60,60,0.18);
-      border-color: #c84040;
-      box-shadow: 0 0 12px rgba(200,60,60,0.25);
-      color: #e06060;
-    }
-    [data-theme="light"] .back-link { color: #8b1c1c; border-color: rgba(139,28,28,0.4); background: rgba(139,28,28,0.06); }
-    [data-theme="light"] .back-link:hover { background: rgba(139,28,28,0.14); border-color: #8b1c1c; }
+      /* ── LIEN RETOUR ────────────────────────────────────────────────────── */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin: 1.5rem 0 0;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #c84040;
+        border: 1px solid rgba(200, 60, 60, 0.4);
+        background: rgba(200, 60, 60, 0.07);
+        padding: 0.45rem 1rem;
+        border-radius: 3px;
+        transition:
+          background 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+      .back-link:hover {
+        background: rgba(200, 60, 60, 0.18);
+        border-color: #c84040;
+        box-shadow: 0 0 12px rgba(200, 60, 60, 0.25);
+        color: #e06060;
+      }
+      [data-theme="light"] .back-link {
+        color: #8b1c1c;
+        border-color: rgba(139, 28, 28, 0.4);
+        background: rgba(139, 28, 28, 0.06);
+      }
+      [data-theme="light"] .back-link:hover {
+        background: rgba(139, 28, 28, 0.14);
+        border-color: #8b1c1c;
+      }
 
-    @media (max-width: 600px) {
-      .nav-page-links { gap: 0.35rem; }
-      .btn-nav-page   { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-    }
-  </style>
-</head>
-<body>
+      @media (max-width: 600px) {
+        .nav-page-links {
+          gap: 0.35rem;
+        }
+        .btn-nav-page {
+          font-size: 0.65rem;
+          padding: 0.35rem 0.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a
+          href="index.html"
+          class="nav-logo"
+          aria-label="Campagne Fyrentis — Retour à l'accueil"
+        >
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
+          >
+            <polygon
+              points="18,2 34,28 2,28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#c8a028"
+            />
+            <circle
+              cx="18"
+              cy="18"
+              r="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#8b1c1c"
+            />
+            <line
+              x1="18"
+              y1="2"
+              x2="18"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="18"
+              y1="24"
+              x2="18"
+              y2="28"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="8.5"
+              y1="22.3"
+              x2="13.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="27.5"
+              y1="22.3"
+              x2="22.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+          </svg>
+          <div>
+            <span class="nav-logo-text">Fyrentis</span>
+            <span class="nav-logo-sub">Campagne 40K</span>
+          </div>
+        </a>
+        <div class="nav-actions">
+          <div class="nav-page-links">
+            <a
+              href="carte.html"
+              class="btn-nav-page btn-nav-page--carte"
+              aria-label="Voir la Carte du secteur"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              Carte
+            </a>
+            <a
+              href="sanctum.html"
+              class="btn-nav-page btn-nav-page--sanctum"
+              aria-label="Accéder au Sanctum"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Sanctum
+            </a>
+            <a
+              href="rapports-inquisiteurs.html"
+              class="btn-nav-page btn-nav-page--inquisition"
+              aria-label="Lire les Rapports Inquisitoriaux"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Inquisition
+            </a>
+          </div>
+          <button
+            class="btn-theme"
+            data-theme-toggle
+            aria-label="Basculer le thème"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="nav-mobile-toggle"
+            id="nav-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis — Retour à l'accueil">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <polygon points="18,2 34,28 2,28" fill="none" stroke="currentColor" stroke-width="1.5" color="#c8a028"/>
-        <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.5" color="#8b1c1c"/>
-        <line x1="18" y1="2" x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="8.5" y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
+    <!-- HERO MINI -->
+    <header class="page-hero" id="top">
+      <div class="container">
+        <h1 class="section-title"><span>WORLD EATERS</span></h1>
+        <p class="section-desc">
+          Spécificités de l'armée World Eaters : le vaisseau amiral Le
+          Conqueror, ses bonus de campagne, ainsi que les mécaniques spéciales
+          liées aux Crânes, au Sang et à Saint Carnage.
+        </p>
+        <a href="index.html#specificites-jean" class="back-link">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Retour à l'accueil
+        </a>
+      </div>
+    </header>
+
+    <!-- CONTENU WORLD EATERS -->
+    <section id="specificites-jean" class="ship-section">
+      <div class="container">
+        <div id="mecaniques-container"><!-- injecté par JS --></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Sous-Secteur Fyrentis</div>
+        <p class="footer-line">
+          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
+        </p>
+        <p class="footer-line">
+          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
+        </p>
+      </div>
+    </footer>
+
+    <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 12 9 6 15" />
       </svg>
-      <div>
-        <span class="nav-logo-text">Fyrentis</span>
-        <span class="nav-logo-sub">Campagne 40K</span>
-      </div>
     </a>
-    <div class="nav-actions">
-      <div class="nav-page-links">
-        <a href="carte.html" class="btn-nav-page btn-nav-page--carte" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          Carte
-        </a>
-        <a href="sanctum.html" class="btn-nav-page btn-nav-page--sanctum" aria-label="Accéder au Sanctum">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Sanctum
-        </a>
-        <a href="rapports-inquisiteurs.html" class="btn-nav-page btn-nav-page--inquisition" aria-label="Lire les Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Inquisition
-        </a>
-      </div>
-      <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
 
-<!-- HERO MINI -->
-<header class="page-hero" id="top">
-  <div class="container">
-    <h1 class="section-title"><span>WORLD EATERS</span></h1>
-    <p class="section-desc">Spécificités de l'armée World Eaters : le vaisseau amiral Le Conqueror, ses bonus de campagne, ainsi que les mécaniques spéciales liées aux Crânes, au Sang et à Saint Carnage.</p>
-    <a href="index.html#specificites-jean" class="back-link">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      Retour à l'accueil
-    </a>
-  </div>
-</header>
+    <script>
+      (function () {
+        // ── THEME TOGGLE
+        const themeBtn = document.querySelector("[data-theme-toggle]");
+        const root = document.documentElement;
+        let theme =
+          root.getAttribute("data-theme") ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        root.setAttribute("data-theme", theme);
+        function updateThemeBtn() {
+          if (!themeBtn) return;
+          themeBtn.innerHTML =
+            theme === "dark"
+              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+          themeBtn.setAttribute(
+            "aria-label",
+            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
+          );
+        }
+        updateThemeBtn();
+        if (themeBtn)
+          themeBtn.addEventListener("click", () => {
+            theme = theme === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", theme);
+            updateThemeBtn();
+          });
 
-<!-- CONTENU WORLD EATERS -->
-<section id="specificites-jean" class="ship-section">
-  <div class="container">
-    <div id="mecaniques-container"><!-- injecté par JS --></div>
-  </div>
-</section>
+        // ── MOBILE NAV
+        const navToggle = document.getElementById("nav-toggle");
+        if (navToggle) {
+          navToggle.addEventListener("click", () => {
+            const expanded = navToggle.getAttribute("aria-expanded") === "true";
+            navToggle.setAttribute("aria-expanded", !expanded);
+          });
+        }
 
-<footer>
-  <div class="container">
-    <div class="footer-logo">Sous-Secteur Fyrentis</div>
-    <p class="footer-line">« Dans le futur sombre de l'humanité, il n'y a que la guerre. »</p>
-    <p class="footer-line">Warhammer 40 000 • Campagne Narrative • 41ème Millénaire</p>
-  </div>
-</footer>
+        // ── NAV SCROLL + BACK-TO-TOP
+        const nav = document.getElementById("nav");
+        window.addEventListener(
+          "scroll",
+          () => {
+            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
+            document
+              .getElementById("back-top")
+              .classList.toggle("visible", window.scrollY > 300);
+          },
+          { passive: true },
+        );
 
-<a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-</a>
+        // ── REVEAL ON SCROLL
+        function initReveal() {
+          const obs = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add("visible");
+                  obs.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+          );
+          document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+        }
 
-<script>
-(function () {
+        // ── RENDER MECANIQUES
+        function renderMecaniques(m) {
+          const vaisseau = m.vaisseau;
+          const cranes = m.cranes;
+          const sang = m.sang;
+          const sc = m.saint_carnage;
 
-  // ── THEME TOGGLE
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let theme = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.setAttribute('data-theme', theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute('aria-label', 'Basculer vers le mode ' + (theme === 'dark' ? 'clair' : 'sombre'));
-  }
-  updateThemeBtn();
-  if (themeBtn) themeBtn.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', theme); updateThemeBtn(); });
-
-  // ── MOBILE NAV
-  const navToggle = document.getElementById('nav-toggle');
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !expanded);
-    });
-  }
-
-  // ── NAV SCROLL + BACK-TO-TOP
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
-
-  // ── REVEAL ON SCROLL
-  function initReveal() {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  }
-
-  // ── RENDER MECANIQUES
-  function renderMecaniques(m) {
-    const vaisseau = m.vaisseau;
-    const cranes   = m.cranes;
-    const sang     = m.sang;
-    const sc       = m.saint_carnage;
-
-    document.getElementById('mecaniques-container').innerHTML = `
+          document.getElementById("mecaniques-container").innerHTML = `
       <div class="ornament"><span>Le Conqueror</span></div>
       <div class="ship-layout">
         <div class="ship-img-wrap reveal">
@@ -248,9 +484,12 @@
         </div>
         <div class="reveal reveal-delay-2">
           <h3>Bonus de Vaisseau</h3>
-          <ul class="ship-bonus-list" role="list">${vaisseau.bonus.map(b =>
-            `<li class="ship-bonus"><span class="ship-bonus-icon">${b.icone}</span><div><p class="ship-bonus-name">${b.nom}</p><p class="ship-bonus-desc">${b.desc}</p></div></li>`
-          ).join('')}</ul>
+          <ul class="ship-bonus-list" role="list">${vaisseau.bonus
+            .map(
+              (b) =>
+                `<li class="ship-bonus"><span class="ship-bonus-icon">${b.icone}</span><div><p class="ship-bonus-name">${b.nom}</p><p class="ship-bonus-desc">${b.desc}</p></div></li>`,
+            )
+            .join("")}</ul>
         </div>
       </div>
 
@@ -260,42 +499,46 @@
           <span class="mechanic-icon">${cranes.icone}</span>
           <h3 class="mechanic-title"><span class="red">${cranes.titre}</span></h3>
           <p class="mechanic-desc">${cranes.desc}</p>
-          <ul class="mechanic-tiers" role="list">${cranes.paliers.map(p =>
-            `<li><span class="tier-num">${p.seuil}</span>${p.effet}</li>`
-          ).join('')}</ul>
+          <ul class="mechanic-tiers" role="list">${cranes.paliers
+            .map(
+              (p) =>
+                `<li><span class="tier-num">${p.seuil}</span>${p.effet}</li>`,
+            )
+            .join("")}</ul>
         </div>
         <div class="mechanic-card reveal reveal-delay-2">
           <span class="mechanic-icon">${sang.icone}</span>
           <h3 class="mechanic-title"><span class="red">${sang.titre}</span></h3>
           <p class="mechanic-desc">${sang.desc}</p>
-          <ul class="mechanic-tiers" role="list">${sang.paliers.map(p =>
-            `<li><span class="tier-num gold">${p.seuil}</span>${p.effet}</li>`
-          ).join('')}</ul>
+          <ul class="mechanic-tiers" role="list">${sang.paliers
+            .map(
+              (p) =>
+                `<li><span class="tier-num gold">${p.seuil}</span>${p.effet}</li>`,
+            )
+            .join("")}</ul>
         </div>
         <div class="mechanic-card reveal">
           <span class="mechanic-icon">${sc.icone}</span>
           <h3 class="mechanic-title">Règle <span class="red">${sc.titre}</span></h3>
           <p class="mechanic-desc">${sc.desc}</p>
-          <div>${sc.unites.map(u => `<div><p>${u.nom}</p><p>${u.detail}</p></div>`).join('')}</div>
+          <div>${sc.unites.map((u) => `<div><p>${u.nom}</p><p>${u.detail}</p></div>`).join("")}</div>
         </div>
       </div>`;
-  }
+        }
 
-  // ── MAIN : FETCH + RENDER
-  fetch('assets/data/campagne.json')
-    .then(r => r.json())
-    .then(d => {
-      renderMecaniques(d.mecaniques);
-      initReveal();
-    })
-    .catch(err => {
-      console.error('Erreur chargement campagne.json :', err);
-      document.getElementById('mecaniques-container').innerHTML =
-        '<p style="color:var(--color-primary-bright);text-align:center;padding:2rem">Erreur : impossible de charger les données.</p>';
-    });
-
-})();
-</script>
-
-</body>
+        // ── MAIN : FETCH + RENDER
+        fetch("assets/data/campagne.json")
+          .then((r) => r.json())
+          .then((d) => {
+            renderMecaniques(d.mecaniques);
+            initReveal();
+          })
+          .catch((err) => {
+            console.error("Erreur chargement campagne.json :", err);
+            document.getElementById("mecaniques-container").innerHTML =
+              '<p style="color:var(--color-primary-bright);text-align:center;padding:2rem">Erreur : impossible de charger les données.</p>';
+          });
+      })();
+    </script>
+  </body>
 </html>

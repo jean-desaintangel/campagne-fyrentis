@@ -1,780 +1,1274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adeptus Mechanicus — Fyrentis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-    /* ── BOUTONS DE NAVIGATION PAGES ───────────────────────────── */
-    .nav-page-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .btn-nav-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.85rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-nav-page--carte {
-      color: #c8a028;
-      border-color: rgba(200, 160, 40, 0.45);
-      background: rgba(200, 160, 40, 0.07);
-    }
-    .btn-nav-page--carte:hover {
-      background: rgba(200, 160, 40, 0.18);
-      border-color: #c8a028;
-      box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-      color: #e8c050;
-    }
-    .btn-nav-page--sanctum {
-      color: #c84040;
-      border-color: rgba(200, 60, 60, 0.45);
-      background: rgba(200, 60, 60, 0.07);
-    }
-    .btn-nav-page--sanctum:hover {
-      background: rgba(200, 60, 60, 0.18);
-      border-color: #c84040;
-      box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-      color: #e06060;
-    }
-    .btn-nav-page--inquisition {
-      color: #9b6fc4;
-      border-color: rgba(155, 111, 196, 0.45);
-      background: rgba(155, 111, 196, 0.07);
-    }
-    .btn-nav-page--inquisition:hover {
-      background: rgba(155, 111, 196, 0.18);
-      border-color: #9b6fc4;
-      box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-      color: #c090e8;
-    }
-    [data-theme="light"] .btn-nav-page--carte { color: #8a6800; border-color: rgba(138, 104, 0, 0.4); background: rgba(138, 104, 0, 0.06); }
-    [data-theme="light"] .btn-nav-page--carte:hover { background: rgba(138, 104, 0, 0.14); border-color: #8a6800; }
-    [data-theme="light"] .btn-nav-page--sanctum { color: #8b1c1c; border-color: rgba(139, 28, 28, 0.4); background: rgba(139, 28, 28, 0.06); }
-    [data-theme="light"] .btn-nav-page--sanctum:hover { background: rgba(139, 28, 28, 0.14); border-color: #8b1c1c; }
-    [data-theme="light"] .btn-nav-page--inquisition { color: #5a2a8a; border-color: rgba(90, 42, 138, 0.4); background: rgba(90, 42, 138, 0.06); }
-    [data-theme="light"] .btn-nav-page--inquisition:hover { background: rgba(90, 42, 138, 0.14); border-color: #5a2a8a; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adeptus Mechanicus — Fyrentis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* ── BOUTONS DE NAVIGATION PAGES ───────────────────────────── */
+      .nav-page-links {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .btn-nav-page {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 3px;
+        border: 1px solid;
+        transition:
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .btn-nav-page--carte {
+        color: #c8a028;
+        border-color: rgba(200, 160, 40, 0.45);
+        background: rgba(200, 160, 40, 0.07);
+      }
+      .btn-nav-page--carte:hover {
+        background: rgba(200, 160, 40, 0.18);
+        border-color: #c8a028;
+        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
+        color: #e8c050;
+      }
+      .btn-nav-page--sanctum {
+        color: #c84040;
+        border-color: rgba(200, 60, 60, 0.45);
+        background: rgba(200, 60, 60, 0.07);
+      }
+      .btn-nav-page--sanctum:hover {
+        background: rgba(200, 60, 60, 0.18);
+        border-color: #c84040;
+        box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
+        color: #e06060;
+      }
+      .btn-nav-page--inquisition {
+        color: #9b6fc4;
+        border-color: rgba(155, 111, 196, 0.45);
+        background: rgba(155, 111, 196, 0.07);
+      }
+      .btn-nav-page--inquisition:hover {
+        background: rgba(155, 111, 196, 0.18);
+        border-color: #9b6fc4;
+        box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
+        color: #c090e8;
+      }
+      [data-theme="light"] .btn-nav-page--carte {
+        color: #8a6800;
+        border-color: rgba(138, 104, 0, 0.4);
+        background: rgba(138, 104, 0, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--carte:hover {
+        background: rgba(138, 104, 0, 0.14);
+        border-color: #8a6800;
+      }
+      [data-theme="light"] .btn-nav-page--sanctum {
+        color: #8b1c1c;
+        border-color: rgba(139, 28, 28, 0.4);
+        background: rgba(139, 28, 28, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--sanctum:hover {
+        background: rgba(139, 28, 28, 0.14);
+        border-color: #8b1c1c;
+      }
+      [data-theme="light"] .btn-nav-page--inquisition {
+        color: #5a2a8a;
+        border-color: rgba(90, 42, 138, 0.4);
+        background: rgba(90, 42, 138, 0.06);
+      }
+      [data-theme="light"] .btn-nav-page--inquisition:hover {
+        background: rgba(90, 42, 138, 0.14);
+        border-color: #5a2a8a;
+      }
 
-    /* ── COULEUR THÉMATIQUE ADEPTUS MECHANICUS : ROUGE SANG + ACIER ROUILLÉ ── */
-    :root {
-      --am-red:           #c01820;
-      --am-red-light:     #e03040;
-      --am-red-dim:       rgba(192, 24, 32, 0.45);
-      --am-red-bg:        rgba(192, 24, 32, 0.07);
-      --am-red-hover-bg:  rgba(192, 24, 32, 0.18);
-      --am-red-glow:      rgba(192, 24, 32, 0.38);
-      --am-steel:         #8a9aaa;
-      --am-steel-dim:     rgba(138, 154, 170, 0.35);
-      --am-steel-bg:      rgba(138, 154, 170, 0.05);
-      --am-rust:          #7a4420;
-      --am-rust-dim:      rgba(122, 68, 32, 0.4);
-    }
-    [data-theme="light"] {
-      --am-red:           #8b1018;
-      --am-red-light:     #6b0c10;
-      --am-red-dim:       rgba(139, 16, 24, 0.4);
-      --am-red-bg:        rgba(139, 16, 24, 0.06);
-      --am-red-hover-bg:  rgba(139, 16, 24, 0.14);
-      --am-red-glow:      rgba(139, 16, 24, 0.2);
-      --am-steel:         #4a5a6a;
-      --am-steel-dim:     rgba(74, 90, 106, 0.35);
-      --am-steel-bg:      rgba(74, 90, 106, 0.05);
-      --am-rust:          #5a2e10;
-      --am-rust-dim:      rgba(90, 46, 16, 0.35);
-    }
+      /* ── COULEUR THÉMATIQUE ADEPTUS MECHANICUS : ROUGE SANG + ACIER ROUILLÉ ── */
+      :root {
+        --am-red: #c01820;
+        --am-red-light: #e03040;
+        --am-red-dim: rgba(192, 24, 32, 0.45);
+        --am-red-bg: rgba(192, 24, 32, 0.07);
+        --am-red-hover-bg: rgba(192, 24, 32, 0.18);
+        --am-red-glow: rgba(192, 24, 32, 0.38);
+        --am-steel: #8a9aaa;
+        --am-steel-dim: rgba(138, 154, 170, 0.35);
+        --am-steel-bg: rgba(138, 154, 170, 0.05);
+        --am-rust: #7a4420;
+        --am-rust-dim: rgba(122, 68, 32, 0.4);
+      }
+      [data-theme="light"] {
+        --am-red: #8b1018;
+        --am-red-light: #6b0c10;
+        --am-red-dim: rgba(139, 16, 24, 0.4);
+        --am-red-bg: rgba(139, 16, 24, 0.06);
+        --am-red-hover-bg: rgba(139, 16, 24, 0.14);
+        --am-red-glow: rgba(139, 16, 24, 0.2);
+        --am-steel: #4a5a6a;
+        --am-steel-dim: rgba(74, 90, 106, 0.35);
+        --am-steel-bg: rgba(74, 90, 106, 0.05);
+        --am-rust: #5a2e10;
+        --am-rust-dim: rgba(90, 46, 16, 0.35);
+      }
 
-    /* ── HERO MINI ──────────────────────────────────────────────── */
-    .page-hero {
-      padding: 5rem 0 3rem;
-      text-align: center;
-      background: radial-gradient(ellipse at center top, rgba(192,24,32,0.16) 0%, rgba(138,154,170,0.05) 45%, transparent 70%);
-      border-bottom: 1px solid rgba(192,24,32,0.25);
-    }
-    .page-hero .section-eyebrow { margin-bottom: 0.5rem; }
-    .page-hero .section-title   { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 0.75rem; }
-    .page-hero .section-desc    { max-width: 60ch; margin: 0 auto; }
+      /* ── HERO MINI ──────────────────────────────────────────────── */
+      .page-hero {
+        padding: 5rem 0 3rem;
+        text-align: center;
+        background: radial-gradient(
+          ellipse at center top,
+          rgba(192, 24, 32, 0.16) 0%,
+          rgba(138, 154, 170, 0.05) 45%,
+          transparent 70%
+        );
+        border-bottom: 1px solid rgba(192, 24, 32, 0.25);
+      }
+      .page-hero .section-eyebrow {
+        margin-bottom: 0.5rem;
+      }
+      .page-hero .section-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+      .page-hero .section-desc {
+        max-width: 60ch;
+        margin: 0 auto;
+      }
 
-    /* ── BINARY TICKER ─────────────────────────────────────────── */
-    .binary-ticker {
-      font-family: 'Courier New', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      color: var(--am-red);
-      opacity: 0.45;
-      margin: 0.5rem 0;
-      user-select: none;
-      overflow: hidden;
-      white-space: nowrap;
-    }
+      /* ── BINARY TICKER ─────────────────────────────────────────── */
+      .binary-ticker {
+        font-family: "Courier New", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        color: var(--am-red);
+        opacity: 0.45;
+        margin: 0.5rem 0;
+        user-select: none;
+        overflow: hidden;
+        white-space: nowrap;
+      }
 
-    /* ── LIEN RETOUR ─────────────────────────────────────────────── */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin: 1.5rem 0 0;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--am-red);
-      border: 1px solid var(--am-red-dim);
-      background: var(--am-red-bg);
-      padding: 0.45rem 1rem;
-      border-radius: 3px;
-      transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-    }
-    .back-link:hover {
-      background: var(--am-red-hover-bg);
-      border-color: var(--am-red);
-      box-shadow: 0 0 12px var(--am-red-glow);
-      color: var(--am-red-light);
-    }
+      /* ── LIEN RETOUR ─────────────────────────────────────────────── */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin: 1.5rem 0 0;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--am-red);
+        border: 1px solid var(--am-red-dim);
+        background: var(--am-red-bg);
+        padding: 0.45rem 1rem;
+        border-radius: 3px;
+        transition:
+          background 180ms ease,
+          border-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+      .back-link:hover {
+        background: var(--am-red-hover-bg);
+        border-color: var(--am-red);
+        box-shadow: 0 0 12px var(--am-red-glow);
+        color: var(--am-red-light);
+      }
 
-    /* ── SECTION CENSURÉE ─────────────────────────────────────── */
-    .censure-section {
-      padding: clamp(3rem, 7vw, 6rem) 0;
-    }
-    .censure-wrapper {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    .censure-stamp {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-    }
+      /* ── SECTION CENSURÉE ─────────────────────────────────────── */
+      .censure-section {
+        padding: clamp(3rem, 7vw, 6rem) 0;
+      }
+      .censure-wrapper {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+      .censure-stamp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+      }
 
-    /* ── CACHET ────────────────────────────────────────────────── */
-    .inquisition-seal {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      opacity: 0.92;
-    }
-    .inquisition-seal-icon {
-      width: 72px;
-      height: 72px;
-      color: var(--am-red);
-      filter: drop-shadow(0 0 12px var(--am-red-glow));
-    }
-    .inquisition-seal-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--am-red);
-    }
+      /* ── CACHET ────────────────────────────────────────────────── */
+      .inquisition-seal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        opacity: 0.92;
+      }
+      .inquisition-seal-icon {
+        width: 72px;
+        height: 72px;
+        color: var(--am-red);
+        filter: drop-shadow(0 0 12px var(--am-red-glow));
+      }
+      .inquisition-seal-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--am-red);
+      }
 
-    /* ── BLOC CENSURÉ ──────────────────────────────────────────── */
-    .censure-bloc {
-      width: 100%;
-      background: rgba(10, 4, 4, 0.58);
-      border: 1px solid rgba(192,24,32,0.16);
-      border-radius: 2px;
-      padding: 1.75rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .censure-bloc::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(192,24,32,0.03) 0px,
-        rgba(192,24,32,0.03) 1px,
-        transparent 1px,
-        transparent 6px
-      );
-      pointer-events: none;
-    }
-    [data-theme="light"] .censure-bloc {
-      background: rgba(245,235,235,0.6);
-      border-color: rgba(139,16,24,0.16);
-    }
+      /* ── BLOC CENSURÉ ──────────────────────────────────────────── */
+      .censure-bloc {
+        width: 100%;
+        background: rgba(10, 4, 4, 0.58);
+        border: 1px solid rgba(192, 24, 32, 0.16);
+        border-radius: 2px;
+        padding: 1.75rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .censure-bloc::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(192, 24, 32, 0.03) 0px,
+          rgba(192, 24, 32, 0.03) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+        pointer-events: none;
+      }
+      [data-theme="light"] .censure-bloc {
+        background: rgba(245, 235, 235, 0.6);
+        border-color: rgba(139, 16, 24, 0.16);
+      }
 
-    .censure-titre {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.7rem, 1.8vw, 0.9rem);
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--am-red);
-      margin-bottom: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .censure-titre::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--am-red-dim), transparent);
-    }
+      .censure-titre {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        margin-bottom: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .censure-titre::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, var(--am-red-dim), transparent);
+      }
 
-    .censure-lignes {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .censure-ligne {
-      height: 1.1rem;
-      border-radius: 2px;
-      background: rgba(192,24,32,0.07);
-      border: 1px solid rgba(192,24,32,0.11);
-      position: relative;
-      overflow: hidden;
-    }
-    .censure-ligne::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(192,24,32,0.14) 0px,
-        rgba(192,24,32,0.14) 2px,
-        transparent 2px,
-        transparent 9px
-      );
-    }
-    .censure-ligne--court { width: 60%; }
-    .censure-ligne--moyen { width: 82%; }
-    .censure-ligne--long  { width: 100%; }
-    [data-theme="light"] .censure-ligne {
-      background: rgba(139,16,24,0.05);
-      border-color: rgba(139,16,24,0.13);
-    }
-    [data-theme="light"] .censure-ligne::after {
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(139,16,24,0.11) 0px,
-        rgba(139,16,24,0.11) 2px,
-        transparent 2px,
-        transparent 9px
-      );
-    }
+      .censure-lignes {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .censure-ligne {
+        height: 1.1rem;
+        border-radius: 2px;
+        background: rgba(192, 24, 32, 0.07);
+        border: 1px solid rgba(192, 24, 32, 0.11);
+        position: relative;
+        overflow: hidden;
+      }
+      .censure-ligne::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(192, 24, 32, 0.14) 0px,
+          rgba(192, 24, 32, 0.14) 2px,
+          transparent 2px,
+          transparent 9px
+        );
+      }
+      .censure-ligne--court {
+        width: 60%;
+      }
+      .censure-ligne--moyen {
+        width: 82%;
+      }
+      .censure-ligne--long {
+        width: 100%;
+      }
+      [data-theme="light"] .censure-ligne {
+        background: rgba(139, 16, 24, 0.05);
+        border-color: rgba(139, 16, 24, 0.13);
+      }
+      [data-theme="light"] .censure-ligne::after {
+        background: repeating-linear-gradient(
+          90deg,
+          rgba(139, 16, 24, 0.11) 0px,
+          rgba(139, 16, 24, 0.11) 2px,
+          transparent 2px,
+          transparent 9px
+        );
+      }
 
-    /* ── BANDEAU "CENSURÉ" ─────────────────────────────────────── */
-    .censure-bandeau {
-      width: 100%;
-      position: relative;
-      border-top: 1px solid var(--am-red-dim);
-      border-bottom: 1px solid var(--am-red-dim);
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      background: rgba(192,24,32,0.06);
-      overflow: hidden;
-    }
-    .censure-bandeau::before,
-    .censure-bandeau::after {
-      content: '⚙';
-      font-size: 1rem;
-      color: var(--am-red);
-      opacity: 0.45;
-      flex-shrink: 0;
-    }
-    .censure-bandeau-text {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--am-red);
-      text-shadow: 0 0 24px var(--am-red-glow);
-      text-align: center;
-    }
+      /* ── BANDEAU "CENSURÉ" ─────────────────────────────────────── */
+      .censure-bandeau {
+        width: 100%;
+        position: relative;
+        border-top: 1px solid var(--am-red-dim);
+        border-bottom: 1px solid var(--am-red-dim);
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: rgba(192, 24, 32, 0.06);
+        overflow: hidden;
+      }
+      .censure-bandeau::before,
+      .censure-bandeau::after {
+        content: "⚙";
+        font-size: 1rem;
+        color: var(--am-red);
+        opacity: 0.45;
+        flex-shrink: 0;
+      }
+      .censure-bandeau-text {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        text-shadow: 0 0 24px var(--am-red-glow);
+        text-align: center;
+      }
 
-    /* ── RÉFÉRENCE ─────────────────────────────────────────────── */
-    .censure-ref {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.82rem;
-      font-style: italic;
-      color: var(--color-text-muted, #797876);
-      text-align: center;
-      max-width: 58ch;
-      line-height: 1.7;
-    }
-    .censure-ref strong {
-      color: var(--am-red);
-      font-style: normal;
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-    }
+      /* ── RÉFÉRENCE ─────────────────────────────────────────────── */
+      .censure-ref {
+        font-family: "Crimson Text", serif;
+        font-size: 0.82rem;
+        font-style: italic;
+        color: var(--color-text-muted, #797876);
+        text-align: center;
+        max-width: 58ch;
+        line-height: 1.7;
+      }
+      .censure-ref strong {
+        color: var(--am-red);
+        font-style: normal;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+      }
 
-    /* ── BLOC ALLIÉ VISIBLE ─────────────────────────────────────── */
-    .allie-bloc {
-      width: 100%;
-      border: 1px solid var(--am-steel-dim);
-      border-left: 3px solid var(--am-steel);
-      padding: 1.25rem 1.5rem;
-      border-radius: 2px;
-      background: var(--am-steel-bg);
-      position: relative;
-    }
-    [data-theme="light"] .allie-bloc {
-      background: rgba(74,90,106,0.04);
-      border-color: rgba(74,90,106,0.22);
-      border-left-color: var(--am-steel);
-    }
-    .allie-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--am-steel);
-      margin-bottom: 0.45rem;
-    }
-    .allie-nom {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(0.85rem, 2vw, 1.05rem);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--color-text, #cdccca);
-      margin-bottom: 0.3rem;
-    }
-    .allie-desc {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.9rem;
-      line-height: 1.65;
-      color: var(--color-text-muted, #797876);
-      font-style: italic;
-      max-width: 62ch;
-    }
+      /* ── BLOC ALLIÉ VISIBLE ─────────────────────────────────────── */
+      .allie-bloc {
+        width: 100%;
+        border: 1px solid var(--am-steel-dim);
+        border-left: 3px solid var(--am-steel);
+        padding: 1.25rem 1.5rem;
+        border-radius: 2px;
+        background: var(--am-steel-bg);
+        position: relative;
+      }
+      [data-theme="light"] .allie-bloc {
+        background: rgba(74, 90, 106, 0.04);
+        border-color: rgba(74, 90, 106, 0.22);
+        border-left-color: var(--am-steel);
+      }
+      .allie-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--am-steel);
+        margin-bottom: 0.45rem;
+      }
+      .allie-nom {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.85rem, 2vw, 1.05rem);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--color-text, #cdccca);
+        margin-bottom: 0.3rem;
+      }
+      .allie-desc {
+        font-family: "Crimson Text", serif;
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: var(--color-text-muted, #797876);
+        font-style: italic;
+        max-width: 62ch;
+      }
 
-    /* ── BLOC ALLIÉ SCELLÉ (INQUISITION) ───────────────────────── */
-    .allie-scelle {
-      width: 100%;
-      border: 1px solid rgba(192,24,32,0.22);
-      border-left: 3px solid var(--am-red);
-      padding: 1.25rem 1.5rem;
-      border-radius: 2px;
-      background: rgba(192,24,32,0.05);
-      position: relative;
-      overflow: hidden;
-    }
-    .allie-scelle::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(192,24,32,0.025) 0px,
-        rgba(192,24,32,0.025) 1px,
-        transparent 1px,
-        transparent 7px
-      );
-      pointer-events: none;
-    }
-    [data-theme="light"] .allie-scelle {
-      background: rgba(139,16,24,0.04);
-      border-color: rgba(139,16,24,0.22);
-    }
-    .allie-scelle-header {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.85rem;
-    }
-    .allie-scelle-badge {
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--am-red);
-      border: 1px solid var(--am-red-dim);
-      background: var(--am-red-bg);
-      padding: 0.2rem 0.55rem;
-      border-radius: 2px;
-      white-space: nowrap;
-    }
-    .allie-scelle-titre {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--am-red);
-      opacity: 0.75;
-    }
-    .allie-scelle-lignes {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .allie-scelle .censure-ligne { background: rgba(192,24,32,0.08); border-color: rgba(192,24,32,0.14); }
-    .allie-scelle-footer {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.78rem;
-      font-style: italic;
-      color: var(--am-red);
-      opacity: 0.7;
-      letter-spacing: 0.04em;
-    }
+      /* ── BLOC ALLIÉ SCELLÉ (INQUISITION) ───────────────────────── */
+      .allie-scelle {
+        width: 100%;
+        border: 1px solid rgba(192, 24, 32, 0.22);
+        border-left: 3px solid var(--am-red);
+        padding: 1.25rem 1.5rem;
+        border-radius: 2px;
+        background: rgba(192, 24, 32, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+      .allie-scelle::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(192, 24, 32, 0.025) 0px,
+          rgba(192, 24, 32, 0.025) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+        pointer-events: none;
+      }
+      [data-theme="light"] .allie-scelle {
+        background: rgba(139, 16, 24, 0.04);
+        border-color: rgba(139, 16, 24, 0.22);
+      }
+      .allie-scelle-header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.85rem;
+      }
+      .allie-scelle-badge {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        border: 1px solid var(--am-red-dim);
+        background: var(--am-red-bg);
+        padding: 0.2rem 0.55rem;
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+      .allie-scelle-titre {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        opacity: 0.75;
+      }
+      .allie-scelle-lignes {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .allie-scelle .censure-ligne {
+        background: rgba(192, 24, 32, 0.08);
+        border-color: rgba(192, 24, 32, 0.14);
+      }
+      .allie-scelle-footer {
+        font-family: "Crimson Text", serif;
+        font-size: 0.78rem;
+        font-style: italic;
+        color: var(--am-red);
+        opacity: 0.7;
+        letter-spacing: 0.04em;
+      }
 
-    /* ── NOTA BENE ─────────────────────────────────────────────── */
-    .nota-bene {
-      width: 100%;
-      border: 1px solid var(--am-red-dim);
-      border-left: 3px solid var(--am-red);
-      padding: 1rem 1.25rem;
-      border-radius: 2px;
-      background: rgba(192,24,32,0.04);
-    }
-    [data-theme="light"] .nota-bene {
-      background: rgba(139,16,24,0.04);
-      border-color: rgba(139,16,24,0.25);
-      border-left-color: var(--am-red);
-    }
-    .nota-bene-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--am-red);
-      margin-bottom: 0.45rem;
-    }
-    .nota-bene p {
-      font-family: 'Crimson Text', serif;
-      font-size: 0.92rem;
-      line-height: 1.65;
-      color: var(--color-text-muted, #797876);
-      font-style: italic;
-      max-width: 65ch;
-    }
+      /* ── NOTA BENE ─────────────────────────────────────────────── */
+      .nota-bene {
+        width: 100%;
+        border: 1px solid var(--am-red-dim);
+        border-left: 3px solid var(--am-red);
+        padding: 1rem 1.25rem;
+        border-radius: 2px;
+        background: rgba(192, 24, 32, 0.04);
+      }
+      [data-theme="light"] .nota-bene {
+        background: rgba(139, 16, 24, 0.04);
+        border-color: rgba(139, 16, 24, 0.25);
+        border-left-color: var(--am-red);
+      }
+      .nota-bene-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        margin-bottom: 0.45rem;
+      }
+      .nota-bene p {
+        font-family: "Crimson Text", serif;
+        font-size: 0.92rem;
+        line-height: 1.65;
+        color: var(--color-text-muted, #797876);
+        font-style: italic;
+        max-width: 65ch;
+      }
 
-    /* ── EXPURGÉ INLINE ────────────────────────────────────────── */
-    .expurge {
-      display: inline-block;
-      background: currentColor;
-      color: transparent;
-      border-radius: 1px;
-      user-select: none;
-      font-size: 0.9em;
-      padding: 0 0.15em;
-      vertical-align: baseline;
-    }
-    .donnees-expurgees {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7em;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--am-red);
-      border: 1px solid var(--am-red-dim);
-      background: var(--am-red-bg);
-      padding: 0.1rem 0.4rem;
-      border-radius: 2px;
-    }
+      /* ── EXPURGÉ INLINE ────────────────────────────────────────── */
+      .expurge {
+        display: inline-block;
+        background: currentColor;
+        color: transparent;
+        border-radius: 1px;
+        user-select: none;
+        font-size: 0.9em;
+        padding: 0 0.15em;
+        vertical-align: baseline;
+      }
+      .donnees-expurgees {
+        font-family: "Cinzel", serif;
+        font-size: 0.7em;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: var(--am-red);
+        border: 1px solid var(--am-red-dim);
+        background: var(--am-red-bg);
+        padding: 0.1rem 0.4rem;
+        border-radius: 2px;
+      }
 
-    @media (max-width: 600px) {
-      .nav-page-links { gap: 0.35rem; }
-      .btn-nav-page   { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-      .censure-bloc   { padding: 1.25rem 1rem; }
-      .censure-bandeau { padding: 1rem; gap: 0.75rem; }
-      .allie-bloc, .allie-scelle { padding: 1rem; }
-    }
-  </style>
-</head>
-<body>
-
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Campagne Fyrentis — Retour à l'accueil">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <polygon points="18,2 34,28 2,28" fill="none" stroke="currentColor" stroke-width="1.5" color="#c8a028"/>
-        <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.5" color="#8b1c1c"/>
-        <line x1="18" y1="2" x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="8.5" y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-      </svg>
-      <div>
-        <span class="nav-logo-text">Fyrentis</span>
-        <span class="nav-logo-sub">Campagne 40K</span>
-      </div>
-    </a>
-    <div class="nav-actions">
-      <div class="nav-page-links">
-        <a href="carte.html" class="btn-nav-page btn-nav-page--carte" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          Carte
-        </a>
-        <a href="sanctum.html" class="btn-nav-page btn-nav-page--sanctum" aria-label="Accéder au Sanctum">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Sanctum
-        </a>
-        <a href="rapports-inquisiteurs.html" class="btn-nav-page btn-nav-page--inquisition" aria-label="Lire les Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Inquisition
-        </a>
-      </div>
-      <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO MINI -->
-<header class="page-hero" id="top">
-  <div class="container">
-    <p class="section-eyebrow">Dossier Mechanicus — Monde-forge Sanctum</p>
-    <p class="binary-ticker" aria-hidden="true">01001101 01000001 01000011 01001000 01001001 01001110 01000001 00100000 01000101 01010011 01010100 00100000 01010110 01001001 01010100 01000001</p>
-    <h1 class="section-title"><span>ADEPTUS MECHANICUS</span></h1>
-    <p class="section-desc">Prêtres-ingénieurs du Dieu-Mécanique, gardiens des secrets de l'Omnimessie. Leur protocole d'engagement dans le sous-secteur Fyrentis est classifié <em>Mechanicus Extremis</em> et placé sous scellé conjoint Inquisition-Méchanicus.</p>
-    <a href="index.html" class="back-link">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      Retour à l'accueil
-    </a>
-  </div>
-</header>
-
-<!-- CONTENU CENSURÉ -->
-<section class="censure-section">
-  <div class="container">
-    <div class="censure-wrapper">
-      <div class="censure-stamp">
-
-        <!-- Cachet Mechanicus / Inquisition -->
-        <div class="inquisition-seal reveal">
-          <svg class="inquisition-seal-icon" viewBox="0 0 72 72" fill="none" aria-hidden="true">
-            <circle cx="36" cy="36" r="34" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
-            <circle cx="36" cy="36" r="22" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
-            <circle cx="36" cy="36" r="9" stroke="currentColor" stroke-width="1.2"/>
-            <rect x="34" y="2" width="4" height="9" rx="1" fill="currentColor" opacity="0.85"/>
-            <rect x="34" y="61" width="4" height="9" rx="1" fill="currentColor" opacity="0.85"/>
-            <rect x="2" y="34" width="9" height="4" rx="1" fill="currentColor" opacity="0.85"/>
-            <rect x="61" y="34" width="9" height="4" rx="1" fill="currentColor" opacity="0.85"/>
-            <rect x="13.5" y="13.5" width="4" height="9" rx="1" fill="currentColor" opacity="0.7" transform="rotate(45 15.5 18)"/>
-            <rect x="54.5" y="13.5" width="4" height="9" rx="1" fill="currentColor" opacity="0.7" transform="rotate(-45 56.5 18)"/>
-            <rect x="13.5" y="49.5" width="4" height="9" rx="1" fill="currentColor" opacity="0.7" transform="rotate(-45 15.5 54)"/>
-            <rect x="54.5" y="49.5" width="4" height="9" rx="1" fill="currentColor" opacity="0.7" transform="rotate(45 56.5 54)"/>
-            <circle cx="36" cy="34" r="4" fill="currentColor" opacity="0.9"/>
-            <rect x="33.5" y="37.5" width="2.5" height="3" rx="0.5" fill="currentColor" opacity="0.7"/>
-            <rect x="36" y="37.5" width="2.5" height="3" rx="0.5" fill="currentColor" opacity="0.7"/>
+      @media (max-width: 600px) {
+        .nav-page-links {
+          gap: 0.35rem;
+        }
+        .btn-nav-page {
+          font-size: 0.65rem;
+          padding: 0.35rem 0.6rem;
+        }
+        .censure-bloc {
+          padding: 1.25rem 1rem;
+        }
+        .censure-bandeau {
+          padding: 1rem;
+          gap: 0.75rem;
+        }
+        .allie-bloc,
+        .allie-scelle {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a
+          href="index.html"
+          class="nav-logo"
+          aria-label="Campagne Fyrentis — Retour à l'accueil"
+        >
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
+          >
+            <polygon
+              points="18,2 34,28 2,28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#c8a028"
+            />
+            <circle
+              cx="18"
+              cy="18"
+              r="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#8b1c1c"
+            />
+            <line
+              x1="18"
+              y1="2"
+              x2="18"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="18"
+              y1="24"
+              x2="18"
+              y2="28"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="8.5"
+              y1="22.3"
+              x2="13.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="27.5"
+              y1="22.3"
+              x2="22.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
           </svg>
-          <span class="inquisition-seal-title">Adeptus Mechanicus — Forge Sanctum · Inquisitoriat Impérial</span>
-        </div>
-
-        <!-- Bandeau principal -->
-        <div class="censure-bandeau reveal">
-          <span class="censure-bandeau-text">Censuré par l'Inquisition</span>
-        </div>
-
-        <!-- Référence de document -->
-        <p class="censure-ref reveal">
-          <strong>Réf. Doc. :</strong> AMI-FYRENTIS-SM-██████ — Classifié <strong>Mechanicus Extremis / Obscura</strong><br>
-          Ce dossier a été placé sous scellé conjoint par l'Ordo Machinum et l'Inquisitoriat Impérial, <em>en raison de la nature ultra-sensible des protocoles techno-hérétiques détectés sur le Monde-forge Sanctum.</em>
-          La divulgation des spécifications de combat de l'Adeptus Mechanicus dans ce sous-secteur constitue une violation du Traité de Mars, passible de <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span>.
-        </p>
-
-        <!-- Bloc I : Monde-forge Sanctum -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Monde-forge Sanctum — Rapport de Situation
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
+          <div>
+            <span class="nav-logo-text">Fyrentis</span>
+            <span class="nav-logo-sub">Campagne 40K</span>
           </div>
-        </div>
-
-        <!-- Bloc II : Historique de Campagne -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
-            Historique de Campagne — Fyrentis
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
+        </a>
+        <div class="nav-actions">
+          <div class="nav-page-links">
+            <a
+              href="carte.html"
+              class="btn-nav-page btn-nav-page--carte"
+              aria-label="Voir la Carte du secteur"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              Carte
+            </a>
+            <a
+              href="sanctum.html"
+              class="btn-nav-page btn-nav-page--sanctum"
+              aria-label="Accéder au Sanctum"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Sanctum
+            </a>
+            <a
+              href="rapports-inquisiteurs.html"
+              class="btn-nav-page btn-nav-page--inquisition"
+              aria-label="Lire les Rapports Inquisitoriaux"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Inquisition
+            </a>
           </div>
+          <button
+            class="btn-theme"
+            data-theme-toggle
+            aria-label="Basculer le thème"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="nav-mobile-toggle"
+            id="nav-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
         </div>
-
-        <!-- Bloc III : Spécificités de campagne -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Spécificités de Campagne — Adeptus Mechanicus
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-          </div>
-        </div>
-
-        <!-- Bloc IV : Règles spéciales -->
-        <div class="censure-bloc reveal">
-          <p class="censure-titre">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Règles Spéciales &amp; Bonus de Campagne
-          </p>
-          <div class="censure-lignes">
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-          </div>
-        </div>
-
-        <!-- Séparateur Forces Alliées -->
-        <div style="width:100%; text-align:center; padding: 0.25rem 0;">
-          <p style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--am-steel); opacity:0.7;">— Forces Alliées — Protocole de Déploiement Conjoint —</p>
-        </div>
-
-        <!-- Allié confirmé : Chevaliers de Riga -->
-        <div class="allie-bloc reveal">
-          <p class="allie-label">Allié Confirmé — Statut : Actif</p>
-          <p class="allie-nom">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:0.4rem;" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="12" y1="9" x2="12" y2="15"/></svg>
-            Les Chevaliers de Riga
-            <span style="font-family:'Crimson Text',serif; font-size:0.8rem; font-weight:400; font-style:italic; letter-spacing:0.02em; color:var(--color-text-muted, #797876);"> — Imperial Knights</span>
-          </p>
-          <p class="allie-desc">
-            Maison Chevaleresque liée au Monde-forge Sanctum par serment d'allégeance ancestral. Les Seigneurs-Chevaliers de Riga fournissent une puissance de feu colossale à l'avant-garde mécanicus dans le sous-secteur Fyrentis. Leur engagement est confirmé et documenté au registre de campagne — <em>Réf. KNI-RIGA-FYR-04█</em>.
-          </p>
-        </div>
-
-        <!-- Allié scellé : Forces inconnues -->
-        <div class="allie-scelle reveal">
-          <div class="allie-scelle-header">
-            <span class="allie-scelle-badge">⚠ Inquisition Seal</span>
-            <span class="allie-scelle-titre">Allié(s) Supplémentaire(s) — Accès Restreint Niveau Ω</span>
-          </div>
-          <div class="allie-scelle-lignes">
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--moyen"></div>
-            <div class="censure-ligne censure-ligne--long"></div>
-            <div class="censure-ligne censure-ligne--court"></div>
-          </div>
-          <p class="allie-scelle-footer">
-            — <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> — Bonus scellé par décision de l'Inquisitoriat. Réf. interne : <span style="font-family:'Courier New',monospace; font-size:0.75em; letter-spacing:0.08em;">INQ-██████-SEAL-Ω</span>
-          </p>
-        </div>
-
-        <!-- Note inquisitoriale -->
-        <div class="nota-bene reveal">
-          <p class="nota-bene-label">Nota Inquisitoriale — Ordo Machinum</p>
-          <p>
-            « Les forces de l'Adeptus Mechanicus opérant depuis le Monde-forge Sanctum font l'objet d'une surveillance renforcée de l'Ordo Machinum. Des rapports signalant l'utilisation de technologies <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> lors des engagements sur ██████ ont motivé l'ouverture d'un protocole d'inspection. L'accès aux schémas de déploiement du Magos-Prime <span class="expurge">███████ ████████████</span> reste soumis à validation par le Sénat Méchanicus. »
-          </p>
-          <p style="margin-top:0.5rem;">
-            — <em>Inquisiteur-Délégué ██████ ██████████, Ordo Machinum, Fyrentis Ultima</em>
-          </p>
-        </div>
-
       </div>
-    </div>
-  </div>
-</section>
+    </nav>
 
-<footer>
-  <div class="container">
-    <div class="footer-logo">Sous-Secteur Fyrentis</div>
-    <p class="footer-line">« Dans le futur sombre de l'humanité, il n'y a que la guerre. »</p>
-    <p class="footer-line">Warhammer 40 000 • Campagne Narrative • 41ème Millénaire</p>
-  </div>
-</footer>
+    <!-- HERO MINI -->
+    <header class="page-hero" id="top">
+      <div class="container">
+        <p class="section-eyebrow">Dossier Mechanicus — Monde-forge Sanctum</p>
+        <p class="binary-ticker" aria-hidden="true">
+          01001101 01000001 01000011 01001000 01001001 01001110 01000001
+          00100000 01000101 01010011 01010100 00100000 01010110 01001001
+          01010100 01000001
+        </p>
+        <h1 class="section-title"><span>ADEPTUS MECHANICUS</span></h1>
+        <p class="section-desc">
+          Prêtres-ingénieurs du Dieu-Mécanique, gardiens des secrets de
+          l'Omnimessie. Leur protocole d'engagement dans le sous-secteur
+          Fyrentis est classifié <em>Mechanicus Extremis</em> et placé sous
+          scellé conjoint Inquisition-Méchanicus.
+        </p>
+        <a href="index.html" class="back-link">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Retour à l'accueil
+        </a>
+      </div>
+    </header>
 
-<a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-</a>
+    <!-- CONTENU CENSURÉ -->
+    <section class="censure-section">
+      <div class="container">
+        <div class="censure-wrapper">
+          <div class="censure-stamp">
+            <!-- Cachet Mechanicus / Inquisition -->
+            <div class="inquisition-seal reveal">
+              <svg
+                class="inquisition-seal-icon"
+                viewBox="0 0 72 72"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="36"
+                  cy="36"
+                  r="34"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  stroke-dasharray="4 3"
+                />
+                <circle
+                  cx="36"
+                  cy="36"
+                  r="22"
+                  stroke="currentColor"
+                  stroke-width="0.8"
+                  opacity="0.55"
+                />
+                <circle
+                  cx="36"
+                  cy="36"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="34"
+                  y="2"
+                  width="4"
+                  height="9"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.85"
+                />
+                <rect
+                  x="34"
+                  y="61"
+                  width="4"
+                  height="9"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.85"
+                />
+                <rect
+                  x="2"
+                  y="34"
+                  width="9"
+                  height="4"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.85"
+                />
+                <rect
+                  x="61"
+                  y="34"
+                  width="9"
+                  height="4"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.85"
+                />
+                <rect
+                  x="13.5"
+                  y="13.5"
+                  width="4"
+                  height="9"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.7"
+                  transform="rotate(45 15.5 18)"
+                />
+                <rect
+                  x="54.5"
+                  y="13.5"
+                  width="4"
+                  height="9"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.7"
+                  transform="rotate(-45 56.5 18)"
+                />
+                <rect
+                  x="13.5"
+                  y="49.5"
+                  width="4"
+                  height="9"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.7"
+                  transform="rotate(-45 15.5 54)"
+                />
+                <rect
+                  x="54.5"
+                  y="49.5"
+                  width="4"
+                  height="9"
+                  rx="1"
+                  fill="currentColor"
+                  opacity="0.7"
+                  transform="rotate(45 56.5 54)"
+                />
+                <circle
+                  cx="36"
+                  cy="34"
+                  r="4"
+                  fill="currentColor"
+                  opacity="0.9"
+                />
+                <rect
+                  x="33.5"
+                  y="37.5"
+                  width="2.5"
+                  height="3"
+                  rx="0.5"
+                  fill="currentColor"
+                  opacity="0.7"
+                />
+                <rect
+                  x="36"
+                  y="37.5"
+                  width="2.5"
+                  height="3"
+                  rx="0.5"
+                  fill="currentColor"
+                  opacity="0.7"
+                />
+              </svg>
+              <span class="inquisition-seal-title"
+                >Adeptus Mechanicus — Forge Sanctum · Inquisitoriat
+                Impérial</span
+              >
+            </div>
 
-<script>
-(function () {
+            <!-- Bandeau principal -->
+            <div class="censure-bandeau reveal">
+              <span class="censure-bandeau-text"
+                >Censuré par l'Inquisition</span
+              >
+            </div>
 
-  // ── THEME TOGGLE
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let theme = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.setAttribute('data-theme', theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute('aria-label', 'Basculer vers le mode ' + (theme === 'dark' ? 'clair' : 'sombre'));
-  }
-  updateThemeBtn();
-  if (themeBtn) themeBtn.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', theme); updateThemeBtn(); });
+            <!-- Référence de document -->
+            <p class="censure-ref reveal">
+              <strong>Réf. Doc. :</strong> AMI-FYRENTIS-SM-██████ — Classifié
+              <strong>Mechanicus Extremis / Obscura</strong><br />
+              Ce dossier a été placé sous scellé conjoint par l'Ordo Machinum et
+              l'Inquisitoriat Impérial,
+              <em
+                >en raison de la nature ultra-sensible des protocoles
+                techno-hérétiques détectés sur le Monde-forge Sanctum.</em
+              >
+              La divulgation des spécifications de combat de l'Adeptus
+              Mechanicus dans ce sous-secteur constitue une violation du Traité
+              de Mars, passible de
+              <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span>.
+            </p>
 
-  // ── MOBILE NAV
-  const navToggle = document.getElementById('nav-toggle');
-  if (navToggle) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', !expanded);
-    });
-  }
+            <!-- Bloc I : Monde-forge Sanctum -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  />
+                </svg>
+                Monde-forge Sanctum — Rapport de Situation
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+              </div>
+            </div>
 
-  // ── NAV SCROLL + BACK-TO-TOP
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
+            <!-- Bloc II : Historique de Campagne -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="9" y1="9" x2="15" y2="9" />
+                  <line x1="9" y1="13" x2="15" y2="13" />
+                  <line x1="9" y1="17" x2="12" y2="17" />
+                </svg>
+                Historique de Campagne — Fyrentis
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+              </div>
+            </div>
 
-  // ── REVEAL ON SCROLL
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+            <!-- Bloc III : Spécificités de campagne -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                Spécificités de Campagne — Adeptus Mechanicus
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+              </div>
+            </div>
 
-})();
-</script>
+            <!-- Bloc IV : Règles spéciales -->
+            <div class="censure-bloc reveal">
+              <p class="censure-titre">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                Règles Spéciales &amp; Bonus de Campagne
+              </p>
+              <div class="censure-lignes">
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+              </div>
+            </div>
 
-</body>
+            <!-- Séparateur Forces Alliées -->
+            <div style="width: 100%; text-align: center; padding: 0.25rem 0">
+              <p
+                style="
+                  font-family: &quot;Cinzel&quot;, serif;
+                  font-size: 0.7rem;
+                  font-weight: 700;
+                  letter-spacing: 0.22em;
+                  text-transform: uppercase;
+                  color: var(--am-steel);
+                  opacity: 0.7;
+                "
+              >
+                — Forces Alliées — Protocole de Déploiement Conjoint —
+              </p>
+            </div>
+
+            <!-- Allié confirmé : Chevaliers de Riga -->
+            <div class="allie-bloc reveal">
+              <p class="allie-label">Allié Confirmé — Statut : Actif</p>
+              <p class="allie-nom">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  style="
+                    display: inline;
+                    vertical-align: middle;
+                    margin-right: 0.4rem;
+                  "
+                  aria-hidden="true"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <line x1="9" y1="12" x2="15" y2="12" />
+                  <line x1="12" y1="9" x2="12" y2="15" />
+                </svg>
+                Les Chevaliers de Riga
+                <span
+                  style="
+                    font-family: &quot;Crimson Text&quot;, serif;
+                    font-size: 0.8rem;
+                    font-weight: 400;
+                    font-style: italic;
+                    letter-spacing: 0.02em;
+                    color: var(--color-text-muted, #797876);
+                  "
+                >
+                  — Imperial Knights</span
+                >
+              </p>
+              <p class="allie-desc">
+                Maison Chevaleresque liée au Monde-forge Sanctum par serment
+                d'allégeance ancestral. Les Seigneurs-Chevaliers de Riga
+                fournissent une puissance de feu colossale à l'avant-garde
+                mécanicus dans le sous-secteur Fyrentis. Leur engagement est
+                confirmé et documenté au registre de campagne —
+                <em>Réf. KNI-RIGA-FYR-04█</em>.
+              </p>
+            </div>
+
+            <!-- Allié scellé : Forces inconnues -->
+            <div class="allie-scelle reveal">
+              <div class="allie-scelle-header">
+                <span class="allie-scelle-badge">⚠ Inquisition Seal</span>
+                <span class="allie-scelle-titre"
+                  >Allié(s) Supplémentaire(s) — Accès Restreint Niveau Ω</span
+                >
+              </div>
+              <div class="allie-scelle-lignes">
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--moyen"></div>
+                <div class="censure-ligne censure-ligne--long"></div>
+                <div class="censure-ligne censure-ligne--court"></div>
+              </div>
+              <p class="allie-scelle-footer">
+                — <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> —
+                Bonus scellé par décision de l'Inquisitoriat. Réf. interne :
+                <span
+                  style="
+                    font-family: &quot;Courier New&quot;, monospace;
+                    font-size: 0.75em;
+                    letter-spacing: 0.08em;
+                  "
+                  >INQ-██████-SEAL-Ω</span
+                >
+              </p>
+            </div>
+
+            <!-- Note inquisitoriale -->
+            <div class="nota-bene reveal">
+              <p class="nota-bene-label">Nota Inquisitoriale — Ordo Machinum</p>
+              <p>
+                « Les forces de l'Adeptus Mechanicus opérant depuis le
+                Monde-forge Sanctum font l'objet d'une surveillance renforcée de
+                l'Ordo Machinum. Des rapports signalant l'utilisation de
+                technologies
+                <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> lors
+                des engagements sur ██████ ont motivé l'ouverture d'un protocole
+                d'inspection. L'accès aux schémas de déploiement du Magos-Prime
+                <span class="expurge">███████ ████████████</span> reste soumis à
+                validation par le Sénat Méchanicus. »
+              </p>
+              <p style="margin-top: 0.5rem">
+                —
+                <em
+                  >Inquisiteur-Délégué ██████ ██████████, Ordo Machinum,
+                  Fyrentis Ultima</em
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Sous-Secteur Fyrentis</div>
+        <p class="footer-line">
+          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
+        </p>
+        <p class="footer-line">
+          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
+        </p>
+      </div>
+    </footer>
+
+    <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </a>
+
+    <script>
+      (function () {
+        // ── THEME TOGGLE
+        const themeBtn = document.querySelector("[data-theme-toggle]");
+        const root = document.documentElement;
+        let theme =
+          root.getAttribute("data-theme") ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        root.setAttribute("data-theme", theme);
+        function updateThemeBtn() {
+          if (!themeBtn) return;
+          themeBtn.innerHTML =
+            theme === "dark"
+              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+          themeBtn.setAttribute(
+            "aria-label",
+            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
+          );
+        }
+        updateThemeBtn();
+        if (themeBtn)
+          themeBtn.addEventListener("click", () => {
+            theme = theme === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", theme);
+            updateThemeBtn();
+          });
+
+        // ── MOBILE NAV
+        const navToggle = document.getElementById("nav-toggle");
+        if (navToggle) {
+          navToggle.addEventListener("click", () => {
+            const expanded = navToggle.getAttribute("aria-expanded") === "true";
+            navToggle.setAttribute("aria-expanded", !expanded);
+          });
+        }
+
+        // ── NAV SCROLL + BACK-TO-TOP
+        const nav = document.getElementById("nav");
+        window.addEventListener(
+          "scroll",
+          () => {
+            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
+            document
+              .getElementById("back-top")
+              .classList.toggle("visible", window.scrollY > 300);
+          },
+          { passive: true },
+        );
+
+        // ── REVEAL ON SCROLL
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+        );
+        document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      })();
+    </script>
+  </body>
 </html>
