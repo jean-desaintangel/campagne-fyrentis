@@ -12,83 +12,6 @@
     />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
-      /* ── BOUTONS NAV PAGES ─────────────────────────────────────── */
-      .nav-page-links {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-      .btn-nav-page {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.85rem;
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 3px;
-        border: 1px solid;
-        transition:
-          background 180ms ease,
-          color 180ms ease,
-          border-color 180ms ease,
-          box-shadow 180ms ease;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-      .btn-nav-page--carte {
-        color: #c8a028;
-        border-color: rgba(200, 160, 40, 0.45);
-        background: rgba(200, 160, 40, 0.07);
-      }
-      .btn-nav-page--carte:hover {
-        background: rgba(200, 160, 40, 0.18);
-        border-color: #c8a028;
-        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-        color: #e8c050;
-      }
-      .btn-nav-page--inquisition {
-        color: #9b6fc4;
-        border-color: rgba(155, 111, 196, 0.45);
-        background: rgba(155, 111, 196, 0.07);
-      }
-      .btn-nav-page--inquisition:hover {
-        background: rgba(155, 111, 196, 0.18);
-        border-color: #9b6fc4;
-        box-shadow: 0 0 10px rgba(155, 111, 196, 0.25);
-        color: #bb8fe4;
-      }
-      [data-theme="light"] .btn-nav-page--carte {
-        color: #8a6800;
-        border-color: rgba(138, 104, 0, 0.4);
-        background: rgba(138, 104, 0, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--carte:hover {
-        background: rgba(138, 104, 0, 0.14);
-        border-color: #8a6800;
-      }
-      [data-theme="light"] .btn-nav-page--inquisition {
-        color: #5a2a8a;
-        border-color: rgba(90, 42, 138, 0.4);
-        background: rgba(90, 42, 138, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--inquisition:hover {
-        background: rgba(90, 42, 138, 0.14);
-        border-color: #5a2a8a;
-      }
-      @media (max-width: 600px) {
-        .nav-page-links {
-          gap: 0.35rem;
-        }
-        .btn-nav-page {
-          font-size: 0.65rem;
-          padding: 0.35rem 0.6rem;
-        }
-      }
-
       /* ── HERO RAPPORT DE BATAILLE ─────────────────────────────── */
       .bataille-hero {
         padding: 7rem 1.5rem 3rem;
@@ -1378,46 +1301,6 @@
       </svg>
     </a>
 
-    <script>
-      (function () {
-        const themeBtn = document.querySelector("[data-theme-toggle]");
-        const root = document.documentElement;
-        let theme =
-          root.getAttribute("data-theme") ||
-          (matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-        root.setAttribute("data-theme", theme);
-        function updateThemeBtn() {
-          if (!themeBtn) return;
-          themeBtn.innerHTML =
-            theme === "dark"
-              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-          themeBtn.setAttribute(
-            "aria-label",
-            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
-          );
-        }
-        updateThemeBtn();
-        if (themeBtn)
-          themeBtn.addEventListener("click", () => {
-            theme = theme === "dark" ? "light" : "dark";
-            root.setAttribute("data-theme", theme);
-            updateThemeBtn();
-          });
-        const nav = document.getElementById("nav");
-        window.addEventListener(
-          "scroll",
-          () => {
-            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
-            document
-              .getElementById("back-top")
-              .classList.toggle("visible", window.scrollY > 300);
-          },
-          { passive: true },
-        );
-      })();
-    </script>
+    <script src="assets/js/pages.js" defer></script>
   </body>
 </html>

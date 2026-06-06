@@ -12,95 +12,7 @@
     />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
-      /* ── BOUTONS DE NAVIGATION PAGES ────────────────────────────────── */
-      .nav-page-links {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-      .btn-nav-page {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.85rem;
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 3px;
-        border: 1px solid;
-        transition:
-          background 180ms ease,
-          color 180ms ease,
-          border-color 180ms ease,
-          box-shadow 180ms ease;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-      .btn-nav-page--carte {
-        color: #c8a028;
-        border-color: rgba(200, 160, 40, 0.45);
-        background: rgba(200, 160, 40, 0.07);
-      }
-      .btn-nav-page--carte:hover {
-        background: rgba(200, 160, 40, 0.18);
-        border-color: #c8a028;
-        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-        color: #e8c050;
-      }
-      .btn-nav-page--sanctum {
-        color: #c84040;
-        border-color: rgba(200, 60, 60, 0.45);
-        background: rgba(200, 60, 60, 0.07);
-      }
-      .btn-nav-page--sanctum:hover {
-        background: rgba(200, 60, 60, 0.18);
-        border-color: #c84040;
-        box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-        color: #e06060;
-      }
-      .btn-nav-page--inquisition {
-        color: #9b6fc4;
-        border-color: rgba(155, 111, 196, 0.45);
-        background: rgba(155, 111, 196, 0.07);
-      }
-      .btn-nav-page--inquisition:hover {
-        background: rgba(155, 111, 196, 0.18);
-        border-color: #9b6fc4;
-        box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-        color: #c090e8;
-      }
-      [data-theme="light"] .btn-nav-page--carte {
-        color: #8a6800;
-        border-color: rgba(138, 104, 0, 0.4);
-        background: rgba(138, 104, 0, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--carte:hover {
-        background: rgba(138, 104, 0, 0.14);
-        border-color: #8a6800;
-      }
-      [data-theme="light"] .btn-nav-page--sanctum {
-        color: #8b1c1c;
-        border-color: rgba(139, 28, 28, 0.4);
-        background: rgba(139, 28, 28, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--sanctum:hover {
-        background: rgba(139, 28, 28, 0.14);
-        border-color: #8b1c1c;
-      }
-      [data-theme="light"] .btn-nav-page--inquisition {
-        color: #5a2a8a;
-        border-color: rgba(90, 42, 138, 0.4);
-        background: rgba(90, 42, 138, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--inquisition:hover {
-        background: rgba(90, 42, 138, 0.14);
-        border-color: #5a2a8a;
-      }
-
-      /* ── COULEUR THÉMATIQUE SILVER TEMPLARS : ARGENT IMPÉRIAL + BLEU ACIER ── */
+      /* ── SILVER TEMPLARS : ARGENT IMPÉRIAL + BLEU ACIER ── */
       :root {
         --st-silver: #c0c8d4;
         --st-silver-dim: rgba(192, 200, 212, 0.38);
@@ -110,6 +22,17 @@
         --st-silver-light: #e0e6f0;
         --st-blue: #3a6a9a;
         --st-blue-dim: rgba(58, 106, 154, 0.38);
+        --page-accent: #c0c8d4;
+        --page-accent-light: #e0e6f0;
+        --page-accent-dim: rgba(192, 200, 212, 0.38);
+        --page-accent-bg: rgba(192, 200, 212, 0.06);
+        --page-accent-hover-bg: rgba(192, 200, 212, 0.15);
+        --page-accent-glow: rgba(192, 200, 212, 0.28);
+        --page-hero-glow: rgba(192, 200, 212, 0.1);
+        --page-hero-border: rgba(192, 200, 212, 0.2);
+        --page-symbol: "✶";
+        --page-nota-accent: #3a6a9a;
+        --page-nota-accent-dim: rgba(58, 106, 154, 0.38);
       }
       [data-theme="light"] {
         --st-silver: #3a4a5e;
@@ -120,289 +43,18 @@
         --st-silver-light: #1a2a3e;
         --st-blue: #1a4a7a;
         --st-blue-dim: rgba(26, 74, 122, 0.35);
+        --page-accent: #3a4a5e;
+        --page-accent-light: #1a2a3e;
+        --page-accent-dim: rgba(58, 74, 94, 0.38);
+        --page-accent-bg: rgba(58, 74, 94, 0.05);
+        --page-accent-hover-bg: rgba(58, 74, 94, 0.13);
+        --page-accent-glow: rgba(58, 74, 94, 0.18);
+        --page-hero-glow: rgba(58, 74, 94, 0.08);
+        --page-hero-border: rgba(58, 74, 94, 0.18);
+        --page-nota-accent: #1a4a7a;
+        --page-nota-accent-dim: rgba(26, 74, 122, 0.35);
       }
-
-      /* ── HERO MINI ────────────────────────────────────────────── */
-      .page-hero {
-        padding: 5rem 0 3rem;
-        text-align: center;
-        background: radial-gradient(
-          ellipse at center top,
-          rgba(192, 200, 212, 0.1) 0%,
-          rgba(58, 106, 154, 0.05) 45%,
-          transparent 70%
-        );
-        border-bottom: 1px solid rgba(192, 200, 212, 0.2);
-      }
-      .page-hero .section-eyebrow {
-        margin-bottom: 0.5rem;
-      }
-      .page-hero .section-title {
-        font-size: clamp(1.8rem, 4vw, 3rem);
-        margin-bottom: 0.75rem;
-      }
-      .page-hero .section-desc {
-        max-width: 60ch;
-        margin: 0 auto;
-      }
-
-      /* ── LIEN RETOUR ─────────────────────────────────────────────── */
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin: 1.5rem 0 0;
-        font-family: "Cinzel", serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: var(--st-silver);
-        border: 1px solid var(--st-silver-dim);
-        background: var(--st-silver-bg);
-        padding: 0.45rem 1rem;
-        border-radius: 3px;
-        transition:
-          background 180ms ease,
-          border-color 180ms ease,
-          box-shadow 180ms ease;
-      }
-      .back-link:hover {
-        background: var(--st-silver-hover);
-        border-color: var(--st-silver);
-        box-shadow: 0 0 14px var(--st-silver-glow);
-        color: var(--st-silver-light);
-      }
-
-      /* ── SECTION CENSURÉE ────────────────────────────────────────────── */
-      .censure-section {
-        padding: clamp(3rem, 7vw, 6rem) 0;
-      }
-      .censure-wrapper {
-        max-width: 820px;
-        margin: 0 auto;
-      }
-      .censure-stamp {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
-      }
-
-      /* Cachet */
-      .inquisition-seal {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-        opacity: 0.92;
-      }
-      .inquisition-seal-icon {
-        width: 72px;
-        height: 72px;
-        color: var(--st-silver);
-        filter: drop-shadow(0 0 12px var(--st-silver-glow));
-      }
-      .inquisition-seal-title {
-        font-family: "Cinzel", serif;
-        font-size: clamp(0.65rem, 1.5vw, 0.8rem);
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: var(--st-silver);
-      }
-
-      /* Bloc censuré */
-      .censure-bloc {
-        width: 100%;
-        background: rgba(6, 8, 12, 0.58);
-        border: 1px solid rgba(192, 200, 212, 0.12);
-        border-radius: 2px;
-        padding: 1.75rem 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .censure-bloc::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          -45deg,
-          rgba(192, 200, 212, 0.025) 0px,
-          rgba(192, 200, 212, 0.025) 1px,
-          transparent 1px,
-          transparent 6px
-        );
-        pointer-events: none;
-      }
-      [data-theme="light"] .censure-bloc {
-        background: rgba(235, 238, 244, 0.6);
-        border-color: rgba(58, 74, 94, 0.15);
-      }
-
-      .censure-titre {
-        font-family: "Cinzel", serif;
-        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--st-silver);
-        margin-bottom: 1.1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
-      .censure-titre::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          var(--st-silver-dim),
-          transparent
-        );
-      }
-
-      .censure-lignes {
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-      }
-      .censure-ligne {
-        height: 1.1rem;
-        border-radius: 2px;
-        background: rgba(192, 200, 212, 0.05);
-        border: 1px solid rgba(192, 200, 212, 0.09);
-        position: relative;
-        overflow: hidden;
-      }
-      .censure-ligne::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          90deg,
-          rgba(192, 200, 212, 0.12) 0px,
-          rgba(192, 200, 212, 0.12) 2px,
-          transparent 2px,
-          transparent 9px
-        );
-      }
-      .censure-ligne--court {
-        width: 60%;
-      }
-      .censure-ligne--moyen {
-        width: 82%;
-      }
-      .censure-ligne--long {
-        width: 100%;
-      }
-      [data-theme="light"] .censure-ligne {
-        background: rgba(58, 74, 94, 0.05);
-        border-color: rgba(58, 74, 94, 0.12);
-      }
-      [data-theme="light"] .censure-ligne::after {
-        background: repeating-linear-gradient(
-          90deg,
-          rgba(58, 74, 94, 0.1) 0px,
-          rgba(58, 74, 94, 0.1) 2px,
-          transparent 2px,
-          transparent 9px
-        );
-      }
-
-      /* Bandeau "Censuré" argent */
-      .censure-bandeau {
-        width: 100%;
-        position: relative;
-        border-top: 1px solid var(--st-silver-dim);
-        border-bottom: 1px solid var(--st-silver-dim);
-        padding: 1.5rem 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        background: rgba(192, 200, 212, 0.04);
-        overflow: hidden;
-      }
-      .censure-bandeau::before,
-      .censure-bandeau::after {
-        content: "✶";
-        font-size: 0.9rem;
-        color: var(--st-blue);
-        opacity: 0.55;
-        flex-shrink: 0;
-      }
-      .censure-bandeau-text {
-        font-family: "Cinzel", serif;
-        font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-        font-weight: 900;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--st-silver);
-        text-shadow:
-          0 0 18px var(--st-silver-glow),
-          0 0 40px rgba(58, 106, 154, 0.18);
-        text-align: center;
-      }
-
-      /* Référence */
-      .censure-ref {
-        font-family: "Crimson Text", serif;
-        font-size: 0.82rem;
-        font-style: italic;
-        color: var(--color-text-muted, #797876);
-        text-align: center;
-        max-width: 58ch;
-        line-height: 1.7;
-      }
-      .censure-ref strong {
-        color: var(--st-silver);
-        font-style: normal;
-        font-family: "Cinzel", serif;
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
-      }
-
-      /* Nota bene — acier bleu */
-      .nota-bene {
-        width: 100%;
-        border: 1px solid var(--st-blue-dim);
-        border-left: 3px solid var(--st-blue);
-        padding: 1rem 1.25rem;
-        border-radius: 2px;
-        background: rgba(58, 106, 154, 0.04);
-      }
-      [data-theme="light"] .nota-bene {
-        background: rgba(26, 74, 122, 0.04);
-        border-color: rgba(26, 74, 122, 0.2);
-        border-left-color: var(--st-blue);
-      }
-      .nota-bene-label {
-        font-family: "Cinzel", serif;
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--st-blue);
-        margin-bottom: 0.45rem;
-      }
-      .nota-bene p {
-        font-family: "Crimson Text", serif;
-        font-size: 0.92rem;
-        line-height: 1.65;
-        color: var(--color-text-muted, #797876);
-        font-style: italic;
-        max-width: 65ch;
-      }
-      [data-theme="light"] .nota-bene-label {
-        color: var(--st-blue);
-      }
-
-      /* ══════════════════════════════════════════════════════════════
-       BLOC DÉCLASSIFIÉ — VARIANTE SILVER TEMPLARS
-       ══════════════════════════════════════════════════════════════ */
+      /* ── BLOC DÉCLASSIFIÉ — SILVER TEMPLARS ────────────────────── */
       .declassifie-bloc {
         width: 100%;
         background: rgba(6, 10, 16, 0.72);
@@ -431,194 +83,32 @@
         border-color: rgba(58, 74, 94, 0.32);
         border-top-color: var(--st-silver);
       }
-
-      .declassifie-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1.4rem;
-        padding-bottom: 0.9rem;
-        border-bottom: 1px solid rgba(192, 200, 212, 0.18);
-      }
-      .declassifie-badge {
-        font-family: "Cinzel", serif;
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: #060a10;
-        background: var(--st-silver);
-        padding: 0.22rem 0.6rem;
-        border-radius: 2px;
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      [data-theme="light"] .declassifie-badge {
-        color: #f0f2f6;
-        background: var(--st-silver);
-      }
-      .declassifie-header-title {
-        font-family: "Cinzel", serif;
-        font-size: clamp(0.7rem, 1.8vw, 0.88rem);
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--st-silver);
-        flex: 1;
-      }
-
-      .declassifie-entries {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .declassifie-entry {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 0.6rem 0.85rem;
-        align-items: start;
-      }
-
-      .declassifie-entry-icon {
-        width: 28px;
-        height: 28px;
-        border: 1px solid var(--st-silver-dim);
-        border-radius: 2px;
-        background: var(--st-silver-bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        color: var(--st-silver);
-        margin-top: 0.1rem;
-      }
-
-      .declassifie-entry-label {
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--st-silver);
-        margin-bottom: 0.22rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-
-      .status-tag {
-        font-family: "Cinzel", serif;
-        font-size: 0.58rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        padding: 0.12rem 0.45rem;
-        border-radius: 2px;
-        border: 1px solid;
-        white-space: nowrap;
-      }
-      .status-tag--tenu {
-        color: var(--st-silver);
-        border-color: var(--st-silver-dim);
-        background: var(--st-silver-bg);
-      }
-      .status-tag--operationnel {
-        color: #5a9ad4;
-        border-color: rgba(90, 154, 212, 0.4);
-        background: rgba(90, 154, 212, 0.07);
-      }
-      .status-tag--disperse {
-        color: #c8a028;
-        border-color: rgba(200, 160, 40, 0.4);
-        background: rgba(200, 160, 40, 0.07);
-      }
-      .status-tag--imminence {
-        color: #c84040;
-        border-color: rgba(200, 60, 60, 0.4);
-        background: rgba(200, 60, 60, 0.07);
-      }
-      [data-theme="light"] .status-tag--operationnel {
-        color: #1a4a7a;
-        border-color: rgba(26, 74, 122, 0.4);
-        background: rgba(26, 74, 122, 0.06);
-      }
-      [data-theme="light"] .status-tag--disperse {
-        color: #7a4800;
-        border-color: rgba(122, 72, 0, 0.4);
-        background: rgba(122, 72, 0, 0.06);
-      }
-      [data-theme="light"] .status-tag--imminence {
-        color: #8b1c1c;
-        border-color: rgba(139, 28, 28, 0.4);
-        background: rgba(139, 28, 28, 0.06);
-      }
-
-      .declassifie-entry-text {
-        font-family: "Crimson Text", serif;
-        font-size: 0.95rem;
-        line-height: 1.65;
-        color: var(--color-text-muted, #9a9896);
-      }
-      [data-theme="light"] .declassifie-entry-text {
-        color: #4a4540;
-      }
-      .declassifie-entry-text em {
-        color: var(--st-silver-light);
-        font-style: normal;
-      }
-      [data-theme="light"] .declassifie-entry-text em {
-        color: var(--st-silver);
-      }
-
-      .declassifie-separator {
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          rgba(192, 200, 212, 0.18),
-          transparent
-        );
-        margin: 0;
-      }
-
-      .declassifie-footer {
-        margin-top: 1.3rem;
-        padding-top: 0.9rem;
-        border-top: 1px solid rgba(192, 200, 212, 0.12);
-        font-family: "Cinzel", serif;
-        font-size: 0.62rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(192, 200, 212, 0.38);
-        text-align: right;
-      }
-
+      .declassifie-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid rgba(192,200,212,.18); }
+      .declassifie-badge { font-family: "Cinzel", serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #060a10; background: var(--st-silver); padding: 0.22rem 0.6rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+      [data-theme="light"] .declassifie-badge { color: #f0f2f6; }
+      .declassifie-header-title { font-family: "Cinzel", serif; font-size: clamp(0.7rem, 1.8vw, 0.88rem); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--st-silver); flex: 1; }
+      .declassifie-entries { display: flex; flex-direction: column; gap: 1rem; }
+      .declassifie-entry { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.85rem; align-items: start; }
+      .declassifie-entry-icon { width: 28px; height: 28px; border: 1px solid var(--st-silver-dim); border-radius: 2px; background: var(--st-silver-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--st-silver); margin-top: 0.1rem; }
+      .declassifie-entry-label { font-family: "Cinzel", serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-silver); margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+      .status-tag { font-family: "Cinzel", serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 2px; border: 1px solid; white-space: nowrap; }
+      .status-tag--tenu { color: var(--st-silver); border-color: var(--st-silver-dim); background: var(--st-silver-bg); }
+      .status-tag--operationnel { color: #5a9ad4; border-color: rgba(90,154,212,.4); background: rgba(90,154,212,.07); }
+      .status-tag--disperse { color: #c8a028; border-color: rgba(200,160,40,.4); background: rgba(200,160,40,.07); }
+      .status-tag--imminence { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
+      [data-theme="light"] .status-tag--operationnel { color: #1a4a7a; border-color: rgba(26,74,122,.4); background: rgba(26,74,122,.06); }
+      [data-theme="light"] .status-tag--disperse { color: #7a4800; border-color: rgba(122,72,0,.4); background: rgba(122,72,0,.06); }
+      [data-theme="light"] .status-tag--imminence { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
+      .declassifie-entry-text { font-family: "Crimson Text", serif; font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted, #9a9896); }
+      [data-theme="light"] .declassifie-entry-text { color: #4a4540; }
+      .declassifie-entry-text em { color: var(--st-silver-light); font-style: normal; }
+      [data-theme="light"] .declassifie-entry-text em { color: var(--st-silver); }
+      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(192,200,212,.18), transparent); margin: 0; }
+      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(192,200,212,.12); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(192,200,212,.38); text-align: right; }
       @media (max-width: 600px) {
-        .nav-page-links {
-          gap: 0.35rem;
-        }
-        .btn-nav-page {
-          font-size: 0.65rem;
-          padding: 0.35rem 0.6rem;
-        }
-        .censure-bloc {
-          padding: 1.25rem 1rem;
-        }
-        .censure-bandeau {
-          padding: 1rem;
-          gap: 0.75rem;
-        }
-        .declassifie-bloc {
-          padding: 1.25rem 1rem;
-        }
-        .declassifie-entry {
-          grid-template-columns: 1fr;
-        }
-        .declassifie-entry-icon {
-          display: none;
-        }
+        .declassifie-bloc { padding: 1.25rem 1rem; }
+        .declassifie-entry { grid-template-columns: 1fr; }
+        .declassifie-entry-icon { display: none; }
       }
     </style>
   </head>
@@ -1277,72 +767,6 @@
       </svg>
     </a>
 
-    <script>
-      (function () {
-        // ── THEME TOGGLE
-        const themeBtn = document.querySelector("[data-theme-toggle]");
-        const root = document.documentElement;
-        let theme =
-          root.getAttribute("data-theme") ||
-          (matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-        root.setAttribute("data-theme", theme);
-        function updateThemeBtn() {
-          if (!themeBtn) return;
-          themeBtn.innerHTML =
-            theme === "dark"
-              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-          themeBtn.setAttribute(
-            "aria-label",
-            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
-          );
-        }
-        updateThemeBtn();
-        if (themeBtn)
-          themeBtn.addEventListener("click", () => {
-            theme = theme === "dark" ? "light" : "dark";
-            root.setAttribute("data-theme", theme);
-            updateThemeBtn();
-          });
-
-        // ── MOBILE NAV
-        const navToggle = document.getElementById("nav-toggle");
-        if (navToggle) {
-          navToggle.addEventListener("click", () => {
-            const expanded = navToggle.getAttribute("aria-expanded") === "true";
-            navToggle.setAttribute("aria-expanded", !expanded);
-          });
-        }
-
-        // ── NAV SCROLL + BACK-TO-TOP
-        const nav = document.getElementById("nav");
-        window.addEventListener(
-          "scroll",
-          () => {
-            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
-            document
-              .getElementById("back-top")
-              .classList.toggle("visible", window.scrollY > 300);
-          },
-          { passive: true },
-        );
-
-        // ── REVEAL ON SCROLL
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add("visible");
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-        );
-        document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
-      })();
-    </script>
+    <script src="assets/js/pages.js" defer></script>
   </body>
 </html>
