@@ -248,6 +248,70 @@
       ]
     }
   ],
+  "mecaniques": {
+    "vaisseau": {
+      "image": "assets/img/vaisseau_le_conqueror.png",
+      "image_alt": "Le Conqueror — vaisseau amiral des World Eaters",
+      "bonus": [
+        {
+          "icone": "🩸",
+          "nom": "Fureur du Conqueror",
+          "desc": "Une fois par bataille, les World Eaters peuvent lancer un assaut orbital depuis le Conqueror : une unité ennemie subit D3 touches mortelles avant le début du premier tour."
+        },
+        {
+          "icone": "💀",
+          "nom": "Bénédiction de Khorne",
+          "desc": "Entre chaque bataille de campagne, l'équipage du Conqueror consacre les crânes récoltés. Chaque tranche de 10 Crânes accumulés octroie +1 point d'expérience à une unité de votre choix."
+        },
+        {
+          "icone": "⚔️",
+          "nom": "Arsenal de Sang",
+          "desc": "Le Conqueror peut réapprovisionner une unité détruite : une fois par campagne, remettez en jeu une unité éliminée lors d'une bataille précédente, sans coût en ressources."
+        }
+      ]
+    },
+    "cranes": {
+      "icone": "💀",
+      "titre": "Crânes pour le Trône-Crâne",
+      "desc": "À chaque bataille, comptabilisez le nombre d'unités ennemies entièrement éliminées. Chaque unité vaut 1 Crâne. Des paliers de puissance se débloquent selon le total de Crânes accumulés sur l'ensemble de la campagne.",
+      "paliers": [
+        { "seuil": "5 Crânes", "effet": "Les unités World Eaters ignorent les malus de terrain difficile lors de la phase de charge." },
+        { "seuil": "15 Crânes", "effet": "Une fois par bataille, une unité World Eaters peut relancer tous ses dés de blessure lors d'une phase de combat." },
+        { "seuil": "30 Crânes", "effet": "Angron est convoqué : ajoutez le Primarque à votre liste pour une bataille de votre choix, sans coût en points." },
+        { "seuil": "50 Crânes", "effet": "Apothéose khornienne : toutes vos unités gagnent le mot-clé MONSTRE DE KHORNE pour la prochaine grande bataille de la campagne." }
+      ]
+    },
+    "sang": {
+      "icone": "🩸",
+      "titre": "Sang pour le Dieu du Sang",
+      "desc": "Chaque fois qu'un personnage nommé (héros, seigneur de guerre ennemi) est mis hors de combat par vos World Eaters, engrangez 1 point de Sang. Le Sang débloque des faveurs de Khorne.",
+      "paliers": [
+        { "seuil": "1 Sang", "effet": "L'unité responsable gagne le trait Chasseur de Champions jusqu'à la prochaine bataille." },
+        { "seuil": "3 Sang", "effet": "Khârn le Sanglant gagne +1 en Attaques pour toute la prochaine bataille." },
+        { "seuil": "6 Sang", "effet": "Faveur totale : une unité de votre choix bénéficie de la règle Frappe en premier pour une bataille entière." },
+        { "seuil": "10 Sang", "effet": "Régent de Khorne : vous remportez automatiquement le jet d'initiative pour une bataille de campagne de votre choix." }
+      ]
+    },
+    "saint_carnage": {
+      "icone": "🔱",
+      "titre": "Saint Carnage",
+      "desc": "Certaines unités d'élite des World Eaters bénéficient de la règle spéciale Saint Carnage : lorsqu'elles chargent, elles gagnent temporairement des capacités surhumaines liées à la frénésie de Khorne.",
+      "unites": [
+        {
+          "nom": "Berzerkers de Khârn",
+          "detail": "Lors d'un tour où ils ont chargé, les Berzerkers peuvent effectuer une attaque supplémentaire avec chaque arme de mêlée qu'ils portent."
+        },
+        {
+          "nom": "Eightbound",
+          "detail": "Si une figurine Eightbound est détruite au corps-à-corps, elle peut porter une dernière attaque avant d'être retirée du jeu."
+        },
+        {
+          "nom": "Khârn le Sanglant",
+          "detail": "Khârn peut cibler deux unités différentes lors d'une même phase de combat, répartissant ses attaques librement entre elles."
+        }
+      ]
+    }
+  },
   "personnages": [
     {
       "nom": "Angron",
