@@ -35,7 +35,9 @@
   --color-surface-offset-2: #201d18;
   --color-surface-dynamic: #2a2520;
   --color-divider:         #2e2820;
-  --color-border:          oklch(from #8b1c1c l c h / 0.3);
+  /* Valeur statique utilisée par les navigateurs sans support de oklch relatif
+     (Safari < 16.4, Firefox < 113). Équivalent exact de oklch(from #8b1c1c). */
+  --color-border:          rgba(139, 28, 28, 0.3);
 
   /* Text */
   --color-text:            #e8e0d4;
@@ -68,7 +70,8 @@
   --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.4);
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.5);
   --shadow-lg: 0 12px 40px oklch(0 0 0 / 0.6);
-  --shadow-red: 0 0 20px oklch(from #8b1c1c l c h / 0.4);
+  /* Fallback statique, surchargé par le bloc @supports ci-dessous */
+  --shadow-red: 0 0 20px rgba(139, 28, 28, 0.4);
 
   /* Spacing */
   --space-1:0.25rem; --space-2:0.5rem; --space-3:0.75rem; --space-4:1rem;
@@ -154,7 +157,8 @@
   --color-surface-offset-2: #ddd4c8;
   --color-surface-dynamic: #d4c8ba;
   --color-divider:         #c8bfb0;
-  --color-border:          oklch(from #8b1c1c l c h / 0.25);
+  /* Fallback statique pour mode clair, surchargé par @supports si disponible */
+  --color-border:          rgba(139, 28, 28, 0.25);
   --color-text:            #1a1208;
   --color-text-muted:      #4a3e30;
   --color-text-faint:      #8a7a68;
@@ -207,6 +211,25 @@
   --army-nc-border: rgba(0, 104, 64, 0.4);
   --army-nc-bg:     rgba(0, 104, 64, 0.08);
   --army-nc-bar:    #006840;
+}
+
+/* ============================================================
+   Couleurs relatives oklch — surcharge progressive
+   Activé uniquement si le navigateur supporte oklch(from …).
+   Safari ≥ 16.4, Chrome ≥ 111, Firefox ≥ 128.
+   Les navigateurs plus anciens gardent les valeurs rgba de :root.
+============================================================ */
+@supports (color: oklch(from red l c h)) {
+  :root, [data-theme="dark"] {
+    /* Bordure primaire dérivée de la couleur primaire sang-de-bœuf */
+    --color-border: oklch(from #8b1c1c l c h / 0.3);
+    /* Ombre rougeoyante autour des éléments d'accent */
+    --shadow-red:   0 0 20px oklch(from #8b1c1c l c h / 0.4);
+  }
+  [data-theme="light"] {
+    /* Bordure légèrement plus transparente en mode clair */
+    --color-border: oklch(from #8b1c1c l c h / 0.25);
+  }
 }
 
 /* BASE */

@@ -43,7 +43,22 @@
   width: 100%;
   padding: 0 0 var(--space-12, 4rem);
   background: var(--pc-bg);
-  overflow: hidden;
+  /* overflow:hidden était ici, mais il masquait les boutons prev/next
+     qui débordent de −1.4 rem hors du .perso-carousel sur les viewports
+     étroits (< 860 px). Le débordement du track est déjà géré par
+     .perso-carousel__viewport — pas besoin de clipper au niveau section. */
+}
+
+/* ── Conteneur principal du carrousel ─────────────────────────────────────*/
+/* padding latéral = espace réservé aux boutons (left/right: −1.4rem)
+   pour qu'ils restent visibles même quand la section n'a pas overflow:hidden */
+.perso-carousel {
+  position: relative;
+  width: 100%;
+  max-width: var(--pc-slide-max);
+  margin: 0 auto;
+  outline: none;
+  padding: 0 1.6rem;
 }
 
 /* Ligne décorative supérieure */
@@ -59,15 +74,6 @@
     var(--pc-red-dim) 80%,
     transparent 100%);
   margin-bottom: 0;
-}
-
-/* ── Conteneur principal du carrousel ─────────────────────────────────────*/
-.perso-carousel {
-  position: relative;
-  width: 100%;
-  max-width: var(--pc-slide-max);
-  margin: 0 auto;
-  outline: none;
 }
 
 /* ── Zone de glissement (viewport) ─────────────────────────────────────── */

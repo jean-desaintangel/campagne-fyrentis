@@ -196,10 +196,15 @@
     });
 
     /* ── Aller à un slide donné ───────────────────────────────────────── */
-    function goTo(index, announce) {
-      // Normalisation circulaire
+    function goTo(index) {
+      // Normalisation circulaire : permet de naviguer au-delà des bornes
+      // (ex. goTo(-1) va au dernier slide, goTo(total) revient au premier).
       index = ((index % total) + total) % total;
-      if (index === current && announce === false) return;
+      // Évite le re-rendu inutile si on clique sur le dot du slide déjà actif.
+      // L'ancienne condition `announce === false` ne se déclenchait jamais :
+      // aucun appelant ne passait ce paramètre, donc announce était toujours
+      // undefined, et `undefined === false` est toujours faux.
+      if (index === current) return;
 
       current = index;
 

@@ -1,722 +1,472 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campagne Fyrentis — Warhammer 40K</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/personnages-carousel.css">
-  <style>
-    /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────────────────── */
-    .nav-page-links {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .btn-nav-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 0.85rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .btn-nav-page--carte {
-      color: #c8a028;
-      border-color: rgba(200, 160, 40, 0.45);
-      background: rgba(200, 160, 40, 0.07);
-    }
-    .btn-nav-page--carte:hover {
-      background: rgba(200, 160, 40, 0.18);
-      border-color: #c8a028;
-      box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-      color: #e8c050;
-    }
-    .btn-nav-page--sanctum {
-      color: #c84040;
-      border-color: rgba(200, 60, 60, 0.45);
-      background: rgba(200, 60, 60, 0.07);
-    }
-    .btn-nav-page--sanctum:hover {
-      background: rgba(200, 60, 60, 0.18);
-      border-color: #c84040;
-      box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-      color: #e06060;
-    }
-    /* ── RÈGLES : Thème Codex Warhammer — vert bronze / parchamin de guerre ── */
-    .btn-nav-page--regles {
-      color: #8fb870;
-      border-color: rgba(120, 168, 80, 0.45);
-      background: rgba(80, 120, 40, 0.10);
-    }
-    .btn-nav-page--regles:hover {
-      background: rgba(90, 130, 45, 0.22);
-      border-color: #9ac878;
-      box-shadow: 0 0 12px rgba(100, 160, 50, 0.30), 0 0 4px rgba(180, 140, 60, 0.15);
-      color: #b8d898;
-    }
-    .btn-nav-page--inquisition {
-      color: #9b6fc4;
-      border-color: rgba(155, 111, 196, 0.45);
-      background: rgba(155, 111, 196, 0.07);
-    }
-    .btn-nav-page--inquisition:hover {
-      background: rgba(155, 111, 196, 0.18);
-      border-color: #9b6fc4;
-      box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-      color: #c090e8;
-    }
-    [data-theme="light"] .btn-nav-page--carte {
-      color: #8a6800;
-      border-color: rgba(138, 104, 0, 0.4);
-      background: rgba(138, 104, 0, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--carte:hover {
-      background: rgba(138, 104, 0, 0.14);
-      border-color: #8a6800;
-    }
-    [data-theme="light"] .btn-nav-page--sanctum {
-      color: #8b1c1c;
-      border-color: rgba(139, 28, 28, 0.4);
-      background: rgba(139, 28, 28, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--sanctum:hover {
-      background: rgba(139, 28, 28, 0.14);
-      border-color: #8b1c1c;
-    }
-    [data-theme="light"] .btn-nav-page--regles {
-      color: #3a6020;
-      border-color: rgba(58, 96, 32, 0.4);
-      background: rgba(58, 96, 32, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--regles:hover {
-      background: rgba(58, 96, 32, 0.16);
-      border-color: #3a6020;
-      color: #1e3a0e;
-    }
-    [data-theme="light"] .btn-nav-page--inquisition {
-      color: #5a2a8a;
-      border-color: rgba(90, 42, 138, 0.4);
-      background: rgba(90, 42, 138, 0.06);
-    }
-    [data-theme="light"] .btn-nav-page--inquisition:hover {
-      background: rgba(90, 42, 138, 0.14);
-      border-color: #5a2a8a;
-    }
-    /* ── BLOC HERO CTA ───────────────────────────────────────────────────────── */
-    .hero-nav-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-    .btn-hero-page {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.4rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      backdrop-filter: blur(4px);
-      transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 120ms ease;
-    }
-    .btn-hero-page:hover { transform: translateY(-1px); }
-    .btn-hero-page:active { transform: translateY(0); }
-    .btn-hero-page--carte {
-      color: #f0d070;
-      border-color: rgba(200, 160, 40, 0.6);
-      background: rgba(200, 160, 40, 0.12);
-    }
-    .btn-hero-page--carte:hover {
-      background: rgba(200, 160, 40, 0.22);
-      border-color: #c8a028;
-      box-shadow: 0 0 18px rgba(200, 160, 40, 0.3);
-    }
-    .btn-hero-page--sanctum {
-      color: #f08080;
-      border-color: rgba(200, 60, 60, 0.6);
-      background: rgba(200, 60, 60, 0.12);
-    }
-    .btn-hero-page--sanctum:hover {
-      background: rgba(200, 60, 60, 0.22);
-      border-color: #c84040;
-      box-shadow: 0 0 18px rgba(200, 60, 60, 0.3);
-    }
-    @media (max-width: 600px) {
-      .nav-page-links { gap: 0.35rem; }
-      .btn-nav-page { font-size: 0.65rem; padding: 0.35rem 0.6rem; }
-      .btn-hero-page { font-size: 0.72rem; padding: 0.55rem 1rem; }
-    }
-
-    /* ── BOUTONS ARMÉES HERO ─────────────────────────────────────────────────────── */
-    .btn-armee {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.85rem 2rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      border: 1px solid;
-      transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 120ms ease;
-    }
-    .btn-armee:hover  { transform: translateY(-1px); }
-    .btn-armee:active { transform: translateY(0); }
-    .btn-armee--iw { color:#c09878; border-color:rgba(160,120,80,.55); background:rgba(122,90,60,.10); }
-    .btn-armee--iw:hover { background:rgba(122,90,60,.22); border-color:#a07848; box-shadow:0 0 20px rgba(140,60,20,.30); color:#d8b898; }
-    .btn-armee--st { color:#c0c8d4; border-color:rgba(192,200,212,.45); background:rgba(192,200,212,.07); }
-    .btn-armee--st:hover { background:rgba(192,200,212,.16); border-color:#c0c8d4; box-shadow:0 0 20px rgba(192,200,212,.22); color:#e0e6f0; }
-    .btn-armee--we { color:#f08080; border-color:rgba(200,60,60,.55); background:rgba(200,60,60,.10); }
-    .btn-armee--we:hover { background:rgba(200,60,60,.22); border-color:#c84040; box-shadow:0 0 22px rgba(200,60,60,.35); color:#ffaaaa; }
-    .btn-armee--bt { color:#d4a828; border-color:rgba(200,160,40,.55); background:rgba(200,160,40,.08); }
-    .btn-armee--bt:hover { background:rgba(200,160,40,.20); border-color:#c8a028; box-shadow:0 0 22px rgba(200,160,40,.28); color:#f0c840; }
-    .btn-armee--ba { color:#e06060; border-color:rgba(176,26,26,.55); background:rgba(176,26,26,.10); }
-    .btn-armee--ba:hover { background:rgba(176,26,26,.22); border-color:#b01a1a; box-shadow:0 0 22px rgba(176,26,26,.35); color:#ff9090; }
-    .btn-armee--dg { color:#90b848; border-color:rgba(100,140,40,.55); background:rgba(80,110,30,.10); }
-    .btn-armee--dg:hover { background:rgba(80,110,30,.22); border-color:#6a9030; box-shadow:0 0 22px rgba(100,140,40,.28); color:#b0d868; }
-    .btn-armee--gi { color:#b8a860; border-color:rgba(138,122,58,.55); background:rgba(138,122,58,.08); }
-    .btn-armee--gi:hover { background:rgba(138,122,58,.20); border-color:#8a7a3a; box-shadow:0 0 20px rgba(138,122,58,.25); color:#d8c878; }
-    .btn-armee--nc { color:#40dd88; border-color:rgba(26,200,100,.50); background:rgba(26,200,100,.07); }
-    .btn-armee--nc:hover { background:rgba(26,200,100,.16); border-color:#1aff7a; box-shadow:0 0 22px rgba(26,255,122,.28); color:#80ffb8; }
-    /* ── ADEPTUS MECHANICUS — rouge sang / acier rouillé ── */
-    .btn-armee--am { color:#c8303a; border-color:rgba(192,40,50,.55); background:rgba(160,24,32,.10); }
-    .btn-armee--am:hover { background:rgba(160,24,32,.22); border-color:#c8303a; box-shadow:0 0 22px rgba(192,40,50,.40), 0 0 8px rgba(138,154,170,.18); color:#e05060; }
-    [data-theme="light"] .btn-armee--am { color:#7a0c14; border-color:rgba(122,12,20,.5); background:rgba(122,12,20,.06); }
-    [data-theme="light"] .btn-armee--am:hover { background:rgba(122,12,20,.14); border-color:#7a0c14; color:#4a0408; }
-    [data-theme="light"] .btn-armee--iw { color:#5a3a18; border-color:rgba(90,58,24,.5);  background:rgba(90,58,24,.06); }
-    [data-theme="light"] .btn-armee--iw:hover { background:rgba(90,58,24,.14); border-color:#5a3a18; color:#3a2008; }
-    [data-theme="light"] .btn-armee--st { color:#2a3a50; border-color:rgba(42,58,80,.5);  background:rgba(42,58,80,.06); }
-    [data-theme="light"] .btn-armee--st:hover { background:rgba(42,58,80,.14); border-color:#2a3a50; color:#101a28; }
-    [data-theme="light"] .btn-armee--we { color:#8b1c1c; border-color:rgba(139,28,28,.5); background:rgba(139,28,28,.06); }
-    [data-theme="light"] .btn-armee--we:hover { background:rgba(139,28,28,.14); border-color:#8b1c1c; color:#5c0d0d; }
-    [data-theme="light"] .btn-armee--bt { color:#7a5800; border-color:rgba(122,88,0,.5);  background:rgba(122,88,0,.06); }
-    [data-theme="light"] .btn-armee--bt:hover { background:rgba(122,88,0,.14); border-color:#7a5800; color:#4a3200; }
-    [data-theme="light"] .btn-armee--ba { color:#7a0c0c; border-color:rgba(122,12,12,.5); background:rgba(122,12,12,.06); }
-    [data-theme="light"] .btn-armee--ba:hover { background:rgba(122,12,12,.14); border-color:#7a0c0c; color:#4a0404; }
-    [data-theme="light"] .btn-armee--dg { color:#3a5a10; border-color:rgba(58,90,16,.5);  background:rgba(58,90,16,.06); }
-    [data-theme="light"] .btn-armee--dg:hover { background:rgba(58,90,16,.14); border-color:#3a5a10; color:#1a3000; }
-    [data-theme="light"] .btn-armee--gi { color:#4a4010; border-color:rgba(74,64,16,.5);  background:rgba(74,64,16,.06); }
-    [data-theme="light"] .btn-armee--gi:hover { background:rgba(74,64,16,.14); border-color:#4a4010; color:#282000; }
-    [data-theme="light"] .btn-armee--nc { color:#006a30; border-color:rgba(0,106,48,.5);  background:rgba(0,106,48,.06); }
-    [data-theme="light"] .btn-armee--nc:hover { background:rgba(0,106,48,.14); border-color:#006a30; color:#003a18; }
-
-    /* ── PLAYER CARDS — alignées sur la palette armée principale du joueur ───── */
-    .player-card--red::before    { background: var(--army-we-fg); }
-    .player-card--blue::before   { background: var(--army-ba-fg); }
-    .player-card--green::before  { background: var(--army-gi-fg); }
-    .player-card--purple::before { background: var(--army-iw-fg); }
-    .player-card--gold::before   { background: var(--army-bt-fg); }
-
-    .player-card--red   .player-armies li::before { background: var(--army-we-fg); }
-    .player-card--blue  .player-armies li::before { background: var(--army-ba-fg); }
-    .player-card--green .player-armies li::before { background: var(--army-gi-fg); }
-    .player-card--purple .player-armies li::before { background: var(--army-iw-fg); }
-    .player-card--gold  .player-armies li::before { background: var(--army-bt-fg); }
-
-    .player-card--red   .player-role { color: var(--army-we-fg); }
-    .player-card--blue  .player-role { color: var(--army-ba-fg); }
-    .player-card--green .player-role { color: var(--army-gi-fg); }
-    .player-card--purple .player-role { color: var(--army-iw-fg); }
-    .player-card--gold  .player-role { color: var(--army-bt-fg); }
-
-    .player-card--red:hover    { box-shadow: 0 8px 32px rgba(224, 80, 80, 0.18); }
-    .player-card--blue:hover   { box-shadow: 0 8px 32px rgba(204, 68, 68, 0.18); }
-    .player-card--green:hover  { box-shadow: 0 8px 32px rgba(184, 168, 96, 0.18); }
-    .player-card--purple:hover { box-shadow: 0 8px 32px rgba(200, 168, 120, 0.18); }
-    .player-card--gold:hover   { box-shadow: 0 8px 32px rgba(212, 168, 40, 0.18); }
-
-    .char-lore.red   { border-left-color: var(--army-we-bar); color: var(--color-text-muted); }
-    .char-lore.blue  { border-left-color: var(--army-ba-bar); color: var(--color-text-muted); }
-    .char-lore.gold  { border-left-color: var(--army-bt-bar); color: var(--color-text-muted); }
-    .char-lore.green { border-left-color: #6aaa3c; color: var(--color-text-muted); }
-
-    .faction-tag--ork {
-      background: rgba(58, 106, 28, 0.12);
-      border-color: rgba(106, 170, 60, 0.45);
-      color: #6aaa3c;
-    }
-    .faction-tag--ork:where(*)  { /* précision sans surcharge */ }
-
-    [data-theme="light"] .player-card--red::before    { background: var(--army-we-fg); }
-    [data-theme="light"] .player-card--blue::before   { background: var(--army-ba-fg); }
-    [data-theme="light"] .player-card--green::before  { background: var(--army-gi-fg); }
-    [data-theme="light"] .player-card--purple::before { background: var(--army-iw-fg); }
-    [data-theme="light"] .player-card--gold::before   { background: var(--army-bt-fg); }
-
-    [data-theme="light"] .player-card--red   .player-armies li::before { background: var(--army-we-fg); }
-    [data-theme="light"] .player-card--blue  .player-armies li::before { background: var(--army-ba-fg); }
-    [data-theme="light"] .player-card--green .player-armies li::before { background: var(--army-gi-fg); }
-    [data-theme="light"] .player-card--purple .player-armies li::before { background: var(--army-iw-fg); }
-    [data-theme="light"] .player-card--gold  .player-armies li::before { background: var(--army-bt-fg); }
-
-    [data-theme="light"] .player-card--red   .player-role { color: var(--army-we-fg); }
-    [data-theme="light"] .player-card--blue  .player-role { color: var(--army-ba-fg); }
-    [data-theme="light"] .player-card--green .player-role { color: var(--army-gi-fg); }
-    [data-theme="light"] .player-card--purple .player-role { color: var(--army-iw-fg); }
-    [data-theme="light"] .player-card--gold  .player-role { color: var(--army-bt-fg); }
-  </style>
-</head>
-<body>
-
-<nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="Campagne Fyrentis">
-      <svg class="nav-logo-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <polygon points="18,2 34,28 2,28" fill="none" stroke="currentColor" stroke-width="1.5" color="#c8a028"/>
-        <circle cx="18" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.5" color="#8b1c1c"/>
-        <line x1="18" y1="2" x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="8.5" y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-        <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028"/>
-      </svg>
-      <div>
-        <span class="nav-logo-text">Fyrentis</span>
-        <span class="nav-logo-sub">Campagne 40K</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campagne Fyrentis — Warhammer 40K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/personnages-carousel.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo" aria-label="Campagne Fyrentis">
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 36 36"
+            fill="none"
+            aria-hidden="true"
+          >
+            <polygon
+              points="18,2 34,28 2,28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#c8a028"
+            />
+            <circle
+              cx="18"
+              cy="18"
+              r="6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              color="#8b1c1c"
+            />
+            <line
+              x1="18"
+              y1="2"
+              x2="18"
+              y2="12"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="18"
+              y1="24"
+              x2="18"
+              y2="28"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="8.5"
+              y1="22.3"
+              x2="13.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+            <line
+              x1="27.5"
+              y1="22.3"
+              x2="22.5"
+              y2="18.9"
+              stroke="currentColor"
+              stroke-width="1"
+              color="#c8a028"
+            />
+          </svg>
+          <div>
+            <span class="nav-logo-text">Fyrentis</span>
+            <span class="nav-logo-sub">Campagne 40K</span>
+          </div>
+        </a>
+        <div class="nav-actions">
+          <div class="nav-page-links">
+            <a
+              href="carte.html"
+              class="btn-nav-page btn-nav-page--carte"
+              aria-label="Voir la Carte du secteur"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+              Carte
+            </a>
+            <a
+              href="sanctum.html"
+              class="btn-nav-page btn-nav-page--sanctum"
+              aria-label="Accéder au Sanctum"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Sanctum
+            </a>
+            <a
+              href="rapports-inquisiteurs.html"
+              class="btn-nav-page btn-nav-page--inquisition"
+              aria-label="Lire les Rapports Inquisitoriaux"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              Inquisition
+            </a>
+            <a
+              href="regles.html"
+              class="btn-nav-page btn-nav-page--regles"
+              aria-label="Consulter les Règles Narratives"
+            >
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="8" y1="13" x2="16" y2="13" />
+                <line x1="8" y1="17" x2="13" y2="17" />
+              </svg>
+              Règles
+            </a>
+          </div>
+          <button
+            class="btn-theme"
+            data-theme-toggle
+            aria-label="Basculer le thème"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="nav-mobile-toggle"
+            id="nav-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
       </div>
-    </a>
-    <div class="nav-actions">
-      <div class="nav-page-links">
-        <a href="carte.html" class="btn-nav-page btn-nav-page--carte" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-          Carte
-        </a>
-        <a href="sanctum.html" class="btn-nav-page btn-nav-page--sanctum" aria-label="Accéder au Sanctum">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Sanctum
-        </a>
-		<a href="rapports-inquisiteurs.html" class="btn-nav-page btn-nav-page--inquisition" aria-label="Lire les Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Inquisition
-        </a>
-        <a href="regles.html" class="btn-nav-page btn-nav-page--regles" aria-label="Consulter les Règles Narratives">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
-          Règles
-        </a>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="hero-bg">
+        <img
+          class="hero-img"
+          src="assets/img/berserk.png"
+          alt="Angron et le Titan Syrgalah mènent les World Eaters à la bataille"
+          width="1920"
+          height="1080"
+          loading="eager"
+        />
+        <div class="hero-overlay"></div>
       </div>
-      <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Warhammer 40 000 • Campagne Narrative</p>
+        <h1 class="hero-title">Sous-Secteur<br /><span>Fyrentis</span></h1>
+        <p class="hero-subtitle">
+          Dans les ténèbres du 41ème millénaire, cinq seigneurs de guerre
+          façonnent le destin d'un secteur entier. Des ruines de Jakku aux
+          forges de Sanctum, la guerre n'a pas de fin.
+        </p>
+        <div class="hero-badges">
+          <a href="iron-warriors-de-khorne.html" class="btn-armee btn-armee--iw"
+            >⚒ Iron Warriors de Khorne</a
+          >
+          <a href="silver-templars.html" class="btn-armee btn-armee--st"
+            >🗡 Silver Templars</a
+          >
+          <a href="world-eaters.html" class="btn-armee btn-armee--we"
+            >🪓 World Eaters</a
+          >
+          <a href="black-templars.html" class="btn-armee btn-armee--bt"
+            >✠ Black Templars</a
+          >
+          <a href="blood-angels.html" class="btn-armee btn-armee--ba"
+            >🩸 Blood Angels</a
+          >
+          <a href="death-guard.html" class="btn-armee btn-armee--dg"
+            >☣ Death Guard</a
+          >
+          <a href="garde-imperiale.html" class="btn-armee btn-armee--gi"
+            >🦅 Garde Impériale</a
+          >
+          <a href="necrons.html" class="btn-armee btn-armee--nc">☥ Nécrons</a>
+          <a href="adeptus-mechanicus.html" class="btn-armee btn-armee--am"
+            >⚙ Adeptus Mechanicus</a
+          >
+        </div>
+      </div>
+      <span class="hero-scroll" aria-hidden="true">Défiler</span>
+    </header>
 
-<header class="hero" id="top">
-  <div class="hero-bg">
-    <img class="hero-img" src="assets/img/berserk.png" alt="Angron et le Titan Syrgalah mènent les World Eaters à la bataille" width="1920" height="1080" loading="eager">
-    <div class="hero-overlay"></div>
-  </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Warhammer 40 000 • Campagne Narrative</p>
-    <h1 class="hero-title">Sous-Secteur<br><span>Fyrentis</span></h1>
-    <p class="hero-subtitle">Dans les ténèbres du 41ème millénaire, cinq seigneurs de guerre façonnent le destin d'un secteur entier. Des ruines de Jakku aux forges de Sanctum, la guerre n'a pas de fin.</p>
-    <div class="hero-badges">
-      <a href="iron-warriors-de-khorne.html" class="btn-armee btn-armee--iw">⚒ Iron Warriors de Khorne</a>
-      <a href="silver-templars.html"         class="btn-armee btn-armee--st">🗡 Silver Templars</a>
-      <a href="world-eaters.html"            class="btn-armee btn-armee--we">🪓 World Eaters</a>
-      <a href="black-templars.html"          class="btn-armee btn-armee--bt">✠ Black Templars</a>
-      <a href="blood-angels.html"            class="btn-armee btn-armee--ba">🩸 Blood Angels</a>
-      <a href="death-guard.html"             class="btn-armee btn-armee--dg">☣ Death Guard</a>
-      <a href="garde-imperiale.html"         class="btn-armee btn-armee--gi">🦅 Garde Impériale</a>
-      <a href="necrons.html"                 class="btn-armee btn-armee--nc">☥ Nécrons</a>
-      <a href="adeptus-mechanicus.html"      class="btn-armee btn-armee--am">⚙ Adeptus Mechanicus</a>
-    </div>
-  </div>
-  <span class="hero-scroll" aria-hidden="true">Défiler</span>
-</header>
-
-<!-- ============================================================
+    <!-- ============================================================
      CARROUSEL — Galerie de la Campagne Fyrentis
      Images actives : 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25
 ============================================================ -->
-<section class="carousel-section" aria-label="Galerie de la campagne Fyrentis" role="region">
-  <div class="carousel" id="main-carousel">
+    <section
+      class="carousel-section"
+      aria-label="Galerie de la campagne Fyrentis"
+      role="region"
+    >
+      <div class="carousel" id="main-carousel">
+        <ul class="carousel__track-wrapper" role="list">
+          <li class="carousel__slide is-active" role="listitem">
+            <img src="assets/img/carroussel/1.jpg" loading="eager" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/2.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/3.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/4.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/5.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/6.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/7.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/8.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/9.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/10.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/11.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/12.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/13.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/14.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/15.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/16.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/17.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/18.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/19.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/20.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/21.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/22.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/23.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/24.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/25.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/26.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/27.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/28.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/29.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/30.jpg" loading="lazy" />
+          </li>
+          <li class="carousel__slide" role="listitem">
+            <img src="assets/img/carroussel/31.jpg" loading="lazy" />
+          </li>
+        </ul>
 
-    <ul class="carousel__track-wrapper" role="list">
-      <li class="carousel__slide is-active" role="listitem">
-        <img src="assets/img/carroussel/1.jpg" loading="eager">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/2.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/3.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/4.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/5.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/6.jpg" loading="lazy">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/7.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/8.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/9.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/10.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/11.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/12.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/13.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/14.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/15.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/16.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/17.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/18.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/19.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/20.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/21.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/22.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/23.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/24.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/25.jpg" loading="lazy">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/26.jpg" loading="lazy">
-      </li>
-      <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/27.jpg" loading="lazy">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/28.jpg" loading="lazy">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/29.jpg" loading="lazy">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/30.jpg" loading="lazy">
-      </li>
-	  <li class="carousel__slide" role="listitem">
-        <img src="assets/img/carroussel/31.jpg" loading="lazy">
-      </li>
-    </ul>
+        <button
+          class="carousel__btn carousel__btn--prev"
+          aria-label="Image précédente"
+        >
+          &#10094;
+        </button>
+        <button
+          class="carousel__btn carousel__btn--next"
+          aria-label="Image suivante"
+        >
+          &#10095;
+        </button>
+        <div
+          class="carousel__dots"
+          role="tablist"
+          aria-label="Sélection de slide"
+        ></div>
+      </div>
+    </section>
 
-    <button class="carousel__btn carousel__btn--prev" aria-label="Image précédente">&#10094;</button>
-    <button class="carousel__btn carousel__btn--next" aria-label="Image suivante">&#10095;</button>
-    <div class="carousel__dots" role="tablist" aria-label="Sélection de slide"></div>
-
-  </div>
-</section>
-
-<!-- JOUEURS -->
-<section id="joueurs">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-eyebrow">Les Protagonistes</p>
-      <h2 class="section-title">Les <span>seigneurs de guerre</span></h2>
-      <p class="section-desc">Cinq seigneurs de guerre — cinq destins entremêlés dans le carnage du sous-secteur Fyrentis.</p>
-    </div>
-    <div class="players-grid" id="players-grid"></div>
-  </div>
-</section>
-
-<!-- CONTEXTE -->
-<section id="contexte" class="bg-surface">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-eyebrow">Histoire &amp; Lore</p>
-      <h2 class="section-title">Le Sous-Secteur <span>Fyrentis</span></h2>
-      <p class="section-desc" id="lore-desc"></p>
-    </div>
-    <div class="lore-grid" id="lore-grid"></div>
-  </div>
-</section>
-
-<!-- FRONTS -->
-<section id="fronts">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-eyebrow">Théâtres d'Opérations</p>
-      <h2 class="section-title">Les <span>Fronts</span> de Bataille</h2>
-      <p class="section-desc">Trois systèmes stellaires, trois théâtres de guerre simultanés. Chaque victoire, chaque défaite résonne à travers le secteur.</p>
-    </div>
-    <div class="fronts-tabs" id="fronts-tabs" role="tablist"></div>
-    <div id="fronts-panels"></div>
-  </div>
-</section>
-
-<!-- PERSONNAGES -->
-<section id="personnages" class="bg-surface perso-carousel-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-eyebrow">Légendes du Secteur</p>
-      <h2 class="section-title">Personnages <span>Clés</span></h2>
-      <p class="section-desc">Des héros et des monstres dont les actes résonneront à travers les âges.</p>
-    </div>
-  </div>
-
-  <!-- Zone d'injection du carrousel — remplie par personnages-carousel.js -->
-  <div id="perso-carousel-container" class="container"></div>
-</section>
-
-<footer>
-  <div class="container">
-    <div class="footer-logo">Sous-Secteur Fyrentis</div>
-    <p class="footer-line">« Dans le futur sombre de l'humanité, il n'y a que la guerre. »</p>
-    <p class="footer-line">Warhammer 40 000 • Campagne Narrative • 41ème Millénaire</p>
-  </div>
-</footer>
-
-<a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-</a>
-
-<script>
-(function () {
-
-  // ── THEME TOGGLE
-  const themeBtn = document.querySelector('[data-theme-toggle]');
-  const root = document.documentElement;
-  let theme = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  root.setAttribute('data-theme', theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML = theme === 'dark'
-      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute('aria-label', 'Basculer vers le mode ' + (theme === 'dark' ? 'clair' : 'sombre'));
-  }
-  updateThemeBtn();
-  if (themeBtn) themeBtn.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', theme); updateThemeBtn(); });
-
-  // ── NAV SCROLL + BACK-TO-TOP
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    document.getElementById('back-top').classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
-
-  // ── REVEAL ON SCROLL
-  function initReveal() {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  }
-
-  // ── TABS
-  function initTabs() {
-    const tabs   = document.querySelectorAll('.front-tab');
-    const panels = document.querySelectorAll('.front-panel');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-        panels.forEach(p => p.classList.remove('active'));
-        tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
-        const p = document.getElementById('tab-' + tab.dataset.tab);
-        if (p) p.classList.add('active');
-      });
-    });
-  }
-
-  function delayClass(n) { return n ? ` reveal-delay-${n}` : ''; }
-
-  const COULEUR_TO_ARMEE = {
-    red:    { code: 'we',  label: 'World Eaters' },
-    blue:   { code: 'ba',  label: 'Blood Angels' },
-    green:  { code: 'gi',  label: 'Garde Impériale' },
-    purple: { code: 'iw',  label: 'Iron Warriors' },
-    gold:   { code: 'bt',  label: 'Black Templars' }
-  };
-
-  function renderJoueurs(joueurs) {
-    document.getElementById('players-grid').innerHTML = joueurs.map(j => {
-      const mapping = COULEUR_TO_ARMEE[j.couleur];
-      const badge = mapping
-        ? `<span class="warlord-army warlord-army--${mapping.code}" style="margin-top:var(--space-3);display:inline-flex">${mapping.label}</span>`
-        : '';
-      return `<article class="player-card player-card--${j.couleur} reveal${delayClass(j.delai)}">
-        <p class="player-name">${j.nom}</p>
-        <p class="player-role">${j.role}</p>
-        ${badge}
-        <ul class="player-armies" role="list">${j.armees.map(a => `<li>${a}</li>`).join('')}</ul>
-      </article>`;
-    }).join('');
-  }
-
-  function renderLore(lore) {
-    document.getElementById('lore-desc').textContent = lore.description;
-    document.getElementById('lore-grid').innerHTML = lore.blocs.map((b, i) =>
-      `<div class="lore-text reveal${i > 0 ? ' reveal-delay-2' : ''}">
-        <h3>${b.titre}</h3>
-        ${b.paragraphes.map(p => `<p>${p}</p>`).join('')}
-        <div class="quote-block${b.citation.alerte ? ' quote-block--alert' : ''}">
-          <p class="quote-text">${b.citation.texte}</p>
-          <span class="quote-author">${b.citation.auteur}</span>
+    <!-- JOUEURS -->
+    <section id="joueurs">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Les Protagonistes</p>
+          <h2 class="section-title">Les <span>seigneurs de guerre</span></h2>
+          <p class="section-desc">
+            Cinq seigneurs de guerre — cinq destins entremêlés dans le carnage
+            du sous-secteur Fyrentis.
+          </p>
         </div>
-      </div>`
-    ).join('');
-  }
+        <div class="players-grid" id="players-grid"></div>
+      </div>
+    </section>
 
-  function renderFronts(fronts) {
-    document.getElementById('fronts-tabs').innerHTML = fronts.map((f, i) =>
-      `<button class="front-tab${i===0?' active':''}" role="tab" aria-selected="${i===0}" data-tab="${f.id}">${f.nom}</button>`
-    ).join('');
-    document.getElementById('fronts-panels').innerHTML = fronts.map((f, i) => {
-      const stationsHTML = f.stations ? `
-        <h4>Statut des ${f.stations.length} Agro-Stations</h4>
-        <div class="stations-grid">${f.stations.map(s =>
-          `<div class="station-card"><div class="station-num">${s.num}</div><div class="station-label">Station</div><span class="station-owner ${s.classe}">${s.proprietaire}</span></div>`
-        ).join('')}</div>` : '';
-      const imageHTML = f.image ? (f.stations
-        ? `<img src="${f.image}" alt="${f.image_alt}" width="1200" height="400" loading="lazy">`
-        : `<div class="front-visual"><img src="${f.image}" alt="${f.image_alt}" width="1600" height="900" loading="lazy"></div>`
-      ) : '';
-      const bataillesHTML = f.batailles.map(b =>
-        `<div class="battle-entry ${b.classe}">
-          <p class="battle-label">${b.label}</p>
-          <h4 class="battle-title">${b.titre}</h4>
-          <p class="battle-text">${b.texte}</p>
-          <div class="battle-factions">${b.factions.map(fc => `<span class="faction-tag ${fc.classe}">${fc.label}</span>`).join('')}</div>
-        </div>`
-      ).join('');
-      return `<div class="front-panel${i===0?' active':''}" id="tab-${f.id}" role="tabpanel">
-        <div class="front-header">
-          <div><h3 class="front-title">${f.titre}</h3><p class="front-desc">${f.description}</p></div>
-          <span class="front-status ${f.statut_classe}">${f.statut}</span>
+    <!-- CONTEXTE -->
+    <section id="contexte" class="bg-surface">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Histoire &amp; Lore</p>
+          <h2 class="section-title">Le Sous-Secteur <span>Fyrentis</span></h2>
+          <p class="section-desc" id="lore-desc"></p>
         </div>
-        ${imageHTML}${stationsHTML}
-        ${f.stations ? '<div class="ornament section-ornament"><span>Chronique des Batailles</span></div>' : ''}
-        <div class="battle-log">${bataillesHTML}</div>
-      </div>`;
-    }).join('');
-  }
+        <div class="lore-grid" id="lore-grid"></div>
+      </div>
+    </section>
 
-  // ── MAIN : FETCH + RENDER
-  fetch('assets/data/campagne.json')
-    .then(r => r.json())
-    .then(d => {
-      renderJoueurs(d.joueurs);
-      renderLore(d.lore);
-      renderFronts(d.fronts);
-      initTabs();
-    })
-    .catch(err => {
-      console.error('Erreur chargement campagne.json :', err);
-      document.body.insertAdjacentHTML('afterbegin', '<div style="background:#8b1c1c;color:#fff;padding:1rem;text-align:center">Erreur : impossible de charger campagne.json</div>');
-    })
-    .finally(() => {
-      initReveal(); // Toujours exécuté, même si le fetch échoue
-    });
+    <!-- FRONTS -->
+    <section id="fronts">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Théâtres d'Opérations</p>
+          <h2 class="section-title">Les <span>Fronts</span> de Bataille</h2>
+          <p class="section-desc">
+            Trois systèmes stellaires, trois théâtres de guerre simultanés.
+            Chaque victoire, chaque défaite résonne à travers le secteur.
+          </p>
+        </div>
+        <div class="fronts-tabs" id="fronts-tabs" role="tablist"></div>
+        <div id="fronts-panels"></div>
+      </div>
+    </section>
 
-  // ── CARROUSEL
-  (function () {
-    'use strict';
-    const carousel  = document.getElementById('main-carousel');
-    if (!carousel) return;
-    const slides    = Array.from(carousel.querySelectorAll('.carousel__slide'));
-    const dotsWrap  = carousel.querySelector('.carousel__dots');
-    const btnPrev   = carousel.querySelector('.carousel__btn--prev');
-    const btnNext   = carousel.querySelector('.carousel__btn--next');
-    if (!slides.length || !dotsWrap || !btnPrev || !btnNext) return;
-    const INTERVAL      = 3500;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let current         = 0;
-    let timer           = null;
-    const dots = slides.map((_, i) => {
-      const dot = document.createElement('button');
-      dot.classList.add('carousel__dot');
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', `Image ${i + 1} sur ${slides.length}`);
-      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-      if (i === 0) dot.classList.add('is-active');
-      dot.addEventListener('click', () => { goTo(i); if (!reducedMotion) { stop(); start(); } });
-      dotsWrap.appendChild(dot);
-      return dot;
-    });
-    function goTo(index) {
-      slides[current].classList.remove('is-active');
-      dots[current].classList.remove('is-active');
-      dots[current].setAttribute('aria-selected', 'false');
-      current = ((index % slides.length) + slides.length) % slides.length;
-      slides[current].classList.add('is-active');
-      dots[current].classList.add('is-active');
-      dots[current].setAttribute('aria-selected', 'true');
-    }
-    function start() {
-      if (reducedMotion) return;
-      stop();
-      timer = setInterval(() => goTo(current + 1), INTERVAL);
-    }
-    function stop() {
-      if (timer !== null) { clearInterval(timer); timer = null; }
-    }
-    carousel.addEventListener('mouseenter', stop);
-    carousel.addEventListener('mouseleave', start);
-    carousel.addEventListener('focusin',    stop);
-    carousel.addEventListener('focusout',   start);
-    btnPrev.addEventListener('click', () => { goTo(current - 1); if (!reducedMotion) { stop(); start(); } });
-    btnNext.addEventListener('click', () => { goTo(current + 1); if (!reducedMotion) { stop(); start(); } });
-    carousel.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft')  { goTo(current - 1); }
-      if (e.key === 'ArrowRight') { goTo(current + 1); }
-    });
-    start();
-  })();
+    <!-- PERSONNAGES -->
+    <section id="personnages" class="bg-surface perso-carousel-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Légendes du Secteur</p>
+          <h2 class="section-title">Personnages <span>Clés</span></h2>
+          <p class="section-desc">
+            Des héros et des monstres dont les actes résonneront à travers les
+            âges.
+          </p>
+        </div>
+      </div>
 
-})();
-</script>
-<script src="assets/js/personnages-carousel.js"></script>
-</body>
+      <!-- Zone d'injection du carrousel — remplie par personnages-carousel.js -->
+      <div id="perso-carousel-container" class="container"></div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">Sous-Secteur Fyrentis</div>
+        <p class="footer-line">
+          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
+        </p>
+        <p class="footer-line">
+          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
+        </p>
+      </div>
+    </footer>
+
+    <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </a>
+
+    <script src="assets/js/index.js" defer></script>
+    <script src="assets/js/personnages-carousel.js"></script>
+  </body>
 </html>

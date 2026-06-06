@@ -374,14 +374,25 @@
   function svgPoint(evt, svg) {
     const pt = svg.createSVGPoint();
     pt.x = evt.clientX; pt.y = evt.clientY;
-    return pt.matrixTransform(svg.getScreenCTM().inverse());
+    // getScreenCTM() retourne null si le SVG n'est pas encore dans le flux de rendu
+    // (chargement en cours, test automatisé, SVG display:none).
+    // Sans ce garde, null.inverse() lèverait un TypeError et bloquerait tout drag.
+    const ctm = svg.getScreenCTM();
+    if (!ctm) return { x: 0, y: 0 };
+    return pt.matrixTransform(ctm.inverse());
   }
 
   function buildOrrery(data) {
     const svg = document.getElementById('orrery-svg');
     let html = '';
 
-    const orbitalPlanets = data.planets.filter(p => p.orbital_position !== null && p.orbital_position !== undefined);
+    // RADII et ANGLES définissent 5 orbites. Si le JSON ajoute une 6ᵉ planète orbitale,
+    // RADII[5] serait undefined et polar() produirait des coordonnées NaN —
+    // la planète deviendrait invisible sans aucun message d'erreur.
+    // On tronque au nombre d'orbites disponibles pour rester dans les bornes du tableau.
+    const orbitalPlanets = data.planets
+      .filter(p => p.orbital_position !== null && p.orbital_position !== undefined)
+      .slice(0, RADII.length);
     orbitalPlanets.forEach((_, i) => {
       html += `<circle class="orbit-ring" cx="${CX}" cy="${CY}" r="${RADII[i]}"/>`;
     });
@@ -483,7 +494,11 @@
     let html = '';
     state.ships.forEach(ship => {
       const normalizedType = normalizeShipType(ship.type);
-      const style = SHIP_STYLES[normalizedType];
+      // Si le type normalisé est absent de SHIP_STYLES (localStorage corrompu,
+      // JSON mis à jour avec un nouveau type non encore déclaré ici),
+      // on utilise 'croiseur-attaque' comme style de repli plutôt que de crasher
+      // sur `undefined.short` et de perdre l'affichage de tous les vaisseaux.
+      const style = SHIP_STYLES[normalizedType] || SHIP_STYLES['croiseur-attaque'];
       const displayName = ship.name || style.short;
 
       html += `
@@ -496,7 +511,12 @@
     });
 
     layer.innerHTML = html;
-    bindShipDragging();
+
+    // On re-lie le pointerdown sur les nouveaux éléments SVG (ils viennent d'être
+    // recréés via innerHTML). En revanche, on N'appelle PAS bindShipDragging() ici :
+    // les listeners SVG-niveau (pointermove / pointerup) sont liés une seule fois
+    // au démarrage. Les appeler à chaque rendu empilérait des handlers en cascade.
+    bindShipPointerDown();
 
     layer.querySelectorAll('.ship-token').forEach(el => {
       el.addEventListener('contextmenu', ev => {
@@ -508,6 +528,23 @@
 
         renderShips();
         saveTacticalState();
+      });
+    });
+  }
+
+  // Relie le handler pointerdown sur chaque token du layer.
+  // Doit être appelé après chaque renderShips() car innerHTML recrée les éléments SVG.
+  function bindShipPointerDown() {
+    const svg = document.getElementById('orrery-svg');
+    document.querySelectorAll('.ship-token').forEach(el => {
+      el.addEventListener('pointerdown', ev => {
+        ev.stopPropagation();
+        const ship = state.ships.find(s => s.id === el.dataset.shipId);
+        if (!ship) return;
+        const p = svgPoint(ev, svg);
+        state.drag = { id: el.dataset.shipId, dx: p.x - ship.x, dy: p.y - ship.y };
+        el.classList.add('dragging');
+        el.setPointerCapture(ev.pointerId);
       });
     });
   }
@@ -556,26 +593,27 @@
   }
 
   function removePlanetFlag(pid) {
-    if (!state.flags[pid]) return;
+    // `in` teste l'existence de la clé, pas sa valeur.
+    // L'ancienne garde `!state.flags[pid]` aurait bloqué la suppression si la valeur
+    // du drapeau était une chaîne vide '' ou toute autre valeur falsy.
+    if (!(pid in state.flags)) return;
     delete state.flags[pid];
     renderFlags();
     showDetail(state.system, pid);
     saveTacticalState();
   }
 
+  // Appelée UNE SEULE FOIS au démarrage (dans le bloc fetch, jamais depuis renderShips).
+  // Elle attache les listeners de niveau SVG qui gèrent le déplacement et la fin du drag.
+  //
+  // Pourquoi cette séparation est cruciale :
+  //   Avant, bindShipDragging() était appelée depuis renderShips(), et le handler
+  //   pointermove appelait renderShips() → chaque pixel de drag ajoutait UN NOUVEAU
+  //   listener pointermove sur le SVG. Après 50 pixels : 50 handlers actifs en parallèle,
+  //   le vaisseau sautait et le navigateur devenait inutilisable.
   function bindShipDragging() {
     const svg = document.getElementById('orrery-svg');
-    document.querySelectorAll('.ship-token').forEach(el => {
-      el.addEventListener('pointerdown', ev => {
-        ev.stopPropagation();
-        const ship = state.ships.find(s => s.id === el.dataset.shipId);
-        if (!ship) return;
-        const p = svgPoint(ev, svg);
-        state.drag = { id: el.dataset.shipId, dx: p.x - ship.x, dy: p.y - ship.y };
-        el.classList.add('dragging');
-        el.setPointerCapture(ev.pointerId);
-      });
-    });
+
     svg.addEventListener('pointermove', ev => {
       if (!state.drag) return;
       const ship = state.ships.find(s => s.id === state.drag.id);
@@ -583,8 +621,12 @@
       const p = svgPoint(ev, svg);
       ship.x = Math.max(20, Math.min(680, p.x - state.drag.dx));
       ship.y = Math.max(20, Math.min(540, p.y - state.drag.dy));
-      renderShips();
+      // Mise à jour directe de l'attribut SVG transform au lieu de reconstruire
+      // tout le innerHTML : plus rapide et évite de recréer des listeners à chaque frame.
+      const token = document.querySelector(`.ship-token[data-ship-id="${state.drag.id}"]`);
+      if (token) token.setAttribute('transform', `translate(${ship.x}, ${ship.y})`);
     });
+
     const endDrag = () => {
       if (state.drag) saveTacticalState();
       state.drag = null;
@@ -633,7 +675,9 @@
       const p = data.planets.find(pl => String(pl.id) === String(pid));
       if (p) {
         const scls = statusClass(p.imperial_status);
-        const featuresHTML = p.notable_features.map(f => `<span class="tag">${f}</span>`).join('');
+        // notable_features peut être absent ou null si une planète du JSON ne déclare
+        // pas ce champ — `|| []` garantit que .map() ne lève pas de TypeError.
+        const featuresHTML = (p.notable_features || []).map(f => `<span class="tag">${f}</span>`).join('');
         const eyebrow = p.orbital_position
           ? `Corps Céleste — Orbite ${p.orbital_position}`
           : `Fortification — Système Sanctum`;
@@ -728,11 +772,20 @@
       if (savedState) {
         if (savedState.flags) state.flags = savedState.flags;
         if (savedState.ships) state.ships = normalizeShips(savedState.ships);
-        if (savedState.shipCounter !== null) state.shipCounter = savedState.shipCounter;
+        // != null (comparaison lâche) couvre null ET undefined.
+      // L'ancienne vérification `!== null` (stricte) laissait passer undefined,
+      // ce qui se produit quand l'état vient d'une version antérieure du code sans
+      // shipCounter. Résultat : state.shipCounter = undefined, puis addShip() produisait
+      // l'id 'ship-NaN' — tous les vaisseaux portaient le même id.
+      if (savedState.shipCounter != null) state.shipCounter = savedState.shipCounter;
       }
 
       bindClicks(sys);
       bindEditor();
+      // bindShipDragging() est appelé ICI, une seule fois, pour attacher les listeners
+      // de niveau SVG (pointermove / pointerup). renderShips() ne doit JAMAIS l'appeler,
+      // sous peine d'empiler des dizaines de handlers à chaque pixel de drag.
+      bindShipDragging();
       renderWarpAlert(sys.warp_route);
       renderFigures(sys.key_figures);
       renderFlags();
