@@ -1,61 +1,57 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Death Guard</title>
+    <title>Black Templars</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── DEATH GUARD : VERT FLÉTRISSURE & ROUILLE ── */
+      /* ── BLACK TEMPLARS : OR IMPÉRIAL ── */
       :root {
-        --dg-green: #4a7a2e;
-        --dg-green-light: #6fa845;
-        --dg-green-dim: rgba(74, 122, 46, 0.45);
-        --dg-green-bg: rgba(74, 122, 46, 0.07);
-        --dg-green-hover-bg: rgba(74, 122, 46, 0.18);
-        --dg-green-glow: rgba(74, 122, 46, 0.35);
-        --dg-rust: #8c4a1a;
-        --dg-rust-dim: rgba(140, 74, 26, 0.35);
-        --page-accent: #4a7a2e;
-        --page-accent-light: #6fa845;
-        --page-accent-dim: rgba(74, 122, 46, 0.45);
-        --page-accent-bg: rgba(74, 122, 46, 0.07);
-        --page-accent-hover-bg: rgba(74, 122, 46, 0.18);
-        --page-accent-glow: rgba(74, 122, 46, 0.35);
-        --page-hero-glow: rgba(74, 122, 46, 0.15);
-        --page-hero-border: rgba(74, 122, 46, 0.22);
-        --page-symbol: "✦";
+        --bt-gold: #c8a028;
+        --bt-gold-light: #e8c050;
+        --bt-gold-dim: rgba(200, 160, 40, 0.45);
+        --bt-gold-bg: rgba(200, 160, 40, 0.07);
+        --bt-gold-hover-bg: rgba(200, 160, 40, 0.18);
+        --bt-gold-glow: rgba(200, 160, 40, 0.25);
+        --page-accent: #c8a028;
+        --page-accent-light: #e8c050;
+        --page-accent-dim: rgba(200, 160, 40, 0.45);
+        --page-accent-bg: rgba(200, 160, 40, 0.07);
+        --page-accent-hover-bg: rgba(200, 160, 40, 0.18);
+        --page-accent-glow: rgba(200, 160, 40, 0.25);
+        --page-hero-glow: rgba(200, 160, 40, 0.15);
+        --page-hero-border: rgba(200, 160, 40, 0.2);
+        --page-symbol: "✶";
       }
       [data-theme="light"] {
-        --dg-green: #2e5a18;
-        --dg-green-light: #1e3d0a;
-        --dg-green-dim: rgba(46, 90, 24, 0.4);
-        --dg-green-bg: rgba(46, 90, 24, 0.06);
-        --dg-green-hover-bg: rgba(46, 90, 24, 0.14);
-        --dg-green-glow: rgba(46, 90, 24, 0.2);
-        --dg-rust: #7a3a10;
-        --dg-rust-dim: rgba(122, 58, 16, 0.3);
-        --page-accent: #2e5a18;
-        --page-accent-light: #1e3d0a;
-        --page-accent-dim: rgba(46, 90, 24, 0.4);
-        --page-accent-bg: rgba(46, 90, 24, 0.06);
-        --page-accent-hover-bg: rgba(46, 90, 24, 0.14);
-        --page-accent-glow: rgba(46, 90, 24, 0.2);
-        --page-hero-glow: rgba(46, 90, 24, 0.12);
-        --page-hero-border: rgba(46, 90, 24, 0.18);
+        --bt-gold: #8a6800;
+        --bt-gold-light: #5c4300;
+        --bt-gold-dim: rgba(138, 104, 0, 0.4);
+        --bt-gold-bg: rgba(138, 104, 0, 0.06);
+        --bt-gold-hover-bg: rgba(138, 104, 0, 0.14);
+        --bt-gold-glow: rgba(138, 104, 0, 0.2);
+        --page-accent: #8a6800;
+        --page-accent-light: #5c4300;
+        --page-accent-dim: rgba(138, 104, 0, 0.4);
+        --page-accent-bg: rgba(138, 104, 0, 0.06);
+        --page-accent-hover-bg: rgba(138, 104, 0, 0.14);
+        --page-accent-glow: rgba(138, 104, 0, 0.2);
+        --page-hero-glow: rgba(138, 104, 0, 0.12);
+        --page-hero-border: rgba(138, 104, 0, 0.18);
       }
-      /* ── BLOC DÉCLASSIFIÉ — DEATH GUARD ────────────────────────── */
+      /* ── BLOC DÉCLASSIFIÉ ─────────────────────────────────────── */
       .declassifie-bloc {
         width: 100%;
-        background: rgba(4, 10, 4, 0.7);
-        border: 1px solid rgba(74, 122, 46, 0.38);
-        border-top: 3px solid var(--dg-green);
+        background: rgba(10, 8, 4, 0.65);
+        border: 1px solid rgba(200, 160, 40, 0.35);
+        border-top: 3px solid var(--bt-gold);
         border-radius: 2px;
         padding: 1.75rem 2rem;
         position: relative;
@@ -67,37 +63,78 @@
         inset: 0;
         background: repeating-linear-gradient(
           -45deg,
-          rgba(74, 122, 46, 0.025) 0px,
-          rgba(74, 122, 46, 0.025) 1px,
+          rgba(200, 160, 40, 0.025) 0px,
+          rgba(200, 160, 40, 0.025) 1px,
           transparent 1px,
           transparent 6px
         );
         pointer-events: none;
       }
       [data-theme="light"] .declassifie-bloc {
-        background: rgba(232, 240, 228, 0.75);
-        border-color: rgba(46, 90, 24, 0.38);
-        border-top-color: var(--dg-green);
+        background: rgba(240, 236, 225, 0.75);
+        border-color: rgba(138, 104, 0, 0.35);
+        border-top-color: var(--bt-gold);
       }
-      .declassifie-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid rgba(74,122,46,.22); }
-      .declassifie-badge { font-family: "Cinzel", serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #040a04; background: var(--dg-green); padding: 0.22rem 0.6rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
-      .declassifie-header-title { font-family: "Cinzel", serif; font-size: clamp(0.7rem, 1.8vw, 0.88rem); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dg-green); flex: 1; }
+      .declassifie-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.4rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid rgba(200, 160, 40, 0.2);
+      }
+      .declassifie-badge {
+        font-family: "Cinzel", serif;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #0a0804;
+        background: var(--bt-gold);
+        padding: 0.22rem 0.6rem;
+        border-radius: 2px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .declassifie-header-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.7rem, 1.8vw, 0.88rem);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--bt-gold);
+        flex: 1;
+      }
       .declassifie-entries { display: flex; flex-direction: column; gap: 1rem; }
       .declassifie-entry { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.85rem; align-items: start; }
-      .declassifie-entry-icon { width: 28px; height: 28px; border: 1px solid var(--dg-green-dim); border-radius: 2px; background: var(--dg-green-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--dg-green); margin-top: 0.1rem; }
-      .declassifie-entry-label { font-family: "Cinzel", serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dg-green); margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+      .declassifie-entry-icon {
+        width: 28px; height: 28px;
+        border: 1px solid var(--bt-gold-dim);
+        border-radius: 2px;
+        background: var(--bt-gold-bg);
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+        color: var(--bt-gold);
+        margin-top: 0.1rem;
+      }
+      .declassifie-entry-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--bt-gold);
+        margin-bottom: 0.22rem;
+        display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+      }
       .status-tag { font-family: "Cinzel", serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 2px; border: 1px solid; white-space: nowrap; }
-      .status-tag--actif { color: var(--dg-green); border-color: var(--dg-green-dim); background: var(--dg-green-bg); }
-      .status-tag--alerte { color: #c88028; border-color: rgba(200,128,40,.4); background: rgba(200,128,40,.07); }
-      .status-tag--critique { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
-      [data-theme="light"] .status-tag--alerte { color: #7a4800; border-color: rgba(122,72,0,.4); background: rgba(122,72,0,.06); }
-      [data-theme="light"] .status-tag--critique { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
+      .status-tag--operationnel { color: #5aaa5a; border-color: rgba(90,170,90,.4); background: rgba(90,170,90,.08); }
+      .status-tag--ruine { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
+      .status-tag--actif { color: var(--bt-gold); border-color: var(--bt-gold-dim); background: var(--bt-gold-bg); }
+      [data-theme="light"] .status-tag--operationnel { color: #2a7a2a; border-color: rgba(42,122,42,.4); background: rgba(42,122,42,.07); }
+      [data-theme="light"] .status-tag--ruine { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
       .declassifie-entry-text { font-family: "Crimson Text", serif; font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted, #9a9896); }
       [data-theme="light"] .declassifie-entry-text { color: #4a4540; }
-      .declassifie-entry-text em { color: var(--dg-green-light); font-style: normal; }
-      [data-theme="light"] .declassifie-entry-text em { color: var(--dg-green); }
-      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(74,122,46,.22), transparent); margin: 0; }
-      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(74,122,46,.15); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(74,122,46,.45); text-align: right; }
+      .declassifie-entry-text em { color: var(--bt-gold); font-style: normal; }
+      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(200,160,40,.2), transparent); margin: 0; }
+      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(200,160,40,.15); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,160,40,.45); text-align: right; }
       @media (max-width: 600px) {
         .declassifie-bloc { padding: 1.25rem 1rem; }
         .declassifie-entry { grid-template-columns: 1fr; }
@@ -109,7 +146,7 @@
     <nav class="nav" id="nav">
       <div class="nav-inner">
         <a
-          href="index.html"
+          href="../../index.html"
           class="nav-logo"
           aria-label="Campagne Fyrentis — Retour à l'accueil"
         >
@@ -180,7 +217,7 @@
         <div class="nav-actions">
           <div class="nav-page-links">
             <a
-              href="carte.html"
+              href="../../autres/cartes/carte.html"
               class="btn-nav-page btn-nav-page--carte"
               aria-label="Voir la Carte du secteur"
             >
@@ -200,7 +237,7 @@
               Carte
             </a>
             <a
-              href="sanctum.html"
+              href="../../autres/cartes/sanctum.html"
               class="btn-nav-page btn-nav-page--sanctum"
               aria-label="Accéder au Sanctum"
             >
@@ -218,7 +255,7 @@
               Sanctum
             </a>
             <a
-              href="rapports-inquisiteurs.html"
+              href="../../autres/rapports/rapports-inquisiteurs.html"
               class="btn-nav-page btn-nav-page--inquisition"
               aria-label="Lire les Rapports Inquisitoriaux"
             >
@@ -279,14 +316,13 @@
     <!-- HERO MINI -->
     <header class="page-hero" id="top">
       <div class="container">
-        <p class="section-eyebrow">Armée PNJ</p>
-        <h1 class="section-title"><span>DEATH GUARD</span></h1>
+        <p class="section-eyebrow">Armée de Freddy</p>
+        <h1 class="section-title"><span>BLACK TEMPLARS</span></h1>
         <p class="section-desc">
-          Fils corrompus de Mortarion, porteurs de la Grâce de Nurgle. Leur
-          dossier de campagne dans le sous-secteur Fyrentis est placé sous
-          scellé inquisitorial.
+          Croisés éternels de l'Adeptus Astartes. Leur dossier de campagne dans
+          le sous-secteur Fyrentis est sous scellé inquisitorial.
         </p>
-        <a href="index.html#specificites-freddy" class="back-link">
+        <a href="../../index.html#specificites-freddy" class="back-link">
           <svg
             width="13"
             height="13"
@@ -393,7 +429,7 @@
                 />
               </svg>
               <span class="inquisition-seal-title"
-                >Ordo Malleus — Inquisitoriat Impérial</span
+                >Ordo Hereticus — Inquisitoriat Impérial</span
               >
             </div>
 
@@ -406,20 +442,19 @@
 
             <!-- Référence de document -->
             <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OMI-FYRENTIS-DG-██████ — Classifié
+              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-BT-██████ — Classifié
               <strong>Extremis Obscura</strong><br />
               Ce dossier a été placé sous scellé inquisitorial par décision de
-              l'Ordo Malleus,
+              l'Ordo Hereticus,
               <em
-                >en raison de la présence avérée d'entités du Chaos Immonde dans
-                le sous-secteur Fyrentis.</em
+                >en attente de vérification des activités du Réclusiarque
+                Grimaldus dans le sous-secteur Fyrentis.</em
               >
-              Tout personnel impérial ayant été en contact avec les porteurs de
-              la Contagion Bénie doit se signaler immédiatement à l'Arbitre
-              local sous peine d'exécution sommaire.
+              Tout accès non autorisé constitue un acte d'hérésie passible du
+              bûcher.
             </p>
 
-            <!-- Bloc I : Historique de campagne -->
+            <!-- Bloc I : Historique de croisade -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -436,7 +471,7 @@
                   <line x1="9" y1="13" x2="15" y2="13" />
                   <line x1="9" y1="17" x2="12" y2="17" />
                 </svg>
-                Historique de Campagne — Fyrentis
+                Historique de Croisade — Fyrentis
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -463,7 +498,7 @@
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                Spécificités de Campagne — Death Guard
+                Spécificités de Campagne — Black Templars
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -478,7 +513,7 @@
               </div>
             </div>
 
-            <!-- Bloc III : Règles spéciales / Contagion -->
+            <!-- Bloc III : Bonus de vaisseau / règles spéciales -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -505,19 +540,19 @@
               </div>
             </div>
 
-            <!-- ════════════════════════════════════════════════════
-             BLOC IV : DÉCLASSIFICATION PARTIELLE — MENACE BIOLOGIQUE & WARP
-             ════════════════════════════════════════════════════ -->
+            <!-- ══════════════════════════════════════════════════════════
+             BLOC IV : DÉCLASSIFICATION PARTIELLE — SITUATION TACTIQUE
+             ══════════════════════════════════════════════════════════ -->
             <div class="declassifie-bloc reveal">
               <div class="declassifie-header">
                 <span class="declassifie-badge">Déclassifié</span>
                 <span class="declassifie-header-title"
-                  >Menace Active — Contagion &amp; Opérations Warp</span
+                  >Situation Tactique — Secteur Sanctum &amp; Orbite</span
                 >
               </div>
 
               <div class="declassifie-entries">
-                <!-- Entrée 1 : Rituels de Nurgle -->
+                <!-- Entrée 1 : Lune-Forteresse Brokha -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -528,35 +563,106 @@
                       stroke="currentColor"
                       stroke-width="2"
                     >
-                      <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
-                      <path d="M12 2a10 10 0 0 1 10 10" />
-                      <circle cx="12" cy="12" r="3" />
+                      <path
+                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                      />
+                      <circle cx="17" cy="5" r="1.5" fill="currentColor" />
                     </svg>
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Rituels de Nurgle
+                      Lune-Forteresse Brokha
                       <span class="status-tag status-tag--actif"
-                        >Accès confirmé</span
+                        >En orbite — Sanctum</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Les forces de la Death Guard opérant dans le sous-secteur
-                      Fyrentis ont accès à l'intégralité des
-                      <em>Rituels de Nurgle</em> homologués pour cette campagne.
-                      Parmi ceux-ci figure notamment l'arsenal personnel du
-                      Seigneur de Contagion <em>Typhus</em>, porteur du
-                      <em>Fistule du Warp</em> — relique maudite de la Fourbe
-                      Pestilentielle dont la seule présence corrompt l'éther
-                      environnant. Son emploi en campagne est considéré comme
-                      une menace de niveau Terminus par l'Ordo Malleus.
+                      Station orbitale de classe forteresse, en orbite
+                      stabilisée autour de <em>Sanctum</em>. Les garnisons du
+                      Chapitre — désignées collectivement sous l'appellation
+                      <em>Croisés de Brokha</em> — en tiennent l'intégralité des
+                      secteurs défensifs. Aucune brèche signalée. L'accès y est
+                      conditionnel à l'accréditation de rang Croisé ou
+                      supérieur.
                     </p>
                   </div>
                 </div>
 
                 <div class="declassifie-separator"></div>
 
-                <!-- Entrée 2 : Invasion de Jakku -->
+                <!-- Entrée 2 : Bastion Alpha -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <polyline points="9 12 11 14 15 10" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Bastion Alpha
+                      <span class="status-tag status-tag--operationnel"
+                        >Intact — Sous contrôle</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Position fortifiée confirmée comme opérationnelle. Les
+                      défenses périmètriques sont intactes et le commandement du
+                      Bastion Alpha est assuré par les frères du Chapitre.
+                      <em
+                        >Aucune menace ennemie active n'a été enregistrée à ce
+                        poste lors du dernier rapport de situation.</em
+                      >
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 3 : Bastion Bêta -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <line x1="9" y1="9" x2="15" y2="15" />
+                      <line x1="15" y1="9" x2="9" y2="15" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Bastion Bêta
+                      <span class="status-tag status-tag--ruine"
+                        >En ruines</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      La position est <em>hors d'état de combattre</em>. Les
+                      structures du Bastion Bêta ont été réduites en ruines lors
+                      d'engagements antérieurs non documentés dans ce rapport.
+                      Le secteur est à considérer comme zone de combat
+                      potentielle et constitue un objectif tactique de
+                      reconquête ou de déni d'accès à l'ennemi.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 4 : Flotte de Croisade Helbrecht -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -570,111 +676,27 @@
                       <path
                         d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
                       />
-                      <path d="M9 22V12h6v10" />
+                      <polyline points="9 22 9 12 15 12 15 22" />
                     </svg>
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Agri-Monde Jakku
-                      <span class="status-tag status-tag--critique"
-                        >En cours d'invasion</span
+                      Flotte de Croisade — Helbrecht
+                      <span class="status-tag status-tag--actif"
+                        >Visible depuis Sanctum</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Les <em>Émissaires de Typhus</em> ont pénétré l'agri-monde
-                      <em>Jakku</em> et en entreprennent la corruption
-                      systématique. Les cultures, réseaux d'eau et bassins de
-                      population sont affectés par des vecteurs biologiques non
-                      identifiés. Les équipes d'intervention de l'Adeptus
-                      Arbites ont été déclarées <em>disparues</em> lors des
-                      opérations de reconnaissance initiales. La situation
-                      évolue rapidement — les dernières transmissions indiquent
-                      une progression de la corruption sur l'ensemble du secteur
-                      agro-occidental.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 3 : Canal Warp Ork -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <polygon
-                        points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
-                      />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Canal Warp — Origine Ork
-                      <span class="status-tag status-tag--alerte"
-                        >Événement non planifié</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Selon les rapports préliminaires de l'Ordo Malleus, la
-                      brèche permettant l'accès des forces de Nurgle à Jakku est
-                      <em>d'origine accidentelle</em>. Les tribus Ork actives
-                      dans le secteur ont servi involontairement de
-                      <em>carburant et de ressource psycho-orgoide</em> pour
-                      l'ouverture d'un canal instable dans l'Immaterium. La
-                      violence organique des Orks aurait catalysé et déstabilisé
-                      le voile de l'Éther, créant une anomalie expéditée par les
-                      Émissaires de Typhus. Les détails complets de cet
-                      événement font l'objet d'un rapport séparé —
-                      <em>informations complémentaires à venir.</em>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 4 : État de Jakku -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                      />
-                      <line x1="12" y1="9" x2="12" y2="13" />
-                      <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      État de Corruption — Jakku
-                      <span class="status-tag status-tag--critique"
-                        >Stade avancé</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Si aucune intervention militaire impériale n'est conduite
-                      dans les délais impartis, l'agri-monde
-                      <em
-                        >Jakku sera intégralement recouvert par les « bienfaits
-                        du Grand Père »</em
-                      >. La transformation totale du monde en territoire
-                      nurglesque est projetée comme imminente selon les modèles
-                      de contagion de l'Ordo Malleus. Jakku représente désormais
-                      un <em>objectif narratif prioritaire de la campagne</em> :
-                      sa reconquête ou sa perte déterminera l'évolution de la
-                      menace dans le sous-secteur Fyrentis.
+                      La flotte de croisade placée sous le commandement du Haut
+                      Maréchal <em>Helbrecht</em> est visible à l'œil nu depuis
+                      la surface de Sanctum. Son envergure — vaisseaux de ligne,
+                      croiseurs d'escorte et transports d'assaut — est telle
+                      qu'elle constitue à elle seule
+                      <em>un théâtre d'opérations à part entière</em>,
+                      susceptible d'accueillir des missions d'abordage, de
+                      défense orbitale ou de représailles. Son statut tactique
+                      est classé
+                      <em>Zone d'Engagement Secondaire — Priorité Croisade</em>.
                     </p>
                   </div>
                 </div>
@@ -682,8 +704,8 @@
               <!-- /declassifie-entries -->
 
               <p class="declassifie-footer">
-                Extrait autorisé — OMI-FYRENTIS-DG-SITREP-02 · Déclassification
-                partielle — Informations complémentaires à venir
+                Extrait autorisé — OHI-FYRENTIS-BT-SITREP-04 · Déclassification
+                partielle accordée par autorité du Commandeur de la Croisade
               </p>
             </div>
             <!-- /declassifie-bloc -->
@@ -692,19 +714,17 @@
             <div class="nota-bene reveal">
               <p class="nota-bene-label">Nota Inquisitoriale</p>
               <p>
-                « Les forces de la Death Guard opérant dans le sous-secteur
-                Fyrentis font l'objet d'une procédure de confinement biologique
-                de niveau Oméga de l'Ordo Malleus. Des rapports de contamination
-                par la Contagion Bénie de Nurgle ont été signalés sur Colchis
-                après leur passage. Ces informations demeureront classifiées
-                jusqu'à l'issue des opérations de purification en cours. Tout
-                territoire infecté sera soumis à une purge orbitale si
-                nécessaire. »
+                « Les activités du Chapitre dans le sous-secteur Fyrentis font
+                l'objet d'une enquête préliminaire de l'Ordo Hereticus. Les
+                présentes informations seront déclassifiées à l'issue de la
+                vérification des antécédents du Réclusiarque Grimaldus. En
+                attendant, tout citoyen impérial ayant connaissance du contenu
+                de ce dossier est prié de se présenter à son Arbitre local. »
               </p>
               <p style="margin-top: 0.5rem">
                 —
                 <em
-                  >Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis
+                  >Inquisiteur-Sénior ██████ █████████, Ordo Hereticus, Fyrentis
                   Ultima</em
                 >
               </p>
@@ -739,6 +759,6 @@
       </svg>
     </a>
 
-    <script src="assets/js/pages.js" defer></script>
+    <script src="../../assets/js/pages.js" defer></script>
   </body>
 </html>

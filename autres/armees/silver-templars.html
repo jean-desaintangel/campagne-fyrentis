@@ -1,57 +1,65 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Black Templars</title>
+    <title>Silver Templars — Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── BLACK TEMPLARS : OR IMPÉRIAL ── */
+      /* ── SILVER TEMPLARS : ARGENT IMPÉRIAL + BLEU ACIER ── */
       :root {
-        --bt-gold: #c8a028;
-        --bt-gold-light: #e8c050;
-        --bt-gold-dim: rgba(200, 160, 40, 0.45);
-        --bt-gold-bg: rgba(200, 160, 40, 0.07);
-        --bt-gold-hover-bg: rgba(200, 160, 40, 0.18);
-        --bt-gold-glow: rgba(200, 160, 40, 0.25);
-        --page-accent: #c8a028;
-        --page-accent-light: #e8c050;
-        --page-accent-dim: rgba(200, 160, 40, 0.45);
-        --page-accent-bg: rgba(200, 160, 40, 0.07);
-        --page-accent-hover-bg: rgba(200, 160, 40, 0.18);
-        --page-accent-glow: rgba(200, 160, 40, 0.25);
-        --page-hero-glow: rgba(200, 160, 40, 0.15);
-        --page-hero-border: rgba(200, 160, 40, 0.2);
+        --st-silver: #c0c8d4;
+        --st-silver-dim: rgba(192, 200, 212, 0.38);
+        --st-silver-bg: rgba(192, 200, 212, 0.06);
+        --st-silver-hover: rgba(192, 200, 212, 0.15);
+        --st-silver-glow: rgba(192, 200, 212, 0.28);
+        --st-silver-light: #e0e6f0;
+        --st-blue: #3a6a9a;
+        --st-blue-dim: rgba(58, 106, 154, 0.38);
+        --page-accent: #c0c8d4;
+        --page-accent-light: #e0e6f0;
+        --page-accent-dim: rgba(192, 200, 212, 0.38);
+        --page-accent-bg: rgba(192, 200, 212, 0.06);
+        --page-accent-hover-bg: rgba(192, 200, 212, 0.15);
+        --page-accent-glow: rgba(192, 200, 212, 0.28);
+        --page-hero-glow: rgba(192, 200, 212, 0.1);
+        --page-hero-border: rgba(192, 200, 212, 0.2);
         --page-symbol: "✶";
+        --page-nota-accent: #3a6a9a;
+        --page-nota-accent-dim: rgba(58, 106, 154, 0.38);
       }
       [data-theme="light"] {
-        --bt-gold: #8a6800;
-        --bt-gold-light: #5c4300;
-        --bt-gold-dim: rgba(138, 104, 0, 0.4);
-        --bt-gold-bg: rgba(138, 104, 0, 0.06);
-        --bt-gold-hover-bg: rgba(138, 104, 0, 0.14);
-        --bt-gold-glow: rgba(138, 104, 0, 0.2);
-        --page-accent: #8a6800;
-        --page-accent-light: #5c4300;
-        --page-accent-dim: rgba(138, 104, 0, 0.4);
-        --page-accent-bg: rgba(138, 104, 0, 0.06);
-        --page-accent-hover-bg: rgba(138, 104, 0, 0.14);
-        --page-accent-glow: rgba(138, 104, 0, 0.2);
-        --page-hero-glow: rgba(138, 104, 0, 0.12);
-        --page-hero-border: rgba(138, 104, 0, 0.18);
+        --st-silver: #3a4a5e;
+        --st-silver-dim: rgba(58, 74, 94, 0.38);
+        --st-silver-bg: rgba(58, 74, 94, 0.05);
+        --st-silver-hover: rgba(58, 74, 94, 0.13);
+        --st-silver-glow: rgba(58, 74, 94, 0.18);
+        --st-silver-light: #1a2a3e;
+        --st-blue: #1a4a7a;
+        --st-blue-dim: rgba(26, 74, 122, 0.35);
+        --page-accent: #3a4a5e;
+        --page-accent-light: #1a2a3e;
+        --page-accent-dim: rgba(58, 74, 94, 0.38);
+        --page-accent-bg: rgba(58, 74, 94, 0.05);
+        --page-accent-hover-bg: rgba(58, 74, 94, 0.13);
+        --page-accent-glow: rgba(58, 74, 94, 0.18);
+        --page-hero-glow: rgba(58, 74, 94, 0.08);
+        --page-hero-border: rgba(58, 74, 94, 0.18);
+        --page-nota-accent: #1a4a7a;
+        --page-nota-accent-dim: rgba(26, 74, 122, 0.35);
       }
-      /* ── BLOC DÉCLASSIFIÉ ─────────────────────────────────────── */
+      /* ── BLOC DÉCLASSIFIÉ — SILVER TEMPLARS ────────────────────── */
       .declassifie-bloc {
         width: 100%;
-        background: rgba(10, 8, 4, 0.65);
-        border: 1px solid rgba(200, 160, 40, 0.35);
-        border-top: 3px solid var(--bt-gold);
+        background: rgba(6, 10, 16, 0.72);
+        border: 1px solid rgba(192, 200, 212, 0.3);
+        border-top: 3px solid var(--st-silver);
         border-radius: 2px;
         padding: 1.75rem 2rem;
         position: relative;
@@ -63,78 +71,40 @@
         inset: 0;
         background: repeating-linear-gradient(
           -45deg,
-          rgba(200, 160, 40, 0.025) 0px,
-          rgba(200, 160, 40, 0.025) 1px,
+          rgba(192, 200, 212, 0.018) 0px,
+          rgba(192, 200, 212, 0.018) 1px,
           transparent 1px,
           transparent 6px
         );
         pointer-events: none;
       }
       [data-theme="light"] .declassifie-bloc {
-        background: rgba(240, 236, 225, 0.75);
-        border-color: rgba(138, 104, 0, 0.35);
-        border-top-color: var(--bt-gold);
+        background: rgba(232, 236, 244, 0.78);
+        border-color: rgba(58, 74, 94, 0.32);
+        border-top-color: var(--st-silver);
       }
-      .declassifie-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1.4rem;
-        padding-bottom: 0.9rem;
-        border-bottom: 1px solid rgba(200, 160, 40, 0.2);
-      }
-      .declassifie-badge {
-        font-family: "Cinzel", serif;
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: #0a0804;
-        background: var(--bt-gold);
-        padding: 0.22rem 0.6rem;
-        border-radius: 2px;
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      .declassifie-header-title {
-        font-family: "Cinzel", serif;
-        font-size: clamp(0.7rem, 1.8vw, 0.88rem);
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--bt-gold);
-        flex: 1;
-      }
+      .declassifie-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid rgba(192,200,212,.18); }
+      .declassifie-badge { font-family: "Cinzel", serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #060a10; background: var(--st-silver); padding: 0.22rem 0.6rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+      [data-theme="light"] .declassifie-badge { color: #f0f2f6; }
+      .declassifie-header-title { font-family: "Cinzel", serif; font-size: clamp(0.7rem, 1.8vw, 0.88rem); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--st-silver); flex: 1; }
       .declassifie-entries { display: flex; flex-direction: column; gap: 1rem; }
       .declassifie-entry { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.85rem; align-items: start; }
-      .declassifie-entry-icon {
-        width: 28px; height: 28px;
-        border: 1px solid var(--bt-gold-dim);
-        border-radius: 2px;
-        background: var(--bt-gold-bg);
-        display: flex; align-items: center; justify-content: center;
-        flex-shrink: 0;
-        color: var(--bt-gold);
-        margin-top: 0.1rem;
-      }
-      .declassifie-entry-label {
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
-        text-transform: uppercase; color: var(--bt-gold);
-        margin-bottom: 0.22rem;
-        display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
-      }
+      .declassifie-entry-icon { width: 28px; height: 28px; border: 1px solid var(--st-silver-dim); border-radius: 2px; background: var(--st-silver-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--st-silver); margin-top: 0.1rem; }
+      .declassifie-entry-label { font-family: "Cinzel", serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-silver); margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
       .status-tag { font-family: "Cinzel", serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 2px; border: 1px solid; white-space: nowrap; }
-      .status-tag--operationnel { color: #5aaa5a; border-color: rgba(90,170,90,.4); background: rgba(90,170,90,.08); }
-      .status-tag--ruine { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
-      .status-tag--actif { color: var(--bt-gold); border-color: var(--bt-gold-dim); background: var(--bt-gold-bg); }
-      [data-theme="light"] .status-tag--operationnel { color: #2a7a2a; border-color: rgba(42,122,42,.4); background: rgba(42,122,42,.07); }
-      [data-theme="light"] .status-tag--ruine { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
+      .status-tag--tenu { color: var(--st-silver); border-color: var(--st-silver-dim); background: var(--st-silver-bg); }
+      .status-tag--operationnel { color: #5a9ad4; border-color: rgba(90,154,212,.4); background: rgba(90,154,212,.07); }
+      .status-tag--disperse { color: #c8a028; border-color: rgba(200,160,40,.4); background: rgba(200,160,40,.07); }
+      .status-tag--imminence { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
+      [data-theme="light"] .status-tag--operationnel { color: #1a4a7a; border-color: rgba(26,74,122,.4); background: rgba(26,74,122,.06); }
+      [data-theme="light"] .status-tag--disperse { color: #7a4800; border-color: rgba(122,72,0,.4); background: rgba(122,72,0,.06); }
+      [data-theme="light"] .status-tag--imminence { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
       .declassifie-entry-text { font-family: "Crimson Text", serif; font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted, #9a9896); }
       [data-theme="light"] .declassifie-entry-text { color: #4a4540; }
-      .declassifie-entry-text em { color: var(--bt-gold); font-style: normal; }
-      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(200,160,40,.2), transparent); margin: 0; }
-      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(200,160,40,.15); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,160,40,.45); text-align: right; }
+      .declassifie-entry-text em { color: var(--st-silver-light); font-style: normal; }
+      [data-theme="light"] .declassifie-entry-text em { color: var(--st-silver); }
+      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(192,200,212,.18), transparent); margin: 0; }
+      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(192,200,212,.12); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(192,200,212,.38); text-align: right; }
       @media (max-width: 600px) {
         .declassifie-bloc { padding: 1.25rem 1rem; }
         .declassifie-entry { grid-template-columns: 1fr; }
@@ -146,7 +116,7 @@
     <nav class="nav" id="nav">
       <div class="nav-inner">
         <a
-          href="index.html"
+          href="../../index.html"
           class="nav-logo"
           aria-label="Campagne Fyrentis — Retour à l'accueil"
         >
@@ -217,7 +187,7 @@
         <div class="nav-actions">
           <div class="nav-page-links">
             <a
-              href="carte.html"
+              href="../../autres/cartes/carte.html"
               class="btn-nav-page btn-nav-page--carte"
               aria-label="Voir la Carte du secteur"
             >
@@ -237,7 +207,7 @@
               Carte
             </a>
             <a
-              href="sanctum.html"
+              href="../../autres/cartes/sanctum.html"
               class="btn-nav-page btn-nav-page--sanctum"
               aria-label="Accéder au Sanctum"
             >
@@ -255,7 +225,7 @@
               Sanctum
             </a>
             <a
-              href="rapports-inquisiteurs.html"
+              href="../../autres/rapports/rapports-inquisiteurs.html"
               class="btn-nav-page btn-nav-page--inquisition"
               aria-label="Lire les Rapports Inquisitoriaux"
             >
@@ -317,12 +287,13 @@
     <header class="page-hero" id="top">
       <div class="container">
         <p class="section-eyebrow">Armée de Freddy</p>
-        <h1 class="section-title"><span>BLACK TEMPLARS</span></h1>
+        <h1 class="section-title"><span>SILVER TEMPLARS</span></h1>
         <p class="section-desc">
-          Croisés éternels de l'Adeptus Astartes. Leur dossier de campagne dans
-          le sous-secteur Fyrentis est sous scellé inquisitorial.
+          Successeurs des Imperial Fists, forgés dans l'honneur et le sacrifice.
+          Leur dossier de campagne dans le sous-secteur Fyrentis est placé sous
+          scellé inquisitorial.
         </p>
-        <a href="index.html#specificites-freddy" class="back-link">
+        <a href="../../index.html#specificites-freddy" class="back-link">
           <svg
             width="13"
             height="13"
@@ -442,16 +413,18 @@
 
             <!-- Référence de document -->
             <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-BT-██████ — Classifié
-              <strong>Extremis Obscura</strong><br />
+              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-ST-██████ — Classifié
+              <strong>Securitas Imperialis</strong><br />
               Ce dossier a été placé sous scellé inquisitorial par décision de
               l'Ordo Hereticus,
               <em
-                >en attente de vérification des activités du Réclusiarque
-                Grimaldus dans le sous-secteur Fyrentis.</em
+                >en raison de la sensibilité stratégique des opérations menées
+                par le Chapitre des Silver Templars dans le sous-secteur
+                Fyrentis, notamment leur protocole de déploiement aux côtés
+                d'autres forces impériales.</em
               >
-              Tout accès non autorisé constitue un acte d'hérésie passible du
-              bûcher.
+              La divulgation de toute information concernant leurs capacités
+              opérationnelles est strictement proscrite.
             </p>
 
             <!-- Bloc I : Historique de croisade -->
@@ -484,7 +457,7 @@
               </div>
             </div>
 
-            <!-- Bloc II : Spécificités d'armée -->
+            <!-- Bloc II : Spécificités de campagne -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -498,7 +471,7 @@
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                Spécificités de Campagne — Black Templars
+                Spécificités de Campagne — Silver Templars
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -513,7 +486,7 @@
               </div>
             </div>
 
-            <!-- Bloc III : Bonus de vaisseau / règles spéciales -->
+            <!-- Bloc III : Règles spéciales -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -541,18 +514,18 @@
             </div>
 
             <!-- ══════════════════════════════════════════════════════════
-             BLOC IV : DÉCLASSIFICATION PARTIELLE — SITUATION TACTIQUE
+             BLOC IV : DÉCLASSIFICATION PARTIELLE — DÉFENSE DE JAKKU
              ══════════════════════════════════════════════════════════ -->
             <div class="declassifie-bloc reveal">
               <div class="declassifie-header">
                 <span class="declassifie-badge">Déclassifié</span>
                 <span class="declassifie-header-title"
-                  >Situation Tactique — Secteur Sanctum &amp; Orbite</span
+                  >Déploiement Actif — Jakku &amp; Défense Planétaire</span
                 >
               </div>
 
               <div class="declassifie-entries">
-                <!-- Entrée 1 : Lune-Forteresse Brokha -->
+                <!-- Entrée 1 : Base — 2e cité-ruche -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -564,33 +537,86 @@
                       stroke-width="2"
                     >
                       <path
-                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
                       />
-                      <circle cx="17" cy="5" r="1.5" fill="currentColor" />
+                      <path d="M9 22V12h6v10" />
                     </svg>
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Lune-Forteresse Brokha
-                      <span class="status-tag status-tag--actif"
-                        >En orbite — Sanctum</span
+                      Quartier Général — Deuxième Cité-Ruche
+                    </p>
+                    <p>
+                      <span class="status-tag status-tag--tenu"
+                        >Opérationnel</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Station orbitale de classe forteresse, en orbite
-                      stabilisée autour de <em>Sanctum</em>. Les garnisons du
-                      Chapitre — désignées collectivement sous l'appellation
-                      <em>Croisés de Brokha</em> — en tiennent l'intégralité des
-                      secteurs défensifs. Aucune brèche signalée. L'accès y est
-                      conditionnel à l'accréditation de rang Croisé ou
-                      supérieur.
+                      Le détachement des <em>Silver Templars</em> a établi son
+                      commandement au cœur de la
+                      <em>seconde cité-ruche de Jakku</em>, la plus grande
+                      encore debout. Ce bastion urbain constitue le nœud de
+                      commandement impérial pour l'ensemble des opérations de
+                      défense planétaire. Les Silver Templars tiennent le
+                      périmètre intérieur, coordonnent les forces de l'Astra
+                      Militarum locales et supervisent les protocoles
+                      d'évacuation civile en cours. La cité-ruche est considérée
+                      comme le <em>dernier verrou défensif viable</em> sur
+                      Jakku.
                     </p>
                   </div>
                 </div>
 
                 <div class="declassifie-separator"></div>
 
-                <!-- Entrée 2 : Bastion Alpha -->
+                <!-- Entrée 2 : Possessions planétaires dispersées -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <polygon
+                        points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
+                      />
+                      <line x1="8" y1="2" x2="8" y2="18" />
+                      <line x1="16" y1="6" x2="16" y2="22" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Possessions Planétaires — Présence Dispersée
+                    </p>
+                    <p>
+                      <span class="status-tag status-tag--disperse"
+                        >Dispersé — En contraction</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Outre leur siège dans la seconde cité-ruche, les Silver
+                      Templars maintiennent des
+                      <em
+                        >possessions et points d'appui disséminés sur l'ensemble
+                        de Jakku</em
+                      >
+                      : relais de communication, dépôts d'armes, positions
+                      d'observation et points de rassemblement pour les
+                      populations civiles fuyant la corruption. Ces
+                      installations sont progressivement
+                      <em>rappelées, consolidées ou sacrifiées</em> au fil de
+                      l'avancée nurglesque, dans le cadre d'une retraite
+                      méthodique vers le périmètre défensif principal.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 3 : Doctrine de sauvetage -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -607,62 +633,35 @@
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Bastion Alpha
+                      Doctrine Opérationnelle — Préservation Impériale
+                    </p>
+                    <p>
                       <span class="status-tag status-tag--operationnel"
-                        >Intact — Sous contrôle</span
+                        >Active — Priorité absolue</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Position fortifiée confirmée comme opérationnelle. Les
-                      défenses périmètriques sont intactes et le commandement du
-                      Bastion Alpha est assuré par les frères du Chapitre.
+                      Face à la progression inexorable de la contagion
+                      nurglesque, le commandement des Silver Templars a adopté
+                      une doctrine claire :
+                      <em>sauver le plus possible avant l'inévitable</em>. Cela
+                      comprend l'évacuation des populations fidèles à
+                      l'Empereur, la protection des archives planétaires, la
+                      mise en sécurité des reliques de l'Adeptus Mechanicus et
+                      la préservation des stocks alimentaires encore intacts.
+                      Les Silver Templars n'ont pas renoncé à la victoire — ils
+                      ont simplement
                       <em
-                        >Aucune menace ennemie active n'a été enregistrée à ce
-                        poste lors du dernier rapport de situation.</em
-                      >
+                        >accepté le coût de cette guerre et choisi d'en limiter
+                        les pertes impériales</em
+                      >.
                     </p>
                   </div>
                 </div>
 
                 <div class="declassifie-separator"></div>
 
-                <!-- Entrée 3 : Bastion Bêta -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <line x1="9" y1="9" x2="15" y2="15" />
-                      <line x1="15" y1="9" x2="9" y2="15" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Bastion Bêta
-                      <span class="status-tag status-tag--ruine"
-                        >En ruines</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      La position est <em>hors d'état de combattre</em>. Les
-                      structures du Bastion Bêta ont été réduites en ruines lors
-                      d'engagements antérieurs non documentés dans ce rapport.
-                      Le secteur est à considérer comme zone de combat
-                      potentielle et constitue un objectif tactique de
-                      reconquête ou de déni d'accès à l'ennemi.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 4 : Flotte de Croisade Helbrecht -->
+                <!-- Entrée 4 : Statut de Jakku — objectif narratif -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -674,29 +673,36 @@
                       stroke-width="2"
                     >
                       <path
-                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
                       />
-                      <polyline points="9 22 9 12 15 12 15 22" />
+                      <line x1="12" y1="9" x2="12" y2="13" />
+                      <line x1="12" y1="17" x2="12.01" y2="17" />
                     </svg>
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Flotte de Croisade — Helbrecht
-                      <span class="status-tag status-tag--actif"
-                        >Visible depuis Sanctum</span
+                      Appréciation Stratégique — Jakku
+                    </p>
+                    <p>
+                      <span class="status-tag status-tag--imminence"
+                        >Perte possible — Imminente</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      La flotte de croisade placée sous le commandement du Haut
-                      Maréchal <em>Helbrecht</em> est visible à l'œil nu depuis
-                      la surface de Sanctum. Son envergure — vaisseaux de ligne,
-                      croiseurs d'escorte et transports d'assaut — est telle
-                      qu'elle constitue à elle seule
-                      <em>un théâtre d'opérations à part entière</em>,
-                      susceptible d'accueillir des missions d'abordage, de
-                      défense orbitale ou de représailles. Son statut tactique
-                      est classé
-                      <em>Zone d'Engagement Secondaire — Priorité Croisade</em>.
+                      Les estimations du Conseil de Guerre sectoriel indiquent
+                      que
+                      <em
+                        >Jakku ne peut être sauvé sans renfort extérieur
+                        significatif</em
+                      >. Les Silver Templars tiennent leurs positions avec
+                      honneur, mais la convergence des Émissaires de Typhus, du
+                      canal warp actif et de la contamination des ressources
+                      agro-industrielles rend la situation
+                      <em>objectivement intenable à terme</em>. Jakku représente
+                      un <em>objectif narratif central de la campagne</em> :
+                      chaque bataille menée sur ce monde influencera directement
+                      l'issue de la résistance impériale dans le sous-secteur
+                      Fyrentis.
                     </p>
                   </div>
                 </div>
@@ -704,27 +710,29 @@
               <!-- /declassifie-entries -->
 
               <p class="declassifie-footer">
-                Extrait autorisé — OHI-FYRENTIS-BT-SITREP-04 · Déclassification
-                partielle accordée par autorité du Commandeur de la Croisade
+                Extrait autorisé — OHI-FYRENTIS-ST-SITREP-03 · Déclassification
+                partielle accordée par le Commandement du Chapitre
               </p>
             </div>
             <!-- /declassifie-bloc -->
 
             <!-- Note inquisitoriale -->
             <div class="nota-bene reveal">
-              <p class="nota-bene-label">Nota Inquisitoriale</p>
+              <p class="nota-bene-label">
+                Nota Inquisitoriale — Ordo Hereticus
+              </p>
               <p>
-                « Les activités du Chapitre dans le sous-secteur Fyrentis font
-                l'objet d'une enquête préliminaire de l'Ordo Hereticus. Les
-                présentes informations seront déclassifiées à l'issue de la
-                vérification des antécédents du Réclusiarque Grimaldus. En
-                attendant, tout citoyen impérial ayant connaissance du contenu
-                de ce dossier est prié de se présenter à son Arbitre local. »
+                « Le détachement des Silver Templars engagé dans le sous-secteur
+                Fyrentis opère sous le commandement direct du Chapitre. Leur
+                coopération avec les forces impériales alliés lors des batailles
+                de Jakku et de Colchis a été jugée exemplaire par le Conseil de
+                Guerre sectoriel. Tout incident impliquant ce détachement devra
+                être rapporté immédiatement à l'Inquisitoriat. »
               </p>
               <p style="margin-top: 0.5rem">
                 —
                 <em
-                  >Inquisiteur-Sénior ██████ █████████, Ordo Hereticus, Fyrentis
+                  >Inquisiteur ██████ ████████████, Ordo Hereticus, Fyrentis
                   Ultima</em
                 >
               </p>
@@ -759,6 +767,6 @@
       </svg>
     </a>
 
-    <script src="assets/js/pages.js" defer></script>
+    <script src="../../assets/js/pages.js" defer></script>
   </body>
 </html>

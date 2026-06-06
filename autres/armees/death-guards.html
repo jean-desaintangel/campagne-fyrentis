@@ -1,65 +1,61 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Silver Templars — Fyrentis</title>
+    <title>Death Guard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── SILVER TEMPLARS : ARGENT IMPÉRIAL + BLEU ACIER ── */
+      /* ── DEATH GUARD : VERT FLÉTRISSURE & ROUILLE ── */
       :root {
-        --st-silver: #c0c8d4;
-        --st-silver-dim: rgba(192, 200, 212, 0.38);
-        --st-silver-bg: rgba(192, 200, 212, 0.06);
-        --st-silver-hover: rgba(192, 200, 212, 0.15);
-        --st-silver-glow: rgba(192, 200, 212, 0.28);
-        --st-silver-light: #e0e6f0;
-        --st-blue: #3a6a9a;
-        --st-blue-dim: rgba(58, 106, 154, 0.38);
-        --page-accent: #c0c8d4;
-        --page-accent-light: #e0e6f0;
-        --page-accent-dim: rgba(192, 200, 212, 0.38);
-        --page-accent-bg: rgba(192, 200, 212, 0.06);
-        --page-accent-hover-bg: rgba(192, 200, 212, 0.15);
-        --page-accent-glow: rgba(192, 200, 212, 0.28);
-        --page-hero-glow: rgba(192, 200, 212, 0.1);
-        --page-hero-border: rgba(192, 200, 212, 0.2);
-        --page-symbol: "✶";
-        --page-nota-accent: #3a6a9a;
-        --page-nota-accent-dim: rgba(58, 106, 154, 0.38);
+        --dg-green: #4a7a2e;
+        --dg-green-light: #6fa845;
+        --dg-green-dim: rgba(74, 122, 46, 0.45);
+        --dg-green-bg: rgba(74, 122, 46, 0.07);
+        --dg-green-hover-bg: rgba(74, 122, 46, 0.18);
+        --dg-green-glow: rgba(74, 122, 46, 0.35);
+        --dg-rust: #8c4a1a;
+        --dg-rust-dim: rgba(140, 74, 26, 0.35);
+        --page-accent: #4a7a2e;
+        --page-accent-light: #6fa845;
+        --page-accent-dim: rgba(74, 122, 46, 0.45);
+        --page-accent-bg: rgba(74, 122, 46, 0.07);
+        --page-accent-hover-bg: rgba(74, 122, 46, 0.18);
+        --page-accent-glow: rgba(74, 122, 46, 0.35);
+        --page-hero-glow: rgba(74, 122, 46, 0.15);
+        --page-hero-border: rgba(74, 122, 46, 0.22);
+        --page-symbol: "✦";
       }
       [data-theme="light"] {
-        --st-silver: #3a4a5e;
-        --st-silver-dim: rgba(58, 74, 94, 0.38);
-        --st-silver-bg: rgba(58, 74, 94, 0.05);
-        --st-silver-hover: rgba(58, 74, 94, 0.13);
-        --st-silver-glow: rgba(58, 74, 94, 0.18);
-        --st-silver-light: #1a2a3e;
-        --st-blue: #1a4a7a;
-        --st-blue-dim: rgba(26, 74, 122, 0.35);
-        --page-accent: #3a4a5e;
-        --page-accent-light: #1a2a3e;
-        --page-accent-dim: rgba(58, 74, 94, 0.38);
-        --page-accent-bg: rgba(58, 74, 94, 0.05);
-        --page-accent-hover-bg: rgba(58, 74, 94, 0.13);
-        --page-accent-glow: rgba(58, 74, 94, 0.18);
-        --page-hero-glow: rgba(58, 74, 94, 0.08);
-        --page-hero-border: rgba(58, 74, 94, 0.18);
-        --page-nota-accent: #1a4a7a;
-        --page-nota-accent-dim: rgba(26, 74, 122, 0.35);
+        --dg-green: #2e5a18;
+        --dg-green-light: #1e3d0a;
+        --dg-green-dim: rgba(46, 90, 24, 0.4);
+        --dg-green-bg: rgba(46, 90, 24, 0.06);
+        --dg-green-hover-bg: rgba(46, 90, 24, 0.14);
+        --dg-green-glow: rgba(46, 90, 24, 0.2);
+        --dg-rust: #7a3a10;
+        --dg-rust-dim: rgba(122, 58, 16, 0.3);
+        --page-accent: #2e5a18;
+        --page-accent-light: #1e3d0a;
+        --page-accent-dim: rgba(46, 90, 24, 0.4);
+        --page-accent-bg: rgba(46, 90, 24, 0.06);
+        --page-accent-hover-bg: rgba(46, 90, 24, 0.14);
+        --page-accent-glow: rgba(46, 90, 24, 0.2);
+        --page-hero-glow: rgba(46, 90, 24, 0.12);
+        --page-hero-border: rgba(46, 90, 24, 0.18);
       }
-      /* ── BLOC DÉCLASSIFIÉ — SILVER TEMPLARS ────────────────────── */
+      /* ── BLOC DÉCLASSIFIÉ — DEATH GUARD ────────────────────────── */
       .declassifie-bloc {
         width: 100%;
-        background: rgba(6, 10, 16, 0.72);
-        border: 1px solid rgba(192, 200, 212, 0.3);
-        border-top: 3px solid var(--st-silver);
+        background: rgba(4, 10, 4, 0.7);
+        border: 1px solid rgba(74, 122, 46, 0.38);
+        border-top: 3px solid var(--dg-green);
         border-radius: 2px;
         padding: 1.75rem 2rem;
         position: relative;
@@ -71,40 +67,37 @@
         inset: 0;
         background: repeating-linear-gradient(
           -45deg,
-          rgba(192, 200, 212, 0.018) 0px,
-          rgba(192, 200, 212, 0.018) 1px,
+          rgba(74, 122, 46, 0.025) 0px,
+          rgba(74, 122, 46, 0.025) 1px,
           transparent 1px,
           transparent 6px
         );
         pointer-events: none;
       }
       [data-theme="light"] .declassifie-bloc {
-        background: rgba(232, 236, 244, 0.78);
-        border-color: rgba(58, 74, 94, 0.32);
-        border-top-color: var(--st-silver);
+        background: rgba(232, 240, 228, 0.75);
+        border-color: rgba(46, 90, 24, 0.38);
+        border-top-color: var(--dg-green);
       }
-      .declassifie-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid rgba(192,200,212,.18); }
-      .declassifie-badge { font-family: "Cinzel", serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #060a10; background: var(--st-silver); padding: 0.22rem 0.6rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
-      [data-theme="light"] .declassifie-badge { color: #f0f2f6; }
-      .declassifie-header-title { font-family: "Cinzel", serif; font-size: clamp(0.7rem, 1.8vw, 0.88rem); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--st-silver); flex: 1; }
+      .declassifie-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid rgba(74,122,46,.22); }
+      .declassifie-badge { font-family: "Cinzel", serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #040a04; background: var(--dg-green); padding: 0.22rem 0.6rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+      .declassifie-header-title { font-family: "Cinzel", serif; font-size: clamp(0.7rem, 1.8vw, 0.88rem); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dg-green); flex: 1; }
       .declassifie-entries { display: flex; flex-direction: column; gap: 1rem; }
       .declassifie-entry { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.85rem; align-items: start; }
-      .declassifie-entry-icon { width: 28px; height: 28px; border: 1px solid var(--st-silver-dim); border-radius: 2px; background: var(--st-silver-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--st-silver); margin-top: 0.1rem; }
-      .declassifie-entry-label { font-family: "Cinzel", serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-silver); margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+      .declassifie-entry-icon { width: 28px; height: 28px; border: 1px solid var(--dg-green-dim); border-radius: 2px; background: var(--dg-green-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--dg-green); margin-top: 0.1rem; }
+      .declassifie-entry-label { font-family: "Cinzel", serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dg-green); margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
       .status-tag { font-family: "Cinzel", serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 2px; border: 1px solid; white-space: nowrap; }
-      .status-tag--tenu { color: var(--st-silver); border-color: var(--st-silver-dim); background: var(--st-silver-bg); }
-      .status-tag--operationnel { color: #5a9ad4; border-color: rgba(90,154,212,.4); background: rgba(90,154,212,.07); }
-      .status-tag--disperse { color: #c8a028; border-color: rgba(200,160,40,.4); background: rgba(200,160,40,.07); }
-      .status-tag--imminence { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
-      [data-theme="light"] .status-tag--operationnel { color: #1a4a7a; border-color: rgba(26,74,122,.4); background: rgba(26,74,122,.06); }
-      [data-theme="light"] .status-tag--disperse { color: #7a4800; border-color: rgba(122,72,0,.4); background: rgba(122,72,0,.06); }
-      [data-theme="light"] .status-tag--imminence { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
+      .status-tag--actif { color: var(--dg-green); border-color: var(--dg-green-dim); background: var(--dg-green-bg); }
+      .status-tag--alerte { color: #c88028; border-color: rgba(200,128,40,.4); background: rgba(200,128,40,.07); }
+      .status-tag--critique { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
+      [data-theme="light"] .status-tag--alerte { color: #7a4800; border-color: rgba(122,72,0,.4); background: rgba(122,72,0,.06); }
+      [data-theme="light"] .status-tag--critique { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
       .declassifie-entry-text { font-family: "Crimson Text", serif; font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted, #9a9896); }
       [data-theme="light"] .declassifie-entry-text { color: #4a4540; }
-      .declassifie-entry-text em { color: var(--st-silver-light); font-style: normal; }
-      [data-theme="light"] .declassifie-entry-text em { color: var(--st-silver); }
-      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(192,200,212,.18), transparent); margin: 0; }
-      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(192,200,212,.12); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(192,200,212,.38); text-align: right; }
+      .declassifie-entry-text em { color: var(--dg-green-light); font-style: normal; }
+      [data-theme="light"] .declassifie-entry-text em { color: var(--dg-green); }
+      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(74,122,46,.22), transparent); margin: 0; }
+      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(74,122,46,.15); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(74,122,46,.45); text-align: right; }
       @media (max-width: 600px) {
         .declassifie-bloc { padding: 1.25rem 1rem; }
         .declassifie-entry { grid-template-columns: 1fr; }
@@ -116,7 +109,7 @@
     <nav class="nav" id="nav">
       <div class="nav-inner">
         <a
-          href="index.html"
+          href="../../index.html"
           class="nav-logo"
           aria-label="Campagne Fyrentis — Retour à l'accueil"
         >
@@ -187,7 +180,7 @@
         <div class="nav-actions">
           <div class="nav-page-links">
             <a
-              href="carte.html"
+              href="../../autres/cartes/carte.html"
               class="btn-nav-page btn-nav-page--carte"
               aria-label="Voir la Carte du secteur"
             >
@@ -207,7 +200,7 @@
               Carte
             </a>
             <a
-              href="sanctum.html"
+              href="../../autres/cartes/sanctum.html"
               class="btn-nav-page btn-nav-page--sanctum"
               aria-label="Accéder au Sanctum"
             >
@@ -225,7 +218,7 @@
               Sanctum
             </a>
             <a
-              href="rapports-inquisiteurs.html"
+              href="../../autres/rapports/rapports-inquisiteurs.html"
               class="btn-nav-page btn-nav-page--inquisition"
               aria-label="Lire les Rapports Inquisitoriaux"
             >
@@ -286,14 +279,14 @@
     <!-- HERO MINI -->
     <header class="page-hero" id="top">
       <div class="container">
-        <p class="section-eyebrow">Armée de Freddy</p>
-        <h1 class="section-title"><span>SILVER TEMPLARS</span></h1>
+        <p class="section-eyebrow">Armée PNJ</p>
+        <h1 class="section-title"><span>DEATH GUARD</span></h1>
         <p class="section-desc">
-          Successeurs des Imperial Fists, forgés dans l'honneur et le sacrifice.
-          Leur dossier de campagne dans le sous-secteur Fyrentis est placé sous
+          Fils corrompus de Mortarion, porteurs de la Grâce de Nurgle. Leur
+          dossier de campagne dans le sous-secteur Fyrentis est placé sous
           scellé inquisitorial.
         </p>
-        <a href="index.html#specificites-freddy" class="back-link">
+        <a href="../../index.html#specificites-freddy" class="back-link">
           <svg
             width="13"
             height="13"
@@ -400,7 +393,7 @@
                 />
               </svg>
               <span class="inquisition-seal-title"
-                >Ordo Hereticus — Inquisitoriat Impérial</span
+                >Ordo Malleus — Inquisitoriat Impérial</span
               >
             </div>
 
@@ -413,21 +406,20 @@
 
             <!-- Référence de document -->
             <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-ST-██████ — Classifié
-              <strong>Securitas Imperialis</strong><br />
+              <strong>Réf. Doc. :</strong> OMI-FYRENTIS-DG-██████ — Classifié
+              <strong>Extremis Obscura</strong><br />
               Ce dossier a été placé sous scellé inquisitorial par décision de
-              l'Ordo Hereticus,
+              l'Ordo Malleus,
               <em
-                >en raison de la sensibilité stratégique des opérations menées
-                par le Chapitre des Silver Templars dans le sous-secteur
-                Fyrentis, notamment leur protocole de déploiement aux côtés
-                d'autres forces impériales.</em
+                >en raison de la présence avérée d'entités du Chaos Immonde dans
+                le sous-secteur Fyrentis.</em
               >
-              La divulgation de toute information concernant leurs capacités
-              opérationnelles est strictement proscrite.
+              Tout personnel impérial ayant été en contact avec les porteurs de
+              la Contagion Bénie doit se signaler immédiatement à l'Arbitre
+              local sous peine d'exécution sommaire.
             </p>
 
-            <!-- Bloc I : Historique de croisade -->
+            <!-- Bloc I : Historique de campagne -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -444,7 +436,7 @@
                   <line x1="9" y1="13" x2="15" y2="13" />
                   <line x1="9" y1="17" x2="12" y2="17" />
                 </svg>
-                Historique de Croisade — Fyrentis
+                Historique de Campagne — Fyrentis
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -457,7 +449,7 @@
               </div>
             </div>
 
-            <!-- Bloc II : Spécificités de campagne -->
+            <!-- Bloc II : Spécificités d'armée -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -471,7 +463,7 @@
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                Spécificités de Campagne — Silver Templars
+                Spécificités de Campagne — Death Guard
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -486,7 +478,7 @@
               </div>
             </div>
 
-            <!-- Bloc III : Règles spéciales -->
+            <!-- Bloc III : Règles spéciales / Contagion -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -513,19 +505,58 @@
               </div>
             </div>
 
-            <!-- ══════════════════════════════════════════════════════════
-             BLOC IV : DÉCLASSIFICATION PARTIELLE — DÉFENSE DE JAKKU
-             ══════════════════════════════════════════════════════════ -->
+            <!-- ════════════════════════════════════════════════════
+             BLOC IV : DÉCLASSIFICATION PARTIELLE — MENACE BIOLOGIQUE & WARP
+             ════════════════════════════════════════════════════ -->
             <div class="declassifie-bloc reveal">
               <div class="declassifie-header">
                 <span class="declassifie-badge">Déclassifié</span>
                 <span class="declassifie-header-title"
-                  >Déploiement Actif — Jakku &amp; Défense Planétaire</span
+                  >Menace Active — Contagion &amp; Opérations Warp</span
                 >
               </div>
 
               <div class="declassifie-entries">
-                <!-- Entrée 1 : Base — 2e cité-ruche -->
+                <!-- Entrée 1 : Rituels de Nurgle -->
+                <div class="declassifie-entry">
+                  <div class="declassifie-entry-icon" aria-hidden="true">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                      <path d="M12 2a10 10 0 0 1 10 10" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </div>
+                  <div class="declassifie-entry-content">
+                    <p class="declassifie-entry-label">
+                      Rituels de Nurgle
+                      <span class="status-tag status-tag--actif"
+                        >Accès confirmé</span
+                      >
+                    </p>
+                    <p class="declassifie-entry-text">
+                      Les forces de la Death Guard opérant dans le sous-secteur
+                      Fyrentis ont accès à l'intégralité des
+                      <em>Rituels de Nurgle</em> homologués pour cette campagne.
+                      Parmi ceux-ci figure notamment l'arsenal personnel du
+                      Seigneur de Contagion <em>Typhus</em>, porteur du
+                      <em>Fistule du Warp</em> — relique maudite de la Fourbe
+                      Pestilentielle dont la seule présence corrompt l'éther
+                      environnant. Son emploi en campagne est considéré comme
+                      une menace de niveau Terminus par l'Ordo Malleus.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="declassifie-separator"></div>
+
+                <!-- Entrée 2 : Invasion de Jakku -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -544,32 +575,29 @@
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Quartier Général — Deuxième Cité-Ruche
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--tenu"
-                        >Opérationnel</span
+                      Agri-Monde Jakku
+                      <span class="status-tag status-tag--critique"
+                        >En cours d'invasion</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Le détachement des <em>Silver Templars</em> a établi son
-                      commandement au cœur de la
-                      <em>seconde cité-ruche de Jakku</em>, la plus grande
-                      encore debout. Ce bastion urbain constitue le nœud de
-                      commandement impérial pour l'ensemble des opérations de
-                      défense planétaire. Les Silver Templars tiennent le
-                      périmètre intérieur, coordonnent les forces de l'Astra
-                      Militarum locales et supervisent les protocoles
-                      d'évacuation civile en cours. La cité-ruche est considérée
-                      comme le <em>dernier verrou défensif viable</em> sur
-                      Jakku.
+                      Les <em>Émissaires de Typhus</em> ont pénétré l'agri-monde
+                      <em>Jakku</em> et en entreprennent la corruption
+                      systématique. Les cultures, réseaux d'eau et bassins de
+                      population sont affectés par des vecteurs biologiques non
+                      identifiés. Les équipes d'intervention de l'Adeptus
+                      Arbites ont été déclarées <em>disparues</em> lors des
+                      opérations de reconnaissance initiales. La situation
+                      évolue rapidement — les dernières transmissions indiquent
+                      une progression de la corruption sur l'ensemble du secteur
+                      agro-occidental.
                     </p>
                   </div>
                 </div>
 
                 <div class="declassifie-separator"></div>
 
-                <!-- Entrée 2 : Possessions planétaires dispersées -->
+                <!-- Entrée 3 : Canal Warp Ork -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -581,87 +609,36 @@
                       stroke-width="2"
                     >
                       <polygon
-                        points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
+                        points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
                       />
-                      <line x1="8" y1="2" x2="8" y2="18" />
-                      <line x1="16" y1="6" x2="16" y2="22" />
                     </svg>
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Possessions Planétaires — Présence Dispersée
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--disperse"
-                        >Dispersé — En contraction</span
+                      Canal Warp — Origine Ork
+                      <span class="status-tag status-tag--alerte"
+                        >Événement non planifié</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Outre leur siège dans la seconde cité-ruche, les Silver
-                      Templars maintiennent des
-                      <em
-                        >possessions et points d'appui disséminés sur l'ensemble
-                        de Jakku</em
-                      >
-                      : relais de communication, dépôts d'armes, positions
-                      d'observation et points de rassemblement pour les
-                      populations civiles fuyant la corruption. Ces
-                      installations sont progressivement
-                      <em>rappelées, consolidées ou sacrifiées</em> au fil de
-                      l'avancée nurglesque, dans le cadre d'une retraite
-                      méthodique vers le périmètre défensif principal.
+                      Selon les rapports préliminaires de l'Ordo Malleus, la
+                      brèche permettant l'accès des forces de Nurgle à Jakku est
+                      <em>d'origine accidentelle</em>. Les tribus Ork actives
+                      dans le secteur ont servi involontairement de
+                      <em>carburant et de ressource psycho-orgoide</em> pour
+                      l'ouverture d'un canal instable dans l'Immaterium. La
+                      violence organique des Orks aurait catalysé et déstabilisé
+                      le voile de l'Éther, créant une anomalie expéditée par les
+                      Émissaires de Typhus. Les détails complets de cet
+                      événement font l'objet d'un rapport séparé —
+                      <em>informations complémentaires à venir.</em>
                     </p>
                   </div>
                 </div>
 
                 <div class="declassifie-separator"></div>
 
-                <!-- Entrée 3 : Doctrine de sauvetage -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <polyline points="9 12 11 14 15 10" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Doctrine Opérationnelle — Préservation Impériale
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--operationnel"
-                        >Active — Priorité absolue</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Face à la progression inexorable de la contagion
-                      nurglesque, le commandement des Silver Templars a adopté
-                      une doctrine claire :
-                      <em>sauver le plus possible avant l'inévitable</em>. Cela
-                      comprend l'évacuation des populations fidèles à
-                      l'Empereur, la protection des archives planétaires, la
-                      mise en sécurité des reliques de l'Adeptus Mechanicus et
-                      la préservation des stocks alimentaires encore intacts.
-                      Les Silver Templars n'ont pas renoncé à la victoire — ils
-                      ont simplement
-                      <em
-                        >accepté le coût de cette guerre et choisi d'en limiter
-                        les pertes impériales</em
-                      >.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 4 : Statut de Jakku — objectif narratif -->
+                <!-- Entrée 4 : État de Jakku -->
                 <div class="declassifie-entry">
                   <div class="declassifie-entry-icon" aria-hidden="true">
                     <svg
@@ -681,28 +658,23 @@
                   </div>
                   <div class="declassifie-entry-content">
                     <p class="declassifie-entry-label">
-                      Appréciation Stratégique — Jakku
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--imminence"
-                        >Perte possible — Imminente</span
+                      État de Corruption — Jakku
+                      <span class="status-tag status-tag--critique"
+                        >Stade avancé</span
                       >
                     </p>
                     <p class="declassifie-entry-text">
-                      Les estimations du Conseil de Guerre sectoriel indiquent
-                      que
+                      Si aucune intervention militaire impériale n'est conduite
+                      dans les délais impartis, l'agri-monde
                       <em
-                        >Jakku ne peut être sauvé sans renfort extérieur
-                        significatif</em
-                      >. Les Silver Templars tiennent leurs positions avec
-                      honneur, mais la convergence des Émissaires de Typhus, du
-                      canal warp actif et de la contamination des ressources
-                      agro-industrielles rend la situation
-                      <em>objectivement intenable à terme</em>. Jakku représente
-                      un <em>objectif narratif central de la campagne</em> :
-                      chaque bataille menée sur ce monde influencera directement
-                      l'issue de la résistance impériale dans le sous-secteur
-                      Fyrentis.
+                        >Jakku sera intégralement recouvert par les « bienfaits
+                        du Grand Père »</em
+                      >. La transformation totale du monde en territoire
+                      nurglesque est projetée comme imminente selon les modèles
+                      de contagion de l'Ordo Malleus. Jakku représente désormais
+                      un <em>objectif narratif prioritaire de la campagne</em> :
+                      sa reconquête ou sa perte déterminera l'évolution de la
+                      menace dans le sous-secteur Fyrentis.
                     </p>
                   </div>
                 </div>
@@ -710,29 +682,29 @@
               <!-- /declassifie-entries -->
 
               <p class="declassifie-footer">
-                Extrait autorisé — OHI-FYRENTIS-ST-SITREP-03 · Déclassification
-                partielle accordée par le Commandement du Chapitre
+                Extrait autorisé — OMI-FYRENTIS-DG-SITREP-02 · Déclassification
+                partielle — Informations complémentaires à venir
               </p>
             </div>
             <!-- /declassifie-bloc -->
 
             <!-- Note inquisitoriale -->
             <div class="nota-bene reveal">
-              <p class="nota-bene-label">
-                Nota Inquisitoriale — Ordo Hereticus
-              </p>
+              <p class="nota-bene-label">Nota Inquisitoriale</p>
               <p>
-                « Le détachement des Silver Templars engagé dans le sous-secteur
-                Fyrentis opère sous le commandement direct du Chapitre. Leur
-                coopération avec les forces impériales alliés lors des batailles
-                de Jakku et de Colchis a été jugée exemplaire par le Conseil de
-                Guerre sectoriel. Tout incident impliquant ce détachement devra
-                être rapporté immédiatement à l'Inquisitoriat. »
+                « Les forces de la Death Guard opérant dans le sous-secteur
+                Fyrentis font l'objet d'une procédure de confinement biologique
+                de niveau Oméga de l'Ordo Malleus. Des rapports de contamination
+                par la Contagion Bénie de Nurgle ont été signalés sur Colchis
+                après leur passage. Ces informations demeureront classifiées
+                jusqu'à l'issue des opérations de purification en cours. Tout
+                territoire infecté sera soumis à une purge orbitale si
+                nécessaire. »
               </p>
               <p style="margin-top: 0.5rem">
                 —
                 <em
-                  >Inquisiteur ██████ ████████████, Ordo Hereticus, Fyrentis
+                  >Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis
                   Ultima</em
                 >
               </p>
@@ -767,6 +739,6 @@
       </svg>
     </a>
 
-    <script src="assets/js/pages.js" defer></script>
+    <script src="../../assets/js/pages.js" defer></script>
   </body>
 </html>

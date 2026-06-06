@@ -1,54 +1,58 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blood Angels</title>
+    <title>Nécrons — Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── BLOOD ANGELS : ROUGE SANG & OR ── */
+      /* ── NÉCRONS : VERT DYNÉTHYL + ARGENT SPECTRAL ── */
       :root {
-        --ba-red: #b01a1a;
-        --ba-red-light: #d94040;
-        --ba-red-dim: rgba(176, 26, 26, 0.45);
-        --ba-red-bg: rgba(176, 26, 26, 0.07);
-        --ba-red-hover-bg: rgba(176, 26, 26, 0.18);
-        --ba-red-glow: rgba(176, 26, 26, 0.35);
-        --ba-gold: #c8a028;
-        --ba-gold-dim: rgba(200, 160, 40, 0.35);
-        --page-accent: #b01a1a;
-        --page-accent-light: #d94040;
-        --page-accent-dim: rgba(176, 26, 26, 0.45);
-        --page-accent-bg: rgba(176, 26, 26, 0.07);
-        --page-accent-hover-bg: rgba(176, 26, 26, 0.18);
-        --page-accent-glow: rgba(176, 26, 26, 0.35);
-        --page-hero-glow: rgba(176, 26, 26, 0.18);
-        --page-hero-border: rgba(176, 26, 26, 0.25);
+        --nc-green: #1aff7a;
+        --nc-green-dim: rgba(26, 255, 122, 0.38);
+        --nc-green-bg: rgba(26, 255, 122, 0.05);
+        --nc-green-hover: rgba(26, 255, 122, 0.14);
+        --nc-green-glow: rgba(26, 255, 122, 0.28);
+        --nc-silver: #8ea8b8;
+        --nc-silver-dim: rgba(142, 168, 184, 0.35);
+        --nc-silver-bg: rgba(142, 168, 184, 0.05);
+        --page-accent: #1aff7a;
+        --page-accent-light: #70ffb0;
+        --page-accent-dim: rgba(26, 255, 122, 0.38);
+        --page-accent-bg: rgba(26, 255, 122, 0.05);
+        --page-accent-hover-bg: rgba(26, 255, 122, 0.14);
+        --page-accent-glow: rgba(26, 255, 122, 0.28);
+        --page-hero-glow: rgba(26, 255, 122, 0.08);
+        --page-hero-border: rgba(26, 255, 122, 0.2);
         --page-symbol: "✦";
+        --page-nota-accent: #8ea8b8;
+        --page-nota-accent-dim: rgba(142, 168, 184, 0.35);
       }
       [data-theme="light"] {
-        --ba-red: #8b1c1c;
-        --ba-red-light: #6b0e0e;
-        --ba-red-dim: rgba(139, 28, 28, 0.4);
-        --ba-red-bg: rgba(139, 28, 28, 0.06);
-        --ba-red-hover-bg: rgba(139, 28, 28, 0.14);
-        --ba-red-glow: rgba(139, 28, 28, 0.2);
-        --ba-gold: #8a6800;
-        --ba-gold-dim: rgba(138, 104, 0, 0.3);
-        --page-accent: #8b1c1c;
-        --page-accent-light: #6b0e0e;
-        --page-accent-dim: rgba(139, 28, 28, 0.4);
-        --page-accent-bg: rgba(139, 28, 28, 0.06);
-        --page-accent-hover-bg: rgba(139, 28, 28, 0.14);
-        --page-accent-glow: rgba(139, 28, 28, 0.2);
-        --page-hero-glow: rgba(139, 28, 28, 0.14);
-        --page-hero-border: rgba(139, 28, 28, 0.2);
+        --nc-green: #007a38;
+        --nc-green-dim: rgba(0, 122, 56, 0.38);
+        --nc-green-bg: rgba(0, 122, 56, 0.05);
+        --nc-green-hover: rgba(0, 122, 56, 0.14);
+        --nc-green-glow: rgba(0, 122, 56, 0.2);
+        --nc-silver: #3a5a6e;
+        --nc-silver-dim: rgba(58, 90, 110, 0.35);
+        --nc-silver-bg: rgba(58, 90, 110, 0.05);
+        --page-accent: #007a38;
+        --page-accent-light: #005a28;
+        --page-accent-dim: rgba(0, 122, 56, 0.38);
+        --page-accent-bg: rgba(0, 122, 56, 0.05);
+        --page-accent-hover-bg: rgba(0, 122, 56, 0.14);
+        --page-accent-glow: rgba(0, 122, 56, 0.2);
+        --page-hero-glow: rgba(0, 122, 56, 0.08);
+        --page-hero-border: rgba(0, 122, 56, 0.18);
+        --page-nota-accent: #3a5a6e;
+        --page-nota-accent-dim: rgba(58, 90, 110, 0.35);
       }
     </style>
   </head>
@@ -56,7 +60,7 @@
     <nav class="nav" id="nav">
       <div class="nav-inner">
         <a
-          href="index.html"
+          href="../../index.html"
           class="nav-logo"
           aria-label="Campagne Fyrentis — Retour à l'accueil"
         >
@@ -127,7 +131,7 @@
         <div class="nav-actions">
           <div class="nav-page-links">
             <a
-              href="carte.html"
+              href="../../autres/cartes/carte.html"
               class="btn-nav-page btn-nav-page--carte"
               aria-label="Voir la Carte du secteur"
             >
@@ -147,7 +151,7 @@
               Carte
             </a>
             <a
-              href="sanctum.html"
+              href="../../autres/cartes/sanctum.html"
               class="btn-nav-page btn-nav-page--sanctum"
               aria-label="Accéder au Sanctum"
             >
@@ -165,7 +169,7 @@
               Sanctum
             </a>
             <a
-              href="rapports-inquisiteurs.html"
+              href="../../autres/rapports/rapports-inquisiteurs.html"
               class="btn-nav-page btn-nav-page--inquisition"
               aria-label="Lire les Rapports Inquisitoriaux"
             >
@@ -226,14 +230,14 @@
     <!-- HERO MINI -->
     <header class="page-hero" id="top">
       <div class="container">
-        <p class="section-eyebrow">Armée de David</p>
-        <h1 class="section-title"><span>BLOOD ANGELS</span></h1>
+        <p class="section-eyebrow">Armée de Freddy</p>
+        <h1 class="section-title"><span>NÉCRONS</span></h1>
         <p class="section-desc">
-          Fils de Sanguinius, anges déchus tentés par la rage Noire. Leur
-          dossier de campagne dans le sous-secteur Fyrentis est placé sous
-          scellé inquisitorial.
+          Anciens maîtres de la galaxie, reveillés de leur sommeil de soixante
+          millions d'années. Leur dossier de campagne dans le sous-secteur
+          Fyrentis est placé sous scellé inquisitorial.
         </p>
-        <a href="index.html#specificites-david" class="back-link">
+        <a href="../../index.html#specificites-freddy" class="back-link">
           <svg
             width="13"
             height="13"
@@ -340,7 +344,7 @@
                 />
               </svg>
               <span class="inquisition-seal-title"
-                >Ordo Hereticus — Inquisitoriat Impérial</span
+                >Ordo Xenos — Inquisitoriat Impérial</span
               >
             </div>
 
@@ -353,20 +357,22 @@
 
             <!-- Référence de document -->
             <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-BA-██████ — Classifié
-              <strong>Extremis Obscura</strong><br />
+              <strong>Réf. Doc. :</strong> OXI-FYRENTIS-NC-██████ — Classifié
+              <strong>Terminus Obscura</strong><br />
               Ce dossier a été placé sous scellé inquisitorial par décision de
-              l'Ordo Hereticus,
+              l'Ordo Xenos,
               <em
-                >en raison des anomalies psycho-génétiques constatées au sein de
-                la IXème Légion dans le sous-secteur Fyrentis.</em
+                >en raison de la menace existentielle que représentent les
+                forces Nécrontes détectées dans le sous-secteur Fyrentis — une
+                présence antérieure à toute colonisation impériale du
+                secteur.</em
               >
-              Tout accès non autorisé à des informations relatives à la rage
-              noire constitue un acte d'hérésie passible de l'exécution
-              sommaire.
+              La divulgation de toute information concernant les dynasties
+              actives constitue un risque pour la sécurité sectorielle de
+              premier ordre.
             </p>
 
-            <!-- Bloc I : Historique de campagne -->
+            <!-- Bloc I : Historique de Campagne -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -396,7 +402,7 @@
               </div>
             </div>
 
-            <!-- Bloc II : Spécificités d'armée -->
+            <!-- Bloc II : Spécificités de Campagne -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -410,7 +416,7 @@
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                Spécificités de Campagne — Blood Angels
+                Spécificités de Campagne — Nécrons
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -425,7 +431,7 @@
               </div>
             </div>
 
-            <!-- Bloc III : Règles spéciales -->
+            <!-- Bloc III : Règles Spéciales -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -454,20 +460,19 @@
 
             <!-- Note inquisitoriale -->
             <div class="nota-bene reveal">
-              <p class="nota-bene-label">Nota Inquisitoriale</p>
+              <p class="nota-bene-label">Nota Inquisitoriale — Ordo Xenos</p>
               <p>
-                « Les forces de la IXème Légion opérant dans le sous-secteur
-                Fyrentis font l'objet d'une surveillance renforcée de l'Ordo
-                Hereticus. Des rapports faisant état d'épisodes de Rage Noire
-                non contrôlés lors des combats sur Jakku ont motivé l'ouverture
-                d'un dossier d'investigation. Ces informations seront
-                déclassifyées à l'issue de la vérification psychiatrique du
-                Chapelain Varus et de son état-major. »
+                « Les forces Nécrons actives dans le sous-secteur Fyrentis
+                semblent liées à un monde-tombe enfouie sous la surface de
+                ██████. Les Archivistes de l'Ordo Xenos ont confirmé des
+                signatures d'énergie dynéthyl sur Jakku et Colchis, suggérant un
+                réveil coordonné. La nature de leur protocole de campagne —
+                récupération ou éradication — reste indéterminée. »
               </p>
               <p style="margin-top: 0.5rem">
                 —
                 <em
-                  >Inquisiteur-Sénior ██████ █████████, Ordo Hereticus, Fyrentis
+                  >Inquisitrice ██████ ████████████, Ordo Xenos, Fyrentis
                   Ultima</em
                 >
               </p>
@@ -502,6 +507,6 @@
       </svg>
     </a>
 
-    <script src="assets/js/pages.js" defer></script>
+    <script src="../../assets/js/pages.js" defer></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
@@ -579,7 +579,7 @@
     <nav>
       <span class="nav-title">⚙ Système Sanctum</span>
       <ul class="nav-links">
-        <li><a href="index.html">Campagne</a></li>
+        <li><a href="../../index.html">Campagne</a></li>
         <li><a href="carte.html">Carte</a></li>
       </ul>
     </nav>
@@ -1342,7 +1342,7 @@
 
         purgeLegacyStorage();
 
-        fetch("assets/data/sanctum.json")
+        fetch("../../assets/data/sanctum.json")
           .then((r) => r.json())
           .then((d) => {
             const sys = d.system;

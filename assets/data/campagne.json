@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "titre": "Sous-Secteur Fyrentis",
     "systeme": "Warhammer 40 000",
@@ -169,7 +169,7 @@
         {
           "label": "Brokha • Grande Bataille",
           "titre": "La lune Brokha",
-          "texte": "Les Black Templars défendent la lune Brokha d'une invasion chaotique. <a href=\"rapport-bataille-brokha.html\">Plus d'info en cliquant sur ce rapport.</a>",
+          "texte": "Les Black Templars défendent la lune Brokha d'une invasion chaotique. <a href=\"autres/rapports/rapport-bataille-brokha.html\">Plus d'info en cliquant sur ce rapport.</a>",
           "classe": "battle-entry--victory",
           "factions": [
             { "label": "World Eaters", "classe": "faction-tag--we" },

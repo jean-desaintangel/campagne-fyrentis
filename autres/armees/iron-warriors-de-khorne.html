@@ -1,54 +1,58 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Garde Impériale</title>
+    <title>Iron Warriors de Khorne</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── GARDE IMPÉRIALE : KAKI & OR IMPÉRIAL ── */
+      /* ── IRON WARRIORS DE KHORNE : MÉTAL & ROUGE SANG ── */
       :root {
-        --gi-khaki: #8a7a3a;
-        --gi-khaki-light: #b8a850;
-        --gi-khaki-dim: rgba(138, 122, 58, 0.45);
-        --gi-khaki-bg: rgba(138, 122, 58, 0.07);
-        --gi-khaki-hover-bg: rgba(138, 122, 58, 0.18);
-        --gi-khaki-glow: rgba(138, 122, 58, 0.32);
-        --gi-steel: #5a6a7a;
-        --gi-steel-dim: rgba(90, 106, 122, 0.35);
-        --page-accent: #8a7a3a;
-        --page-accent-light: #b8a850;
-        --page-accent-dim: rgba(138, 122, 58, 0.45);
-        --page-accent-bg: rgba(138, 122, 58, 0.07);
-        --page-accent-hover-bg: rgba(138, 122, 58, 0.18);
-        --page-accent-glow: rgba(138, 122, 58, 0.32);
-        --page-hero-glow: rgba(138, 122, 58, 0.15);
-        --page-hero-border: rgba(138, 122, 58, 0.22);
+        --iw-iron: #7a6a5a;
+        --iw-iron-light: #a89880;
+        --iw-iron-dim: rgba(122, 106, 90, 0.45);
+        --iw-iron-bg: rgba(122, 106, 90, 0.07);
+        --iw-iron-hover-bg: rgba(122, 106, 90, 0.18);
+        --iw-iron-glow: rgba(122, 106, 90, 0.32);
+        --iw-blood: #8c1a1a;
+        --iw-blood-dim: rgba(140, 26, 26, 0.4);
+        --page-accent: #7a6a5a;
+        --page-accent-light: #a89880;
+        --page-accent-dim: rgba(122, 106, 90, 0.45);
+        --page-accent-bg: rgba(122, 106, 90, 0.07);
+        --page-accent-hover-bg: rgba(122, 106, 90, 0.18);
+        --page-accent-glow: rgba(122, 106, 90, 0.32);
+        --page-hero-glow: rgba(122, 106, 90, 0.14);
+        --page-hero-border: rgba(122, 106, 90, 0.2);
         --page-symbol: "✦";
+        --page-nota-accent: #8c1a1a;
+        --page-nota-accent-dim: rgba(140, 26, 26, 0.4);
       }
       [data-theme="light"] {
-        --gi-khaki: #5c5218;
-        --gi-khaki-light: #3e3808;
-        --gi-khaki-dim: rgba(92, 82, 24, 0.4);
-        --gi-khaki-bg: rgba(92, 82, 24, 0.06);
-        --gi-khaki-hover-bg: rgba(92, 82, 24, 0.14);
-        --gi-khaki-glow: rgba(92, 82, 24, 0.2);
-        --gi-steel: #3a4a5a;
-        --gi-steel-dim: rgba(58, 74, 90, 0.3);
-        --page-accent: #5c5218;
-        --page-accent-light: #3e3808;
-        --page-accent-dim: rgba(92, 82, 24, 0.4);
-        --page-accent-bg: rgba(92, 82, 24, 0.06);
-        --page-accent-hover-bg: rgba(92, 82, 24, 0.14);
-        --page-accent-glow: rgba(92, 82, 24, 0.2);
-        --page-hero-glow: rgba(92, 82, 24, 0.12);
-        --page-hero-border: rgba(92, 82, 24, 0.18);
+        --iw-iron: #524438;
+        --iw-iron-light: #382e24;
+        --iw-iron-dim: rgba(82, 68, 56, 0.4);
+        --iw-iron-bg: rgba(82, 68, 56, 0.06);
+        --iw-iron-hover-bg: rgba(82, 68, 56, 0.14);
+        --iw-iron-glow: rgba(82, 68, 56, 0.2);
+        --iw-blood: #6b1010;
+        --iw-blood-dim: rgba(107, 16, 16, 0.35);
+        --page-accent: #524438;
+        --page-accent-light: #382e24;
+        --page-accent-dim: rgba(82, 68, 56, 0.4);
+        --page-accent-bg: rgba(82, 68, 56, 0.06);
+        --page-accent-hover-bg: rgba(82, 68, 56, 0.14);
+        --page-accent-glow: rgba(82, 68, 56, 0.2);
+        --page-hero-glow: rgba(82, 68, 56, 0.1);
+        --page-hero-border: rgba(82, 68, 56, 0.18);
+        --page-nota-accent: #6b1010;
+        --page-nota-accent-dim: rgba(107, 16, 16, 0.35);
       }
     </style>
   </head>
@@ -56,7 +60,7 @@
     <nav class="nav" id="nav">
       <div class="nav-inner">
         <a
-          href="index.html"
+          href="../../index.html"
           class="nav-logo"
           aria-label="Campagne Fyrentis — Retour à l'accueil"
         >
@@ -127,7 +131,7 @@
         <div class="nav-actions">
           <div class="nav-page-links">
             <a
-              href="carte.html"
+              href="../../autres/cartes/carte.html"
               class="btn-nav-page btn-nav-page--carte"
               aria-label="Voir la Carte du secteur"
             >
@@ -147,7 +151,7 @@
               Carte
             </a>
             <a
-              href="sanctum.html"
+              href="../../autres/cartes/sanctum.html"
               class="btn-nav-page btn-nav-page--sanctum"
               aria-label="Accéder au Sanctum"
             >
@@ -165,7 +169,7 @@
               Sanctum
             </a>
             <a
-              href="rapports-inquisiteurs.html"
+              href="../../autres/rapports/rapports-inquisiteurs.html"
               class="btn-nav-page btn-nav-page--inquisition"
               aria-label="Lire les Rapports Inquisitoriaux"
             >
@@ -226,14 +230,14 @@
     <!-- HERO MINI -->
     <header class="page-hero" id="top">
       <div class="container">
-        <p class="section-eyebrow">Armée de Jeremy</p>
-        <h1 class="section-title"><span>GARDE IMPÉRIALE</span></h1>
+        <p class="section-eyebrow">Armée de Freddy</p>
+        <h1 class="section-title"><span>IRON WARRIORS DE KHORNE</span></h1>
         <p class="section-desc">
-          Les innombrables légions de l'Astra Militarum, bouclier de l'Humanité.
-          Leur dossier de campagne dans le sous-secteur Fyrentis est placé sous
-          scellé administratif impérial.
+          Brisés par Perturabo, traïtres par le Chaos, reconsacrés au Sang par
+          la Rage de Khorne. Leur dossier de campagne dans le sous-secteur
+          Fyrentis est placé sous scellé inquisitorial.
         </p>
-        <a href="index.html#specificites-jeremy" class="back-link">
+        <a href="../../index.html#specificites-freddy" class="back-link">
           <svg
             width="13"
             height="13"
@@ -255,7 +259,7 @@
       <div class="container">
         <div class="censure-wrapper">
           <div class="censure-stamp">
-            <!-- Cachet administratif impérial -->
+            <!-- Cachet inquisitorial -->
             <div class="inquisition-seal reveal">
               <svg
                 class="inquisition-seal-icon"
@@ -340,33 +344,33 @@
                 />
               </svg>
               <span class="inquisition-seal-title"
-                >Administratum Impérial — Département Munitorium</span
+                >Ordo Malleus — Inquisitoriat Impérial</span
               >
             </div>
 
             <!-- Bandeau principal -->
             <div class="censure-bandeau reveal">
               <span class="censure-bandeau-text"
-                >Censuré par l'Administratum</span
+                >Censuré par l'Inquisition</span
               >
             </div>
 
             <!-- Référence de document -->
             <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> AMI-FYRENTIS-GI-██████ — Classifié
-              <strong>Securitas Extremis</strong><br />
-              Ce dossier a été placé sous scellé administratif par décision du
-              Département Munitorium,
+              <strong>Réf. Doc. :</strong> OMI-FYRENTIS-IWK-██████ — Classifié
+              <strong>Extremis Obscura</strong><br />
+              Ce dossier a été placé sous scellé inquisitorial par décision de
+              l'Ordo Malleus,
               <em
-                >en raison des opérations en cours de l'Astra Militarum dans le
-                sous-secteur Fyrentis.</em
+                >en raison de la nature hybride et anomale de cette formation :
+                éléments d'architecture du Chaos Indéterminé reconsacrés au Dieu
+                Sang dans le sous-secteur Fyrentis.</em
               >
-              La divulgation de toute information relative aux effectifs,
-              positions et capacités de la Garde Impériale constitue un crime de
-              haute trahison passible de la peine de mort.
+              La divulgation de toute information concernant ces forces
+              consterie constitue une menace pour la sécurité sectorielle.
             </p>
 
-            <!-- Bloc I : Ordre de Bataille -->
+            <!-- Bloc I : Historique de campagne -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -383,7 +387,7 @@
                   <line x1="9" y1="13" x2="15" y2="13" />
                   <line x1="9" y1="17" x2="12" y2="17" />
                 </svg>
-                Ordre de Bataille — Fyrentis
+                Historique de Campagne — Fyrentis
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -410,7 +414,7 @@
                 >
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                Spécificités de Campagne — Astra Militarum
+                Spécificités de Campagne — Iron Warriors de Khorne
               </p>
               <div class="censure-lignes">
                 <div class="censure-ligne censure-ligne--long"></div>
@@ -425,7 +429,7 @@
               </div>
             </div>
 
-            <!-- Bloc III : Règles spéciales / Doctrines -->
+            <!-- Bloc III : Règles spéciales -->
             <div class="censure-bloc reveal">
               <p class="censure-titre">
                 <svg
@@ -452,23 +456,24 @@
               </div>
             </div>
 
-            <!-- Note administrative -->
+            <!-- Note inquisitoriale -->
             <div class="nota-bene reveal">
-              <p class="nota-bene-label">Nota Administratum</p>
+              <p class="nota-bene-label">Nota Inquisitoriale</p>
               <p>
-                « Les régiments de l'Astra Militarum déployés dans le
-                sous-secteur Fyrentis opèrent sous commandement direct du
-                Département Munitorium. Les données de campagne relatives aux
-                effectifs, aux pertes et aux ressources logistiques demeurent
-                classifiées pour des raisons de sécurité opérationnelle. Ces
-                informations seront transmises aux autorités compétentes à
-                l'issue des opérations en cours sur Jakku et Colchis. »
+                « Les forces désignées sous le vocable "Iron Warriors de Khorne"
+                présentent une anomalie doctrinale sans précédent dans les
+                archives de l'Ordo Malleus : des légionnaires formés à la guerre
+                de siège et à l'architecture du Chaos, désormais voués à la
+                boucherie sans égale du Sang. Leurs activités dans le
+                sous-secteur Fyrentis, notamment les assauts de fortifications
+                sur Jakku, sont consignées dans un dossier séparé à accès
+                restreint. »
               </p>
               <p style="margin-top: 0.5rem">
                 —
                 <em
-                  >Officier-Scribe ██████ █████████, Département Munitorium,
-                  Fyrentis Ultima</em
+                  >Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis
+                  Ultima</em
                 >
               </p>
             </div>
@@ -502,6 +507,6 @@
       </svg>
     </a>
 
-    <script src="assets/js/pages.js" defer></script>
+    <script src="../../assets/js/pages.js" defer></script>
   </body>
 </html>
