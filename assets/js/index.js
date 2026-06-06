@@ -95,14 +95,9 @@
   function renderJoueurs(joueurs) {
     document.getElementById("players-grid").innerHTML = joueurs
       .map((j) => {
-        const mapping = COULEUR_TO_ARMEE[j.couleur];
-        const badge = mapping
-          ? `<span class="warlord-army warlord-army--${mapping.code}" style="margin-top:var(--space-3);display:inline-flex">${mapping.label}</span>`
-          : "";
         return `<article class="player-card player-card--${j.couleur} reveal${delayClass(j.delai)}">
         <p class="player-name">${j.nom}</p>
         <p class="player-role">${j.role}</p>
-        ${badge}
         <ul class="player-armies" role="list">${j.armees.map((a) => `<li>${a}</li>`).join("")}</ul>
       </article>`;
       })
