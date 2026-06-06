@@ -147,6 +147,12 @@
   --army-nc-border: rgba(64, 221, 136, 0.45);
   --army-nc-bg:     rgba(64, 221, 136, 0.10);
   --army-nc-bar:    #40dd88;
+
+  /* Adeptus Mechanicus — rouge sang / acier rouillé */
+  --army-am-fg:     #c8303a;
+  --army-am-border: rgba(192, 40, 50, 0.55);
+  --army-am-bg:     rgba(160, 24, 32, 0.10);
+  --army-am-bar:    #c8303a;
 }
 
 [data-theme="light"] {
@@ -211,6 +217,11 @@
   --army-nc-border: rgba(0, 104, 64, 0.4);
   --army-nc-bg:     rgba(0, 104, 64, 0.08);
   --army-nc-bar:    #006840;
+
+  --army-am-fg:     #7a0c14;
+  --army-am-border: rgba(122, 12, 20, 0.5);
+  --army-am-bg:     rgba(122, 12, 20, 0.06);
+  --army-am-bar:    #7a0c14;
 }
 
 /* ============================================================
@@ -883,6 +894,9 @@ section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
 .btn-armee--nc { background: var(--army-nc-bg); color: var(--army-nc-fg); border-color: var(--army-nc-border); }
 .btn-armee--nc:hover { background: rgba(64,221,136,0.18); border-color: var(--army-nc-fg); }
 
+.btn-armee--am { background: var(--army-am-bg); color: var(--army-am-fg); border-color: var(--army-am-border); }
+.btn-armee--am:hover { background: rgba(192,40,50,0.18); border-color: var(--army-am-fg); }
+
 /* ============================================================
    VAISSEAU — LE CONQUEROR
 ============================================================ */
@@ -1058,36 +1072,6 @@ footer .footer-players { display: none; }
 ========================= */
 .quote-block--alert { border-left-color: var(--color-gold); }
 .section-ornament { margin-top:var(--space-8); }
-
-/* =========================
-   Utilitaires conservés
-========================= */
-.inline-style-1 { background:var(--color-surface-offset); }
-.inline-style-2 { background:var(--color-surface-offset); padding:var(--space-3); border-radius:var(--radius-sm); border:1px solid var(--color-divider); }
-.inline-style-3 { color:#c8a028; }
-.inline-style-4 { font-family:var(--font-display); font-size:var(--text-sm); color:var(--color-primary-bright); margin-bottom:var(--space-1); }
-.inline-style-5 { font-size:var(--text-xs); color:var(--color-text-muted); }
-.inline-style-11 { border-color:#44aa88; color:#88ccaa; }
-.inline-style-12 { border-color:#8888ff; color:#aaaaff; }
-.inline-style-13 { border-left-color: #5a5a80; }
-.inline-style-14 { border-left-color: #8888ff; }
-.inline-style-16 { color:#6aaa3c; }
-.inline-style-17 { color:#cc4444; }
-.inline-style-18 { color:blue; }
-.inline-style-19 { color:green; }
-.inline-style-20 { color:purple; }
-.inline-style-21 { color:var(--color-gold); }
-.inline-style-22 { color:var(--color-primary-bright); }
-.inline-style-23 { display:flex; gap:var(--space-3); margin-bottom:var(--space-6); flex-wrap:wrap; }
-.inline-style-24 { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:var(--space-3); margin-top:var(--space-4); }
-.inline-style-25 { font-family:var(--font-display); font-size:var(--text-base); text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold); margin-bottom:var(--space-4); }
-.inline-style-26 { font-family:var(--font-display); font-size:var(--text-lg); text-transform:uppercase; letter-spacing:0.06em; color:var(--color-gold); margin-bottom:var(--space-4); }
-.inline-style-27 { font-size:var(--text-base); line-height:1.8; color:var(--color-text-muted); margin-bottom:var(--space-4); font-style:italic; }
-.inline-style-28 { grid-column: 1 / -1; }
-.inline-style-29 { margin-top:var(--space-2); font-style:normal; color:var(--color-text-faint); }
-.inline-style-31 { padding-inline:0; }
-.inline-style-32 { padding-inline:var(--space-6); }
-.inline-style-33 { width:100%; height:280px; object-fit:cover; border-radius:var(--radius-lg); border:1px solid var(--color-border); margin-bottom:var(--space-6); }
 
 
 /* ============================================================

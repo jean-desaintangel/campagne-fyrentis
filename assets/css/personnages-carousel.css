@@ -13,12 +13,12 @@
   --pc-red:          #c82020;
   --pc-red-glow:     rgba(200, 32, 32, 0.35);
   --pc-red-dim:      rgba(180, 30, 30, 0.55);
-  --pc-gold:         #c8a028;
+  --pc-gold:         var(--color-gold);
   --pc-gold-dim:     rgba(200, 160, 40, 0.55);
   --pc-text:         #e8ddd4;
   --pc-text-muted:   #a09088;
-  --pc-font-title:   'Cinzel', 'Georgia', serif;
-  --pc-font-body:    'Crimson Text', 'Georgia', serif;
+  --pc-font-title:   var(--font-display);
+  --pc-font-body:    var(--font-body);
   --pc-slide-max:    860px;
   --pc-img-h:        420px;
   --pc-radius:       4px;
