@@ -27,7 +27,7 @@
 
   // ── MOBILE NAV
   const navToggle = document.getElementById("nav-toggle");
-  const navLinks = document.getElementById("nav-links");
+  const navLinks = document.querySelector(".nav-links");
   if (navToggle) {
     navToggle.addEventListener("click", () => {
       if (navLinks) {

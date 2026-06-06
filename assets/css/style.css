@@ -33,8 +33,6 @@
   --color-surface: #0f0d0b;
   --color-surface-2: #141210;
   --color-surface-offset: #1a1713;
-  --color-surface-offset-2: #201d18;
-  --color-surface-dynamic: #2a2520;
   --color-divider: #2e2820;
   /* Valeur statique utilisée par les navigateurs sans support de oklch relatif
      (Safari < 16.4, Firefox < 113). Équivalent exact de oklch(from #8b1c1c). */
@@ -55,7 +53,6 @@
   /* Gold / Brass */
   --color-gold: #c8a028;
   --color-gold-muted: #8a6e1a;
-  --color-gold-highlight: #1e1a08;
 
   /* Radius */
   --radius-sm: 0.25rem;
@@ -95,7 +92,6 @@
   --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
   --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
   --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-  --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
   --text-hero: clamp(3rem, 0.5rem + 7vw, 8rem);
 
   --font-display: "Cinzel", "Times New Roman", serif;
@@ -170,8 +166,6 @@
   --color-surface: #f5f0e8;
   --color-surface-2: #faf7f2;
   --color-surface-offset: #e8e0d4;
-  --color-surface-offset-2: #ddd4c8;
-  --color-surface-dynamic: #d4c8ba;
   --color-divider: #c8bfb0;
   /* Fallback statique pour mode clair, surchargé par @supports si disponible */
   --color-border: rgba(139, 28, 28, 0.25);
@@ -185,7 +179,6 @@
   --color-primary-highlight: #f0d8d8;
   --color-gold: #8a6e1a;
   --color-gold-muted: #a08020;
-  --color-gold-highlight: #f0e8c0;
 
   /* PALETTE ARMÉES — variantes mode clair */
   --army-iw-fg: #8a6a30;
@@ -342,11 +335,6 @@ button {
 ============================================================ */
 .container {
   max-width: var(--content-default);
-  margin-inline: auto;
-  padding-inline: var(--space-6);
-}
-.container--wide {
-  max-width: var(--content-wide);
   margin-inline: auto;
   padding-inline: var(--space-6);
 }
@@ -614,47 +602,6 @@ section {
   gap: var(--space-3);
   margin-bottom: var(--space-8);
 }
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid oklch(from var(--color-border) l c h / 1);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background: oklch(from var(--color-surface) l c h / 0.8);
-}
-.badge--red {
-  color: #ff6b6b;
-  border-color: rgba(255, 107, 107, 0.35);
-  background: rgba(255, 107, 107, 0.12);
-}
-.badge--gold {
-  color: #f2c14e;
-  border-color: rgba(242, 193, 78, 0.35);
-  background: rgba(242, 193, 78, 0.12);
-}
-.badge--blue {
-  color: #6bb8ff;
-  border-color: rgba(107, 184, 255, 0.35);
-  background: rgba(107, 184, 255, 0.12);
-}
-.badge--muted {
-  color: var(--color-text-muted);
-}
-.badge--green {
-  color: #65d46e;
-  border-color: rgba(101, 212, 110, 0.35);
-  background: rgba(101, 212, 110, 0.12);
-}
-.badge--purple {
-  color: #b57cff;
-  border-color: rgba(181, 124, 255, 0.35);
-  background: rgba(181, 124, 255, 0.12);
-}
 .hero-scroll {
   position: absolute;
   bottom: var(--space-8);
@@ -833,9 +780,6 @@ section {
 ============================================================ */
 .bg-surface {
   background: var(--color-surface);
-}
-.bg-surface-2 {
-  background: var(--color-surface-2);
 }
 
 .lore-grid {
@@ -1757,11 +1701,6 @@ footer .footer-sub {
   text-align: center;
   margin-inline: auto;
 }
-/* Masquer la liste des joueurs dans le footer */
-footer .footer-players {
-  display: none;
-}
-
 /* ============================================================
    ANIMATE ON SCROLL
 ============================================================ */
