@@ -1,10 +1,4 @@
 ﻿{
-  "meta": {
-    "titre": "Sous-Secteur Fyrentis",
-    "systeme": "Warhammer 40 000",
-    "type": "Campagne Narrative",
-    "millenaire": "41ème Millénaire"
-  },
   "joueurs": [
     {
       "nom": "Freddy",

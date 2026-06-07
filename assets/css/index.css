@@ -164,76 +164,8 @@
   box-shadow: 0 8px 32px rgba(212, 168, 40, 0.18);
 }
 
-.char-lore.red {
-  border-left-color: var(--army-we-bar);
-  color: var(--color-text-muted);
-}
-.char-lore.blue {
-  border-left-color: var(--army-ba-bar);
-  color: var(--color-text-muted);
-}
-.char-lore.gold {
-  border-left-color: var(--army-bt-bar);
-  color: var(--color-text-muted);
-}
-.char-lore.green {
-  border-left-color: #6aaa3c;
-  color: var(--color-text-muted);
-}
-
 .faction-tag--ork {
   background: rgba(58, 106, 28, 0.12);
   border-color: rgba(106, 170, 60, 0.45);
   color: #6aaa3c;
-}
-.faction-tag--ork:where(*) {
-  /* précision sans surcharge */
-}
-
-[data-theme="light"] .player-card--red::before {
-  background: var(--army-we-fg);
-}
-[data-theme="light"] .player-card--blue::before {
-  background: var(--army-ba-fg);
-}
-[data-theme="light"] .player-card--green::before {
-  background: var(--army-gi-fg);
-}
-[data-theme="light"] .player-card--purple::before {
-  background: var(--army-iw-fg);
-}
-[data-theme="light"] .player-card--gold::before {
-  background: var(--army-bt-fg);
-}
-
-[data-theme="light"] .player-card--red .player-armies li::before {
-  background: var(--army-we-fg);
-}
-[data-theme="light"] .player-card--blue .player-armies li::before {
-  background: var(--army-ba-fg);
-}
-[data-theme="light"] .player-card--green .player-armies li::before {
-  background: var(--army-gi-fg);
-}
-[data-theme="light"] .player-card--purple .player-armies li::before {
-  background: var(--army-iw-fg);
-}
-[data-theme="light"] .player-card--gold .player-armies li::before {
-  background: var(--army-bt-fg);
-}
-
-[data-theme="light"] .player-card--red .player-role {
-  color: var(--army-we-fg);
-}
-[data-theme="light"] .player-card--blue .player-role {
-  color: var(--army-ba-fg);
-}
-[data-theme="light"] .player-card--green .player-role {
-  color: var(--army-gi-fg);
-}
-[data-theme="light"] .player-card--purple .player-role {
-  color: var(--army-iw-fg);
-}
-[data-theme="light"] .player-card--gold .player-role {
-  color: var(--army-bt-fg);
 }

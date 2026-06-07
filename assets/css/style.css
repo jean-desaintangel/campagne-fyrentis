@@ -1,12 +1,3 @@
-/*
- * Troisième passe de refactorisation
- * ---------------------------------
- * Version orientée maintenance :
- * - commentaires renforcés,
- * - séparation plus claire par zones fonctionnelles,
- * - conservation stricte du rendu et du comportement.
- */
-
 /* =========================
    Guide de lecture du fichier
    =========================
@@ -811,73 +802,6 @@ section {
   margin-bottom: 0;
 }
 
-.lore-image {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--color-border);
-  position: relative;
-}
-.lore-image img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-}
-.lore-image-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(
-    transparent,
-    oklch(from var(--color-bg) l c h / 0.9)
-  );
-  padding: var(--space-6) var(--space-4) var(--space-4);
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-/* MAP */
-.map-container {
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
-  margin-block: var(--space-8);
-}
-.map-container img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  object-position: center;
-}
-.map-legend {
-  background: var(--color-surface);
-  padding: var(--space-6);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-6);
-}
-.map-legend-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-.map-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
 /* ============================================================
    SYSTÈMES / FRONTS
 ============================================================ */
@@ -1220,187 +1144,6 @@ section {
 }
 
 /* ============================================================
-   PERSONNAGES
-============================================================ */
-.chars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-  gap: var(--space-6);
-}
-.char-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition:
-    box-shadow var(--transition),
-    transform var(--transition);
-}
-.char-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
-}
-.char-card-header {
-  padding: var(--space-5) var(--space-5) var(--space-4);
-  border-bottom: 1px solid var(--color-divider);
-  background: var(--color-surface-2);
-}
-.char-faction {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: var(--space-2);
-}
-.char-name {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--color-text);
-  margin-bottom: var(--space-1);
-}
-.char-title {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  font-style: italic;
-}
-.char-body {
-  padding: var(--space-5);
-}
-.char-lore {
-  font-size: var(--text-sm);
-  line-height: 1.75;
-  color: var(--color-text-muted);
-  border-left: 2px solid var(--color-primary-highlight);
-  padding-left: var(--space-4);
-  font-style: italic;
-}
-
-/* --- CHAR LORE border gauche par armée --- */
-.char-lore.iw {
-  border-left-color: var(--army-iw-bar);
-}
-.char-lore.st {
-  border-left-color: var(--army-st-bar);
-}
-.char-lore.we {
-  border-left-color: var(--army-we-bar);
-}
-.char-lore.bt,
-.char-lore.gold {
-  border-left-color: var(--army-bt-bar);
-}
-.char-lore.ba,
-.char-lore.red {
-  border-left-color: var(--army-ba-bar);
-}
-.char-lore.dg,
-.char-lore.green {
-  border-left-color: var(--army-dg-bar);
-}
-.char-lore.gi {
-  border-left-color: var(--army-gi-bar);
-}
-.char-lore.nc {
-  border-left-color: var(--army-nc-bar);
-}
-.char-lore.blue {
-  border-left-color: #1c2a4a;
-}
-
-.char-stats {
-  display: flex;
-  gap: var(--space-3);
-  margin-top: var(--space-4);
-  flex-wrap: wrap;
-}
-.char-stat {
-  text-align: center;
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-surface-offset);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-divider);
-}
-.char-stat-val {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--color-primary-bright);
-  display: block;
-}
-.char-stat-val.gold {
-  color: var(--color-gold);
-}
-.char-stat-label {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-}
-
-/* ============================================================
-   SEIGNEURS DE GUERRE — badges d'armée dans la section chars
-   .warlord-army--[xx] : fond coloré, texte inversé, bordure armée
-============================================================ */
-.warlord-army {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
-}
-.warlord-army--iw {
-  background: var(--army-iw-bg);
-  color: var(--army-iw-fg);
-  border-color: var(--army-iw-border);
-}
-.warlord-army--st {
-  background: var(--army-st-bg);
-  color: var(--army-st-fg);
-  border-color: var(--army-st-border);
-}
-.warlord-army--we {
-  background: var(--army-we-bg);
-  color: var(--army-we-fg);
-  border-color: var(--army-we-border);
-}
-.warlord-army--bt {
-  background: var(--army-bt-bg);
-  color: var(--army-bt-fg);
-  border-color: var(--army-bt-border);
-}
-.warlord-army--ba {
-  background: var(--army-ba-bg);
-  color: var(--army-ba-fg);
-  border-color: var(--army-ba-border);
-}
-.warlord-army--dg {
-  background: var(--army-dg-bg);
-  color: var(--army-dg-fg);
-  border-color: var(--army-dg-border);
-}
-.warlord-army--gi {
-  background: var(--army-gi-bg);
-  color: var(--army-gi-fg);
-  border-color: var(--army-gi-border);
-}
-.warlord-army--nc {
-  background: var(--army-nc-bg);
-  color: var(--army-nc-fg);
-  border-color: var(--army-nc-border);
-}
-
-/* ============================================================
    BOUTONS CTA PAR ARMÉE — .btn-armee--[xx]
    Référence HEADER (ne pas modifier ces règles)
 ============================================================ */
@@ -1690,17 +1433,6 @@ footer .footer-line {
   margin-bottom: var(--space-2);
   max-width: 100%;
 }
-footer .footer-sub {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-faint);
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-inline: auto;
-}
 /* ============================================================
    ANIMATE ON SCROLL
 ============================================================ */
@@ -1784,25 +1516,6 @@ footer .footer-sub {
 }
 
 /* =========================
-   Carte et légende
-========================= */
-.map-dot--sanctum {
-  background: #c8a028;
-}
-.map-dot--jakku {
-  background: #6aaa3c;
-}
-.map-dot--colchis {
-  background: #7a9aaa;
-}
-.map-dot--secret {
-  background: #cc2929;
-}
-.map-dot--warp-route {
-  background: #ff4444;
-}
-
-/* =========================
    Citations et ornements
 ========================= */
 .quote-block--alert {
@@ -1810,6 +1523,15 @@ footer .footer-sub {
 }
 .section-ornament {
   margin-top: var(--space-8);
+}
+
+/* ── ERREUR DE CHARGEMENT ──────────────────────────────────── */
+.load-error {
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--space-4);
+  text-align: center;
+  font-family: var(--font-body);
 }
 
 /* ============================================================
@@ -1993,6 +1715,25 @@ footer .footer-sub {
   gap: 0.5rem;
   align-items: center;
 }
+@media (max-width: 768px) {
+  .nav-page-links {
+    display: none;
+  }
+  .nav-page-links.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4);
+    gap: var(--space-1);
+    z-index: 99;
+  }
+}
 .btn-nav-page {
   display: inline-flex;
   align-items: center;
@@ -2073,6 +1814,16 @@ footer .footer-sub {
 [data-theme="light"] .btn-nav-page--inquisition:hover {
   background: rgba(90, 42, 138, 0.14);
   border-color: #5a2a8a;
+}
+.btn-nav-page--situation {
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+  background: transparent;
+}
+.btn-nav-page--situation:hover {
+  background: oklch(from var(--color-text-muted) l c h / 0.08);
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
 }
 .btn-nav-page--regles {
   color: #3aa0d8;

@@ -1,8 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta name="description" content="Coalition Vox — Transmission inquisitoriale de la campagne Fyrentis.">
     <title>Coalition Vox — Transmission Inquisitoriale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -480,7 +482,6 @@
               fill="none"
               stroke="currentColor"
               stroke-width="1.5"
-              color="#c8a028"
             />
             <circle
               cx="18"
@@ -489,12 +490,11 @@
               fill="none"
               stroke="currentColor"
               stroke-width="1.5"
-              color="#8b1c1c"
             />
-            <line x1="18" y1="2"  x2="18" y2="12" stroke="currentColor" stroke-width="1" color="#c8a028" />
-            <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" color="#c8a028" />
-            <line x1="8.5"  y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028" />
-            <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" color="#c8a028" />
+            <line x1="18" y1="2"  x2="18" y2="12" stroke="currentColor" stroke-width="1" />
+            <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" />
+            <line x1="8.5"  y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" />
+            <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" />
           </svg>
           <div>
             <span class="nav-logo-text">Fyrentis</span>
@@ -772,6 +772,6 @@
       </svg>
     </a>
 
-    <script src="../../assets/js/pages.js" defer></script>
+    <script type="module" src="../../assets/js/pages.js"></script>
   </body>
 </html>

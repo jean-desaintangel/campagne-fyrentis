@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta name="description" content="World Eaters — Mécaniques spéciales, vaisseau amiral Le Conqueror et bonus de campagne Fyrentis.">
     <title>World Eaters</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,67 +14,27 @@
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── HERO MINI ──────────────────────────────────────────────────── */
-      .page-hero {
-        padding: 5rem 0 3rem;
-        text-align: center;
-        background: radial-gradient(
-          ellipse at center top,
-          rgba(139, 28, 28, 0.18) 0%,
-          transparent 65%
-        );
-        border-bottom: 1px solid rgba(139, 28, 28, 0.2);
+      /* ── WORLD EATERS : ROUGE SANG ── */
+      :root {
+        --page-accent: #c84040;
+        --page-accent-light: #e06060;
+        --page-accent-dim: rgba(200, 60, 60, 0.4);
+        --page-accent-bg: rgba(200, 60, 60, 0.07);
+        --page-accent-hover-bg: rgba(200, 60, 60, 0.18);
+        --page-accent-glow: rgba(200, 60, 60, 0.25);
+        --page-hero-glow: rgba(139, 28, 28, 0.18);
+        --page-hero-border: rgba(139, 28, 28, 0.2);
       }
-      .page-hero .section-eyebrow {
-        margin-bottom: 0.5rem;
+      [data-theme="light"] {
+        --page-accent: #8b1c1c;
+        --page-accent-light: #6b0e0e;
+        --page-accent-dim: rgba(139, 28, 28, 0.4);
+        --page-accent-bg: rgba(139, 28, 28, 0.06);
+        --page-accent-hover-bg: rgba(139, 28, 28, 0.14);
+        --page-accent-glow: rgba(139, 28, 28, 0.2);
+        --page-hero-glow: rgba(139, 28, 28, 0.14);
+        --page-hero-border: rgba(139, 28, 28, 0.2);
       }
-      .page-hero .section-title {
-        font-size: clamp(1.8rem, 4vw, 3rem);
-        margin-bottom: 0.75rem;
-      }
-      .page-hero .section-desc {
-        max-width: 60ch;
-        margin: 0 auto;
-      }
-
-      /* ── LIEN RETOUR ────────────────────────────────────────────────────── */
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin: 1.5rem 0 0;
-        font-family: "Cinzel", serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        color: #c84040;
-        border: 1px solid rgba(200, 60, 60, 0.4);
-        background: rgba(200, 60, 60, 0.07);
-        padding: 0.45rem 1rem;
-        border-radius: 3px;
-        transition:
-          background 180ms ease,
-          border-color 180ms ease,
-          box-shadow 180ms ease;
-      }
-      .back-link:hover {
-        background: rgba(200, 60, 60, 0.18);
-        border-color: #c84040;
-        box-shadow: 0 0 12px rgba(200, 60, 60, 0.25);
-        color: #e06060;
-      }
-      [data-theme="light"] .back-link {
-        color: #8b1c1c;
-        border-color: rgba(139, 28, 28, 0.4);
-        background: rgba(139, 28, 28, 0.06);
-      }
-      [data-theme="light"] .back-link:hover {
-        background: rgba(139, 28, 28, 0.14);
-        border-color: #8b1c1c;
-      }
-
     </style>
   </head>
   <body>
@@ -94,7 +56,6 @@
               fill="none"
               stroke="currentColor"
               stroke-width="1.5"
-              color="#c8a028"
             />
             <circle
               cx="18"
@@ -103,7 +64,6 @@
               fill="none"
               stroke="currentColor"
               stroke-width="1.5"
-              color="#8b1c1c"
             />
             <line
               x1="18"
@@ -112,7 +72,6 @@
               y2="12"
               stroke="currentColor"
               stroke-width="1"
-              color="#c8a028"
             />
             <line
               x1="18"
@@ -121,7 +80,6 @@
               y2="28"
               stroke="currentColor"
               stroke-width="1"
-              color="#c8a028"
             />
             <line
               x1="8.5"
@@ -130,7 +88,6 @@
               y2="18.9"
               stroke="currentColor"
               stroke-width="1"
-              color="#c8a028"
             />
             <line
               x1="27.5"
@@ -139,7 +96,6 @@
               y2="18.9"
               stroke="currentColor"
               stroke-width="1"
-              color="#c8a028"
             />
           </svg>
           <div>
@@ -255,7 +211,7 @@
           Conqueror, ses bonus de campagne, ainsi que les mécaniques spéciales
           liées aux Crânes, au Sang et à Saint Carnage.
         </p>
-        <a href="../../index.html#specificites-jean" class="back-link">
+        <a href="../../index.html#personnages" class="back-link">
           <svg
             width="13"
             height="13"
@@ -304,144 +260,6 @@
       </svg>
     </a>
 
-    <script>
-      (function () {
-        // ── THEME TOGGLE
-        const themeBtn = document.querySelector("[data-theme-toggle]");
-        const root = document.documentElement;
-        let theme =
-          root.getAttribute("data-theme") ||
-          (matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light");
-        root.setAttribute("data-theme", theme);
-        function updateThemeBtn() {
-          if (!themeBtn) return;
-          themeBtn.innerHTML =
-            theme === "dark"
-              ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-              : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-          themeBtn.setAttribute(
-            "aria-label",
-            "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
-          );
-        }
-        updateThemeBtn();
-        if (themeBtn)
-          themeBtn.addEventListener("click", () => {
-            theme = theme === "dark" ? "light" : "dark";
-            root.setAttribute("data-theme", theme);
-            updateThemeBtn();
-          });
-
-        // ── MOBILE NAV
-        const navToggle = document.getElementById("nav-toggle");
-        if (navToggle) {
-          navToggle.addEventListener("click", () => {
-            const expanded = navToggle.getAttribute("aria-expanded") === "true";
-            navToggle.setAttribute("aria-expanded", !expanded);
-          });
-        }
-
-        // ── NAV SCROLL + BACK-TO-TOP
-        const nav = document.getElementById("nav");
-        window.addEventListener(
-          "scroll",
-          () => {
-            nav.classList.toggle("nav--scrolled", window.scrollY > 60);
-            document
-              .getElementById("back-top")
-              .classList.toggle("visible", window.scrollY > 300);
-          },
-          { passive: true },
-        );
-
-        // ── REVEAL ON SCROLL
-        function initReveal() {
-          const obs = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((e) => {
-                if (e.isIntersecting) {
-                  e.target.classList.add("visible");
-                  obs.unobserve(e.target);
-                }
-              });
-            },
-            { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-          );
-          document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
-        }
-
-        // ── RENDER MECANIQUES
-        function renderMecaniques(m) {
-          const vaisseau = m.vaisseau;
-          const cranes = m.cranes;
-          const sang = m.sang;
-          const sc = m.saint_carnage;
-
-          document.getElementById("mecaniques-container").innerHTML = `
-      <div class="ornament"><span>Le Conqueror</span></div>
-      <div class="ship-layout">
-        <div class="ship-img-wrap reveal">
-          <img src="../../${vaisseau.image}" alt="${vaisseau.image_alt}" width="800" height="360" loading="lazy">
-        </div>
-        <div class="reveal reveal-delay-2">
-          <h3>Bonus de Vaisseau</h3>
-          <ul class="ship-bonus-list" role="list">${vaisseau.bonus
-            .map(
-              (b) =>
-                `<li class="ship-bonus"><span class="ship-bonus-icon">${b.icone}</span><div><p class="ship-bonus-name">${b.nom}</p><p class="ship-bonus-desc">${b.desc}</p></div></li>`,
-            )
-            .join("")}</ul>
-        </div>
-      </div>
-
-      <div class="ornament"><span>Mécaniques Spéciales</span></div>
-      <div class="mechanics-grid">
-        <div class="mechanic-card reveal">
-          <span class="mechanic-icon">${cranes.icone}</span>
-          <h3 class="mechanic-title"><span class="red">${cranes.titre}</span></h3>
-          <p class="mechanic-desc">${cranes.desc}</p>
-          <ul class="mechanic-tiers" role="list">${cranes.paliers
-            .map(
-              (p) =>
-                `<li><span class="tier-num">${p.seuil}</span>${p.effet}</li>`,
-            )
-            .join("")}</ul>
-        </div>
-        <div class="mechanic-card reveal reveal-delay-2">
-          <span class="mechanic-icon">${sang.icone}</span>
-          <h3 class="mechanic-title"><span class="red">${sang.titre}</span></h3>
-          <p class="mechanic-desc">${sang.desc}</p>
-          <ul class="mechanic-tiers" role="list">${sang.paliers
-            .map(
-              (p) =>
-                `<li><span class="tier-num gold">${p.seuil}</span>${p.effet}</li>`,
-            )
-            .join("")}</ul>
-        </div>
-        <div class="mechanic-card reveal">
-          <span class="mechanic-icon">${sc.icone}</span>
-          <h3 class="mechanic-title">Règle <span class="red">${sc.titre}</span></h3>
-          <p class="mechanic-desc">${sc.desc}</p>
-          <div>${sc.unites.map((u) => `<div><p>${u.nom}</p><p>${u.detail}</p></div>`).join("")}</div>
-        </div>
-      </div>`;
-        }
-
-        // ── MAIN : FETCH + RENDER
-        fetch("../../assets/data/campagne.json")
-          .then((r) => r.json())
-          .then((d) => {
-            renderMecaniques(d.mecaniques);
-            initReveal();
-          })
-          .catch((err) => {
-            console.error("Erreur chargement campagne.json :", err);
-            document.getElementById("mecaniques-container").innerHTML =
-              '<p style="color:var(--color-primary-bright);text-align:center;padding:2rem">Erreur : impossible de charger les données.</p>';
-          });
-      })();
-    </script>
+    <script type="module" src="../../assets/js/world-eaters.js"></script>
   </body>
 </html>
