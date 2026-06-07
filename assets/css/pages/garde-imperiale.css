@@ -36,6 +36,3 @@
         --page-hero-glow: rgba(92, 82, 24, 0.12);
         --page-hero-border: rgba(92, 82, 24, 0.18);
       }
-
-/* ── Utilitaires (anciens attributs style= inline) ── */
-.u-mt-05 { margin-top: 0.5rem; }

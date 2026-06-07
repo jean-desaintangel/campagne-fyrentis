@@ -126,6 +126,3 @@
         .declassifie-entry { grid-template-columns: 1fr; }
         .declassifie-entry-icon { display: none; }
       }
-
-/* ── Utilitaires (anciens attributs style= inline) ── */
-.u-mt-05 { margin-top: 0.5rem; }

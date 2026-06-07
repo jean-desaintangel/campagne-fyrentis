@@ -1,22 +1,70 @@
-// ── LAYOUT PARTAGÉ : barre de navigation + pied de page ─────────────────────
-// Évite de dupliquer ~140 lignes de <nav> et le <footer> sur chaque page.
+// ── LAYOUT PARTAGÉ : navigation + pied de page + bouton « retour en haut » ──
+// Évite de dupliquer ~150 lignes (nav + footer + back-top) sur chaque page.
 //
 // Chaque page déclare, sur la balise <body> :
 //   data-base   : préfixe vers la racine du site ("", "../", "../../")
 //   data-active : id du lien à surligner (carte|sanctum|inquisition|situation|regles)
-//                 (vide ou absent = aucun lien surligné)
 //
-// Le nav remplace l'élément <div id="site-nav"></div> et le footer remplit
-// <footer id="site-footer"></footer>. Ce module doit être chargé AVANT pages.js
-// (qui attache les écouteurs sur la nav). Les <script type="module"> s'exécutant
-// dans l'ordre du document, il suffit de placer layout.js en premier.
+// Le nav remplace <div id="site-nav"></div>, le footer remplit
+// <footer id="site-footer"></footer>, et le bouton « retour en haut » est ajouté
+// en fin de <body>. Ce module doit être chargé AVANT pages.js (qui attache les
+// écouteurs sur la nav et sur #back-top). Les <script type="module"> s'exécutant
+// dans l'ordre du document, placer layout.js en premier suffit.
 
 const base = document.body.dataset.base || "";
-const active = document.body.dataset.active || "";
+const activeId = document.body.dataset.active || "";
 
-// Lien actif : classe is-active + aria-current pour l'accessibilité.
-function act(id) {
-  return id === active ? ' is-active" aria-current="page' : "";
+// Définition déclarative des liens : un seul endroit à modifier pour le menu.
+const NAV_LINKS = [
+  {
+    id: "carte",
+    href: "autres/cartes/carte.html",
+    cls: "btn-nav-page--carte",
+    label: "Carte",
+    aria: "Voir la Carte du secteur",
+    svg: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>',
+  },
+  {
+    id: "sanctum",
+    href: "autres/cartes/sanctum.html",
+    cls: "btn-nav-page--sanctum",
+    label: "Sanctum",
+    aria: "Accéder au Sanctum",
+    svg: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  },
+  {
+    id: "inquisition",
+    href: "autres/rapports/rapport-inquisiteur.html",
+    cls: "btn-nav-page--inquisition",
+    label: "Inquisition",
+    aria: "Lire les Rapports Inquisitoriaux",
+    svg: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+  },
+  {
+    id: "situation",
+    href: "autres/rapports/coalition-vox.html",
+    cls: "btn-nav-page--situation",
+    label: "Situation",
+    aria: "Consulter la Situation de la Campagne",
+    svg: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  },
+  {
+    id: "regles",
+    href: "autres/regles.html",
+    cls: "btn-nav-page--regles",
+    label: "Règles",
+    aria: "Consulter les Règles Narratives",
+    svg: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>',
+  },
+];
+
+// Construit un lien de nav. La page active reçoit la classe is-active
+// (surlignage CSS) et aria-current="page" (accessibilité).
+function navLinkHTML(link) {
+  const isActive = link.id === activeId;
+  const klass = `btn-nav-page ${link.cls}${isActive ? " is-active" : ""}`;
+  const current = isActive ? ' aria-current="page"' : "";
+  return `<a href="${base}${link.href}" class="${klass}"${current} aria-label="${link.aria}">${link.svg} ${link.label}</a>`;
 }
 
 const navHTML = `
@@ -38,44 +86,7 @@ const navHTML = `
     </a>
     <div class="nav-actions">
       <div class="nav-page-links">
-        <a href="${base}autres/cartes/carte.html" class="btn-nav-page btn-nav-page--carte${act("carte")}" aria-label="Voir la Carte du secteur">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
-            <line x1="8" y1="2" x2="8" y2="18"/>
-            <line x1="16" y1="6" x2="16" y2="22"/>
-          </svg>
-          Carte
-        </a>
-        <a href="${base}autres/cartes/sanctum.html" class="btn-nav-page btn-nav-page--sanctum${act("sanctum")}" aria-label="Accéder au Sanctum">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          Sanctum
-        </a>
-        <a href="${base}autres/rapports/rapport-inquisiteur.html" class="btn-nav-page btn-nav-page--inquisition${act("inquisition")}" aria-label="Lire les Rapports Inquisitoriaux">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-          Inquisition
-        </a>
-        <a href="${base}autres/rapports/coalition-vox.html" class="btn-nav-page btn-nav-page--situation${act("situation")}" aria-label="Consulter la Situation de la Campagne">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          Situation
-        </a>
-        <a href="${base}autres/regles.html" class="btn-nav-page btn-nav-page--regles${act("regles")}" aria-label="Consulter les Règles Narratives">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="8" y1="13" x2="16" y2="13"/>
-            <line x1="8" y1="17" x2="13" y2="17"/>
-          </svg>
-          Règles
-        </a>
+        ${NAV_LINKS.map(navLinkHTML).join("\n        ")}
       </div>
       <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -104,8 +115,18 @@ const footerHTML = `
     </p>
   </div>`;
 
+const backTopHTML = `<a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</a>`;
+
 const navMount = document.getElementById("site-nav");
 if (navMount) navMount.outerHTML = navHTML;
 
 const footerMount = document.getElementById("site-footer");
 if (footerMount) footerMount.innerHTML = footerHTML;
+
+// Bouton « retour en haut » injecté une seule fois en fin de body.
+if (!document.getElementById("back-top"))
+  document.body.insertAdjacentHTML("beforeend", backTopHTML);

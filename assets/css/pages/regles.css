@@ -304,9 +304,3 @@
         color: var(--muted);
         font-style: italic;
       }
-
-/* ── Utilitaires (anciens attributs style= inline) ── */
-.u-mt-05 { margin-top: 0.5rem; }
-.u-mt-055 { margin-top: 0.55rem; }
-.u-mt-06 { margin-top: 0.6rem; }
-.u-mt-075 { margin-top: 0.75rem; }

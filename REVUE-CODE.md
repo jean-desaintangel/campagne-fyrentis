@@ -1,86 +1,82 @@
-# Revue de code — campagne-fyrentis
+# Revue de code — campagne-fyrentis (round 2)
 
-> Revue effectuée le 2026-06-07. Périmètre : site **statique** (HTML/CSS/JS vanilla, données JSON, hébergé sur GitHub Pages). **Aucun backend, aucun PHP, aucune base de données, aucune authentification** présents dans le code. Les axes « injection SQL / CSRF / sessions » sont donc sans objet ici (rien à attaquer côté serveur).
+> Revue ré-effectuée le 2026-06-07 sur l'**état actuel** du code, après le premier passage (nav/footer factorisés dans `layout.js`, styles inline externalisés vers `assets/css/pages/`, CSP durcie, bug zoom/pan de `carte.js` corrigé, variables mortes `scale/tx/ty` supprimées, BOM retiré). Axes demandés ici : **code mort, qualité, maintenabilité** (la sécurité n'est rappelée que brièvement). Site statique HTML/CSS/JS vanilla, données JSON, GitHub Pages.
 
 ## Synthèse
 
-Le projet est **nettement au-dessus de la moyenne** pour un site narratif statique. Le rendu dynamique passe systématiquement par `escapeHTML` / `escapeAttr` (defense-in-depth contre le XSS), une **CSP est présente sur les 16 pages**, il n'y a **aucun script inline, aucun handler `onclick=`, aucun `eval`/`document.write`**, et les liens externes sont validés (`safeHref`). Le JS est commenté avec des explications du *pourquoi* (rare et excellent pour des étudiants). Les vrais problèmes ne sont pas sécuritaires mais relèvent de la **maintenabilité** : structure HTML (nav, header, footer) dupliquée à l'identique sur 16 fichiers, gros blocs `<style>` inline (jusqu'à 608 lignes par page), README obsolète, et un **bug d'état réel dans `carte.js`** (zoom molette/pan désynchronisé des boutons). La robustesse du rendu dépend de la forme exacte du JSON (validation superficielle).
+Le projet est sain et nettement assaini depuis le premier passage. Le rendu dynamique reste protégé par l'échappement systématique (`escapeHTML`/`escapeAttr`), la CSP est sans `'unsafe-inline'`, et la duplication structurelle majeure (nav, footer) est désormais centralisée dans `layout.js`. Les problèmes restants sont de faible gravité et relèvent surtout de finitions : une ancre morte sur `regles.html`, une classe d'état de navigation (`is-active`) injectée mais jamais stylée, le bouton « retour en haut » encore dupliqué sur 14 pages, et la classe utilitaire `.u-mt-05` redéfinie à l'identique dans 9 fichiers CSS de page. Inventaire : 8 JS, 3 CSS racine, 15 CSS de page, 16 HTML.
 
-- **Niveau de risque sécurité global : FAIBLE.** Surface d'attaque quasi nulle (pas d'entrée utilisateur côté serveur, données same-origin maîtrisées par l'auteur).
-- **Niveau de maintenabilité global : MOYEN.** Code propre fichier par fichier, mais duplication structurelle forte et absence de templating.
+- **Niveau de risque sécurité : FAIBLE** (inchangé, surface quasi nulle, durcissements déjà appliqués).
+- **Niveau de maintenabilité : BON** (forte amélioration ; reste de la duplication mineure et un éparpillement de petits fichiers CSS).
 
 ### 3 priorités d'action immédiates
-1. **Corriger le bug de zoom/pan dans `carte.js`** (désynchronisation de `scale`/`tx`/`ty` avec le `viewBox`) — seul défaut fonctionnel avéré.
-2. **Factoriser le `<head>`, la `<nav>` et le `<footer>`** dupliqués sur 16 pages (et sortir les `<style>` inline vers des fichiers CSS partagés) — la dette de maintenabilité n°1.
-3. **Mettre à jour le README** (fichiers non documentés : `coalition-vox.html`, `utils.js`, `carte.js`, `sanctum.js`, `world-eaters.js`) et **retirer le BOM UTF-8** des 16 HTML + `campagne.json`.
+1. **Corriger l'ancre morte** dans `autres/regles.html` (bouton `#top` sans cible `id="top"`).
+2. **Décider du sort de `.is-active`** sur les boutons de nav : soit ajouter le style de surlignage de la page active, soit retirer le code qui l'injecte.
+3. **Dédupliquer** : centraliser les classes utilitaires (`.u-mt-05` × 9) dans un seul fichier, et injecter le bouton « retour en haut » via `layout.js` comme la nav et le footer.
 
 ---
 
 ## Problèmes détaillés
 
-### 1. Bug d'état zoom/pan dans la carte
-- **Gravité :** Moyen
-- **Type :** qualité / bug fonctionnel avéré
-- **Emplacement :** `assets/js/carte.js`, variables `scale/tx/ty` (l.30-37), `setViewBox()` (l.39-47), handler `wheel` (l.64-83), pan `mousemove` (l.98-111), `zoom-reset` (l.57-62).
-- **Problème :** Les boutons `zoom-in`/`zoom-out` pilotent l'état via les variables `scale/tx/ty` puis `setViewBox()`. Mais la **molette** et le **pan** écrivent directement l'attribut `viewBox` **sans jamais mettre à jour `scale/tx/ty`**. `zoom-reset` remet aussi le `viewBox` à la main sans passer par `setViewBox()`.
-- **Pourquoi c'est problématique :** Après un zoom molette ou un pan, cliquer sur `zoom-in`/`zoom-out` repart de `scale=1, tx=0, ty=0` (valeurs périmées) → la vue **saute** brutalement. C'est un bug observable par l'utilisateur.
-- **Recommandation concrète :** Choisir **une seule source de vérité**. Le plus simple : tout faire passer par le `viewBox` et supprimer les variables `scale/tx/ty` + `setViewBox()` ; faire lire/écrire le `viewBox` aux boutons comme le fait déjà la molette.
-- **Exemple de correction (zoom-in basé sur le viewBox courant) :**
+### 1. Ancre « retour en haut » morte sur regles.html
+- **Gravité :** Faible
+- **Type :** code mort / bug fonctionnel
+- **Emplacement :** `autres/regles.html` — `<a href="#top" id="back-top">` présent, mais **aucun élément `id="top"`** dans la page (les 13 autres pages ont bien l'ancre, généralement sur le hero).
+- **Problème :** Le clic sur « Retour en haut » ne pointe vers aucune cible → l'ancre est inerte sur cette page.
+- **Pourquoi c'est problématique :** Comportement incohérent d'une page à l'autre, fonctionnalité silencieusement cassée.
+- **Recommandation concrète :** Ajouter `id="top"` sur le premier élément pertinent de `regles.html` (titre/section d'en-tête), ou retirer le bouton sur cette page.
+
+### 2. Classe d'état `is-active` injectée mais jamais stylée
+- **Gravité :** Faible
+- **Type :** code mort / qualité
+- **Emplacement :** `assets/js/layout.js` (helper `act()`, qui ajoute ` is-active" aria-current="page` sur le lien de la page courante) ; côté CSS, seul `.carousel__slide.is-active` existe dans `style.css` — **aucune règle `.btn-nav-page.is-active`**.
+- **Problème :** L'intention (surligner l'onglet de la page active) ne produit aucun effet visuel ; `aria-current="page"` est correct pour l'accessibilité, mais le retour visuel manque.
+- **Pourquoi c'est problématique :** Code qui suggère une fonctionnalité inexistante → confusion à la maintenance.
+- **Recommandation concrète :** Ajouter une règle, p. ex. `.btn-nav-page.is-active { color: var(--gold); border-color: var(--gold); }`, ou supprimer l'ajout de `is-active` si le surlignage n'est pas voulu.
+
+### 3. Helper `act()` peu lisible (chaîne qui ferme un attribut)
+- **Gravité :** Faible
+- **Type :** qualité (lisibilité)
+- **Emplacement :** `assets/js/layout.js`, fonction `act(id)` → retourne `' is-active" aria-current="page'`.
+- **Problème :** Le helper injecte une fin d'attribut `class` + un nouvel attribut au milieu d'un template. C'est fonctionnel mais fragile et déroutant à lire/modifier.
+- **Recommandation concrète :** Construire la chaîne de classes et l'attribut séparément.
+- **Exemple :**
 ```js
-function zoomBy(factor) {
-  const [x, y, w, h] = svg.getAttribute("viewBox").split(" ").map(Number);
-  const nw = Math.min(Math.max(w / factor, 300), 1800);
-  const nh = Math.min(Math.max(h / factor, 200), 1300);
-  // zoom centré
-  svg.setAttribute("viewBox", `${x + (w - nw) / 2} ${y + (h - nh) / 2} ${nw} ${nh}`);
+function navLink(id, href, cls, label, svg) {
+  const active = id === active_id;
+  const aria = active ? ' aria-current="page"' : "";
+  const klass = `btn-nav-page ${cls}${active ? " is-active" : ""}`;
+  return `<a href="${href}" class="${klass}"${aria} aria-label="${label}">${svg}${label}</a>`;
 }
-document.getElementById("zoom-in").addEventListener("click", () => zoomBy(1.3));
-document.getElementById("zoom-out").addEventListener("click", () => zoomBy(1 / 1.3));
-document.getElementById("zoom-reset").addEventListener("click",
-  () => svg.setAttribute("viewBox", "0 0 900 650"));
 ```
 
-### 2. Validation du JSON trop superficielle → rendu fragile
-- **Gravité :** Moyen
-- **Type :** maintenabilité / robustesse (risque probable)
-- **Emplacement :** `assets/js/index.js` — `validateCampagne()` (l.6-10) puis `renderFronts()` (l.92-108) ; idem `world-eaters.js`.
-- **Problème :** `validateCampagne` vérifie seulement que `joueurs`, `lore.blocs` et `fronts` sont des tableaux. Or `renderFronts` appelle `f.batailles.map(...)`, `b.factions.map(...)`, `b.lien.label`, `j.armees.map(...)` **sans garde**. Données actuelles OK (vérifié), mais un front sans `batailles` ou une bataille sans `factions` ferait planter tout le rendu de la page (`TypeError`).
-- **Pourquoi c'est problématique :** Le jour où vous éditez le JSON à la main (cas d'usage central du projet), une faute de frappe casse la page entière au lieu de dégrader proprement.
-- **Recommandation concrète :** Soit étendre la validation aux champs réellement consommés, soit défendre au point d'usage avec `(f.batailles || [])`, `(b.factions || [])`, etc. (déjà fait pour `notable_features` dans `sanctum.js` — appliquer le même réflexe partout).
-
-### 3. Coordonnées des vaisseaux non validées au chargement de localStorage
+### 4. Bouton « retour en haut » dupliqué sur 14 pages
 - **Gravité :** Faible
-- **Type :** sécurité (risque probable, faible) / robustesse
-- **Emplacement :** `assets/js/sanctum.js` — `loadTacticalState()` (l.142-163), `normalizeShips()` (l.106-114), `renderShips()` (`transform="translate(${ship.x}, ${ship.y})"`, ~l.355).
-- **Problème :** `shipCounter` est validé (`Number.isFinite`), mais `ship.x` / `ship.y` issus de `localStorage` sont réinjectés tels quels dans un attribut SVG **sans coercition numérique ni borne**. `ship.name` est bien échappé, donc l'injection HTML est bloquée ; le risque résiduel est une valeur non numérique (localStorage corrompu) produisant un `translate` invalide.
-- **Pourquoi c'est problématique :** `localStorage` est same-origin (seul le site ou l'utilisateur via console peut l'écrire) → pas un vecteur XSS réaliste. Mais une valeur corrompue dégrade silencieusement l'affichage tactique.
-- **Recommandation concrète :** Dans `normalizeShips`, forcer le type et borner :
-```js
-x: Number.isFinite(+ship.x) ? Math.max(20, Math.min(680, +ship.x)) : CX + 140,
-y: Number.isFinite(+ship.y) ? Math.max(20, Math.min(540, +ship.y)) : CY - 120,
-```
+- **Type :** maintenabilité / duplication
+- **Emplacement :** `id="back-top"` (≈ 10 lignes avec SVG) répété dans les 14 pages standard.
+- **Problème :** Même bloc copié partout ; toute évolution (icône, libellé, seuil d'apparition) impose 14 éditions — exactement le problème déjà résolu pour la nav et le footer.
+- **Recommandation concrète :** Injecter le bouton via `layout.js` (dans un conteneur `#site-backtop` ou directement) et le gérer dans `pages.js` comme aujourd'hui. Attention : il pointe sur `#top`, donc garantir l'ancre sur chaque page (cf. point 1).
 
-### 4. CSP affaiblie par `'unsafe-inline'` sur les styles
+### 5. Classe utilitaire `.u-mt-05` redéfinie dans 9 fichiers CSS
 - **Gravité :** Faible
-- **Type :** sécurité (amélioration / durcissement)
-- **Emplacement :** balise `<meta http-equiv="Content-Security-Policy">` de chaque page : `style-src 'self' 'unsafe-inline' ...`.
-- **Problème :** `'unsafe-inline'` est nécessaire **uniquement** parce que chaque page embarque un gros bloc `<style>` inline. `script-src 'self'` (sans unsafe-inline) est déjà excellent.
-- **Pourquoi c'est problématique :** `'unsafe-inline'` sur les styles réduit la valeur de la CSP (exfiltration via CSS, injection de styles). Surface faible ici, mais supprimable « gratuitement » si on externalise les styles.
-- **Recommandation concrète :** Voir refactoring n°2 (sortir les `<style>` inline) → on peut alors retirer `'unsafe-inline'` de `style-src`.
+- **Type :** maintenabilité / duplication
+- **Emplacement :** `assets/css/pages/*.css` — `.u-mt-05 { margin-top: 0.5rem; }` apparaît dans 9 fichiers (issu de l'extraction par page des anciens `style=` inline).
+- **Problème :** Même règle dupliquée ; les utilitaires devraient être définis une seule fois.
+- **Recommandation concrète :** Créer `assets/css/utilities.css` regroupant les classes `u-*` génériques (marges, `u-hidden`, `u-italic`…), le lier sur les pages concernées, et retirer les définitions dupliquées des CSS de page. Conserver dans les CSS de page uniquement les utilitaires réellement spécifiques (ex. `u-am-*` pour adeptus-mechanicus).
 
-### 5. BOM UTF-8 en tête de fichiers
+### 6. Éparpillement de très petits fichiers CSS de page
 - **Gravité :** Faible
-- **Type :** qualité / hygiène
-- **Emplacement :** **les 16 fichiers HTML** + `assets/data/campagne.json` (`sanctum.json` n'en a pas → incohérence).
-- **Problème :** Octets `EF BB BF` en tête. Les navigateurs les tolèrent, mais le BOM peut gêner certains outils/diffs et trahit un éditeur mal configuré.
-- **Recommandation concrète :** Enregistrer en UTF-8 **sans BOM** (réglage VS Code : *"files.encoding": "utf8"*). Commande de nettoyage en lot fournie plus bas.
+- **Type :** maintenabilité / structure
+- **Emplacement :** `assets/css/pages/` — certains fichiers ne contiennent que 2–3 règles (`world-eaters.css`, `blood-angels.css`, `garde-imperiale.css`, `necrons.css`, `iron-warriors-de-khorne.css`).
+- **Problème :** 15 fichiers de page dont plusieurs quasi vides → un peu de bruit. À l'inverse, `carte.css` (~88 blocs) et `sanctum.css` (~98 blocs) restent les plus gros (légitime : pages « app » autonomes).
+- **Recommandation concrète :** Optionnel — fusionner les règles minimes des fiches d'armées dans `style.css` (sous une section « variantes par faction ») et ne garder un CSS de page que pour les pages réellement spécifiques. À arbitrer selon ta préférence (1 fichier/page vs regroupement).
 
-### 6. README obsolète
+### 7. Dead-CSS résiduel dans les blocs extraits — à vérifier
 - **Gravité :** Faible
-- **Type :** maintenabilité / documentation
-- **Emplacement :** `README.md`.
-- **Problème :** Ne documente pas `autres/rapports/coalition-vox.html` (présent), ni les scripts `utils.js`, `carte.js`, `sanctum.js`, `world-eaters.js` (la section « js/ » n'en liste que 3 sur 7).
-- **Recommandation concrète :** Synchroniser l'arborescence du README avec le contenu réel.
+- **Type :** code mort (à vérifier)
+- **Emplacement :** `assets/css/pages/*.css` (issus de l'extraction des anciens `<style>`).
+- **Problème :** Les blocs `<style>` d'origine pouvaient contenir des règles devenues inutilisées ; l'extraction les a conservées telles quelles. **À vérifier** au cas par cas (je n'ai pas confirmé d'orphelin précis).
+- **Recommandation concrète :** Passer un détecteur de CSS non utilisé (ex. extension « PurgeCSS » ou l'onglet *Coverage* de Chrome DevTools) page par page, puis supprimer les sélecteurs absents du HTML correspondant.
 
 ---
 
@@ -88,57 +84,47 @@ y: Number.isFinite(+ship.y) ? Math.max(20, Math.min(540, +ship.y)) : CY - 120,
 
 | Élément | Confiance | Risque de suppression |
 |---|---|---|
-| Variables `scale`, `tx`, `ty`, `startTx`, `startTy` + fonction `setViewBox()` dans `carte.js` | **Élevée** (deviennent inutiles après le correctif n°1 « tout-viewBox ») | Faible — à supprimer **avec** le refactor, pas avant |
-| `'unsafe-inline'` dans `style-src` de la CSP | **Élevée** (inutile une fois les `<style>` externalisés) | Faible — à retirer **après** externalisation |
-| BOM UTF-8 (16 HTML + campagne.json) | **Élevée** | Aucun |
+| Ajout de `is-active` sur la nav **sans** règle CSS correspondante (`layout.js` `act()`) | Élevée | Faible — soit styler, soit retirer |
+| Ancre `#top` manquante rendant `#back-top` inerte sur `regles.html` | Élevée | Faible — ajouter l'ancre (ne pas supprimer le bouton) |
+| Définitions dupliquées de `.u-mt-05` (8 copies sur 9 à factoriser) | Élevée | Faible — déplacer vers un fichier utilitaire unique |
+| Règles CSS orphelines dans `pages/*.css` | Faible (à vérifier) | Moyen — vérifier l'usage avant suppression |
 
-> Remarque : **aucun fichier mort détecté.** Tous les CSS sont référencés (`style.css` partout, `index.css` et `personnages-carousel.css` sur `index.html`), tous les JS sont chargés par au moins une page (`carte.js`→carte, `sanctum.js`→sanctum, `world-eaters.js`→world-eaters, `pages.js`→pages internes, `index.js`→accueil). Pas de fonction exportée inutilisée repérée. Les `console.warn/error` sont du logging légitime, pas du code mort.
+> Aucun fichier JS/CSS entièrement mort : tous les CSS sont liés, tous les JS chargés (`layout.js`+`pages.js` partout, `index.js`/`carte.js`/`sanctum.js`/`world-eaters.js` sur leurs pages). `back-top`/`#top` sont utilisés par `pages.js`.
 
 ---
 
 ## Refactorings recommandés
 
-**Fort impact (maintenabilité)**
-- **Éliminer la duplication structurelle.** `<head>`, `<nav id="nav">` et le footer sont **identiques sur les 16 pages** : modifier un lien de menu = 16 éditions, source d'incohérences. Options selon votre contexte pédagogique :
-  - *Simple/statique :* injecter nav + footer via un petit `partials.js` (fetch d'un fragment HTML) — cohérent avec l'approche `fetch`+`render` déjà en place dans le projet.
-  - *Build :* un générateur statique (Eleventy) ou même un include côté serveur si l'hébergement change.
-- **Externaliser les `<style>` inline** (40 à 608 lignes par page) vers des fichiers CSS partagés/spécifiques. Bénéfice double : suppression de la duplication **et** durcissement de la CSP (point n°4).
+**Fort impact**
+- Centraliser les utilitaires CSS (`utilities.css`) — supprime la duplication de `.u-mt-05` et clarifie où vivent les classes `u-*`.
+- Injecter le bouton « retour en haut » via `layout.js` (cohérence avec nav/footer déjà factorisés) et garantir l'ancre `#top` partout.
 
 **Quick wins**
-- Correctif zoom/pan (n°1).
-- Gardes `|| []` sur les `.map()` de `index.js`/`world-eaters.js` (n°2).
-- Nettoyage BOM + README (n°5, n°6).
-- `carte.js` : 6 `getElementById(...).addEventListener` sans garde `null`. Acceptable tant que le script reste couplé à `carte.html`, mais ajouter un garde en tête (`if (!svg) return;`) fiabilise en cas de réutilisation.
+- Corriger l'ancre de `regles.html` (point 1).
+- Styler ou retirer `.btn-nav-page.is-active` (point 2).
+- Rendre le helper `act()` plus lisible (point 3).
 
 **Architecture / conventions à standardiser**
-- `sanctum.js` (684 lignes) est cohérent et bien commenté, mais long : envisager un découpage en modules (`storage`, `render`, `drag`) si le fichier continue de croître.
-- Standardiser le réflexe « défendre au point d'usage » déjà appliqué dans `sanctum.js` (commentaires sur `notable_features`, `shipCounter`, `getScreenCTM`) à `index.js`.
-- Conserver et généraliser la **convention d'échappement** (`escapeHTML`/`escapeAttr` sur toute valeur injectée) — c'est déjà un point fort à préserver.
+- Décider d'une règle claire : « 1 CSS par page » **ou** « variantes dans style.css + CSS de page seulement si spécifique ». S'y tenir.
+- Généraliser la convention de nommage `u-*` pour tous les utilitaires et la documenter en tête de `utilities.css`.
+- Conserver les points forts : échappement systématique, CSP stricte, programmation défensive (`|| []`, `clampCoord`, gardes `null`), commentaires expliquant le *pourquoi*.
 
 ---
 
 ## Plan d'action
 
-**1. Corrections urgentes (cette semaine)**
-- Corriger le bug zoom/pan de `carte.js` (n°1).
-- Ajouter les gardes `|| []` sur les rendus pilotés par JSON (n°2).
+**1. Corrections urgentes**
+- Ajouter `id="top"` sur `regles.html`.
+- Styler ou retirer `.btn-nav-page.is-active`.
 
-**2. Nettoyage technique (court terme)**
-- Retirer le BOM des 16 HTML + `campagne.json`.
-- Mettre à jour le README.
-- Valider/borner `ship.x`/`ship.y` au chargement (n°3).
+**2. Nettoyage technique**
+- Créer `assets/css/utilities.css`, y déplacer les `u-*` génériques, retirer les doublons des CSS de page.
+- Vérifier le CSS non utilisé (Coverage DevTools) sur les pages les plus lourdes (`carte`, `sanctum`, rapports).
 
 **3. Améliorations de long terme**
-- Factoriser head/nav/footer (templating ou partial JS) sur les 16 pages.
-- Externaliser les `<style>` inline → puis retirer `'unsafe-inline'` de la CSP.
-- Découper `sanctum.js` si besoin ; généraliser la programmation défensive.
-
-> Nettoyage BOM en lot (à exécuter à la racine du projet, après commit/sauvegarde) :
-> ```bash
-> for f in $(grep -rlP '^\xEF\xBB\xBF' --include='*.html' --include='*.json' .); do
->   sed -i '1s/^\xEF\xBB\xBF//' "$f"
-> done
-> ```
+- Injecter `back-top` via `layout.js`.
+- Arbitrer et uniformiser la stratégie des fichiers CSS de page (fusion des fiches d'armées minimes).
+- Refactor lisibilité de `layout.js` (`act()` → construction explicite des liens).
 
 ---
 
@@ -146,13 +132,12 @@ y: Number.isFinite(+ship.y) ? Math.max(20, Math.min(540, +ship.y)) : CY - 120,
 
 | Gravité | Type | Emplacement | Action recommandée |
 |---|---|---|---|
-| Moyen | Bug avéré | `carte.js` (zoom/pan vs `scale/tx/ty`) | Unifier l'état sur le `viewBox` |
-| Moyen | Robustesse | `index.js` `renderFronts`, `validateCampagne` | Gardes `\|\| []` ou validation étendue |
-| Faible | Sécurité/robustesse | `sanctum.js` `loadTacticalState`/`normalizeShips` | Coercer + borner `ship.x/y` |
-| Faible | Sécurité (durcissement) | CSP `style-src 'unsafe-inline'` | Externaliser styles puis retirer |
-| Faible | Hygiène | 16 HTML + `campagne.json` (BOM) | Réenregistrer UTF-8 sans BOM |
-| Faible | Documentation | `README.md` | Synchroniser l'arborescence |
-| — (refactor) | Maintenabilité | head/nav/footer × 16 pages | Factoriser (partial/templating) |
-| — (refactor) | Maintenabilité | `<style>` inline (≤608 l./page) | Externaliser en CSS partagé |
+| Faible | Code mort / bug | `autres/regles.html` (`#back-top` sans `#top`) | Ajouter `id="top"` |
+| Faible | Code mort / qualité | `layout.js` `act()` + `style.css` | Styler `.btn-nav-page.is-active` ou retirer l'ajout |
+| Faible | Qualité (lisibilité) | `layout.js` `act()` | Construire classes + attribut séparément |
+| Faible | Maintenabilité / duplication | `#back-top` × 14 HTML | Injecter via `layout.js` |
+| Faible | Maintenabilité / duplication | `.u-mt-05` × 9 `pages/*.css` | Centraliser dans `utilities.css` |
+| Faible | Maintenabilité / structure | `pages/*.css` (fichiers 2–3 règles) | Fusionner les minimes dans `style.css` |
+| Faible (à vérifier) | Code mort | `pages/*.css` | Détecter le CSS orphelin (Coverage) puis purger |
 
-**Points forts à conserver :** échappement systématique anti-XSS, CSP sur toutes les pages, `script-src 'self'` sans inline, validation des `href`, gestion d'erreurs `fetch` avec message utilisateur sobre (non bavard), commentaires expliquant le *pourquoi*, aucun secret exposé.
+**Points forts confirmés :** nav/footer centralisés (`layout.js`), styles externalisés, CSP sans `'unsafe-inline'`, échappement anti-XSS systématique, programmation défensive, JSON validés au chargement, commentaires pédagogiques expliquant les choix.

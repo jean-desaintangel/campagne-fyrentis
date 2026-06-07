@@ -2125,3 +2125,17 @@ footer .footer-line {
   .censure-bloc { padding: 1.25rem 1rem; }
   .censure-bandeau { padding: 1rem; gap: 0.75rem; }
 }
+
+/* ── Lien de navigation de la page active ── */
+.btn-nav-page.is-active {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 -2px 0 currentColor;
+}
+
+/* ── Utilitaires partagés (ex-attributs style= inline) ── */
+.u-mt-05 { margin-top: 0.5rem; }
+.u-mt-055 { margin-top: 0.55rem; }
+.u-mt-06 { margin-top: 0.6rem; }
+.u-mt-075 { margin-top: 0.75rem; }
+.u-ml-06 { margin-left: 0.6rem; }
+.u-block-center { width: 100%; text-align: center; padding: 0.25rem 0; }

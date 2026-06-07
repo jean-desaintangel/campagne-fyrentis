@@ -40,6 +40,3 @@
         --page-nota-accent: #6b1010;
         --page-nota-accent-dim: rgba(107, 16, 16, 0.35);
       }
-
-/* ── Utilitaires (anciens attributs style= inline) ── */
-.u-mt-05 { margin-top: 0.5rem; }

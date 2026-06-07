@@ -449,6 +449,3 @@
       .corrupted-world {
         animation: blink-corrupted 3s infinite;
       }
-
-/* ── Utilitaires (anciens attributs style= inline) ── */
-.u-ml-06 { margin-left: 0.6rem; }
