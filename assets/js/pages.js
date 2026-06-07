@@ -1,9 +1,10 @@
 (function () {
-  // ── THEME TOGGLE
+  // ── THEME TOGGLE (avec persistance localStorage)
   const themeBtn = document.querySelector("[data-theme-toggle]");
   const root = document.documentElement;
+  const saved = localStorage.getItem("theme");
   let theme =
-    root.getAttribute("data-theme") ||
+    saved ||
     (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   root.setAttribute("data-theme", theme);
   function updateThemeBtn() {
@@ -22,6 +23,7 @@
     themeBtn.addEventListener("click", () => {
       theme = theme === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
       updateThemeBtn();
     });
 
@@ -61,7 +63,7 @@
       { passive: true },
     );
 
-  // ── REVEAL ON SCROLL
+  // ── REVEAL ON SCROLL (éléments statiques présents au chargement)
   const obs = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {

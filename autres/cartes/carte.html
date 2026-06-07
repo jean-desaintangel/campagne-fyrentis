@@ -1506,11 +1506,6 @@
           startTx = 0,
           startTy = 0;
 
-        function applyTransform() {
-          const g = svg.querySelector("g#map-content") || svg;
-          svg.style.transformOrigin = "0 0";
-        }
-
         function setViewBox() {
           const vw = 900,
             vh = 650;

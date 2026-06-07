@@ -12,94 +12,6 @@
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <style>
-      /* ── BOUTONS DE NAVIGATION PAGES ─────────────────────────────────────── */
-      .nav-page-links {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-      }
-      .btn-nav-page {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.85rem;
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 3px;
-        border: 1px solid;
-        transition:
-          background 180ms ease,
-          color 180ms ease,
-          border-color 180ms ease,
-          box-shadow 180ms ease;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-      .btn-nav-page--carte {
-        color: #c8a028;
-        border-color: rgba(200, 160, 40, 0.45);
-        background: rgba(200, 160, 40, 0.07);
-      }
-      .btn-nav-page--carte:hover {
-        background: rgba(200, 160, 40, 0.18);
-        border-color: #c8a028;
-        box-shadow: 0 0 10px rgba(200, 160, 40, 0.25);
-        color: #e8c050;
-      }
-      .btn-nav-page--sanctum {
-        color: #c84040;
-        border-color: rgba(200, 60, 60, 0.45);
-        background: rgba(200, 60, 60, 0.07);
-      }
-      .btn-nav-page--sanctum:hover {
-        background: rgba(200, 60, 60, 0.18);
-        border-color: #c84040;
-        box-shadow: 0 0 10px rgba(200, 60, 60, 0.25);
-        color: #e06060;
-      }
-      .btn-nav-page--inquisition {
-        color: #9b6fc4;
-        border-color: rgba(155, 111, 196, 0.45);
-        background: rgba(155, 111, 196, 0.07);
-      }
-      .btn-nav-page--inquisition:hover {
-        background: rgba(155, 111, 196, 0.18);
-        border-color: #9b6fc4;
-        box-shadow: 0 0 10px rgba(155, 111, 196, 0.28);
-        color: #c090e8;
-      }
-      [data-theme="light"] .btn-nav-page--carte {
-        color: #8a6800;
-        border-color: rgba(138, 104, 0, 0.4);
-        background: rgba(138, 104, 0, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--carte:hover {
-        background: rgba(138, 104, 0, 0.14);
-        border-color: #8a6800;
-      }
-      [data-theme="light"] .btn-nav-page--sanctum {
-        color: #8b1c1c;
-        border-color: rgba(139, 28, 28, 0.4);
-        background: rgba(139, 28, 28, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--sanctum:hover {
-        background: rgba(139, 28, 28, 0.14);
-        border-color: #8b1c1c;
-      }
-      [data-theme="light"] .btn-nav-page--inquisition {
-        color: #5a2a8a;
-        border-color: rgba(90, 42, 138, 0.4);
-        background: rgba(90, 42, 138, 0.06);
-      }
-      [data-theme="light"] .btn-nav-page--inquisition:hover {
-        background: rgba(90, 42, 138, 0.14);
-        border-color: #5a2a8a;
-      }
-
       /* ── HERO MINI ──────────────────────────────────────────────────── */
       .page-hero {
         padding: 5rem 0 3rem;
@@ -161,15 +73,6 @@
         border-color: #8b1c1c;
       }
 
-      @media (max-width: 600px) {
-        .nav-page-links {
-          gap: 0.35rem;
-        }
-        .btn-nav-page {
-          font-size: 0.65rem;
-          padding: 0.35rem 0.6rem;
-        }
-      }
     </style>
   </head>
   <body>

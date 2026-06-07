@@ -1,51 +1,19 @@
-/* ==========================================================================
-   index.js
-   Script principal de la page d'accueil — Campagne Fyrentis
-   Univers World Eaters / Warhammer 40K
-   Chargé en différé (defer) depuis index.html
-   ========================================================================== */
-
 (function () {
-  // ── THEME TOGGLE
-  const themeBtn = document.querySelector("[data-theme-toggle]");
-  const root = document.documentElement;
-  let theme =
-    root.getAttribute("data-theme") ||
-    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  root.setAttribute("data-theme", theme);
-  function updateThemeBtn() {
-    if (!themeBtn) return;
-    themeBtn.innerHTML =
-      theme === "dark"
-        ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-        : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    themeBtn.setAttribute(
-      "aria-label",
-      "Basculer vers le mode " + (theme === "dark" ? "clair" : "sombre"),
-    );
+  "use strict";
+
+  // ── UTILITAIRES XSS ────────────────────────────────────────────────────────
+  function escapeHTML(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
-  updateThemeBtn();
-  if (themeBtn)
-    themeBtn.addEventListener("click", () => {
-      theme = theme === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", theme);
-      updateThemeBtn();
-    });
+  function escapeAttr(str) {
+    return String(str).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
 
-  // ── NAV SCROLL + BACK-TO-TOP
-  const nav = document.getElementById("nav");
-  window.addEventListener(
-    "scroll",
-    () => {
-      nav.classList.toggle("nav--scrolled", window.scrollY > 60);
-      document
-        .getElementById("back-top")
-        .classList.toggle("visible", window.scrollY > 300);
-    },
-    { passive: true },
-  );
-
-  // ── REVEAL ON SCROLL
+  // ── REVEAL ON SCROLL (éléments dynamiques créés après le fetch) ────────────
   function initReveal() {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -61,7 +29,7 @@
     document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
   }
 
-  // ── TABS
+  // ── TABS ───────────────────────────────────────────────────────────────────
   function initTabs() {
     const tabs = document.querySelectorAll(".front-tab");
     const panels = document.querySelectorAll(".front-panel");
@@ -84,48 +52,44 @@
     return n ? ` reveal-delay-${n}` : "";
   }
 
-  const COULEUR_TO_ARMEE = {
-    red: { code: "we", label: "World Eaters" },
-    blue: { code: "ba", label: "Blood Angels" },
-    green: { code: "gi", label: "Garde Impériale" },
-    purple: { code: "iw", label: "Iron Warriors" },
-    gold: { code: "bt", label: "Black Templars" },
-  };
-
+  // ── RENDER : JOUEURS ───────────────────────────────────────────────────────
   function renderJoueurs(joueurs) {
     document.getElementById("players-grid").innerHTML = joueurs
-      .map((j) => {
-        return `<article class="player-card player-card--${j.couleur} reveal${delayClass(j.delai)}">
-        <p class="player-name">${j.nom}</p>
-        <p class="player-role">${j.role}</p>
-        <ul class="player-armies" role="list">${j.armees.map((a) => `<li>${a}</li>`).join("")}</ul>
-      </article>`;
-      })
+      .map(
+        (j) =>
+          `<article class="player-card player-card--${escapeAttr(j.couleur)} reveal${delayClass(j.delai)}">
+        <p class="player-name">${escapeHTML(j.nom)}</p>
+        <p class="player-role">${escapeHTML(j.role)}</p>
+        <ul class="player-armies" role="list">${j.armees.map((a) => `<li>${escapeHTML(a)}</li>`).join("")}</ul>
+      </article>`,
+      )
       .join("");
   }
 
+  // ── RENDER : LORE ──────────────────────────────────────────────────────────
   function renderLore(lore) {
     document.getElementById("lore-desc").textContent = lore.description;
     document.getElementById("lore-grid").innerHTML = lore.blocs
       .map(
         (b, i) =>
           `<div class="lore-text reveal${i > 0 ? " reveal-delay-2" : ""}">
-        <h3>${b.titre}</h3>
-        ${b.paragraphes.map((p) => `<p>${p}</p>`).join("")}
+        <h3>${escapeHTML(b.titre)}</h3>
+        ${b.paragraphes.map((p) => `<p>${escapeHTML(p)}</p>`).join("")}
         <div class="quote-block${b.citation.alerte ? " quote-block--alert" : ""}">
-          <p class="quote-text">${b.citation.texte}</p>
-          <span class="quote-author">${b.citation.auteur}</span>
+          <p class="quote-text">${escapeHTML(b.citation.texte)}</p>
+          <span class="quote-author">${escapeHTML(b.citation.auteur)}</span>
         </div>
       </div>`,
       )
       .join("");
   }
 
+  // ── RENDER : FRONTS ────────────────────────────────────────────────────────
   function renderFronts(fronts) {
     document.getElementById("fronts-tabs").innerHTML = fronts
       .map(
         (f, i) =>
-          `<button class="front-tab${i === 0 ? " active" : ""}" role="tab" aria-selected="${i === 0}" data-tab="${f.id}">${f.nom}</button>`,
+          `<button class="front-tab${i === 0 ? " active" : ""}" role="tab" aria-selected="${i === 0}" data-tab="${escapeAttr(f.id)}">${escapeHTML(f.nom)}</button>`,
       )
       .join("");
     document.getElementById("fronts-panels").innerHTML = fronts
@@ -136,30 +100,32 @@
         <div class="stations-grid">${f.stations
           .map(
             (s) =>
-              `<div class="station-card"><div class="station-num">${s.num}</div><div class="station-label">Station</div><span class="station-owner ${s.classe}">${s.proprietaire}</span></div>`,
+              `<div class="station-card"><div class="station-num">${escapeHTML(s.num)}</div><div class="station-label">Station</div><span class="station-owner ${escapeAttr(s.classe)}">${escapeHTML(s.proprietaire)}</span></div>`,
           )
           .join("")}</div>`
           : "";
         const imageHTML = f.image
           ? f.stations
-            ? `<img src="${f.image}" alt="${f.image_alt}" width="1200" height="400" loading="lazy">`
-            : `<div class="front-visual"><img src="${f.image}" alt="${f.image_alt}" width="1600" height="900" loading="lazy"></div>`
+            ? `<img src="${escapeAttr(f.image)}" alt="${escapeAttr(f.image_alt)}" width="1200" height="400" loading="lazy">`
+            : `<div class="front-visual"><img src="${escapeAttr(f.image)}" alt="${escapeAttr(f.image_alt)}" width="1600" height="900" loading="lazy"></div>`
           : "";
         const bataillesHTML = f.batailles
-          .map(
-            (b) =>
-              `<div class="battle-entry ${b.classe}">
-          <p class="battle-label">${b.label}</p>
-          <h4 class="battle-title">${b.titre}</h4>
-          <p class="battle-text">${b.texte}</p>
-          <div class="battle-factions">${b.factions.map((fc) => `<span class="faction-tag ${fc.classe}">${fc.label}</span>`).join("")}</div>
-        </div>`,
-          )
+          .map((b) => {
+            const lienHTML = b.lien
+              ? ` <a href="${escapeAttr(b.lien.href)}">${escapeHTML(b.lien.label)}</a>`
+              : "";
+            return `<div class="battle-entry ${escapeAttr(b.classe)}">
+          <p class="battle-label">${escapeHTML(b.label)}</p>
+          <h4 class="battle-title">${escapeHTML(b.titre)}</h4>
+          <p class="battle-text">${escapeHTML(b.texte)}${lienHTML}</p>
+          <div class="battle-factions">${b.factions.map((fc) => `<span class="faction-tag ${escapeAttr(fc.classe)}">${escapeHTML(fc.label)}</span>`).join("")}</div>
+        </div>`;
+          })
           .join("");
-        return `<div class="front-panel${i === 0 ? " active" : ""}" id="tab-${f.id}" role="tabpanel">
+        return `<div class="front-panel${i === 0 ? " active" : ""}" id="tab-${escapeAttr(f.id)}" role="tabpanel">
         <div class="front-header">
-          <div><h3 class="front-title">${f.titre}</h3><p class="front-desc">${f.description}</p></div>
-          <span class="front-status ${f.statut_classe}">${f.statut}</span>
+          <div><h3 class="front-title">${escapeHTML(f.titre)}</h3><p class="front-desc">${escapeHTML(f.description)}</p></div>
+          <span class="front-status ${escapeAttr(f.statut_classe)}">${escapeHTML(f.statut)}</span>
         </div>
         ${imageHTML}${stationsHTML}
         ${f.stations ? '<div class="ornament section-ornament"><span>Chronique des Batailles</span></div>' : ""}
@@ -169,7 +135,7 @@
       .join("");
   }
 
-  // ── MAIN : FETCH + RENDER
+  // ── MAIN : FETCH + RENDER ──────────────────────────────────────────────────
   fetch("assets/data/campagne.json")
     .then((r) => r.json())
     .then((d) => {
@@ -177,6 +143,9 @@
       renderLore(d.lore);
       renderFronts(d.fronts);
       initTabs();
+      if (typeof window.initPersonnagesCarousel === "function") {
+        window.initPersonnagesCarousel(d);
+      }
     })
     .catch((err) => {
       console.error("Erreur chargement campagne.json :", err);
@@ -186,12 +155,11 @@
       );
     })
     .finally(() => {
-      initReveal(); // Toujours exécuté, même si le fetch échoue
+      initReveal();
     });
 
-  // ── CARROUSEL
+  // ── CARROUSEL IMAGES ───────────────────────────────────────────────────────
   (function () {
-    "use strict";
     const carousel = document.getElementById("main-carousel");
     if (!carousel) return;
     const slides = Array.from(carousel.querySelectorAll(".carousel__slide"));
@@ -261,12 +229,8 @@
       }
     });
     carousel.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") {
-        goTo(current - 1);
-      }
-      if (e.key === "ArrowRight") {
-        goTo(current + 1);
-      }
+      if (e.key === "ArrowLeft") goTo(current - 1);
+      if (e.key === "ArrowRight") goTo(current + 1);
     });
     start();
   })();
