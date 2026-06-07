@@ -1,0 +1,312 @@
+/* ── LAYOUT PAGE ─────────────────────────────────────────────────────── */
+      :root {
+        --bg: #0d0b09;
+        --surface: #151210;
+        --surface-2: #1c1815;
+        --border: #2e2820;
+        --text: #d4c9b8;
+        --muted: #7a6f60;
+        --faint: #3d342a;
+        --gold: #c8a028;
+        --gold-dim: #8a6b18;
+        --red: #8b1c1c;
+        --red-bright: #c43030;
+      }
+      [data-theme="light"] {
+        --bg: #f5f2ec;
+        --surface: #ede9e0;
+        --surface-2: #e4dfd4;
+        --border: #ccc4b0;
+        --text: #2a2218;
+        --muted: #6a5f4a;
+        --faint: #bfb8a8;
+        --gold: #8a6800;
+        --gold-dim: #6a5000;
+        --red: #8b1c1c;
+        --red-bright: #a02020;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Crimson Text", Georgia, serif;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .page-wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 4rem;
+        flex: 1;
+      }
+
+      /* PAGE HEADER */
+      .page-header {
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .page-eyebrow {
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--gold-dim);
+        margin-bottom: 0.5rem;
+      }
+      .page-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        color: var(--gold);
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
+      }
+      .page-version {
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      /* TOC */
+      .toc {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .toc-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--gold-dim);
+        margin-bottom: 0.75rem;
+      }
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .toc-list a {
+        font-size: 0.88rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.18s;
+      }
+      .toc-list a:hover {
+        color: var(--gold);
+      }
+      .toc-list .toc-sub {
+        padding-left: 1rem;
+        font-size: 0.82rem;
+      }
+
+      /* SECTIONS */
+      .rules-section {
+        margin-bottom: 3rem;
+        scroll-margin-top: 4rem;
+      }
+      .rules-section + .rules-section {
+        border-top: 1px solid var(--border);
+        padding-top: 2.5rem;
+      }
+      .section-title {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, var(--gold-dim), transparent);
+        opacity: 0.4;
+      }
+      .subsection {
+        margin-bottom: 1.75rem;
+      }
+      .subsection-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.9rem;
+        color: var(--text);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 1px solid var(--faint);
+      }
+
+      /* APTITUDE CARDS */
+      .aptitudes-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+      .aptitude-row {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 0 1rem;
+        padding: 0.55rem 0.75rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        align-items: baseline;
+      }
+      @media (max-width: 600px) {
+        .aptitude-row {
+          grid-template-columns: 1fr;
+          gap: 0.2rem;
+        }
+      }
+      .aptitude-key {
+        font-family: "Cinzel", serif;
+        font-size: 0.82rem;
+        color: var(--gold);
+        white-space: nowrap;
+      }
+      .aptitude-key .bracket {
+        color: var(--gold-dim);
+      }
+      .aptitude-val {
+        font-size: 0.9rem;
+        color: var(--text);
+        line-height: 1.5;
+      }
+      .aptitude-val .narratif {
+        color: var(--red-bright);
+        font-style: italic;
+      }
+
+      /* RULE BLOCKS */
+      .rule-block {
+        padding: 0.75rem 1rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        margin-bottom: 0.55rem;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+      .rule-block strong {
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        color: var(--gold-dim);
+        display: block;
+        margin-bottom: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .rule-block ul {
+        padding-left: 1.25rem;
+        margin-top: 0.3rem;
+      }
+      .rule-block ul li {
+        margin-bottom: 0.3rem;
+      }
+      .rule-block .narratif-tag {
+        display: inline-block;
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--red-bright);
+        border: 1px solid rgba(196, 48, 48, 0.35);
+        border-radius: 2px;
+        padding: 0.1rem 0.4rem;
+        margin-bottom: 0.4rem;
+      }
+      .rule-highlight {
+        background: rgba(200, 160, 40, 0.07);
+        border-color: rgba(200, 160, 40, 0.3);
+      }
+      .rule-alert {
+        background: rgba(139, 28, 28, 0.1);
+        border-color: rgba(139, 28, 28, 0.35);
+      }
+
+      /* PLAYER TAG */
+      .player-tag {
+        display: inline-block;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 0.15rem 0.5rem;
+        border-radius: 2px;
+        margin-right: 0.35rem;
+      }
+      .player-jeremy {
+        background: rgba(34, 85, 170, 0.15);
+        color: #4488dd;
+        border: 1px solid rgba(34, 85, 170, 0.4);
+      }
+
+      /* PROSE */
+      .prose {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--text);
+        margin-bottom: 0.75rem;
+      }
+      .prose em {
+        color: var(--muted);
+      }
+
+      /* ORNAMENT */
+      .ornament {
+        text-align: center;
+        margin: 2rem 0 1.5rem;
+      }
+      .ornament span {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+        padding: 0 1rem;
+        position: relative;
+      }
+      .ornament span::before,
+      .ornament span::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 60px;
+        height: 1px;
+        background: var(--faint);
+      }
+      .ornament span::before {
+        right: 100%;
+      }
+      .ornament span::after {
+        left: 100%;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .footer-line {
+        font-size: 0.78rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+/* ── Utilitaires (anciens attributs style= inline) ── */
+.u-mt-05 { margin-top: 0.5rem; }
+.u-mt-055 { margin-top: 0.55rem; }
+.u-mt-06 { margin-top: 0.6rem; }
+.u-mt-075 { margin-top: 0.75rem; }

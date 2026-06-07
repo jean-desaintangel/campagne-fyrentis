@@ -1,0 +1,188 @@
+/* ── ADEPTUS MECHANICUS : ROUGE SANG + ACIER ROUILLÉ ── */
+      :root {
+        --am-red: #c01820;
+        --am-red-light: #e03040;
+        --am-red-dim: rgba(192, 24, 32, 0.45);
+        --am-red-bg: rgba(192, 24, 32, 0.07);
+        --am-red-hover-bg: rgba(192, 24, 32, 0.18);
+        --am-red-glow: rgba(192, 24, 32, 0.38);
+        --am-steel: #8a9aaa;
+        --am-steel-dim: rgba(138, 154, 170, 0.35);
+        --am-steel-bg: rgba(138, 154, 170, 0.05);
+        --am-rust: #7a4420;
+        --am-rust-dim: rgba(122, 68, 32, 0.4);
+        --page-accent: #c01820;
+        --page-accent-light: #e03040;
+        --page-accent-dim: rgba(192, 24, 32, 0.45);
+        --page-accent-bg: rgba(192, 24, 32, 0.07);
+        --page-accent-hover-bg: rgba(192, 24, 32, 0.18);
+        --page-accent-glow: rgba(192, 24, 32, 0.38);
+        --page-hero-glow: rgba(192, 24, 32, 0.16);
+        --page-hero-border: rgba(192, 24, 32, 0.25);
+        --page-symbol: "⚙";
+      }
+      [data-theme="light"] {
+        --am-red: #8b1018;
+        --am-red-light: #6b0c10;
+        --am-red-dim: rgba(139, 16, 24, 0.4);
+        --am-red-bg: rgba(139, 16, 24, 0.06);
+        --am-red-hover-bg: rgba(139, 16, 24, 0.14);
+        --am-red-glow: rgba(139, 16, 24, 0.2);
+        --am-steel: #4a5a6a;
+        --am-steel-dim: rgba(74, 90, 106, 0.35);
+        --am-steel-bg: rgba(74, 90, 106, 0.05);
+        --am-rust: #5a2e10;
+        --am-rust-dim: rgba(90, 46, 16, 0.35);
+        --page-accent: #8b1018;
+        --page-accent-light: #6b0c10;
+        --page-accent-dim: rgba(139, 16, 24, 0.4);
+        --page-accent-bg: rgba(139, 16, 24, 0.06);
+        --page-accent-hover-bg: rgba(139, 16, 24, 0.14);
+        --page-accent-glow: rgba(139, 16, 24, 0.2);
+        --page-hero-glow: rgba(139, 16, 24, 0.12);
+        --page-hero-border: rgba(139, 16, 24, 0.2);
+      }
+
+      /* ── BINARY TICKER ─────────────────────────────────────────── */
+      .binary-ticker {
+        font-family: "Courier New", monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        color: var(--am-red);
+        opacity: 0.45;
+        margin: 0.5rem 0;
+        user-select: none;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      /* ── BLOC ALLIÉ VISIBLE ─────────────────────────────────────── */
+      .allie-bloc {
+        width: 100%;
+        border: 1px solid var(--am-steel-dim);
+        border-left: 3px solid var(--am-steel);
+        padding: 1.25rem 1.5rem;
+        border-radius: 2px;
+        background: var(--am-steel-bg);
+        position: relative;
+      }
+      [data-theme="light"] .allie-bloc {
+        background: rgba(74, 90, 106, 0.04);
+        border-color: rgba(74, 90, 106, 0.22);
+        border-left-color: var(--am-steel);
+      }
+      .allie-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--am-steel);
+        margin-bottom: 0.45rem;
+      }
+      .allie-nom {
+        font-family: "Cinzel", serif;
+        font-size: clamp(0.85rem, 2vw, 1.05rem);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--color-text, #cdccca);
+        margin-bottom: 0.3rem;
+      }
+      .allie-desc {
+        font-family: "Crimson Text", serif;
+        font-size: 0.9rem;
+        line-height: 1.65;
+        color: var(--color-text-muted, #797876);
+        font-style: italic;
+        max-width: 62ch;
+      }
+
+      /* ── BLOC ALLIÉ SCELLÉ (INQUISITION) ───────────────────────── */
+      .allie-scelle {
+        width: 100%;
+        border: 1px solid rgba(192, 24, 32, 0.22);
+        border-left: 3px solid var(--am-red);
+        padding: 1.25rem 1.5rem;
+        border-radius: 2px;
+        background: rgba(192, 24, 32, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+      .allie-scelle::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(192, 24, 32, 0.025) 0px,
+          rgba(192, 24, 32, 0.025) 1px,
+          transparent 1px,
+          transparent 7px
+        );
+        pointer-events: none;
+      }
+      [data-theme="light"] .allie-scelle {
+        background: rgba(139, 16, 24, 0.04);
+        border-color: rgba(139, 16, 24, 0.22);
+      }
+      .allie-scelle-header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.85rem;
+      }
+      .allie-scelle-badge {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        border: 1px solid var(--am-red-dim);
+        background: var(--am-red-bg);
+        padding: 0.2rem 0.55rem;
+        border-radius: 2px;
+        white-space: nowrap;
+      }
+      .allie-scelle-titre {
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--am-red);
+        opacity: 0.75;
+      }
+      .allie-scelle-lignes {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .allie-scelle .censure-ligne {
+        background: rgba(192, 24, 32, 0.08);
+        border-color: rgba(192, 24, 32, 0.14);
+      }
+      .allie-scelle-footer {
+        font-family: "Crimson Text", serif;
+        font-size: 0.78rem;
+        font-style: italic;
+        color: var(--am-red);
+        opacity: 0.7;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 600px) {
+        .allie-bloc,
+        .allie-scelle {
+          padding: 1rem;
+        }
+      }
+
+/* ── Utilitaires (anciens attributs style= inline) ── */
+.u-block-center { width: 100%; text-align: center; padding: 0.25rem 0; }
+.u-mt-05 { margin-top: 0.5rem; }
+.u-am-icon-inline { display: inline; vertical-align: middle; margin-right: 0.4rem; }
+.u-am-label { font-family: "Cinzel", serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--am-steel); opacity: 0.7; }
+.u-am-mono { font-family: "Courier New", monospace; font-size: 0.75em; letter-spacing: 0.08em; }
+.u-am-quote { font-family: "Crimson Text", serif; font-size: 0.8rem; font-weight: 400; font-style: italic; letter-spacing: 0.02em; color: var(--color-text-muted, #797876); }

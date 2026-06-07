@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
     <meta name="description" content="Silver Templars — Armée Astartes de la campagne Fyrentis 40K, sous-secteur Fyrentis.">
     <title>Silver Templars — Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,271 +13,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
-    <style>
-      /* ── SILVER TEMPLARS : ARGENT IMPÉRIAL + BLEU ACIER ── */
-      :root {
-        --st-silver: #c0c8d4;
-        --st-silver-dim: rgba(192, 200, 212, 0.38);
-        --st-silver-bg: rgba(192, 200, 212, 0.06);
-        --st-silver-hover: rgba(192, 200, 212, 0.15);
-        --st-silver-glow: rgba(192, 200, 212, 0.28);
-        --st-silver-light: #e0e6f0;
-        --st-blue: #3a6a9a;
-        --st-blue-dim: rgba(58, 106, 154, 0.38);
-        --page-accent: #c0c8d4;
-        --page-accent-light: #e0e6f0;
-        --page-accent-dim: rgba(192, 200, 212, 0.38);
-        --page-accent-bg: rgba(192, 200, 212, 0.06);
-        --page-accent-hover-bg: rgba(192, 200, 212, 0.15);
-        --page-accent-glow: rgba(192, 200, 212, 0.28);
-        --page-hero-glow: rgba(192, 200, 212, 0.1);
-        --page-hero-border: rgba(192, 200, 212, 0.2);
-        --page-symbol: "✶";
-        --page-nota-accent: #3a6a9a;
-        --page-nota-accent-dim: rgba(58, 106, 154, 0.38);
-      }
-      [data-theme="light"] {
-        --st-silver: #3a4a5e;
-        --st-silver-dim: rgba(58, 74, 94, 0.38);
-        --st-silver-bg: rgba(58, 74, 94, 0.05);
-        --st-silver-hover: rgba(58, 74, 94, 0.13);
-        --st-silver-glow: rgba(58, 74, 94, 0.18);
-        --st-silver-light: #1a2a3e;
-        --st-blue: #1a4a7a;
-        --st-blue-dim: rgba(26, 74, 122, 0.35);
-        --page-accent: #3a4a5e;
-        --page-accent-light: #1a2a3e;
-        --page-accent-dim: rgba(58, 74, 94, 0.38);
-        --page-accent-bg: rgba(58, 74, 94, 0.05);
-        --page-accent-hover-bg: rgba(58, 74, 94, 0.13);
-        --page-accent-glow: rgba(58, 74, 94, 0.18);
-        --page-hero-glow: rgba(58, 74, 94, 0.08);
-        --page-hero-border: rgba(58, 74, 94, 0.18);
-        --page-nota-accent: #1a4a7a;
-        --page-nota-accent-dim: rgba(26, 74, 122, 0.35);
-      }
-      /* ── BLOC DÉCLASSIFIÉ — SILVER TEMPLARS ────────────────────── */
-      .declassifie-bloc {
-        width: 100%;
-        background: rgba(6, 10, 16, 0.72);
-        border: 1px solid rgba(192, 200, 212, 0.3);
-        border-top: 3px solid var(--st-silver);
-        border-radius: 2px;
-        padding: 1.75rem 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .declassifie-bloc::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          -45deg,
-          rgba(192, 200, 212, 0.018) 0px,
-          rgba(192, 200, 212, 0.018) 1px,
-          transparent 1px,
-          transparent 6px
-        );
-        pointer-events: none;
-      }
-      [data-theme="light"] .declassifie-bloc {
-        background: rgba(232, 236, 244, 0.78);
-        border-color: rgba(58, 74, 94, 0.32);
-        border-top-color: var(--st-silver);
-      }
-      .declassifie-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.4rem; padding-bottom: 0.9rem; border-bottom: 1px solid rgba(192,200,212,.18); }
-      .declassifie-badge { font-family: "Cinzel", serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #060a10; background: var(--st-silver); padding: 0.22rem 0.6rem; border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
-      [data-theme="light"] .declassifie-badge { color: #f0f2f6; }
-      .declassifie-header-title { font-family: "Cinzel", serif; font-size: clamp(0.7rem, 1.8vw, 0.88rem); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--st-silver); flex: 1; }
-      .declassifie-entries { display: flex; flex-direction: column; gap: 1rem; }
-      .declassifie-entry { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem 0.85rem; align-items: start; }
-      .declassifie-entry-icon { width: 28px; height: 28px; border: 1px solid var(--st-silver-dim); border-radius: 2px; background: var(--st-silver-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--st-silver); margin-top: 0.1rem; }
-      .declassifie-entry-label { font-family: "Cinzel", serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-silver); margin-bottom: 0.22rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-      .status-tag { font-family: "Cinzel", serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 2px; border: 1px solid; white-space: nowrap; }
-      .status-tag--tenu { color: var(--st-silver); border-color: var(--st-silver-dim); background: var(--st-silver-bg); }
-      .status-tag--operationnel { color: #5a9ad4; border-color: rgba(90,154,212,.4); background: rgba(90,154,212,.07); }
-      .status-tag--disperse { color: #c8a028; border-color: rgba(200,160,40,.4); background: rgba(200,160,40,.07); }
-      .status-tag--imminence { color: #c84040; border-color: rgba(200,60,60,.4); background: rgba(200,60,60,.07); }
-      [data-theme="light"] .status-tag--operationnel { color: #1a4a7a; border-color: rgba(26,74,122,.4); background: rgba(26,74,122,.06); }
-      [data-theme="light"] .status-tag--disperse { color: #7a4800; border-color: rgba(122,72,0,.4); background: rgba(122,72,0,.06); }
-      [data-theme="light"] .status-tag--imminence { color: #8b1c1c; border-color: rgba(139,28,28,.4); background: rgba(139,28,28,.06); }
-      .declassifie-entry-text { font-family: "Crimson Text", serif; font-size: 0.95rem; line-height: 1.65; color: var(--color-text-muted, #9a9896); }
-      [data-theme="light"] .declassifie-entry-text { color: #4a4540; }
-      .declassifie-entry-text em { color: var(--st-silver-light); font-style: normal; }
-      [data-theme="light"] .declassifie-entry-text em { color: var(--st-silver); }
-      .declassifie-separator { height: 1px; background: linear-gradient(to right, transparent, rgba(192,200,212,.18), transparent); margin: 0; }
-      .declassifie-footer { margin-top: 1.3rem; padding-top: 0.9rem; border-top: 1px solid rgba(192,200,212,.12); font-family: "Cinzel", serif; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(192,200,212,.38); text-align: right; }
-      @media (max-width: 600px) {
-        .declassifie-bloc { padding: 1.25rem 1rem; }
-        .declassifie-entry { grid-template-columns: 1fr; }
-        .declassifie-entry-icon { display: none; }
-      }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/pages/silver-templars.css" />
   </head>
-  <body>
-    <nav class="nav" id="nav">
-      <div class="nav-inner">
-        <a
-          href="../../index.html"
-          class="nav-logo"
-          aria-label="Campagne Fyrentis — Retour à l'accueil"
-        >
-          <svg
-            class="nav-logo-icon"
-            viewBox="0 0 36 36"
-            fill="none"
-            aria-hidden="true"
-          >
-            <polygon
-              points="18,2 34,28 2,28"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <circle
-              cx="18"
-              cy="18"
-              r="6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <line
-              x1="18"
-              y1="2"
-              x2="18"
-              y2="12"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="18"
-              y1="24"
-              x2="18"
-              y2="28"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="8.5"
-              y1="22.3"
-              x2="13.5"
-              y2="18.9"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="27.5"
-              y1="22.3"
-              x2="22.5"
-              y2="18.9"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-          </svg>
-          <div>
-            <span class="nav-logo-text">Fyrentis</span>
-            <span class="nav-logo-sub">Campagne 40K</span>
-          </div>
-        </a>
-        <div class="nav-actions">
-          <div class="nav-page-links">
-            <a
-              href="../../autres/cartes/carte.html"
-              class="btn-nav-page btn-nav-page--carte"
-              aria-label="Voir la Carte du secteur"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-                <line x1="8" y1="2" x2="8" y2="18" />
-                <line x1="16" y1="6" x2="16" y2="22" />
-              </svg>
-              Carte
-            </a>
-            <a
-              href="../../autres/cartes/sanctum.html"
-              class="btn-nav-page btn-nav-page--sanctum"
-              aria-label="Accéder au Sanctum"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              Sanctum
-            </a>
-            <a
-              href="../../autres/rapports/rapport-inquisiteur.html"
-              class="btn-nav-page btn-nav-page--inquisition"
-              aria-label="Lire les Rapports Inquisitoriaux"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              Inquisition
-            </a>
-          </div>
-          <button
-            class="btn-theme"
-            data-theme-toggle
-            aria-label="Basculer le thème"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-          <button
-            class="nav-mobile-toggle"
-            id="nav-toggle"
-            aria-label="Menu"
-            aria-expanded="false"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </nav>
+  <body data-base="../../" data-active="">
+    <div id="site-nav"></div>
 
     <!-- HERO MINI -->
     <header class="page-hero" id="top">
@@ -725,7 +464,7 @@
                 Guerre sectoriel. Tout incident impliquant ce détachement devra
                 être rapporté immédiatement à l'Inquisitoriat. »
               </p>
-              <p style="margin-top: 0.5rem">
+              <p class="u-mt-05">
                 —
                 <em
                   >Inquisiteur ██████ ████████████, Ordo Hereticus, Fyrentis
@@ -738,17 +477,7 @@
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="footer-logo">Sous-Secteur Fyrentis</div>
-        <p class="footer-line">
-          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
-        </p>
-        <p class="footer-line">
-          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
-        </p>
-      </div>
-    </footer>
+    <footer id="site-footer"></footer>
 
     <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
       <svg
@@ -763,6 +492,7 @@
       </svg>
     </a>
 
+    <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>
   </body>
 </html>

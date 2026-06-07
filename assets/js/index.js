@@ -40,7 +40,7 @@ function renderJoueurs(joueurs) {
         `<article class="player-card player-card--${escapeAttr(j.couleur)} reveal${delayClass(j.delai)}">
         <p class="player-name">${escapeHTML(j.nom)}</p>
         <p class="player-role">${escapeHTML(j.role)}</p>
-        <ul class="player-armies" role="list">${j.armees.map((a) => `<li>${escapeHTML(a)}</li>`).join("")}</ul>
+        <ul class="player-armies" role="list">${(j.armees || []).map((a) => `<li>${escapeHTML(a)}</li>`).join("")}</ul>
       </article>`,
     )
     .join("");
@@ -54,11 +54,15 @@ function renderLore(lore) {
       (b, i) =>
         `<div class="lore-text reveal${i > 0 ? " reveal-delay-2" : ""}">
         <h3>${escapeHTML(b.titre)}</h3>
-        ${b.paragraphes.map((p) => `<p>${escapeHTML(p)}</p>`).join("")}
-        <div class="quote-block${b.citation.alerte ? " quote-block--alert" : ""}">
+        ${(b.paragraphes || []).map((p) => `<p>${escapeHTML(p)}</p>`).join("")}
+        ${
+          b.citation
+            ? `<div class="quote-block${b.citation.alerte ? " quote-block--alert" : ""}">
           <p class="quote-text">${escapeHTML(b.citation.texte)}</p>
           <span class="quote-author">${escapeHTML(b.citation.auteur)}</span>
-        </div>
+        </div>`
+            : ""
+        }
       </div>`,
     )
     .join("");
@@ -89,7 +93,7 @@ function renderFronts(fronts) {
           ? `<img src="${escapeAttr(f.image)}" alt="${escapeAttr(f.image_alt)}" width="1200" height="400" loading="lazy">`
           : `<div class="front-visual"><img src="${escapeAttr(f.image)}" alt="${escapeAttr(f.image_alt)}" width="1600" height="900" loading="lazy"></div>`
         : "";
-      const bataillesHTML = f.batailles
+      const bataillesHTML = (f.batailles || [])
         .map((b) => {
           const safeHref =
             b.lien &&
@@ -105,7 +109,7 @@ function renderFronts(fronts) {
           <p class="battle-label">${escapeHTML(b.label)}</p>
           <h4 class="battle-title">${escapeHTML(b.titre)}</h4>
           <p class="battle-text">${escapeHTML(b.texte)}${lienHTML}</p>
-          <div class="battle-factions">${b.factions.map((fc) => `<span class="faction-tag ${escapeAttr(fc.classe)}">${escapeHTML(fc.label)}</span>`).join("")}</div>
+          <div class="battle-factions">${(b.factions || []).map((fc) => `<span class="faction-tag ${escapeAttr(fc.classe)}">${escapeHTML(fc.label)}</span>`).join("")}</div>
         </div>`;
         })
         .join("");

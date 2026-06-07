@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
     <meta name="description" content="Garde Impériale — Armée de la campagne Fyrentis 40K, sous-secteur Fyrentis.">
     <title>Garde Impériale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,211 +13,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
-    <style>
-      /* ── GARDE IMPÉRIALE : KAKI & OR IMPÉRIAL ── */
-      :root {
-        --gi-khaki: #8a7a3a;
-        --gi-khaki-light: #b8a850;
-        --gi-khaki-dim: rgba(138, 122, 58, 0.45);
-        --gi-khaki-bg: rgba(138, 122, 58, 0.07);
-        --gi-khaki-hover-bg: rgba(138, 122, 58, 0.18);
-        --gi-khaki-glow: rgba(138, 122, 58, 0.32);
-        --gi-steel: #5a6a7a;
-        --gi-steel-dim: rgba(90, 106, 122, 0.35);
-        --page-accent: #8a7a3a;
-        --page-accent-light: #b8a850;
-        --page-accent-dim: rgba(138, 122, 58, 0.45);
-        --page-accent-bg: rgba(138, 122, 58, 0.07);
-        --page-accent-hover-bg: rgba(138, 122, 58, 0.18);
-        --page-accent-glow: rgba(138, 122, 58, 0.32);
-        --page-hero-glow: rgba(138, 122, 58, 0.15);
-        --page-hero-border: rgba(138, 122, 58, 0.22);
-        --page-symbol: "✦";
-      }
-      [data-theme="light"] {
-        --gi-khaki: #5c5218;
-        --gi-khaki-light: #3e3808;
-        --gi-khaki-dim: rgba(92, 82, 24, 0.4);
-        --gi-khaki-bg: rgba(92, 82, 24, 0.06);
-        --gi-khaki-hover-bg: rgba(92, 82, 24, 0.14);
-        --gi-khaki-glow: rgba(92, 82, 24, 0.2);
-        --gi-steel: #3a4a5a;
-        --gi-steel-dim: rgba(58, 74, 90, 0.3);
-        --page-accent: #5c5218;
-        --page-accent-light: #3e3808;
-        --page-accent-dim: rgba(92, 82, 24, 0.4);
-        --page-accent-bg: rgba(92, 82, 24, 0.06);
-        --page-accent-hover-bg: rgba(92, 82, 24, 0.14);
-        --page-accent-glow: rgba(92, 82, 24, 0.2);
-        --page-hero-glow: rgba(92, 82, 24, 0.12);
-        --page-hero-border: rgba(92, 82, 24, 0.18);
-      }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/pages/garde-imperiale.css" />
   </head>
-  <body>
-    <nav class="nav" id="nav">
-      <div class="nav-inner">
-        <a
-          href="../../index.html"
-          class="nav-logo"
-          aria-label="Campagne Fyrentis — Retour à l'accueil"
-        >
-          <svg
-            class="nav-logo-icon"
-            viewBox="0 0 36 36"
-            fill="none"
-            aria-hidden="true"
-          >
-            <polygon
-              points="18,2 34,28 2,28"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <circle
-              cx="18"
-              cy="18"
-              r="6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <line
-              x1="18"
-              y1="2"
-              x2="18"
-              y2="12"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="18"
-              y1="24"
-              x2="18"
-              y2="28"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="8.5"
-              y1="22.3"
-              x2="13.5"
-              y2="18.9"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="27.5"
-              y1="22.3"
-              x2="22.5"
-              y2="18.9"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-          </svg>
-          <div>
-            <span class="nav-logo-text">Fyrentis</span>
-            <span class="nav-logo-sub">Campagne 40K</span>
-          </div>
-        </a>
-        <div class="nav-actions">
-          <div class="nav-page-links">
-            <a
-              href="../../autres/cartes/carte.html"
-              class="btn-nav-page btn-nav-page--carte"
-              aria-label="Voir la Carte du secteur"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-                <line x1="8" y1="2" x2="8" y2="18" />
-                <line x1="16" y1="6" x2="16" y2="22" />
-              </svg>
-              Carte
-            </a>
-            <a
-              href="../../autres/cartes/sanctum.html"
-              class="btn-nav-page btn-nav-page--sanctum"
-              aria-label="Accéder au Sanctum"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              Sanctum
-            </a>
-            <a
-              href="../../autres/rapports/rapport-inquisiteur.html"
-              class="btn-nav-page btn-nav-page--inquisition"
-              aria-label="Lire les Rapports Inquisitoriaux"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              Inquisition
-            </a>
-          </div>
-          <button
-            class="btn-theme"
-            data-theme-toggle
-            aria-label="Basculer le thème"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-          <button
-            class="nav-mobile-toggle"
-            id="nav-toggle"
-            aria-label="Menu"
-            aria-expanded="false"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </nav>
+  <body data-base="../../" data-active="">
+    <div id="site-nav"></div>
 
     <!-- HERO MINI -->
     <header class="page-hero" id="top">
@@ -460,7 +259,7 @@
                 informations seront transmises aux autorités compétentes à
                 l'issue des opérations en cours sur Jakku et Colchis. »
               </p>
-              <p style="margin-top: 0.5rem">
+              <p class="u-mt-05">
                 —
                 <em
                   >Officier-Scribe ██████ █████████, Département Munitorium,
@@ -473,17 +272,7 @@
       </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="footer-logo">Sous-Secteur Fyrentis</div>
-        <p class="footer-line">
-          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
-        </p>
-        <p class="footer-line">
-          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
-        </p>
-      </div>
-    </footer>
+    <footer id="site-footer"></footer>
 
     <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
       <svg
@@ -498,6 +287,7 @@
       </svg>
     </a>
 
+    <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>
   </body>
 </html>

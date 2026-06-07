@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
     <meta name="description" content="Règles Narratives — Règles de la campagne Fyrentis pour Warhammer 40K.">
     <title>Règles Narratives — Fyrentis</title>
     <meta
@@ -17,475 +17,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <style>
-      /* ── LAYOUT PAGE ─────────────────────────────────────────────────────── */
-      :root {
-        --bg: #0d0b09;
-        --surface: #151210;
-        --surface-2: #1c1815;
-        --border: #2e2820;
-        --text: #d4c9b8;
-        --muted: #7a6f60;
-        --faint: #3d342a;
-        --gold: #c8a028;
-        --gold-dim: #8a6b18;
-        --red: #8b1c1c;
-        --red-bright: #c43030;
-      }
-      [data-theme="light"] {
-        --bg: #f5f2ec;
-        --surface: #ede9e0;
-        --surface-2: #e4dfd4;
-        --border: #ccc4b0;
-        --text: #2a2218;
-        --muted: #6a5f4a;
-        --faint: #bfb8a8;
-        --gold: #8a6800;
-        --gold-dim: #6a5000;
-        --red: #8b1c1c;
-        --red-bright: #a02020;
-      }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Crimson Text", Georgia, serif;
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .page-wrap {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 2.5rem 1.5rem 4rem;
-        flex: 1;
-      }
-
-      /* PAGE HEADER */
-      .page-header {
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .page-eyebrow {
-        font-family: "Cinzel", serif;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--gold-dim);
-        margin-bottom: 0.5rem;
-      }
-      .page-title {
-        font-family: "Cinzel", serif;
-        font-size: clamp(1.6rem, 4vw, 2.4rem);
-        color: var(--gold);
-        line-height: 1.15;
-        margin-bottom: 0.75rem;
-      }
-      .page-version {
-        font-size: 0.8rem;
-        color: var(--muted);
-        font-style: italic;
-      }
-
-      /* TOC */
-      .toc {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 1.25rem 1.5rem;
-        margin-bottom: 2.5rem;
-      }
-      .toc-title {
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--gold-dim);
-        margin-bottom: 0.75rem;
-      }
-      .toc-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-      }
-      .toc-list a {
-        font-size: 0.88rem;
-        color: var(--muted);
-        text-decoration: none;
-        transition: color 0.18s;
-      }
-      .toc-list a:hover {
-        color: var(--gold);
-      }
-      .toc-list .toc-sub {
-        padding-left: 1rem;
-        font-size: 0.82rem;
-      }
-
-      /* SECTIONS */
-      .rules-section {
-        margin-bottom: 3rem;
-        scroll-margin-top: 4rem;
-      }
-      .rules-section + .rules-section {
-        border-top: 1px solid var(--border);
-        padding-top: 2.5rem;
-      }
-      .section-title {
-        font-family: "Cinzel", serif;
-        font-size: clamp(1.05rem, 2.5vw, 1.4rem);
-        color: var(--gold);
-        letter-spacing: 0.06em;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
-      .section-title::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(to right, var(--gold-dim), transparent);
-        opacity: 0.4;
-      }
-      .subsection {
-        margin-bottom: 1.75rem;
-      }
-      .subsection-title {
-        font-family: "Cinzel", serif;
-        font-size: 0.9rem;
-        color: var(--text);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-bottom: 0.85rem;
-        padding-bottom: 0.4rem;
-        border-bottom: 1px solid var(--faint);
-      }
-
-      /* APTITUDE CARDS */
-      .aptitudes-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 0.55rem;
-      }
-      .aptitude-row {
-        display: grid;
-        grid-template-columns: 220px 1fr;
-        gap: 0 1rem;
-        padding: 0.55rem 0.75rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        align-items: baseline;
-      }
-      @media (max-width: 600px) {
-        .aptitude-row {
-          grid-template-columns: 1fr;
-          gap: 0.2rem;
-        }
-      }
-      .aptitude-key {
-        font-family: "Cinzel", serif;
-        font-size: 0.82rem;
-        color: var(--gold);
-        white-space: nowrap;
-      }
-      .aptitude-key .bracket {
-        color: var(--gold-dim);
-      }
-      .aptitude-val {
-        font-size: 0.9rem;
-        color: var(--text);
-        line-height: 1.5;
-      }
-      .aptitude-val .narratif {
-        color: var(--red-bright);
-        font-style: italic;
-      }
-
-      /* RULE BLOCKS */
-      .rule-block {
-        padding: 0.75rem 1rem;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        margin-bottom: 0.55rem;
-        font-size: 0.92rem;
-        line-height: 1.6;
-      }
-      .rule-block strong {
-        font-family: "Cinzel", serif;
-        font-size: 0.8rem;
-        color: var(--gold-dim);
-        display: block;
-        margin-bottom: 0.3rem;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-      .rule-block ul {
-        padding-left: 1.25rem;
-        margin-top: 0.3rem;
-      }
-      .rule-block ul li {
-        margin-bottom: 0.3rem;
-      }
-      .rule-block .narratif-tag {
-        display: inline-block;
-        font-family: "Cinzel", serif;
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--red-bright);
-        border: 1px solid rgba(196, 48, 48, 0.35);
-        border-radius: 2px;
-        padding: 0.1rem 0.4rem;
-        margin-bottom: 0.4rem;
-      }
-      .rule-highlight {
-        background: rgba(200, 160, 40, 0.07);
-        border-color: rgba(200, 160, 40, 0.3);
-      }
-      .rule-alert {
-        background: rgba(139, 28, 28, 0.1);
-        border-color: rgba(139, 28, 28, 0.35);
-      }
-
-      /* PLAYER TAG */
-      .player-tag {
-        display: inline-block;
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        padding: 0.15rem 0.5rem;
-        border-radius: 2px;
-        margin-right: 0.35rem;
-      }
-      .player-jeremy {
-        background: rgba(34, 85, 170, 0.15);
-        color: #4488dd;
-        border: 1px solid rgba(34, 85, 170, 0.4);
-      }
-
-      /* PROSE */
-      .prose {
-        font-size: 0.95rem;
-        line-height: 1.7;
-        color: var(--text);
-        margin-bottom: 0.75rem;
-      }
-      .prose em {
-        color: var(--muted);
-      }
-
-      /* ORNAMENT */
-      .ornament {
-        text-align: center;
-        margin: 2rem 0 1.5rem;
-      }
-      .ornament span {
-        font-family: "Cinzel", serif;
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--muted);
-        padding: 0 1rem;
-        position: relative;
-      }
-      .ornament span::before,
-      .ornament span::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        width: 60px;
-        height: 1px;
-        background: var(--faint);
-      }
-      .ornament span::before {
-        right: 100%;
-      }
-      .ornament span::after {
-        left: 100%;
-      }
-
-      /* FOOTER */
-      footer {
-        background: var(--surface);
-        border-top: 1px solid var(--border);
-        padding: 1.5rem;
-        text-align: center;
-      }
-      .footer-line {
-        font-size: 0.78rem;
-        color: var(--muted);
-        font-style: italic;
-      }
-    </style>
+    <link rel="stylesheet" href="../assets/css/pages/regles.css" />
   </head>
-  <body>
-    <nav class="nav" id="nav">
-      <div class="nav-inner">
-        <a href="../index.html" class="nav-logo" aria-label="Campagne Fyrentis">
-          <svg
-            class="nav-logo-icon"
-            viewBox="0 0 36 36"
-            fill="none"
-            aria-hidden="true"
-          >
-            <polygon
-              points="18,2 34,28 2,28"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <circle
-              cx="18"
-              cy="18"
-              r="6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <line
-              x1="18"
-              y1="2"
-              x2="18"
-              y2="12"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="18"
-              y1="24"
-              x2="18"
-              y2="28"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="8.5"
-              y1="22.3"
-              x2="13.5"
-              y2="18.9"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-            <line
-              x1="27.5"
-              y1="22.3"
-              x2="22.5"
-              y2="18.9"
-              stroke="currentColor"
-              stroke-width="1"
-            />
-          </svg>
-          <div>
-            <span class="nav-logo-text">Fyrentis</span>
-            <span class="nav-logo-sub">Campagne 40K</span>
-          </div>
-        </a>
-        <div class="nav-actions">
-          <div class="nav-page-links">
-            <a
-              href="cartes/carte.html"
-              class="btn-nav-page btn-nav-page--carte"
-              aria-label="Voir la Carte du secteur"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-                <line x1="8" y1="2" x2="8" y2="18" />
-                <line x1="16" y1="6" x2="16" y2="22" />
-              </svg>
-              Carte
-            </a>
-            <a
-              href="cartes/sanctum.html"
-              class="btn-nav-page btn-nav-page--sanctum"
-              aria-label="Accéder au Sanctum"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              Sanctum
-            </a>
-            <a
-              href="rapports/rapport-inquisiteur.html"
-              class="btn-nav-page btn-nav-page--inquisition"
-              aria-label="Lire les Rapports Inquisitoriaux"
-            >
-              <svg
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                aria-hidden="true"
-              >
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-              Inquisition
-            </a>
-          </div>
-          <button
-            class="btn-theme"
-            data-theme-toggle
-            aria-label="Basculer le thème"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-          <button
-            class="nav-mobile-toggle"
-            id="nav-toggle"
-            aria-label="Menu"
-            aria-expanded="false"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </nav>
+  <body data-base="../" data-active="regles">
+    <div id="site-nav"></div>
 
     <main class="page-wrap">
       <header class="page-header">
@@ -797,7 +332,7 @@
                 donc déduis du total du mouvement.
               </li>
             </ul>
-            <p class="prose" style="margin-top: 0.6rem">
+            <p class="prose u-mt-06">
               ( Vol ) = ignore les unités ennemies et les décors dans son
               déplacement (compté à l'horizontal seulement, l'horizontalité des
               décors ne compte pas).
@@ -861,7 +396,7 @@
               <li>Ennemi à 12 ps</li>
               <li>Réussir le jet de charge</li>
             </ul>
-            <p class="prose" style="margin-top: 0.5rem">
+            <p class="prose u-mt-05">
               ⚠️ Bonus pour l'adversaire : s'il décide d'utiliser le stratagème
               <em>"Tir en état d'alerte"</em>, le jet pour toucher sera de
               <strong>5+</strong> au lieu de 6+ (sans autre bonus cumulable
@@ -894,7 +429,7 @@
                 copains !)
               </li>
             </ul>
-            <p class="prose" style="margin-top: 0.6rem">
+            <p class="prose u-mt-06">
               ( Agent solitaire ) = unité inciblable à plus de 12 ps.<br />
               ( Discrétion ) = -1 à la CT pour cibler cette unité.<br />
               Les malus et bonus à la CT sont cumulables (plus y en a, mieux
@@ -917,7 +452,7 @@
                 à plus de 15 ps ! (chut, ils ne nous ont pas vue…).
               </li>
             </ul>
-            <p class="prose" style="margin-top: 0.6rem">
+            <p class="prose u-mt-06">
               Arme psychique = cela sera à la discrétion du scénario et au cas
               par cas avec moi mais le plus souvent cela correspondra à un effet
               appliqué ou plus de dégâts.
@@ -1031,7 +566,7 @@
               >
             </div>
           </div>
-          <div class="rule-block rule-alert" style="margin-top: 0.75rem">
+          <div class="rule-block rule-alert u-mt-075">
             <span class="narratif-tag">Modifications Narratif</span>
             <ul>
               <li>
@@ -1045,7 +580,7 @@
               </li>
             </ul>
           </div>
-          <div class="rule-block rule-highlight" style="margin-top: 0.55rem">
+          <div class="rule-block rule-highlight u-mt-055">
             <strong>Stratagème Grenade</strong>
             <p class="prose">
               Le stratagème Grenade n'implique qu'une figurine d'une unité, mais
@@ -1209,17 +744,7 @@
       </section>
     </main>
 
-    <footer>
-      <div class="container">
-        <div class="footer-logo">Sous-Secteur Fyrentis</div>
-        <p class="footer-line">
-          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
-        </p>
-        <p class="footer-line">
-          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
-        </p>
-      </div>
-    </footer>
+    <footer id="site-footer"></footer>
 
     <a href="#" class="back-top" id="back-top" aria-label="Retour en haut">
       <svg
@@ -1234,6 +759,7 @@
       </svg>
     </a>
 
+    <script type="module" src="../assets/js/layout.js"></script>
     <script type="module" src="../assets/js/pages.js"></script>
   </body>
 </html>

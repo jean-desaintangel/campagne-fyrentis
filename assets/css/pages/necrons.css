@@ -1,0 +1,45 @@
+/* ── NÉCRONS : VERT DYNÉTHYL + ARGENT SPECTRAL ── */
+      :root {
+        --nc-green: #1aff7a;
+        --nc-green-dim: rgba(26, 255, 122, 0.38);
+        --nc-green-bg: rgba(26, 255, 122, 0.05);
+        --nc-green-hover: rgba(26, 255, 122, 0.14);
+        --nc-green-glow: rgba(26, 255, 122, 0.28);
+        --nc-silver: #8ea8b8;
+        --nc-silver-dim: rgba(142, 168, 184, 0.35);
+        --nc-silver-bg: rgba(142, 168, 184, 0.05);
+        --page-accent: #1aff7a;
+        --page-accent-light: #70ffb0;
+        --page-accent-dim: rgba(26, 255, 122, 0.38);
+        --page-accent-bg: rgba(26, 255, 122, 0.05);
+        --page-accent-hover-bg: rgba(26, 255, 122, 0.14);
+        --page-accent-glow: rgba(26, 255, 122, 0.28);
+        --page-hero-glow: rgba(26, 255, 122, 0.08);
+        --page-hero-border: rgba(26, 255, 122, 0.2);
+        --page-symbol: "✦";
+        --page-nota-accent: #8ea8b8;
+        --page-nota-accent-dim: rgba(142, 168, 184, 0.35);
+      }
+      [data-theme="light"] {
+        --nc-green: #007a38;
+        --nc-green-dim: rgba(0, 122, 56, 0.38);
+        --nc-green-bg: rgba(0, 122, 56, 0.05);
+        --nc-green-hover: rgba(0, 122, 56, 0.14);
+        --nc-green-glow: rgba(0, 122, 56, 0.2);
+        --nc-silver: #3a5a6e;
+        --nc-silver-dim: rgba(58, 90, 110, 0.35);
+        --nc-silver-bg: rgba(58, 90, 110, 0.05);
+        --page-accent: #007a38;
+        --page-accent-light: #005a28;
+        --page-accent-dim: rgba(0, 122, 56, 0.38);
+        --page-accent-bg: rgba(0, 122, 56, 0.05);
+        --page-accent-hover-bg: rgba(0, 122, 56, 0.14);
+        --page-accent-glow: rgba(0, 122, 56, 0.2);
+        --page-hero-glow: rgba(0, 122, 56, 0.08);
+        --page-hero-border: rgba(0, 122, 56, 0.18);
+        --page-nota-accent: #3a5a6e;
+        --page-nota-accent-dim: rgba(58, 90, 110, 0.35);
+      }
+
+/* ── Utilitaires (anciens attributs style= inline) ── */
+.u-mt-05 { margin-top: 0.5rem; }

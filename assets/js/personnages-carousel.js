@@ -15,7 +15,7 @@ function buildSlide(perso, index, total) {
     '  height="420"',
     `  data-perso-index="${index}"`,
     ">",
-    '<div class="perso-carousel__img-placeholder" aria-hidden="true" style="display:none">',
+    '<div class="perso-carousel__img-placeholder perso-carousel__img-placeholder--hidden" aria-hidden="true">',
     PLACEHOLDER_SVG,
     "<span>Image non disponible</span>",
     "</div>",
@@ -113,7 +113,10 @@ function initLogic() {
     if (!img) return;
     img.addEventListener("error", () => {
       img.style.display = "none";
-      if (placeholder) placeholder.style.display = "flex";
+      // On affiche le placeholder en retirant la classe qui le masque
+      // (classList plutôt que style inline : compatible avec une CSP sans 'unsafe-inline').
+      if (placeholder)
+        placeholder.classList.remove("perso-carousel__img-placeholder--hidden");
     });
   });
 

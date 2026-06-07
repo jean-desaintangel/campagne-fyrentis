@@ -1,0 +1,41 @@
+/* ── GARDE IMPÉRIALE : KAKI & OR IMPÉRIAL ── */
+      :root {
+        --gi-khaki: #8a7a3a;
+        --gi-khaki-light: #b8a850;
+        --gi-khaki-dim: rgba(138, 122, 58, 0.45);
+        --gi-khaki-bg: rgba(138, 122, 58, 0.07);
+        --gi-khaki-hover-bg: rgba(138, 122, 58, 0.18);
+        --gi-khaki-glow: rgba(138, 122, 58, 0.32);
+        --gi-steel: #5a6a7a;
+        --gi-steel-dim: rgba(90, 106, 122, 0.35);
+        --page-accent: #8a7a3a;
+        --page-accent-light: #b8a850;
+        --page-accent-dim: rgba(138, 122, 58, 0.45);
+        --page-accent-bg: rgba(138, 122, 58, 0.07);
+        --page-accent-hover-bg: rgba(138, 122, 58, 0.18);
+        --page-accent-glow: rgba(138, 122, 58, 0.32);
+        --page-hero-glow: rgba(138, 122, 58, 0.15);
+        --page-hero-border: rgba(138, 122, 58, 0.22);
+        --page-symbol: "✦";
+      }
+      [data-theme="light"] {
+        --gi-khaki: #5c5218;
+        --gi-khaki-light: #3e3808;
+        --gi-khaki-dim: rgba(92, 82, 24, 0.4);
+        --gi-khaki-bg: rgba(92, 82, 24, 0.06);
+        --gi-khaki-hover-bg: rgba(92, 82, 24, 0.14);
+        --gi-khaki-glow: rgba(92, 82, 24, 0.2);
+        --gi-steel: #3a4a5a;
+        --gi-steel-dim: rgba(58, 74, 90, 0.3);
+        --page-accent: #5c5218;
+        --page-accent-light: #3e3808;
+        --page-accent-dim: rgba(92, 82, 24, 0.4);
+        --page-accent-bg: rgba(92, 82, 24, 0.06);
+        --page-accent-hover-bg: rgba(92, 82, 24, 0.14);
+        --page-accent-glow: rgba(92, 82, 24, 0.2);
+        --page-hero-glow: rgba(92, 82, 24, 0.12);
+        --page-hero-border: rgba(92, 82, 24, 0.18);
+      }
+
+/* ── Utilitaires (anciens attributs style= inline) ── */
+.u-mt-05 { margin-top: 0.5rem; }

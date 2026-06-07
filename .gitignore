@@ -13,3 +13,9 @@ Thumbs.db
 
 # Dependencies (si outils Node ajoutés plus tard)
 node_modules/
+
+# Artefacts FUSE (montage)
+.fuse_hidden*
+
+# Réglages locaux de l'assistant Claude
+.claude/

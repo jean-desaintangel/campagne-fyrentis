@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
     <meta name="description" content="Coalition Vox — Transmission inquisitoriale de la campagne Fyrentis.">
     <title>Coalition Vox — Transmission Inquisitoriale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,534 +13,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
-    <style>
-      /* ── HERO ───────────────────────────────────────────────────────── */
-      .coalition-hero {
-        padding: 7rem 1.5rem 3rem;
-        text-align: center;
-        background: linear-gradient(180deg, rgba(40, 10, 60, 0.55) 0%, transparent 100%);
-      }
-      [data-theme="light"] .coalition-hero {
-        background: linear-gradient(180deg, rgba(200, 180, 230, 0.25) 0%, transparent 100%);
-      }
-      .coalition-eyebrow {
-        font-family: "Cinzel", serif;
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: #9b6fc4;
-        margin-bottom: 0.75rem;
-      }
-      .coalition-hero-title {
-        font-family: "Cinzel", serif;
-        font-size: clamp(1.8rem, 4vw, 3rem);
-        font-weight: 900;
-        letter-spacing: 0.05em;
-        color: var(--color-text, #cdccca);
-        line-height: 1.15;
-        margin-bottom: 0.5rem;
-      }
-      .coalition-hero-title span {
-        color: #9b6fc4;
-      }
-      .coalition-hero-subtitle {
-        font-family: "Crimson Text", serif;
-        font-size: 1.05rem;
-        font-style: italic;
-        color: var(--color-text-muted, #797876);
-        max-width: 52ch;
-        margin: 0 auto;
-      }
-      .coalition-ornament {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin: 2rem auto 0;
-        max-width: 300px;
-        color: rgba(155, 111, 196, 0.5);
-        font-family: "Cinzel", serif;
-        font-size: 0.65rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-      }
-      .coalition-ornament::before,
-      .coalition-ornament::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: rgba(155, 111, 196, 0.35);
-      }
-
-      /* ── LAYOUT ─────────────────────────────────────────────────────── */
-      .coalition-section {
-        padding: 3rem 1.5rem 6rem;
-      }
-      .coalition-container {
-        max-width: 820px;
-        margin: 0 auto;
-      }
-
-      /* ── DOCUMENT ───────────────────────────────────────────────────── */
-      .rapport-doc {
-        position: relative;
-        background: rgba(30, 20, 45, 0.65);
-        border: 1px solid rgba(155, 111, 196, 0.22);
-        border-radius: 4px;
-        overflow: hidden;
-        box-shadow:
-          0 2px 20px rgba(155, 111, 196, 0.07),
-          0 8px 40px rgba(0, 0, 0, 0.35);
-      }
-      [data-theme="light"] .rapport-doc {
-        background: rgba(245, 240, 255, 0.7);
-        border-color: rgba(90, 42, 138, 0.2);
-        box-shadow:
-          0 2px 16px rgba(90, 42, 138, 0.08),
-          0 4px 20px rgba(0, 0, 0, 0.06);
-      }
-
-      /* ── DOC HEADER ─────────────────────────────────────────────────── */
-      .rapport-doc-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 1rem;
-        padding: 1.2rem 1.6rem 1rem;
-        border-bottom: 1px solid rgba(155, 111, 196, 0.18);
-        background: rgba(155, 111, 196, 0.06);
-        flex-wrap: wrap;
-      }
-      [data-theme="light"] .rapport-doc-header {
-        background: rgba(90, 42, 138, 0.05);
-        border-bottom-color: rgba(90, 42, 138, 0.15);
-      }
-      .rapport-ref {
-        font-family: "Cinzel", serif;
-        font-size: 0.6rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: #9b6fc4;
-        margin-bottom: 0.25rem;
-      }
-      .rapport-title {
-        font-family: "Cinzel", serif;
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--color-text, #cdccca);
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        line-height: 1.3;
-      }
-      .rapport-badge {
-        display: inline-block;
-        padding: 0.2rem 0.65rem;
-        font-family: "Cinzel", serif;
-        font-size: 0.56rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        border-radius: 2px;
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-      .rapport-badge--crimson {
-        color: #e06060;
-        border: 1px solid rgba(200, 60, 60, 0.5);
-        background: rgba(200, 60, 60, 0.1);
-      }
-
-      /* ── META GRID ──────────────────────────────────────────────────── */
-      .rapport-meta-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 0;
-        border-bottom: 1px solid rgba(155, 111, 196, 0.12);
-      }
-      .rapport-meta-item {
-        padding: 0.55rem 1.6rem;
-        border-right: 1px solid rgba(155, 111, 196, 0.1);
-      }
-      .rapport-meta-item:last-child {
-        border-right: none;
-      }
-      .rapport-meta-label {
-        font-family: "Cinzel", serif;
-        font-size: 0.55rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: rgba(155, 111, 196, 0.7);
-        margin-bottom: 0.2rem;
-      }
-      .rapport-meta-value {
-        font-family: "Crimson Text", serif;
-        font-size: 0.9rem;
-        color: var(--color-text-muted, #797876);
-        line-height: 1.4;
-      }
-
-      /* ── SECTION TITLE INSIDE DOC ───────────────────────────────────── */
-      .doc-section-title {
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: #9b6fc4;
-        padding: 1.2rem 1.6rem 0.5rem;
-        border-top: 1px solid rgba(155, 111, 196, 0.15);
-      }
-
-      /* ── BODY ───────────────────────────────────────────────────────── */
-      .rapport-body {
-        padding: 0.8rem 1.6rem 1.4rem;
-      }
-      .rapport-body p {
-        font-family: "Crimson Text", serif;
-        font-size: 1.05rem;
-        line-height: 1.75;
-        color: var(--color-text, #cdccca);
-        margin-bottom: 1rem;
-        max-width: 72ch;
-      }
-      .rapport-body p:last-child {
-        margin-bottom: 0;
-      }
-      .rapport-alerte {
-        margin: 1.2rem 0;
-        padding: 0.9rem 1.2rem;
-        border-left: 3px solid rgba(200, 60, 60, 0.6);
-        background: rgba(200, 60, 60, 0.06);
-        border-radius: 0 3px 3px 0;
-      }
-      [data-theme="light"] .rapport-alerte {
-        background: rgba(200, 60, 60, 0.04);
-      }
-      .rapport-alerte p {
-        color: #e06060 !important;
-        font-style: italic;
-        margin-bottom: 0 !important;
-      }
-      [data-theme="light"] .rapport-alerte p {
-        color: #8b1c1c !important;
-      }
-
-      /* ── TABLE ──────────────────────────────────────────────────────── */
-      .rapport-body table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0.5rem 0 0;
-      }
-      .rapport-body thead {
-        border-bottom: 1px solid rgba(155, 111, 196, 0.3);
-      }
-      .rapport-body th {
-        font-family: "Cinzel", serif;
-        font-size: 0.6rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        padding: 0.7rem 0.8rem;
-        text-align: left;
-        color: rgba(155, 111, 196, 0.85);
-      }
-      .rapport-body td {
-        padding: 0.7rem 0.8rem;
-        border-bottom: 1px solid rgba(155, 111, 196, 0.1);
-        font-family: "Crimson Text", serif;
-        font-size: 0.95rem;
-        color: var(--color-text, #cdccca);
-      }
-      .rapport-body tbody tr:hover {
-        background-color: rgba(155, 111, 196, 0.05);
-      }
-      @media (max-width: 640px) {
-        .rapport-body td,
-        .rapport-body th {
-          padding: 0.5rem;
-          font-size: 0.82rem;
-        }
-      }
-
-      /* ── BADGES ─────────────────────────────────────────────────────── */
-      .coalition-badge {
-        display: inline-block;
-        padding: 0.18rem 0.55rem;
-        font-size: 0.56rem;
-        font-family: "Cinzel", serif;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        border-radius: 2px;
-        border: 1px solid;
-        font-weight: 700;
-        white-space: nowrap;
-      }
-      .coalition-badge-official {
-        background-color: rgba(90, 154, 90, 0.15);
-        border-color: rgba(90, 154, 90, 0.5);
-        color: #8fd68f;
-      }
-      .coalition-badge-classified {
-        background-color: rgba(155, 111, 196, 0.15);
-        border-color: rgba(155, 111, 196, 0.5);
-        color: #c4b8d4;
-      }
-      .coalition-badge-pending {
-        background-color: rgba(170, 168, 74, 0.15);
-        border-color: rgba(170, 168, 74, 0.5);
-        color: #d4d2a8;
-      }
-      .coalition-badge-confirmed {
-        background-color: rgba(90, 138, 186, 0.15);
-        border-color: rgba(90, 138, 186, 0.5);
-        color: #a8c8e0;
-      }
-      .coalition-badge-alert {
-        background-color: rgba(200, 60, 60, 0.15);
-        border-color: rgba(200, 60, 60, 0.5);
-        color: #e06060;
-      }
-
-      /* ── WORLD ENTRIES ──────────────────────────────────────────────── */
-      .world-subsystem {
-        margin: 0.8rem 0 1.2rem;
-        padding: 1rem 1.2rem;
-        background: rgba(155, 111, 196, 0.04);
-        border: 1px solid rgba(155, 111, 196, 0.14);
-        border-radius: 3px;
-      }
-      .world-subsystem-name {
-        font-family: "Cinzel", serif;
-        font-size: 0.65rem;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: rgba(155, 111, 196, 0.65);
-        margin-bottom: 0.9rem;
-      }
-      .world-entry {
-        margin-bottom: 1.1rem;
-        padding-bottom: 1.1rem;
-        border-bottom: 1px solid rgba(155, 111, 196, 0.1);
-      }
-      .world-entry:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-      .world-name {
-        font-family: "Cinzel", serif;
-        font-size: 0.88rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--color-text, #cdccca);
-        margin-bottom: 0.35rem;
-      }
-      .world-entry p {
-        font-family: "Crimson Text", serif;
-        font-size: 1rem;
-        line-height: 1.7;
-        color: var(--color-text-muted, #797876);
-        margin-top: 0.4rem;
-        max-width: 68ch;
-      }
-
-      /* ── EMPHASIS / ALERT ───────────────────────────────────────────── */
-      .coalition-emphasis {
-        color: #9b6fc4;
-        font-style: italic;
-      }
-      .coalition-alert {
-        color: #e06060;
-        font-style: italic;
-      }
-
-      /* ── THREAT BANNER ──────────────────────────────────────────────── */
-      .threat-banner {
-        margin: 0 1.6rem 1.6rem;
-        padding: 1.1rem 1.2rem;
-        background: rgba(200, 60, 60, 0.04);
-        border: 1px solid rgba(200, 60, 60, 0.22);
-        border-radius: 3px;
-      }
-      .threat-banner-title {
-        font-family: "Cinzel", serif;
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: #e06060;
-        margin-bottom: 1rem;
-      }
-      .threat-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1rem;
-      }
-      @media (max-width: 640px) {
-        .threat-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-      .threat-item {
-        padding: 0.8rem;
-        border-left: 2px solid rgba(200, 60, 60, 0.35);
-      }
-      .threat-item-title {
-        font-family: "Cinzel", serif;
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #e06060;
-        margin-bottom: 0.4rem;
-      }
-      .threat-item p {
-        font-family: "Crimson Text", serif;
-        font-size: 0.92rem;
-        line-height: 1.65;
-        color: var(--color-text-muted, #797876);
-      }
-
-      /* ── SIGNATURE ──────────────────────────────────────────────────── */
-      .rapport-signature {
-        padding: 1.2rem 1.6rem;
-        border-top: 1px solid rgba(155, 111, 196, 0.15);
-        background: rgba(155, 111, 196, 0.03);
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-      .rapport-sig-formula {
-        font-family: "Crimson Text", serif;
-        font-size: 0.9rem;
-        font-style: italic;
-        color: rgba(155, 111, 196, 0.7);
-      }
-      .rapport-sig-name {
-        font-family: "Cinzel", serif;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        color: #9b6fc4;
-        text-align: right;
-      }
-      .rapport-sig-sub {
-        font-family: "Crimson Text", serif;
-        font-size: 0.8rem;
-        color: var(--color-text-muted, #797876);
-        text-align: right;
-        margin-top: 0.1rem;
-      }
-
-      /* ── FOOTER STAMP ───────────────────────────────────────────────── */
-      .rapport-footer-stamp {
-        padding: 0.5rem 1.6rem;
-        background: rgba(0, 0, 0, 0.2);
-        border-top: 1px solid rgba(155, 111, 196, 0.1);
-      }
-      [data-theme="light"] .rapport-footer-stamp {
-        background: rgba(90, 42, 138, 0.04);
-      }
-      .rapport-footer-stamp p {
-        font-family: "Cinzel", serif;
-        font-size: 0.5rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(155, 111, 196, 0.4);
-        text-align: center !important;
-        line-height: 1.8;
-        max-width: none;
-      }
-
-      /* ── ANIMATION MONDE CORROMPU ───────────────────────────────────── */
-      @keyframes blink-corrupted {
-        0%   { opacity: 1; color: var(--color-text, #cdccca); }
-        50%  { opacity: 0.4; color: #e06060; }
-        100% { opacity: 1; color: var(--color-text, #cdccca); }
-      }
-      .corrupted-world {
-        animation: blink-corrupted 3s infinite;
-      }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/pages/coalition-vox.css" />
   </head>
-  <body>
-    <nav class="nav" id="nav">
-      <div class="nav-inner">
-        <a href="../../index.html" class="nav-logo" aria-label="Campagne Fyrentis">
-          <svg
-            class="nav-logo-icon"
-            viewBox="0 0 36 36"
-            fill="none"
-            aria-hidden="true"
-          >
-            <polygon
-              points="18,2 34,28 2,28"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <circle
-              cx="18"
-              cy="18"
-              r="6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <line x1="18" y1="2"  x2="18" y2="12" stroke="currentColor" stroke-width="1" />
-            <line x1="18" y1="24" x2="18" y2="28" stroke="currentColor" stroke-width="1" />
-            <line x1="8.5"  y1="22.3" x2="13.5" y2="18.9" stroke="currentColor" stroke-width="1" />
-            <line x1="27.5" y1="22.3" x2="22.5" y2="18.9" stroke="currentColor" stroke-width="1" />
-          </svg>
-          <div>
-            <span class="nav-logo-text">Fyrentis</span>
-            <span class="nav-logo-sub">Campagne 40K</span>
-          </div>
-        </a>
-        <div class="nav-actions">
-          <div class="nav-page-links">
-            <a
-              href="../../autres/cartes/carte.html"
-              class="btn-nav-page btn-nav-page--carte"
-              aria-label="Voir la Carte du secteur"
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-                <line x1="8" y1="2" x2="8" y2="18" />
-                <line x1="16" y1="6" x2="16" y2="22" />
-              </svg>
-              Carte
-            </a>
-            <a
-              href="../../autres/cartes/sanctum.html"
-              class="btn-nav-page btn-nav-page--sanctum"
-              aria-label="Accéder au Sanctum"
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              Sanctum
-            </a>
-          </div>
-          <button class="btn-theme" data-theme-toggle aria-label="Basculer le thème">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-          <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="6"  x2="21" y2="6"  />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </nav>
+  <body data-base="../../" data-active="situation">
+    <div id="site-nav"></div>
 
     <!-- HERO -->
     <header class="coalition-hero" id="top">
@@ -634,7 +110,7 @@
               <div class="world-entry">
                 <div class="world-name">
                   Balvarum
-                  <span class="coalition-badge coalition-badge-pending" style="margin-left:0.6rem">Conflit en Cours</span>
+                  <span class="coalition-badge coalition-badge-pending u-ml-06">Conflit en Cours</span>
                 </div>
                 <p>
                   Guerres civiles continuelles. Foyers de révolte disséminés. Opérations de purge impériale en
@@ -649,7 +125,7 @@
               <div class="world-entry">
                 <div class="world-name">
                   Jakku
-                  <span class="coalition-badge coalition-badge-classified" style="margin-left:0.6rem">Combat Confidentiel</span>
+                  <span class="coalition-badge coalition-badge-classified u-ml-06">Combat Confidentiel</span>
                 </div>
                 <p>
                   Affrontement direct en cours entre une coalition de forces Astartes unifiées et une compagnie de
@@ -665,7 +141,7 @@
               <div class="world-entry">
                 <div class="world-name">
                   Sanctum
-                  <span class="coalition-badge coalition-badge-alert" style="margin-left:0.6rem">Invasion Chaotique</span>
+                  <span class="coalition-badge coalition-badge-alert u-ml-06">Invasion Chaotique</span>
                 </div>
                 <p>
                   Assauts ininterrompus des armées vouées à Khorne actuellement en cours.
@@ -678,7 +154,7 @@
               <div class="world-entry">
                 <div class="world-name">
                   <span class="corrupted-world">Colchis</span>
-                  <span class="coalition-badge coalition-badge-classified" style="margin-left:0.6rem">Perdu</span>
+                  <span class="coalition-badge coalition-badge-classified u-ml-06">Perdu</span>
                 </div>
                 <p>
                   Monde tombé aux mains des forces de Khorne dirigées par le
@@ -754,17 +230,7 @@
       </div>
     </main>
 
-    <footer>
-      <div class="container">
-        <div class="footer-logo">Sous-Secteur Fyrentis</div>
-        <p class="footer-line">
-          « Dans le futur sombre de l'humanité, il n'y a que la guerre. »
-        </p>
-        <p class="footer-line">
-          Warhammer 40 000 • Campagne Narrative • 41ème Millénaire
-        </p>
-      </div>
-    </footer>
+    <footer id="site-footer"></footer>
 
     <a href="#top" class="back-top" id="back-top" aria-label="Retour en haut">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -772,6 +238,7 @@
       </svg>
     </a>
 
+    <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>
   </body>
 </html>

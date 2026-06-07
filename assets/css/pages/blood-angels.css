@@ -1,0 +1,41 @@
+/* ── BLOOD ANGELS : ROUGE SANG & OR ── */
+      :root {
+        --ba-red: #b01a1a;
+        --ba-red-light: #d94040;
+        --ba-red-dim: rgba(176, 26, 26, 0.45);
+        --ba-red-bg: rgba(176, 26, 26, 0.07);
+        --ba-red-hover-bg: rgba(176, 26, 26, 0.18);
+        --ba-red-glow: rgba(176, 26, 26, 0.35);
+        --ba-gold: #c8a028;
+        --ba-gold-dim: rgba(200, 160, 40, 0.35);
+        --page-accent: #b01a1a;
+        --page-accent-light: #d94040;
+        --page-accent-dim: rgba(176, 26, 26, 0.45);
+        --page-accent-bg: rgba(176, 26, 26, 0.07);
+        --page-accent-hover-bg: rgba(176, 26, 26, 0.18);
+        --page-accent-glow: rgba(176, 26, 26, 0.35);
+        --page-hero-glow: rgba(176, 26, 26, 0.18);
+        --page-hero-border: rgba(176, 26, 26, 0.25);
+        --page-symbol: "✦";
+      }
+      [data-theme="light"] {
+        --ba-red: #8b1c1c;
+        --ba-red-light: #6b0e0e;
+        --ba-red-dim: rgba(139, 28, 28, 0.4);
+        --ba-red-bg: rgba(139, 28, 28, 0.06);
+        --ba-red-hover-bg: rgba(139, 28, 28, 0.14);
+        --ba-red-glow: rgba(139, 28, 28, 0.2);
+        --ba-gold: #8a6800;
+        --ba-gold-dim: rgba(138, 104, 0, 0.3);
+        --page-accent: #8b1c1c;
+        --page-accent-light: #6b0e0e;
+        --page-accent-dim: rgba(139, 28, 28, 0.4);
+        --page-accent-bg: rgba(139, 28, 28, 0.06);
+        --page-accent-hover-bg: rgba(139, 28, 28, 0.14);
+        --page-accent-glow: rgba(139, 28, 28, 0.2);
+        --page-hero-glow: rgba(139, 28, 28, 0.14);
+        --page-hero-border: rgba(139, 28, 28, 0.2);
+      }
+
+/* ── Utilitaires (anciens attributs style= inline) ── */
+.u-mt-05 { margin-top: 0.5rem; }

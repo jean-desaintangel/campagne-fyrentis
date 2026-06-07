@@ -107,11 +107,29 @@ function normalizeShipType(type) {
   return "croiseur-attaque";
 }
 
+// Bornes du SVG pour la position des vaisseaux (identiques au clamp du drag).
+const SHIP_MIN_X = 20,
+  SHIP_MAX_X = 680,
+  SHIP_MIN_Y = 20,
+  SHIP_MAX_Y = 540;
+
+// Coerce une coordonnée en nombre borné. localStorage peut contenir des valeurs
+// corrompues (chaîne, NaN, hors limites) qui, réinjectées dans l'attribut SVG
+// transform, casseraient l'affichage de TOUS les vaisseaux. On retombe sur une
+// valeur par défaut sûre plutôt que de propager une coordonnée invalide.
+function clampCoord(value, min, max, fallback) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.max(min, Math.min(max, n));
+}
+
 function normalizeShips(ships) {
   if (!Array.isArray(ships)) return [];
   return ships.map((ship) => ({
     ...ship,
     type: normalizeShipType(ship.type),
+    x: clampCoord(ship.x, SHIP_MIN_X, SHIP_MAX_X, CX + 140),
+    y: clampCoord(ship.y, SHIP_MIN_Y, SHIP_MAX_Y, CY - 120),
   }));
 }
 

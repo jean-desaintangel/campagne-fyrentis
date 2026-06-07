@@ -171,6 +171,10 @@
   text-transform: uppercase;
 }
 
+.perso-carousel__img-placeholder--hidden {
+  display: none;
+}
+
 .perso-carousel__img-placeholder svg {
   width: 40px;
   height: 40px;
@@ -411,7 +415,4 @@
 }
 
 /* ── Swipe touch (feedback visuel) ─────────────────────────────────────── */
-.perso-carousel__viewport--dragging .perso-carousel__track {
-  transition: none;
-  cursor: grabbing;
-}
+.perso-carousel__viewport--dragging .per

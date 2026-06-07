@@ -12,37 +12,45 @@ Site web statique pour la campagne narrative Warhammer 40,000 — Sous-secteur F
 campagne-fyrentis/
 ├── index.html                              # Page d'accueil — hub de navigation
 ├── README.md
+├── REVUE-CODE.md                           # Rapport de revue de code
 ├── assets/
-│   ├── css/                               # Feuilles de style (thème Warhammer 40K)
-│   │   ├── style.css                      # Style commun à toutes les pages intérieures
-│   │   ├── index.css                      # Style spécifique à la page d'accueil
-│   │   └── personnages-carousel.css       # Style du carrousel de personnages
-│   ├── js/                                # Scripts JavaScript
-│   │   ├── pages.js                       # Script commun (nav, thème, scroll)
-│   │   ├── index.js                       # Script de la page d'accueil
-│   │   └── personnages-carousel.js        # Carrousel de personnages
-│   ├── img/                               # Images, illustrations et bannières
-│   └── data/                              # Données JSON
-│       ├── campagne.json                  # Données de campagne (joueurs, fronts, batailles)
-│       └── sanctum.json                   # Données du système Sanctum
+│   ├── css/                                # Feuilles de style (thème Warhammer 40K)
+│   │   ├── style.css                       # Style commun aux pages intérieures
+│   │   ├── index.css                       # Style spécifique à la page d'accueil
+│   │   ├── personnages-carousel.css        # Style du carrousel de personnages
+│   │   └── pages/                          # Styles par page (ex-blocs <style> inline externalisés)
+│   ├── js/                                 # Scripts JavaScript (modules ES)
+│   │   ├── utils.js                        # Échappement HTML/attributs (anti-XSS)
+│   │   ├── layout.js                       # Nav + footer partagés, injectés sur chaque page
+│   │   ├── pages.js                        # Script commun (nav, thème, scroll, reveal)
+│   │   ├── index.js                        # Script de la page d'accueil
+│   │   ├── personnages-carousel.js         # Carrousel de personnages
+│   │   ├── carte.js                        # Carte interactive (zoom/pan SVG)
+│   │   ├── sanctum.js                      # Orrérie tactique du système Sanctum
+│   │   └── world-eaters.js                 # Mécaniques spéciales World Eaters
+│   ├── img/                                # Images, illustrations et bannières
+│   └── data/                               # Données JSON
+│       ├── campagne.json                   # Données de campagne (joueurs, fronts, batailles)
+│       └── sanctum.json                    # Données du système Sanctum
 └── autres/
-    ├── regles.html                        # Récapitulatif des règles de campagne
-    ├── armees/                            # Fiches des armées
-    │   ├── world-eaters.html              # World Eaters (Jean)
-    │   ├── black-templars.html            # Black Templars (Freddy)
-    │   ├── silver-templars.html           # Silver Templars (Freddy)
-    │   ├── blood-angels.html              # Blood Angels (David)
-    │   ├── death-guards.html              # Death Guard (Freddy)
-    │   ├── garde-imperiale.html           # Garde Impériale (Jeremy)
-    │   ├── iron-warriors-de-khorne.html   # Iron Warriors de Khorne (Vincent)
-    │   ├── necrons.html                   # Nécrons (Freddy)
-    │   └── adeptus-mechanicus.html        # Adeptus Mechanicus (Freddy)
-    ├── cartes/                            # Cartes du sous-secteur
-    │   ├── carte.html                     # Carte interactive
-    │   └── sanctum.html                   # Fiche du système Sanctum
-    └── rapports/                          # Rapports de bataille
-        ├── rapport-inquisiteur.html       # Rapports des inquisiteurs
-        └── rapport-bataille-brokha.html   # Rapport — Bataille de Brokha
+    ├── regles.html                         # Récapitulatif des règles de campagne
+    ├── armees/                             # Fiches des armées (9)
+    │   ├── world-eaters.html               # World Eaters (Jean)
+    │   ├── black-templars.html             # Black Templars (Freddy)
+    │   ├── silver-templars.html            # Silver Templars (Freddy)
+    │   ├── blood-angels.html               # Blood Angels (David)
+    │   ├── death-guards.html               # Death Guard (Freddy)
+    │   ├── garde-imperiale.html            # Garde Impériale (Jeremy)
+    │   ├── iron-warriors-de-khorne.html    # Iron Warriors de Khorne (Vincent)
+    │   ├── necrons.html                    # Nécrons (Freddy)
+    │   └── adeptus-mechanicus.html         # Adeptus Mechanicus (Freddy)
+    ├── cartes/                             # Cartes du sous-secteur
+    │   ├── carte.html                      # Carte interactive
+    │   └── sanctum.html                    # Fiche du système Sanctum
+    └── rapports/                           # Rapports de bataille
+        ├── rapport-inquisiteur.html        # Rapports des inquisiteurs
+        ├── rapport-bataille-brokha.html    # Rapport — Bataille de Brokha
+        └── coalition-vox.html              # Situation de la campagne (Coalition Vox)
 ```
 
 ---
@@ -116,15 +124,4 @@ git push origin main
 
 ---
 
-## Commandes Git utiles
-
-| Commande                  | Description                                   |
-| ------------------------- | --------------------------------------------- |
-| `git status`              | Voir les fichiers modifiés / non suivis       |
-| `git add .`               | Ajouter tous les changements                  |
-| `git commit -m "message"` | Créer un commit                               |
-| `git push origin main`    | Envoyer les commits vers GitHub               |
-| `git pull origin main`    | Récupérer les derniers commits depuis GitHub  |
-| `git log --oneline`       | Historique des commits (format court)         |
-| `git diff`                | Voir les modifications non encore commitées   |
-| `git restore nom-fichier` | Annuler les modifications d'un fichier        |
+## Comma

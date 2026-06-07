@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
     <meta name="description" content="Carte du sous-secteur Fyrentis — Vue d'ensemble des systèmes stellaires de la campagne Warhammer 40K.">
     <title>Carte — Sous-Secteur Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,478 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;1,400&display=swap"
       rel="stylesheet"
     />
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      :root {
-        --bg: #0d0b09;
-        --surface: #151210;
-        --surface-2: #1c1815;
-        --border: #2e2820;
-        --text: #d4c9b8;
-        --muted: #7a6f60;
-        --faint: #3d342a;
-        --gold: #c8a028;
-        --gold-dim: #8a6b18;
-        --red: #8b1c1c;
-        --red-bright: #c43030;
-        --blue: #2255aa;
-        --blue-bright: #4488dd;
-        --green: #2a6b30;
-        --green-bright: #55aa66;
-        --purple: #5b2d8a;
-        --purple-bright: #9055cc;
-        --teal: #1a5f5f;
-        --teal-bright: #33aaaa;
-        --chaos: #6b1a1a;
-        --imperium: #1a3a6b;
-        --necron: #1a6b3a;
-      }
-      html {
-        font-family: "Crimson Text", Georgia, serif;
-        background: var(--bg);
-        color: var(--text);
-        height: 100%;
-      }
-      body {
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* NAV */
-      nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 1.5rem;
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      .nav-title {
-        font-family: "Cinzel", serif;
-        font-size: 1rem;
-        color: var(--gold);
-        letter-spacing: 0.05em;
-      }
-      .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        list-style: none;
-      }
-      .nav-links a {
-        font-size: 0.85rem;
-        color: var(--muted);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover {
-        color: var(--gold);
-      }
-      .nav-links a.active {
-        color: var(--gold);
-      }
-
-      /* LAYOUT */
-      .page {
-        display: grid;
-        grid-template-columns: 1fr 320px;
-        flex: 1;
-        overflow: hidden;
-        height: calc(100dvh - 49px);
-      }
-      @media (max-width: 900px) {
-        .page {
-          grid-template-columns: 1fr;
-          height: auto;
-        }
-      }
-
-      /* MAP ZONE */
-      .map-zone {
-        position: relative;
-        overflow: hidden;
-        background: radial-gradient(
-          ellipse at 50% 50%,
-          #1a1208 0%,
-          #0d0b09 70%
-        );
-      }
-      .map-zone::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(
-          circle,
-          rgba(255, 255, 200, 0.15) 1px,
-          transparent 1px
-        );
-        background-size: 40px 40px;
-        opacity: 0.15;
-        pointer-events: none;
-      }
-      #map-svg {
-        width: 100%;
-        height: 100%;
-        cursor: grab;
-      }
-      #map-svg:active {
-        cursor: grabbing;
-      }
-
-      /* SYSTEM NODES */
-      .sys-group {
-        cursor: pointer;
-      }
-      .sys-group:hover .sys-ring {
-        opacity: 0.8;
-        r: 28;
-        transition: r 0.2s;
-      }
-      .sys-bg {
-        transition: all 0.2s;
-      }
-      .sys-ring {
-        transition: all 0.2s;
-      }
-      .sys-label {
-        font-family: "Cinzel", serif;
-        font-size: 11px;
-        fill: var(--text);
-        pointer-events: none;
-      }
-      .sys-sublabel {
-        font-size: 9px;
-        fill: var(--muted);
-        pointer-events: none;
-        font-family: "Crimson Text", serif;
-      }
-      .sys-group.selected .sys-bg {
-        filter: drop-shadow(0 0 8px currentColor);
-      }
-      .sys-group.selected .sys-ring {
-        r: 30;
-      }
-
-      /* ROUTES */
-      .route {
-        fill: none;
-        stroke-width: 1.5;
-        opacity: 0.5;
-        stroke-dasharray: 6 4;
-      }
-      .route--warp {
-        stroke: var(--gold);
-      }
-      .route--contested {
-        stroke: var(--red-bright);
-        stroke-dasharray: 4 4;
-        opacity: 0.7;
-      }
-      .route--chaos {
-        stroke: var(--red);
-        stroke-dasharray: 3 6;
-      }
-      .route--unknown {
-        stroke: var(--muted);
-        stroke-dasharray: 2 8;
-        opacity: 0.35;
-      }
-      .route-label {
-        font-size: 8px;
-        fill: var(--gold-dim);
-        font-family: "Crimson Text", serif;
-        font-style: italic;
-      }
-
-      /* SIDEBAR */
-      .sidebar {
-        background: var(--surface);
-        border-left: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-      }
-      .sidebar-header {
-        padding: 1.25rem 1.25rem 0.75rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .sidebar-header h2 {
-        font-family: "Cinzel", serif;
-        font-size: 0.95rem;
-        color: var(--gold);
-        margin-bottom: 0.25rem;
-      }
-      .sidebar-header p {
-        font-size: 0.8rem;
-        color: var(--muted);
-        line-height: 1.4;
-      }
-
-      .system-detail {
-        padding: 1.25rem;
-        display: none;
-        flex: 1;
-      }
-      .system-detail.active {
-        display: block;
-      }
-      .detail-eyebrow {
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--muted);
-        margin-bottom: 0.35rem;
-      }
-      .detail-name {
-        font-family: "Cinzel", serif;
-        font-size: 1.3rem;
-        color: var(--gold);
-        line-height: 1.2;
-        margin-bottom: 0.15rem;
-      }
-      .detail-status {
-        display: inline-block;
-        font-size: 0.72rem;
-        padding: 0.2rem 0.6rem;
-        border-radius: 999px;
-        margin-bottom: 0.9rem;
-        font-family: "Cinzel", serif;
-        letter-spacing: 0.04em;
-      }
-      .status--imperium {
-        background: rgba(26, 58, 107, 0.35);
-        color: var(--blue-bright);
-        border: 1px solid var(--blue);
-      }
-      .status--chaos {
-        background: rgba(107, 26, 26, 0.35);
-        color: var(--red-bright);
-        border: 1px solid var(--red);
-      }
-      .status--contested {
-        background: rgba(139, 28, 28, 0.2);
-        color: #ff8844;
-        border: 1px solid #883322;
-      }
-      .status--necron {
-        background: rgba(26, 107, 58, 0.35);
-        color: var(--green-bright);
-        border: 1px solid var(--green);
-      }
-      .status--unknown {
-        background: rgba(50, 42, 35, 0.5);
-        color: var(--muted);
-        border: 1px solid var(--faint);
-      }
-
-      .detail-desc {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        color: var(--text);
-        margin-bottom: 1rem;
-      }
-      .detail-section {
-        margin-bottom: 0.9rem;
-      }
-      .detail-section h4 {
-        font-family: "Cinzel", serif;
-        font-size: 0.72rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--gold-dim);
-        margin-bottom: 0.45rem;
-      }
-      .detail-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-      }
-      .tag {
-        font-size: 0.72rem;
-        padding: 0.18rem 0.5rem;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        color: var(--text);
-        background: var(--surface-2);
-      }
-      .tag--red {
-        border-color: var(--red);
-        color: var(--red-bright);
-        background: rgba(139, 28, 28, 0.15);
-      }
-      .tag--gold {
-        border-color: var(--gold-dim);
-        color: var(--gold);
-        background: rgba(200, 160, 40, 0.1);
-      }
-      .tag--blue {
-        border-color: var(--blue);
-        color: var(--blue-bright);
-        background: rgba(34, 85, 170, 0.15);
-      }
-      .tag--green {
-        border-color: var(--green);
-        color: var(--green-bright);
-        background: rgba(42, 107, 48, 0.15);
-      }
-      .tag--purple {
-        border-color: var(--purple);
-        color: var(--purple-bright);
-        background: rgba(91, 45, 138, 0.15);
-      }
-      .tag--teal {
-        border-color: var(--teal);
-        color: var(--teal-bright);
-        background: rgba(26, 95, 95, 0.15);
-      }
-
-      .detail-battles {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .battle-item {
-        font-size: 0.82rem;
-        padding: 0.5rem 0.6rem;
-        border-radius: 4px;
-        border-left: 2px solid var(--gold-dim);
-        background: var(--surface-2);
-        line-height: 1.4;
-      }
-      .battle-item strong {
-        color: var(--gold);
-        display: block;
-        font-size: 0.78rem;
-        font-family: "Cinzel", serif;
-      }
-
-      .empty-state {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        text-align: center;
-        color: var(--muted);
-        gap: 0.75rem;
-      }
-      .empty-state-icon {
-        font-size: 2.5rem;
-        opacity: 0.4;
-      }
-      .empty-state p {
-        font-size: 0.85rem;
-        line-height: 1.5;
-      }
-
-      /* LEGEND */
-      .legend {
-        padding: 1rem 1.25rem;
-        border-top: 1px solid var(--border);
-        margin-top: auto;
-      }
-      .legend h4 {
-        font-family: "Cinzel", serif;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--gold-dim);
-        margin-bottom: 0.6rem;
-      }
-      .legend-items {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-      .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.75rem;
-        color: var(--muted);
-      }
-      .legend-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        flex-shrink: 0;
-      }
-      .legend-line {
-        width: 18px;
-        height: 2px;
-        flex-shrink: 0;
-        border-radius: 1px;
-      }
-
-      /* CONTROLS */
-      .map-controls {
-        position: absolute;
-        bottom: 1rem;
-        left: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-      .ctrl-btn {
-        width: 32px;
-        height: 32px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        color: var(--text);
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition:
-          background 0.2s,
-          color 0.2s;
-      }
-      .ctrl-btn:hover {
-        background: var(--surface-2);
-        color: var(--gold);
-      }
-
-      /* ANIMÉ */
-      @keyframes pulse-ring {
-        0%,
-        100% {
-          opacity: 0.3;
-        }
-        50% {
-          opacity: 0.7;
-        }
-      }
-      .sys-contested .sys-ring {
-        animation: pulse-ring 2s ease-in-out infinite;
-      }
-      @keyframes warp-flow {
-        0% {
-          stroke-dashoffset: 0;
-        }
-        100% {
-          stroke-dashoffset: -40;
-        }
-      }
-      .route--warp {
-        animation: warp-flow 3s linear infinite;
-      }
-      .route--chaos {
-        animation: warp-flow 2s linear infinite reverse;
-      }
-    </style>
+    <link rel="stylesheet" href="../../assets/css/pages/carte.css" />
   </head>
   <body>
     <nav>
@@ -1062,14 +591,14 @@
           >
             SOUS-SECTEUR FYRENTIS
           </text>
-          <text
+          <text class="u-italic"
             x="450"
             y="52"
             text-anchor="middle"
             font-family="'Crimson Text', serif"
             font-size="11"
             fill="#7a6f60"
-            font-style="italic"
+            font-
           >
             41ème Millénaire — Carte Stellaire Interactive
           </text>
@@ -1413,53 +942,43 @@
           <div class="legend-items">
             <div class="legend-item">
               <div
-                class="legend-dot"
-                style="background: #4488dd; border: 1px solid #4488dd"
+                class="legend-dot u-swatch-blue"
               ></div>
               Impérium Sanctus
             </div>
             <div class="legend-item">
               <div
-                class="legend-dot"
-                style="background: #c8a028; border: 1px solid #c8a028"
+                class="legend-dot u-swatch-gold"
               ></div>
               Impérium Militias
             </div>
             <div class="legend-item">
               <div
-                class="legend-dot"
-                style="background: #c43030; border: 1px solid #c43030"
+                class="legend-dot u-swatch-red"
               ></div>
               Contesté / Chaos
             </div>
             <div class="legend-item">
               <div
-                class="legend-dot"
-                style="background: #33aa55; border: 1px solid #33aa55"
+                class="legend-dot u-swatch-green"
               ></div>
               Nécrons / Inconnu
             </div>
             <div class="legend-item">
               <div
-                class="legend-line"
-                style="
-                  background: linear-gradient(90deg, #c8a028, #8a6b18);
-                  opacity: 0.8;
-                "
+                class="legend-line u-swatch-goldgrad"
               ></div>
               Route Warp
             </div>
             <div class="legend-item">
               <div
-                class="legend-line"
-                style="background: var(--red-bright); opacity: 0.7"
+                class="legend-line u-swatch-redbright"
               ></div>
               Zone contestée
             </div>
             <div class="legend-item">
               <div
-                class="legend-line"
-                style="background: var(--muted); opacity: 0.4"
+                class="legend-line u-swatch-muted"
               ></div>
               Route inconnue
             </div>
