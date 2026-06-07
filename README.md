@@ -41,7 +41,7 @@ campagne-fyrentis/
     │   ├── carte.html                     # Carte interactive
     │   └── sanctum.html                   # Fiche du système Sanctum
     └── rapports/                          # Rapports de bataille
-        ├── rapports-inquisiteurs.html     # Rapports des inquisiteurs
+        ├── rapport-inquisiteur.html       # Rapports des inquisiteurs
         └── rapport-bataille-brokha.html   # Rapport — Bataille de Brokha
 ```
 

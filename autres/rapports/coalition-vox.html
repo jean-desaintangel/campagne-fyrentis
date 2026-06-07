@@ -1,0 +1,746 @@
+﻿<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coalition Vox - Transmission Inquisitoriale</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Crimson+Text:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 16px;
+        background-color: #0a0a0a;
+        color: #d4d4d4;
+      }
+      @media (max-width: 640px) {
+        html {
+          font-size: 15px;
+        }
+      }
+      body {
+        font-family: "Crimson Text", Georgia, serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #0a0a0a 0%, #121212 100%);
+        padding: 2rem 1rem;
+        min-height: 100vh;
+      }
+      .coalition-doc {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: rgba(18, 18, 24, 0.8);
+        border: 2px solid #c8a028;
+        border-radius: 2px;
+        position: relative;
+        overflow: hidden;
+      }
+      .coalition-doc::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.03) 0%,
+          rgba(0, 0, 0, 0.03) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+        pointer-events: none;
+        z-index: 10;
+      }
+      .coalition-transmission-header {
+        background: linear-gradient(
+          90deg,
+          rgba(200, 160, 40, 0.15) 0%,
+          transparent 100%
+        );
+        border-bottom: 3px solid #c8a028;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      .coalition-transmission-id {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+        font-family: "Cinzel", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #c8a028;
+        margin-bottom: 1.5rem;
+      }
+      @media (max-width: 640px) {
+        .coalition-transmission-id {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+      }
+      .coalition-seal {
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1rem;
+        background: radial-gradient(
+          circle,
+          #e06060 0%,
+          #8b1c1c 70%,
+          transparent 100%
+        );
+        border: 2px solid #c8a028;
+        border-radius: 50%;
+        position: relative;
+        top: -0.5rem;
+        opacity: 0.8;
+      }
+      .coalition-title {
+        font-family: "Cinzel", serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        line-height: 1.2;
+        color: #e8e0c8;
+        text-shadow: 0 0 10px rgba(200, 160, 40, 0.3);
+        margin-bottom: 0.5rem;
+      }
+      @media (max-width: 640px) {
+        .coalition-title {
+          font-size: 1.8rem;
+        }
+      }
+      .coalition-subtitle {
+        font-family: "Cinzel", serif;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #9b8c7a;
+        margin-bottom: 1rem;
+      }
+      .coalition-body {
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      @media (max-width: 640px) {
+        .coalition-body {
+          padding: 1.5rem;
+        }
+      }
+      .coalition-section {
+        margin-bottom: 2.5rem;
+      }
+      .coalition-section-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #c8a028;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid #c8a028;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 8px rgba(200, 160, 40, 0.2);
+      }
+      @media (max-width: 640px) {
+        .coalition-section-title {
+          font-size: 1.4rem;
+        }
+      }
+      .coalition-subsection-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #c8a028;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .coalition-narrative-block {
+        background-color: rgba(200, 160, 40, 0.05);
+        border-left: 4px solid #c8a028;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-style: italic;
+        color: #e0d8c8;
+        line-height: 1.8;
+      }
+      .coalition-narrative-block p {
+        margin-bottom: 0.8rem;
+      }
+      .coalition-narrative-block p:last-child {
+        margin-bottom: 0;
+      }
+      .coalition-emphasis {
+        color: #c8a028;
+        font-weight: bold;
+        font-style: italic;
+      }
+      .coalition-alert {
+        color: #e06060;
+        font-weight: bold;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background-color: rgba(18, 18, 24, 0.5);
+      }
+      thead {
+        background-color: rgba(200, 160, 40, 0.1);
+        border-bottom: 2px solid #c8a028;
+      }
+      th {
+        font-family: "Cinzel", serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 1rem;
+        text-align: left;
+        color: #c8a028;
+      }
+      td {
+        padding: 0.9rem;
+        border-bottom: 1px solid rgba(200, 160, 40, 0.2);
+        font-size: 0.95rem;
+      }
+      tbody tr:hover {
+        background-color: rgba(200, 160, 40, 0.08);
+        transition: background-color 0.3s ease-in-out;
+      }
+      @media (max-width: 640px) {
+        td {
+          padding: 0.5rem;
+          font-size: 0.85rem;
+        }
+        th {
+          padding: 0.8rem;
+          font-size: 0.8rem;
+        }
+      }
+      .coalition-badge {
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        font-size: 0.75rem;
+        font-family: "Cinzel", serif;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border-radius: 2px;
+        border: 1px solid;
+        font-weight: 600;
+      }
+      .coalition-badge-official {
+        background-color: rgba(90, 154, 90, 0.3);
+        border-color: #5a9a5a;
+        color: #8fd68f;
+      }
+      .coalition-badge-classified {
+        background-color: rgba(138, 122, 186, 0.3);
+        border-color: #8a7aba;
+        color: #c4b8d4;
+      }
+      .coalition-badge-pending {
+        background-color: rgba(170, 168, 74, 0.3);
+        border-color: #aaa84a;
+        color: #d4d2a8;
+      }
+      .coalition-badge-confirmed {
+        background-color: rgba(90, 138, 186, 0.3);
+        border-color: #5a8aba;
+        color: #a8c8e0;
+      }
+      .coalition-system-subsection {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background-color: rgba(200, 160, 40, 0.04);
+        border: 1px solid rgba(200, 160, 40, 0.3);
+        border-radius: 2px;
+      }
+      .coalition-world-entry {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(200, 160, 40, 0.2);
+      }
+      .coalition-world-entry:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .coalition-world-name {
+        font-family: "Cinzel", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #c8a028;
+        margin-bottom: 0.5rem;
+      }
+      .coalition-world-status {
+        color: #d0c8b8;
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+      @keyframes blink-corrupted {
+        0% {
+          opacity: 1;
+          color: #c8a028;
+        }
+        50% {
+          opacity: 0.4;
+          color: #e06060;
+        }
+        100% {
+          opacity: 1;
+          color: #c8a028;
+        }
+      }
+      .corrupted-world {
+        animation: blink-corrupted 3s infinite;
+      }
+      .coalition-threat-banner {
+        background: linear-gradient(
+          90deg,
+          rgba(224, 96, 96, 0.15) 0%,
+          rgba(200, 160, 40, 0.1) 100%
+        );
+        border: 2px solid #e06060;
+        padding: 2rem;
+        margin: 2rem 0;
+        position: relative;
+      }
+      .coalition-threat-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #e06060;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 10px rgba(224, 96, 96, 0.4);
+      }
+      .coalition-threat-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        color: #e0d8c8;
+        line-height: 1.7;
+      }
+      @media (max-width: 640px) {
+        .coalition-threat-content {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+      .coalition-threat-item {
+        padding: 1rem;
+        background-color: rgba(139, 28, 28, 0.1);
+        border-left: 3px solid #e06060;
+      }
+      .coalition-threat-item-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #e06060;
+        margin-bottom: 0.5rem;
+      }
+      .coalition-signature {
+        background-color: rgba(200, 160, 40, 0.08);
+        border: 2px solid #c8a028;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        position: relative;
+      }
+      @media (max-width: 640px) {
+        .coalition-signature {
+          padding: 1rem;
+        }
+      }
+      .coalition-signature-seal {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1rem;
+        background: radial-gradient(
+          circle,
+          #e06060 0%,
+          #8b1c1c 60%,
+          transparent 100%
+        );
+        border: 3px solid #c8a028;
+        border-radius: 50%;
+        opacity: 0.8;
+      }
+      .coalition-signature-title {
+        font-family: "Cinzel", serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #c8a028;
+        margin-bottom: 1rem;
+      }
+      .coalition-signature-content {
+        font-style: italic;
+        color: #d0c8b8;
+        line-height: 1.8;
+        font-size: 0.95rem;
+      }
+      .coalition-signature-content p {
+        margin-bottom: 0.8rem;
+      }
+      .coalition-signature-content p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="coalition-doc">
+      <div class="coalition-transmission-header">
+        <div class="coalition-seal"></div>
+        <div class="coalition-transmission-id">
+          <div class="coalition-id-item">
+            <span class="coalition-id-label">Référence Vox</span>
+            <span>CEL-BASTION-447.XII.M42</span>
+          </div>
+          <div class="coalition-id-item">
+            <span class="coalition-id-label">Priorité</span>
+            <span class="coalition-badge coalition-badge-alert">Critique</span>
+          </div>
+          <div class="coalition-id-item">
+            <span class="coalition-id-label">Destinataire</span>
+            <span>Cogitator Central de Campagne</span>
+          </div>
+        </div>
+
+        <h1 class="coalition-title">Transmission Vox Inquisitoriale</h1>
+        <p class="coalition-subtitle">
+          Rapport de Coalition Impériale — Bastion du Juste
+        </p>
+      </div>
+
+      <div class="coalition-body">
+        <!-- NARRATIVE SECTION -->
+        <section class="coalition-section">
+          <h2 class="coalition-section-title">Bulletin Stratégique</h2>
+
+          <div class="coalition-narrative-block">
+            <p>
+              Dans la continuité des opérations de sécurisation du monde
+              Balvarum, le
+              <span class="coalition-emphasis">Capitaine Arterus</span> de la
+              4ème Compagnie des Blood Angels a proclamé le regroupement
+              officiel des forces impériales sous commandement unique. Après des
+              échanges de feu sanglants et une répression nécessaire des
+              révoltes locales, cette coalition répond à la montée alarmante des
+              menaces chaotiques au sein de nos mondes.
+            </p>
+          </div>
+
+          <div class="coalition-narrative-block">
+            <p>
+              Bien que ne disposant pas du titre officiel de commandant en chef,
+              le Capitaine Arterus a acquis une
+              <span class="coalition-emphasis">aura conséquente</span> au sein
+              du système du Bastion du Juste. Ses réalisations tactiques et son
+              intégrité spirituelle en font le pivot naturel de cette
+              mobilisation impériale. L'accord de coalition, scellé par l'<span
+                class="coalition-emphasis"
+                >Ordo Hereticus</span
+              >, engage une gestion mesurée et coordonnée des forces unifiées.
+            </p>
+          </div>
+
+          <div class="coalition-narrative-block">
+            <p>
+              Cette alliance rassemble trois piliers : les légions de l'<span
+                class="coalition-emphasis"
+                >Astra Militarum d'Hankarthus</span
+              >, les forces du
+              <span class="coalition-emphasis"
+                >Haut-Gouverneur Agastus Fyrentis</span
+              >, et les chapitres de l'<span class="coalition-emphasis"
+                >Adeptus Astartes</span
+              >
+              suivants : Silver Templars, Retributors, et Blood Angels. Un
+              inquisiteur dont l'identité reste confidentielle supervise cette
+              opération et en valide le cadre théologique et stratégique.
+            </p>
+          </div>
+
+          <div class="coalition-narrative-block">
+            <p>
+              À ce jour, aucune réponse officielle n'est parvenue du
+              <span class="coalition-emphasis">Monde-Forge Sanctum</span> ni du
+              <span class="coalition-emphasis">Monde-Chevalier Riga</span>.
+              L'opération demeure sans dénomination officielle provisoirement.
+              Néanmoins, ce regroupement sans précédent signale une réaction
+              résolue :
+              <span class="coalition-alert"
+                >l'Imperium resserre les rangs face aux forces du Chaos de plus
+                en plus menaçantes</span
+              >.
+            </p>
+          </div>
+        </section>
+
+        <!-- FORCES TABLE -->
+        <section class="coalition-section">
+          <h2 class="coalition-section-title">Forces et Statuts</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Faction</th>
+                <th>Autorité</th>
+                <th>Statut</th>
+                <th>Confirmation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Astra Militarum d'Hankarthus</strong></td>
+                <td>Gouvernance Stellaire</td>
+                <td>Déploiement Actif</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-official"
+                    >Officiel</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Forces du Haut-Gouverneur Fyrentis</strong></td>
+                <td>Administration Sectorielle</td>
+                <td>Engagement Total</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-official"
+                    >Officiel</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Silver Templars</strong></td>
+                <td>Adeptus Astartes</td>
+                <td>Chapitre Engagé</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-official"
+                    >Officiel</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Retributors</strong></td>
+                <td>Adeptus Astartes</td>
+                <td>Chapitre Mobilisé</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-classified"
+                    >Masqué</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Blood Angels</strong></td>
+                <td>Adeptus Astartes</td>
+                <td>Chapitre Coordinateur</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-official"
+                    >Officiel</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Adeptus Mechanicus de Sanctum</strong></td>
+                <td>Hiérarchie Techno-Religieuse</td>
+                <td>Sans Réponse</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-pending"
+                    >En Attente</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Monde-Chevalier Riga</strong></td>
+                <td>Feudalité Stellaire</td>
+                <td>Statut Indéfini</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-pending"
+                    >En Attente</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Ordo Hereticus</strong></td>
+                <td>Inquisition Impériale</td>
+                <td>Validation Scellée</td>
+                <td>
+                  <span class="coalition-badge coalition-badge-confirmed"
+                    >Confirmé</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- WORLD STATUS BY SYSTEM -->
+        <section class="coalition-section">
+          <h2 class="coalition-section-title">
+            Statuts des Mondes Principaux par Systèmes Stellaires
+          </h2>
+
+          <!-- BASTION DU JUSTE -->
+          <div class="coalition-system-subsection">
+            <h3 class="coalition-subsection-title">Bastion du Juste</h3>
+            <div class="coalition-world-entry">
+              <div class="coalition-world-name">Balvarum</div>
+              <div class="coalition-world-status">
+                <span class="coalition-badge coalition-badge-pending"
+                  >Conflit en Cours</span
+                >
+              </div>
+              <p>
+                Guerres civiles continuelles. Foyers de révolte disséminés.
+                Opérations de purge impériale en déroulement. Sources
+                d'information multiples et vérifications en cours. Le Capitaine
+                Arterus coordonne les efforts de répression depuis le secteur
+                stratégique primaire.
+              </p>
+            </div>
+          </div>
+
+          <!-- COEUR VERT -->
+          <div class="coalition-system-subsection">
+            <h3 class="coalition-subsection-title">Cœur Vert</h3>
+            <div class="coalition-world-entry">
+              <div class="coalition-world-name">Jakku</div>
+              <div class="coalition-world-status">
+                <span class="coalition-badge coalition-badge-classified"
+                  >Combat Confidentiel</span
+                >
+              </div>
+              <p>
+                Affrontement direct en cours entre une coalition de forces
+                Astartes unifiées et une compagnie de la Death Guard dirigée par
+                le <span class="coalition-emphasis">Primarque Typhus</span>. Les
+                détails tactiques restent fortement classifiés. Le niveau
+                d'engagement semble critique. La issue de ce conflit pourrait
+                déterminer la stabilité stratégique du secteur.
+              </p>
+            </div>
+          </div>
+
+          <!-- SOCLE DU RESOLU -->
+          <div class="coalition-system-subsection">
+            <h3 class="coalition-subsection-title">Socle du Résolu</h3>
+            <div class="coalition-world-entry">
+              <div class="coalition-world-name">Sanctum</div>
+              <div class="coalition-world-status">
+                <span class="coalition-badge coalition-badge-alert"
+                  >Invasion Chaotique</span
+                >
+              </div>
+              <p>
+                Assauts ininterrompus des armées vouées à Khorne actuellement en
+                cours.
+                <span class="coalition-alert">Le Primarque démon Angron</span>
+                aurait été aperçu parmi les forces d'attaque. Atterrissages non
+                autorisés de contingents Astra Militarum non identifiés détectés
+                récemment. Regroupement des forces militaires du Monde-Forge
+                dirigé par le Fabricator-Général en réponse directe. Les
+                fortifications ne tiendront que si un renfort majeur arrive sous
+                peu.
+              </p>
+            </div>
+            <div class="coalition-world-entry">
+              <div class="coalition-world-name">
+                <span class="corrupted-world">Colchis</span>
+              </div>
+              <div class="coalition-world-status">
+                <span class="coalition-badge coalition-badge-classified"
+                  >Perdu</span
+                >
+              </div>
+              <p>
+                Monde tombé aux mains des forces de Khorne dirigées par le
+                <span class="coalition-emphasis">Primarque démon Angron</span>
+                et le
+                <span class="coalition-emphasis">Prince démon Honsou</span>. Le
+                nom du monde peut parfois « clignoter » sur les écrans du
+                Cogitator, suggérant une instabilité reality-éthique persistante
+                liée à la corruption chaotique. Toute tentative de réclamation
+                reste hautement dangereuse. Cet monde doit être considéré comme
+                perdu pour la durée de cette phase de la campagne.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- THREAT LEVEL -->
+        <div class="coalition-threat-banner">
+          <div class="coalition-threat-title">Évaluation de la Menace</div>
+          <div class="coalition-threat-content">
+            <div class="coalition-threat-item">
+              <div class="coalition-threat-item-title">Menace Chaotique</div>
+              <p>
+                Augmentation drastique des incursions. Les armées du Chaos
+                convergent vers le Bastion du Juste avec une coordination
+                inhabituellement efficace. Présence confirmée de Primarques
+                démons et de princes démons d'Oblivion.
+              </p>
+            </div>
+            <div class="coalition-threat-item">
+              <div class="coalition-threat-item-title">Risque de Cascade</div>
+              <p>
+                Défaillance d'un seul secteur pourrait entraîner l'effondrement
+                en domino de zones adjacentes. L'embrasement multi-systèmes est
+                devenu un scénario opérationnel plausible nécessitant une
+                réponse immédiate et coordonnée.
+              </p>
+            </div>
+            <div class="coalition-threat-item">
+              <div class="coalition-threat-item-title">
+                Consolidation Impériale
+              </div>
+              <p>
+                La formation de cette coalition représente la riposte résolue de
+                l'Imperium. Les forces unifiées constituent un rempart
+                stratégique. Le succès dépendra de la coordination sans faille
+                et du maintien de l'intégrité des lignes de commandement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="coalition-signature">
+          <div class="coalition-signature-seal"></div>
+          <div class="coalition-signature-title">Validation Inquisitoriale</div>
+          <div class="coalition-signature-content">
+            <p>
+              Inquisiteur <span class="coalition-emphasis">Malachai Vorn</span>
+            </p>
+            <p>Ordo Hereticus — Division Astra Militarum</p>
+            <p>
+              Mandatum Scellé — Diffusion Restreinte aux Commandements Autorisés
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9em">
+              En Nomine Imperatoris, Par la Grâce du Trône d'Or
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
