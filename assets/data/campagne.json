@@ -149,6 +149,19 @@
             { "label": "Blood Angels Défaite", "classe": "faction-tag--ba" },
             { "label": "Silver Templars Défaite", "classe": "faction-tag--bt" }
           ]
+        },
+        {
+          "label": "Colchis • Grande Bataille",
+          "titre": "La Cité-Ruche Grimah",
+          "texte": "Grimaldus et les Black Templars défendent la cité-ruche contre Angron et ses Octoliés. Le Héros de Helsreach défie Angron en combat singulier — un halo sacré se manifeste autour de lui. Malgré l'héroïsme des Templiers, la Porte Est tombe. Le Seigneur Invocatus avec ses Ferrocerberus Scythak et Morthrex ravage la Porte Ouest.",
+          "classe": "battle-entry--victory",
+          "factions": [
+            { "label": "World Eaters Victoire", "classe": "faction-tag--we" },
+            {
+              "label": "Black Templars Défaite Partielle",
+              "classe": "faction-tag--bt"
+            }
+          ]
         }
       ]
     },
@@ -172,19 +185,6 @@
             { "label": "World Eaters", "classe": "faction-tag--we" },
             { "label": "Iron Warriors de Khorne", "classe": "faction-tag--iw" },
             { "label": "Black Templars", "classe": "faction-tag--bt" }
-          ]
-        },
-        {
-          "label": "Colchis • Grande Bataille",
-          "titre": "La Cité-Ruche Grimah",
-          "texte": "Grimaldus et les Black Templars défendent la cité-ruche contre Angron et ses Octoliés. Le Héros de Helsreach défie Angron en combat singulier — un halo sacré se manifeste autour de lui. Malgré l'héroïsme des Templiers, la Porte Est tombe. Le Seigneur Invocatus avec ses Ferrocerberus Scythak et Morthrex ravage la Porte Ouest.",
-          "classe": "battle-entry--victory",
-          "factions": [
-            { "label": "World Eaters Victoire", "classe": "faction-tag--we" },
-            {
-              "label": "Black Templars Défaite Partielle",
-              "classe": "faction-tag--bt"
-            }
           ]
         },
         {
