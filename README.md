@@ -2,7 +2,7 @@
 
 Site web statique pour la campagne narrative Warhammer 40,000 — Sous-secteur Fyrentis.
 
-> **Site en ligne :** [djaunie.github.io/campagne-fyrentis](https://jean-desaintangel.github.io/campagne-fyrentis)
+> **Site en ligne :** [jean-desaintangel.github.io/campagne-fyrentis](https://jean-desaintangel.github.io/campagne-fyrentis)
 
 ---
 
