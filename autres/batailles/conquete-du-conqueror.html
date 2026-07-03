@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Prise du Conqueror — Campagne Fyrentis</title>
+  <meta name="description" content="Rapport de bataille : Khârn et les World Eaters affrontent une incursion nécron à bord du Conqueror. Trois tours de combat épique dans l'arène sacrée de Khorne." />
+
+  <!-- Polices Google Fonts — même chargement que le reste du site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- CSS global du site -->
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+
+  <style>
+    /* ============================================================
+       PAGE — La Prise du Conqueror
+       Accent : rouge sang WE + vert nécrotique en opposition
+    ============================================================ */
+
+    /* Variables de page (héritées par .page-hero, .back-link, etc.) */
+    :root,
+    [data-theme="dark"] {
+      --page-hero-glow:    rgba(224, 80, 80, 0.20);
+      --page-hero-border:  rgba(224, 80, 80, 0.30);
+      --page-accent:       var(--army-we-fg);          /* #e05050 */
+      --page-accent-dim:   var(--army-we-border);      /* rgba(224,80,80,.45) */
+      --page-accent-bg:    var(--army-we-bg);          /* rgba(224,80,80,.10) */
+      --page-accent-hover-bg: rgba(224, 80, 80, 0.18);
+      --page-accent-glow:  rgba(224, 80, 80, 0.35);
+      --page-accent-light: #f07070;
+      --page-symbol:       "⚡";
+      /* Nota bene secondaire — vert nécron */
+      --page-nota-accent:        var(--army-nc-fg);    /* #40dd88 */
+      --page-nota-accent-dim:    var(--army-nc-border);
+    }
+    [data-theme="light"] {
+      --page-hero-glow:    rgba(154, 26, 26, 0.14);
+      --page-hero-border:  rgba(154, 26, 26, 0.22);
+      --page-accent:       var(--army-we-fg);
+      --page-accent-dim:   var(--army-we-border);
+      --page-accent-bg:    var(--army-we-bg);
+      --page-accent-hover-bg: rgba(154, 26, 26, 0.14);
+      --page-accent-glow:  rgba(154, 26, 26, 0.25);
+      --page-accent-light: var(--army-we-fg);
+      --page-nota-accent:        var(--army-nc-fg);
+      --page-nota-accent-dim:    var(--army-nc-border);
+    }
+
+    /* ── HERO LARGE — override section standard ─────────────── */
+    .battle-hero {
+      padding: 6rem 0 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(
+        ellipse 90% 60% at center top,
+        var(--page-hero-glow) 0%,
+        transparent 70%
+      );
+      border-bottom: 1px solid var(--page-hero-border);
+    }
+    .battle-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(224, 80, 80, 0.025) 0px,
+        rgba(224, 80, 80, 0.025) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+      pointer-events: none;
+    }
+    .battle-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--content-default);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
+    .battle-hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--army-we-fg);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+    .battle-hero-eyebrow::before,
+    .battle-hero-eyebrow::after {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--army-we-fg);
+      opacity: 0.6;
+    }
+    .battle-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1.05;
+      color: var(--color-text);
+      text-shadow:
+        0 0 50px rgba(224, 80, 80, 0.4),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+      margin-bottom: var(--space-4);
+    }
+    .battle-hero-title span {
+      color: var(--army-we-fg);
+    }
+    .battle-hero-subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: var(--color-text-muted);
+      max-width: 58ch;
+      margin-inline: auto;
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+    .battle-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+    }
+
+    /* ── INTRODUCTION NARRATIVE ─────────────────────────────── */
+    .narrative-intro {
+      max-width: var(--content-default);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
+    .narrative-intro p {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+      max-width: 72ch;
+    }
+    .narrative-intro p:last-child { margin-bottom: 0; }
+
+    /* ── SEPARATOR ORNEMENTAL ───────────────────────────────── */
+    .battle-sep {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-block: var(--space-10);
+      color: var(--army-we-fg);
+      opacity: 0.55;
+    }
+    .battle-sep::before,
+    .battle-sep::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--army-we-fg));
+    }
+    .battle-sep::after {
+      background: linear-gradient(to left, transparent, var(--army-we-fg));
+    }
+    .battle-sep-icon {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── GRILLE DES FORCES ──────────────────────────────────── */
+    .forces-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6);
+    }
+    @media (max-width: 640px) {
+      .forces-grid { grid-template-columns: 1fr; }
+    }
+    .force-bloc {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+    .force-bloc::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .force-bloc--we::before { background: var(--army-we-fg); }
+    .force-bloc--nc::before { background: var(--army-nc-fg); }
+
+    .force-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+    .force-label--we { color: var(--army-we-fg); }
+    .force-label--nc { color: var(--army-nc-fg); }
+
+    .force-name {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      margin-bottom: var(--space-4);
+    }
+    .force-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .force-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .force-list--we li::before {
+      content: "⚡";
+      flex-shrink: 0;
+      color: var(--army-we-fg);
+      opacity: 0.75;
+    }
+    .force-list--nc li::before {
+      content: "✦";
+      flex-shrink: 0;
+      color: var(--army-nc-fg);
+      opacity: 0.75;
+    }
+
+    /* ── TOURS DE COMBAT ────────────────────────────────────── */
+    .tours-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .tour-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .tour-card::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--army-we-fg);
+      border-radius: 0;
+    }
+    .tour-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-5) var(--space-6);
+      border-bottom: 1px solid var(--color-divider);
+      background: var(--color-surface-offset);
+    }
+    .tour-num {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--army-we-fg);
+      letter-spacing: 0.04em;
+      min-width: 2.5rem;
+      text-align: center;
+      text-shadow: 0 0 20px rgba(224, 80, 80, 0.5);
+    }
+    .tour-divider {
+      width: 1px;
+      height: 2.5rem;
+      background: var(--color-divider);
+      flex-shrink: 0;
+    }
+    .tour-title-wrap { flex: 1; }
+    .tour-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-1);
+    }
+    .tour-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+    .tour-body {
+      padding: var(--space-5) var(--space-6) var(--space-5) var(--space-8);
+    }
+    .tour-body p {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      max-width: 72ch;
+    }
+
+    /* ── CITATION KHORNE ────────────────────────────────────── */
+    .khorne-quote {
+      border-left: 4px solid var(--army-we-fg);
+      padding: var(--space-5) var(--space-6);
+      background: var(--page-accent-bg);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-block: var(--space-8);
+    }
+    .khorne-quote-text {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      font-style: italic;
+      color: var(--color-text);
+      line-height: 1.7;
+      margin-bottom: var(--space-3);
+    }
+    .khorne-quote-author {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+
+    /* ── SABOTAGE BLOC ──────────────────────────────────────── */
+    .sabotage-bloc {
+      background: var(--color-surface);
+      border: 1px solid var(--army-nc-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+    .sabotage-bloc::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(64, 221, 136, 0.025) 0px,
+        rgba(64, 221, 136, 0.025) 1px,
+        transparent 1px,
+        transparent 7px
+      );
+      pointer-events: none;
+    }
+    .sabotage-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--army-nc-fg);
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .sabotage-label::before {
+      content: "✦";
+      opacity: 0.7;
+    }
+    .sabotage-bloc p {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      position: relative;
+      z-index: 1;
+      max-width: 72ch;
+    }
+
+    /* ── RÉSULTAT FINAL ─────────────────────────────────────── */
+    .resultat-finale {
+      background: radial-gradient(
+        ellipse 80% 60% at center,
+        rgba(224, 80, 80, 0.12) 0%,
+        transparent 70%
+      ),
+      var(--color-surface);
+      border: 1px solid var(--army-we-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10) var(--space-8);
+      text-align: center;
+    }
+    .resultat-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      text-shadow: 0 0 30px rgba(224, 80, 80, 0.5);
+      margin-bottom: var(--space-4);
+    }
+    .resultat-title span { color: var(--army-we-fg); }
+    .resultat-desc {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-style: italic;
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      max-width: 65ch;
+      margin-inline: auto;
+    }
+
+    /* ── LIEN RETOUR ACCUEIL ────────────────────────────────── */
+    .back-home-wrap {
+      padding-block: var(--space-12);
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ── UTILITAIRES RESPONSIVES ────────────────────────────── */
+    @media (max-width: 600px) {
+      .battle-hero { padding: 5rem 0 2.5rem; }
+      .tour-header { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+      .tour-divider { display: none; }
+      .tour-body { padding: var(--space-4) var(--space-4); }
+      .resultat-finale { padding: var(--space-8) var(--space-4); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip to content — accessibilité clavier -->
+  <a href="#main-content" class="sr-only" style="position:absolute;top:-9999px;left:0;">
+    Aller au contenu principal
+  </a>
+
+  <!-- Navigation globale injectée par layout.js -->
+  <div id="site-nav" role="banner" aria-label="Navigation principale du site"></div>
+
+  <!-- ============================================================
+       CONTENU PRINCIPAL
+  ============================================================ -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <header class="battle-hero" aria-labelledby="page-title">
+      <div class="battle-hero-content">
+        <p class="battle-hero-eyebrow" aria-label="Catégorie : Rapport de Bataille">
+          Rapport de Bataille
+        </p>
+        <h1 class="battle-hero-title reveal" id="page-title">
+          La Prise du <span>Conqueror</span>
+        </h1>
+        <p class="battle-hero-subtitle reveal reveal-delay-1">
+          Quand les morts-vivants xenos osèrent profaner le Vaisseau de Gloire de Khorne,
+          Khârn l'Étranger répondit par le seul langage que le dieu du sang comprend —
+          la violence absolue.
+        </p>
+        <div class="battle-hero-tags reveal reveal-delay-2" role="list" aria-label="Factions impliquées">
+          <span class="faction-tag faction-tag--we" role="listitem">World Eaters — VIIIe Légion</span>
+          <span class="faction-tag faction-tag--nc" role="listitem">Nécrons — Fragment du C'tan</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1 — Contexte narratif -->
+    <section aria-labelledby="section-contexte" style="padding-block: clamp(var(--space-12), 8vw, var(--space-20));">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-eyebrow" aria-hidden="true">Contexte</p>
+          <h2 class="section-title" id="section-contexte">
+            L'Intrusion à Bord du <span>Gloriana</span>
+          </h2>
+        </header>
+
+        <div class="narrative-intro reveal reveal-delay-1">
+          <p>
+            Khârn l'Étranger mena cinquante Berzerkers à bord du <em>Conqueror</em> — l'équivalent d'une demi-compagnie
+            Astartes loyaliste. Leur ennemi n'était pas humain : une expédition nécron, téléportée par le Tétrarque qui
+            commandait la force xenos, avait pris pied dans les couloirs du Gloriana avec un objectif clair —
+            détruire le puissant vaisseau de la Légion.
+          </p>
+          <p>
+            Pour assurer leur victoire, les Nécrons avaient amené plus qu'un simple contingent guerrier : une
+            <em>Écharde de C'tan</em>, fragment d'un dieu stellaire prisonnier dans un sarcophage de nécroderme.
+            Ce C'tan, nommé le <em>Dragon du Vide</em>, étendait sa corruption sur tous les systèmes du navire —
+            vox, auspex, machines-démons, cogitators — jusqu'à ce que Lotara Sarrin, l'Esprit vivant du
+            <em>Conqueror</em> lui-même, soit contrainte d'affronter l'entité sur le plan mental.
+          </p>
+          <p>
+            Deux cibles prioritaires avaient été identifiées par le Tétrarque : les cogitators de ciblage protégés
+            derrière des batteries d'armes plasma, et l'une des arènes de combat du Temple de Khorne dissimulé dans
+            les profondeurs du vaisseau. Le C'tan, se moquant ouvertement des dieux de l'immatérium, défia
+            Khorne en humiliant ses fidèles sur ce sol sacré.
+          </p>
+        </div>
+
+        <!-- Séparateur ornemental -->
+        <div class="battle-sep reveal reveal-delay-2" aria-hidden="true">
+          <span class="battle-sep-icon">⚡ Ordre de Bataille ⚡</span>
+        </div>
+
+        <!-- Grille des forces -->
+        <div class="forces-grid" aria-label="Ordre de bataille des deux camps">
+          <article class="force-bloc force-bloc--we reveal reveal-delay-1"
+                   aria-labelledby="forces-we">
+            <p class="force-label force-label--we">Défenseurs</p>
+            <h3 class="force-name" id="forces-we">World Eaters</h3>
+            <ul class="force-list force-list--we" aria-label="Unités World Eaters">
+              <li>Khârn l'Étranger — 8e Capitaine</li>
+              <li>50 Berzerkers (équiv. demi-compagnie loyaliste)</li>
+              <li>Champions de Khorne — trois élus du dieu</li>
+            </ul>
+          </article>
+
+          <article class="force-bloc force-bloc--nc reveal reveal-delay-2"
+                   aria-labelledby="forces-nc">
+            <p class="force-label force-label--nc">Assaillants Xenos</p>
+            <h3 class="force-name" id="forces-nc">Expédition Nécron</h3>
+            <ul class="force-list force-list--nc" aria-label="Unités nécrons">
+              <li>Tétrarque Nécron — commandant de l'expédition</li>
+              <li>Seigneur Skorpekh et ses Destroyers</li>
+              <li>Un Garde Royal</li>
+              <li>20 Guerriers Nécrons</li>
+              <li>Plasmancien (Cryptek)</li>
+              <li>Psychomancien (Cryptek)</li>
+              <li>Dragon du Vide — Écharde de C'tan</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 — Sabotage -->
+    <section aria-labelledby="section-sabotage" class="bg-surface"
+             style="padding-block: clamp(var(--space-10), 6vw, var(--space-16)); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-eyebrow" aria-hidden="true">Incident</p>
+          <h2 class="section-title" id="section-sabotage">
+            Le <span>Sabotage</span> des Cogitators
+          </h2>
+        </header>
+
+        <div class="sabotage-bloc reveal reveal-delay-1" role="region" aria-label="Rapport de sabotage nécron">
+          <p class="sabotage-label">— Rapport des dommages subis</p>
+          <p>
+            Malgré la furie des Berzerkers et les efforts désespérés des World Eaters pour protéger les
+            installations vitales du <em>Conqueror</em>, le sabotage des cogitators de visée et des systèmes
+            d'artillerie plasma ne put être empêché. Le Dragon du Vide, opérant simultanément sur le plan mental
+            aux côtés du contingent physique nécron, paralysa les défenses mécaniques avant que les XVIIIe
+            puissent intervenir.
+          </p>
+          <p style="margin-top: var(--space-3);">
+            La corruption du C'tan atteignit les vox, les auspex et les machines-démons du vaisseau — forçant
+            même l'Esprit du <em>Conqueror</em>, la chère Lotara Sarrin dans sa forme éthérée, à livrer un combat
+            purement mental contre l'entité cosmique pour préserver l'intégrité du navire.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — Les Combats -->
+    <section aria-labelledby="section-combat"
+             style="padding-block: clamp(var(--space-12), 8vw, var(--space-20));">
+      <div class="container">
+        <header class="section-header reveal">
+          <p class="section-eyebrow" aria-hidden="true">Déroulement des Combats</p>
+          <h2 class="section-title" id="section-combat">
+            L'Arène du <span>Temple de Khorne</span>
+          </h2>
+          <p class="section-desc">
+            Trois tours de combat dans l'arène sacrée à bord du <em>Conqueror</em>, sous le regard ardent du Dieu du Sang.
+          </p>
+        </header>
+
+        <!-- Citation -->
+        <blockquote class="khorne-quote reveal reveal-delay-1"
+                    aria-label="Citation narrative">
+          <p class="khorne-quote-text">
+            « Nul dieu de l'immatérium n'avait jamais vu l'un de ses temples profané ainsi sans riposter.
+              Khorne observait. Et Khorne se souvenait. »
+          </p>
+          <footer class="khorne-quote-author" aria-label="Narrateur">
+            — Chronique du Huitième, sources extrapolées
+          </footer>
+        </blockquote>
+
+        <!-- Les trois tours -->
+        <div class="tours-container" aria-label="Récit des trois tours de combat">
+
+          <!-- Tour 1 -->
+          <article class="tour-card reveal" aria-labelledby="tour1-title">
+            <header class="tour-header">
+              <span class="tour-num" aria-label="Tour un">I</span>
+              <div class="tour-divider" aria-hidden="true"></div>
+              <div class="tour-title-wrap">
+                <p class="tour-label">Premier Tour</p>
+                <h3 class="tour-title" id="tour1-title">La Bénédiction Initiale</h3>
+              </div>
+            </header>
+            <div class="tour-body">
+              <p>
+                Khorne bénit les World Eaters dès l'ouverture des hostilités : résistance aux coups et force physique accrues.
+                Les berzerkers encaissent les tirs des Guerriers Nécrons et les assauts du Seigneur Skorpekh avec une
+                endurance surhumaine. Les combats sont équilibrés — chaque camp tenant ses positions, les World Eaters
+                absorbant les pertes par la pure grâce warp de leur dieu tandis que les Nécrons reconstituent leurs rangs
+                par le <em>Protocole de Résurrection</em>.
+              </p>
+            </div>
+          </article>
+
+          <!-- Tour 2 -->
+          <article class="tour-card reveal reveal-delay-1" aria-labelledby="tour2-title">
+            <header class="tour-header">
+              <span class="tour-num" aria-label="Tour deux">II</span>
+              <div class="tour-divider" aria-hidden="true"></div>
+              <div class="tour-title-wrap">
+                <p class="tour-label">Deuxième Tour</p>
+                <h3 class="tour-title" id="tour2-title">Khorne Entend les Prières</h3>
+              </div>
+            </header>
+            <div class="tour-body">
+              <p>
+                Le regard de Khorne se pose sur trois champions parmi les siens et sur Khârn lui-même. Touché par leurs
+                exploits, le dieu du sang leur offre une <em>semi-bénédiction-possession</em> — une puissance warp brûlante
+                qui galvanise corps et esprit au-delà de toute limite humaine ou posthumaine. La foudre voltaïque parcourt
+                les flancs du <em>Conqueror</em>, faisant vibrer les plaques de blindage. C'est alors que l'Écharde se révèle
+                pleinement : le Dragon du Vide manifeste sa présence physique dans l'arène, prêt à défier le dieu du sang sur
+                son propre terrain sacré.
+              </p>
+            </div>
+          </article>
+
+          <!-- Tour 3 -->
+          <article class="tour-card reveal reveal-delay-2" aria-labelledby="tour3-title">
+            <header class="tour-header">
+              <span class="tour-num" aria-label="Tour trois">III</span>
+              <div class="tour-divider" aria-hidden="true"></div>
+              <div class="tour-title-wrap">
+                <p class="tour-label">Troisième Tour</p>
+                <h3 class="tour-title" id="tour3-title">Khorne Brûle de Fierté</h3>
+              </div>
+            </header>
+            <div class="tour-body">
+              <p>
+                Le climax arrive avec une violence cosmique. Khârn et l'Écharde de C'tan s'affrontent directement —
+                et s'entre-tuent. Mais tous deux se relèvent. Le Dragon du Vide, immortel dans son enveloppe de nécroderme,
+                retrouve cohérence en quelques instants. Khârn, lui, est relevé par la pure énergie warp de sa colère
+                et par la volonté inflexible de Khorne lui-même. Le Temple est ravagé, les champions cèdent du terrain
+                face à la pression nécron, et les forces semblent basculer vers l'irrémédiable.
+              </p>
+              <p style="margin-top: var(--space-3);">
+                Alors, dans un dernier acte de furie absolue, le fidèle Huitième Capitaine abat le fragment du dieu stellaire
+                de sa hache — <em>Gorechild</em> s'enfonçant dans le nécroderme là où nul autre n'aurait pu frapper.
+                Le Dragon du Vide est dissous. L'arène appartient à Khorne.
+              </p>
+            </div>
+          </article>
+
+        </div><!-- /tours-container -->
+
+        <!-- Séparateur -->
+        <div class="battle-sep reveal" aria-hidden="true" style="margin-top: var(--space-12);">
+          <span class="battle-sep-icon">✦ Résolution ✦</span>
+        </div>
+
+        <!-- Résultat final -->
+        <div class="resultat-finale reveal reveal-delay-1"
+             role="region" aria-labelledby="resultat-heading">
+          <h3 class="resultat-title" id="resultat-heading">
+            Victoire — Au Sang de <span>Khârn</span>
+          </h3>
+          <p class="resultat-desc">
+            Le Temple est souillé mais tenu. Le sabotage nécron aura laissé des séquelles durables sur
+            les systèmes d'artillerie du <em>Conqueror</em>. Pourtant, l'essentiel est préservé : le Gloriana
+            navigue encore. Et l'Écharde du Dragon du Vide ne se reformera pas — Khârn en a décidé ainsi.
+            Khorne grave les noms des champions dans le métal même du vaisseau, et la rage continue de brûler.
+          </p>
+        </div>
+
+      </div>
+    </section><!-- /combats -->
+
+    <!-- LIEN RETOUR -->
+    <nav class="back-home-wrap" aria-label="Navigation de retour">
+      <a href="../../index.html" class="back-link" aria-label="Retourner à l'accueil de la Campagne Fyrentis">
+        ← Retour à l'accueil
+      </a>
+    </nav>
+
+  </main><!-- /main -->
+
+  <!-- Footer injecté par layout.js -->
+  <footer id="site-footer" role="contentinfo" aria-label="Pied de page du site"></footer>
+
+  <!-- Bouton retour en haut -->
+  <button class="back-top" id="back-top"
+          aria-label="Retour en haut de la page"
+          title="Retour en haut">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Script layout.js — navigation + footer + reveal -->
+  <script type="module" src="../../assets/js/layout.js"></script>
+
+  <script>
+    // ── Animations reveal au scroll (Intersection Observer) ──────
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) {
+        els.forEach(el => el.classList.add('visible'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => obs.observe(el));
+    })();
+
+    // ── Bouton retour en haut ─────────────────────────────────────
+    (function () {
+      const btn = document.getElementById('back-top');
+      if (!btn) return;
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+</body>
+</html>
