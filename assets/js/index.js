@@ -95,13 +95,10 @@ function renderFronts(fronts) {
         : "";
       const bataillesHTML = (f.batailles || [])
         .map((b) => {
-          const safeHref =
-            b.lien &&
-            (/^https?:\/\//i.test(b.lien.href) ||
-              b.lien.href.startsWith("/") ||
-              b.lien.href.startsWith("."))
-              ? b.lien.href
-              : "#";
+          const hasUnsafeScheme =
+            /^[a-z][a-z0-9+.-]*:/i.test(b.lien?.href || "") &&
+            !/^https?:\/\//i.test(b.lien.href);
+          const safeHref = b.lien && !hasUnsafeScheme ? b.lien.href : "#";
           const lienHTML = b.lien
             ? ` <a href="${escapeAttr(safeHref)}">${escapeHTML(b.lien.label)}</a>`
             : "";

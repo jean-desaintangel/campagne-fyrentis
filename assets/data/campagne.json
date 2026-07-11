@@ -226,6 +226,7 @@
           "label": "Système Inconnu",
           "titre": "La Forteresse Noire des Nécrons",
           "texte": "Khârn et le vaisseau amiral le Conqueror se retrouvent face à une flotte Nécron encerclant une immense Forteresse Noire. L'enjeu de cette confrontation dépasse la simple bataille — les secrets du système secret pourraient décider du destin de tout le sous-secteur Fyrentis.",
+          "lien": { "href": "autres/batailles/conquete-du-conqueror.html", "label": "Lire le rapport complet : La Prise du Conqueror." },
           "classe": "",
           "factions": [
             { "label": "Khârn & Le Conqueror", "classe": "" },
