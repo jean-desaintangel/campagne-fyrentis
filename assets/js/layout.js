@@ -129,6 +129,14 @@ const skipLinkHTML =
 if (!document.querySelector(".skip-link"))
   document.body.insertAdjacentHTML("afterbegin", skipLinkHTML);
 
+if (!document.querySelector('link[rel="icon"]')) {
+  const favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/png";
+  favicon.href = `${base}assets/img/eye-of-horus.png`;
+  document.head.appendChild(favicon);
+}
+
 const navMount = document.getElementById("site-nav");
 if (navMount) navMount.outerHTML = navHTML;
 
