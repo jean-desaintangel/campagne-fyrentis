@@ -1,3 +1,11 @@
+/**
+ * sanctum.js — Orrérie tactique du système Sanctum (autres/cartes/sanctum.html).
+ * Rendu SVG des planètes depuis sanctum.json, drapeaux de faction,
+ * vaisseaux déplaçables (Pointer Events), persistance localStorage.
+ * Dépendances : utils.js (échappement), assets/data/sanctum.json
+ * @author  Jean
+ * @since   2026-07
+ */
 import { escapeHTML, escapeAttr } from "./utils.js";
 
 const STORAGE_KEY = "fyrentis-sanctum-tactical-state-v3";
@@ -524,6 +532,13 @@ function bindDetailActions() {
       removePlanetFlag(pid);
     });
   }
+  // Équivalent clavier/tactile du clic droit « planter un drapeau ».
+  const setBtn = document.getElementById("set-flag-btn");
+  if (setBtn) {
+    setBtn.addEventListener("click", () => {
+      setPlanetFlag(setBtn.dataset.pid);
+    });
+  }
 }
 
 function showDetail(data, pid) {
@@ -542,9 +557,12 @@ function showDetail(data, pid) {
   const flagInfo = currentFlag
     ? FACTION_FLAG_STYLES[currentFlag]
     : null;
+  // Deux boutons complémentaires du clic droit : le contextmenu est
+  // inaccessible au clavier et sur écran tactile (pas de clic droit au doigt).
+  // Ces boutons offrent le même service, accessibles partout (WCAG 2.1.1).
   const flagBlock = flagInfo
     ? `<div class="pd-section"><h4>Occupation visible</h4><div class="tags"><span class="tag gold">Drapeau : ${escapeHTML(flagInfo.label)}</span></div><div class="flag-actions"><button type="button" class="inline-action-btn" id="remove-flag-btn" data-pid="${escapeAttr(pid)}">Retirer le drapeau</button></div><p class="inline-help">Astuce : fais un clic droit sur le drapeau directement dans l'orrérie pour le retirer.</p></div>`
-    : "";
+    : `<div class="pd-section"><h4>Occupation visible</h4><div class="flag-actions"><button type="button" class="inline-action-btn" id="set-flag-btn" data-pid="${escapeAttr(pid)}">Planter le drapeau de la faction sélectionnée</button></div><p class="inline-help">Choisis la faction dans l'Éditeur tactique ci-dessous. Astuce : le clic droit sur la planète fonctionne aussi.</p></div>`;
 
   if (pid === "brokha") {
     html = `<div class="planet-detail active">
@@ -655,7 +673,11 @@ function bindEditor() {
 purgeLegacyStorage();
 
 fetch("../../assets/data/sanctum.json")
-  .then((r) => r.json())
+  .then((r) => {
+    // r.ok distingue une vraie erreur HTTP (404, 500) d'un JSON invalide.
+    if (!r.ok) throw new Error(`HTTP ${r.status} sur sanctum.json`);
+    return r.json();
+  })
   .then((d) => {
     const sys = d.system;
     validateSystem(sys);

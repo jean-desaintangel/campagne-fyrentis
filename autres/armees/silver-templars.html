@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Silver Templars — Armée Astartes de la campagne Fyrentis 40K, sous-secteur Fyrentis.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Silver Templars — Armée Astartes de la campagne Fyrentis 40K, sous-secteur Fyrentis."
+    />
     <title>Silver Templars — Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,467 +24,472 @@
   <body data-base="../../" data-active="">
     <div id="site-nav"></div>
 
-    <!-- HERO MINI -->
-    <header class="page-hero" id="top">
-      <div class="container">
-        <p class="section-eyebrow">Armée de Freddy</p>
-        <h1 class="section-title"><span>SILVER TEMPLARS</span></h1>
-        <p class="section-desc">
-          Successeurs des Imperial Fists, forgés dans l'honneur et le sacrifice.
-          Leur dossier de campagne dans le sous-secteur Fyrentis est placé sous
-          scellé inquisitorial.
-        </p>
-        <a href="../../index.html#specificites-freddy" class="back-link">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </header>
+    <!-- Contenu principal : cible du lien d'évitement injecté par layout.js -->
+    <main id="main-content">
+      <!-- HERO MINI -->
+      <header class="page-hero" id="top">
+        <div class="container">
+          <p class="section-eyebrow">Armée de Freddy</p>
+          <h1 class="section-title"><span>SILVER TEMPLARS</span></h1>
+          <p class="section-desc">
+            Successeurs des Imperial Fists, forgés dans l'honneur et le
+            sacrifice. Leur dossier de campagne dans le sous-secteur Fyrentis
+            est placé sous scellé inquisitorial.
+          </p>
+          <a href="../../index.html#specificites-freddy" class="back-link">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Retour à l'accueil
+          </a>
+        </div>
+      </header>
 
-    <!-- CONTENU CENSURÉ -->
-    <section class="censure-section">
-      <div class="container">
-        <div class="censure-wrapper">
-          <div class="censure-stamp">
-            <!-- Cachet inquisitorial -->
-            <div class="inquisition-seal reveal">
-              <svg
-                class="inquisition-seal-icon"
-                viewBox="0 0 72 72"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="34"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                  stroke-dasharray="4 3"
-                />
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="26"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.5"
-                />
-                <text
-                  x="36"
-                  y="44"
-                  text-anchor="middle"
-                  font-family="serif"
-                  font-size="26"
-                  font-weight="700"
-                  fill="currentColor"
-                >
-                  I
-                </text>
-                <ellipse
-                  cx="36"
-                  cy="53"
-                  rx="5"
-                  ry="3.5"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="34"
-                  y1="56"
-                  x2="33"
-                  y2="59"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="38"
-                  y1="56"
-                  x2="39"
-                  y2="59"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="2"
-                  y1="36"
-                  x2="10"
-                  y2="36"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                />
-                <line
-                  x1="62"
-                  y1="36"
-                  x2="70"
-                  y2="36"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                />
-                <polygon
-                  points="36,4 38,10 36,8 34,10"
-                  fill="currentColor"
-                  opacity="0.7"
-                />
-              </svg>
-              <span class="inquisition-seal-title"
-                >Ordo Hereticus — Inquisitoriat Impérial</span
-              >
-            </div>
-
-            <!-- Bandeau principal -->
-            <div class="censure-bandeau reveal">
-              <span class="censure-bandeau-text"
-                >Censuré par l'Inquisition</span
-              >
-            </div>
-
-            <!-- Référence de document -->
-            <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-ST-██████ — Classifié
-              <strong>Securitas Imperialis</strong><br />
-              Ce dossier a été placé sous scellé inquisitorial par décision de
-              l'Ordo Hereticus,
-              <em
-                >en raison de la sensibilité stratégique des opérations menées
-                par le Chapitre des Silver Templars dans le sous-secteur
-                Fyrentis, notamment leur protocole de déploiement aux côtés
-                d'autres forces impériales.</em
-              >
-              La divulgation de toute information concernant leurs capacités
-              opérationnelles est strictement proscrite.
-            </p>
-
-            <!-- Bloc I : Historique de croisade -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
+      <!-- CONTENU CENSURÉ -->
+      <section class="censure-section">
+        <div class="container">
+          <div class="censure-wrapper">
+            <div class="censure-stamp">
+              <!-- Cachet inquisitorial -->
+              <div class="inquisition-seal reveal">
                 <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
+                  class="inquisition-seal-icon"
+                  viewBox="0 0 72 72"
                   fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
                   aria-hidden="true"
                 >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <line x1="9" y1="9" x2="15" y2="9" />
-                  <line x1="9" y1="13" x2="15" y2="13" />
-                  <line x1="9" y1="17" x2="12" y2="17" />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="34"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="26"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.5"
+                  />
+                  <text
+                    x="36"
+                    y="44"
+                    text-anchor="middle"
+                    font-family="serif"
+                    font-size="26"
+                    font-weight="700"
+                    fill="currentColor"
+                  >
+                    I
+                  </text>
+                  <ellipse
+                    cx="36"
+                    cy="53"
+                    rx="5"
+                    ry="3.5"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="34"
+                    y1="56"
+                    x2="33"
+                    y2="59"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="38"
+                    y1="56"
+                    x2="39"
+                    y2="59"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="2"
+                    y1="36"
+                    x2="10"
+                    y2="36"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  />
+                  <line
+                    x1="62"
+                    y1="36"
+                    x2="70"
+                    y2="36"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  />
+                  <polygon
+                    points="36,4 38,10 36,8 34,10"
+                    fill="currentColor"
+                    opacity="0.7"
+                  />
                 </svg>
-                Historique de Croisade — Fyrentis
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-              </div>
-            </div>
-
-            <!-- Bloc II : Spécificités de campagne -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+                <span class="inquisition-seal-title"
+                  >Ordo Hereticus — Inquisitoriat Impérial</span
                 >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                Spécificités de Campagne — Silver Templars
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
               </div>
-            </div>
 
-            <!-- Bloc III : Règles spéciales -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+              <!-- Bandeau principal -->
+              <div class="censure-bandeau reveal">
+                <span class="censure-bandeau-text"
+                  >Censuré par l'Inquisition</span
                 >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                Règles Spéciales &amp; Bonus de Campagne
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
               </div>
-            </div>
 
-            <!-- ══════════════════════════════════════════════════════════
+              <!-- Référence de document -->
+              <p class="censure-ref reveal">
+                <strong>Réf. Doc. :</strong> OHI-FYRENTIS-ST-██████ — Classifié
+                <strong>Securitas Imperialis</strong><br />
+                Ce dossier a été placé sous scellé inquisitorial par décision de
+                l'Ordo Hereticus,
+                <em
+                  >en raison de la sensibilité stratégique des opérations menées
+                  par le Chapitre des Silver Templars dans le sous-secteur
+                  Fyrentis, notamment leur protocole de déploiement aux côtés
+                  d'autres forces impériales.</em
+                >
+                La divulgation de toute information concernant leurs capacités
+                opérationnelles est strictement proscrite.
+              </p>
+
+              <!-- Bloc I : Historique de croisade -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="9" y1="13" x2="15" y2="13" />
+                    <line x1="9" y1="17" x2="12" y2="17" />
+                  </svg>
+                  Historique de Croisade — Fyrentis
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- Bloc II : Spécificités de campagne -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Spécificités de Campagne — Silver Templars
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                </div>
+              </div>
+
+              <!-- Bloc III : Règles spéciales -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  Règles Spéciales &amp; Bonus de Campagne
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- ══════════════════════════════════════════════════════════
              BLOC IV : DÉCLASSIFICATION PARTIELLE — DÉFENSE DE JAKKU
              ══════════════════════════════════════════════════════════ -->
-            <div class="declassifie-bloc reveal">
-              <div class="declassifie-header">
-                <span class="declassifie-badge">Déclassifié</span>
-                <span class="declassifie-header-title"
-                  >Déploiement Actif — Jakku &amp; Défense Planétaire</span
-                >
+              <div class="declassifie-bloc reveal">
+                <div class="declassifie-header">
+                  <span class="declassifie-badge">Déclassifié</span>
+                  <span class="declassifie-header-title"
+                    >Déploiement Actif — Jakku &amp; Défense Planétaire</span
+                  >
+                </div>
+
+                <div class="declassifie-entries">
+                  <!-- Entrée 1 : Base — 2e cité-ruche -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                        />
+                        <path d="M9 22V12h6v10" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Quartier Général — Deuxième Cité-Ruche
+                      </p>
+                      <p>
+                        <span class="status-tag status-tag--tenu"
+                          >Opérationnel</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Le détachement des <em>Silver Templars</em> a établi son
+                        commandement au cœur de la
+                        <em>seconde cité-ruche de Jakku</em>, la plus grande
+                        encore debout. Ce bastion urbain constitue le nœud de
+                        commandement impérial pour l'ensemble des opérations de
+                        défense planétaire. Les Silver Templars tiennent le
+                        périmètre intérieur, coordonnent les forces de l'Astra
+                        Militarum locales et supervisent les protocoles
+                        d'évacuation civile en cours. La cité-ruche est
+                        considérée comme le
+                        <em>dernier verrou défensif viable</em> sur Jakku.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 2 : Possessions planétaires dispersées -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <polygon
+                          points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
+                        />
+                        <line x1="8" y1="2" x2="8" y2="18" />
+                        <line x1="16" y1="6" x2="16" y2="22" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Possessions Planétaires — Présence Dispersée
+                      </p>
+                      <p>
+                        <span class="status-tag status-tag--disperse"
+                          >Dispersé — En contraction</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Outre leur siège dans la seconde cité-ruche, les Silver
+                        Templars maintiennent des
+                        <em
+                          >possessions et points d'appui disséminés sur
+                          l'ensemble de Jakku</em
+                        >
+                        : relais de communication, dépôts d'armes, positions
+                        d'observation et points de rassemblement pour les
+                        populations civiles fuyant la corruption. Ces
+                        installations sont progressivement
+                        <em>rappelées, consolidées ou sacrifiées</em> au fil de
+                        l'avancée nurglesque, dans le cadre d'une retraite
+                        méthodique vers le périmètre défensif principal.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 3 : Doctrine de sauvetage -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <polyline points="9 12 11 14 15 10" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Doctrine Opérationnelle — Préservation Impériale
+                      </p>
+                      <p>
+                        <span class="status-tag status-tag--operationnel"
+                          >Active — Priorité absolue</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Face à la progression inexorable de la contagion
+                        nurglesque, le commandement des Silver Templars a adopté
+                        une doctrine claire :
+                        <em>sauver le plus possible avant l'inévitable</em>.
+                        Cela comprend l'évacuation des populations fidèles à
+                        l'Empereur, la protection des archives planétaires, la
+                        mise en sécurité des reliques de l'Adeptus Mechanicus et
+                        la préservation des stocks alimentaires encore intacts.
+                        Les Silver Templars n'ont pas renoncé à la victoire —
+                        ils ont simplement
+                        <em
+                          >accepté le coût de cette guerre et choisi d'en
+                          limiter les pertes impériales</em
+                        >.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 4 : Statut de Jakku — objectif narratif -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                        />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Appréciation Stratégique — Jakku
+                      </p>
+                      <p>
+                        <span class="status-tag status-tag--imminence"
+                          >Perte possible — Imminente</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Les estimations du Conseil de Guerre sectoriel indiquent
+                        que
+                        <em
+                          >Jakku ne peut être sauvé sans renfort extérieur
+                          significatif</em
+                        >. Les Silver Templars tiennent leurs positions avec
+                        honneur, mais la convergence des Émissaires de Typhus,
+                        du canal warp actif et de la contamination des
+                        ressources agro-industrielles rend la situation
+                        <em>objectivement intenable à terme</em>. Jakku
+                        représente un
+                        <em>objectif narratif central de la campagne</em> :
+                        chaque bataille menée sur ce monde influencera
+                        directement l'issue de la résistance impériale dans le
+                        sous-secteur Fyrentis.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /declassifie-entries -->
+
+                <p class="declassifie-footer">
+                  Extrait autorisé — OHI-FYRENTIS-ST-SITREP-03 ·
+                  Déclassification partielle accordée par le Commandement du
+                  Chapitre
+                </p>
               </div>
+              <!-- /declassifie-bloc -->
 
-              <div class="declassifie-entries">
-                <!-- Entrée 1 : Base — 2e cité-ruche -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                      />
-                      <path d="M9 22V12h6v10" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Quartier Général — Deuxième Cité-Ruche
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--tenu"
-                        >Opérationnel</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Le détachement des <em>Silver Templars</em> a établi son
-                      commandement au cœur de la
-                      <em>seconde cité-ruche de Jakku</em>, la plus grande
-                      encore debout. Ce bastion urbain constitue le nœud de
-                      commandement impérial pour l'ensemble des opérations de
-                      défense planétaire. Les Silver Templars tiennent le
-                      périmètre intérieur, coordonnent les forces de l'Astra
-                      Militarum locales et supervisent les protocoles
-                      d'évacuation civile en cours. La cité-ruche est considérée
-                      comme le <em>dernier verrou défensif viable</em> sur
-                      Jakku.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 2 : Possessions planétaires dispersées -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <polygon
-                        points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"
-                      />
-                      <line x1="8" y1="2" x2="8" y2="18" />
-                      <line x1="16" y1="6" x2="16" y2="22" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Possessions Planétaires — Présence Dispersée
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--disperse"
-                        >Dispersé — En contraction</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Outre leur siège dans la seconde cité-ruche, les Silver
-                      Templars maintiennent des
-                      <em
-                        >possessions et points d'appui disséminés sur l'ensemble
-                        de Jakku</em
-                      >
-                      : relais de communication, dépôts d'armes, positions
-                      d'observation et points de rassemblement pour les
-                      populations civiles fuyant la corruption. Ces
-                      installations sont progressivement
-                      <em>rappelées, consolidées ou sacrifiées</em> au fil de
-                      l'avancée nurglesque, dans le cadre d'une retraite
-                      méthodique vers le périmètre défensif principal.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 3 : Doctrine de sauvetage -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <polyline points="9 12 11 14 15 10" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Doctrine Opérationnelle — Préservation Impériale
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--operationnel"
-                        >Active — Priorité absolue</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Face à la progression inexorable de la contagion
-                      nurglesque, le commandement des Silver Templars a adopté
-                      une doctrine claire :
-                      <em>sauver le plus possible avant l'inévitable</em>. Cela
-                      comprend l'évacuation des populations fidèles à
-                      l'Empereur, la protection des archives planétaires, la
-                      mise en sécurité des reliques de l'Adeptus Mechanicus et
-                      la préservation des stocks alimentaires encore intacts.
-                      Les Silver Templars n'ont pas renoncé à la victoire — ils
-                      ont simplement
-                      <em
-                        >accepté le coût de cette guerre et choisi d'en limiter
-                        les pertes impériales</em
-                      >.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 4 : Statut de Jakku — objectif narratif -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                      />
-                      <line x1="12" y1="9" x2="12" y2="13" />
-                      <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Appréciation Stratégique — Jakku
-                    </p>
-                    <p>
-                      <span class="status-tag status-tag--imminence"
-                        >Perte possible — Imminente</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Les estimations du Conseil de Guerre sectoriel indiquent
-                      que
-                      <em
-                        >Jakku ne peut être sauvé sans renfort extérieur
-                        significatif</em
-                      >. Les Silver Templars tiennent leurs positions avec
-                      honneur, mais la convergence des Émissaires de Typhus, du
-                      canal warp actif et de la contamination des ressources
-                      agro-industrielles rend la situation
-                      <em>objectivement intenable à terme</em>. Jakku représente
-                      un <em>objectif narratif central de la campagne</em> :
-                      chaque bataille menée sur ce monde influencera directement
-                      l'issue de la résistance impériale dans le sous-secteur
-                      Fyrentis.
-                    </p>
-                  </div>
-                </div>
+              <!-- Note inquisitoriale -->
+              <div class="nota-bene reveal">
+                <p class="nota-bene-label">
+                  Nota Inquisitoriale — Ordo Hereticus
+                </p>
+                <p>
+                  « Le détachement des Silver Templars engagé dans le
+                  sous-secteur Fyrentis opère sous le commandement direct du
+                  Chapitre. Leur coopération avec les forces impériales alliés
+                  lors des batailles de Jakku et de Colchis a été jugée
+                  exemplaire par le Conseil de Guerre sectoriel. Tout incident
+                  impliquant ce détachement devra être rapporté immédiatement à
+                  l'Inquisitoriat. »
+                </p>
+                <p class="u-mt-05">
+                  —
+                  <em
+                    >Inquisiteur ██████ ████████████, Ordo Hereticus, Fyrentis
+                    Ultima</em
+                  >
+                </p>
               </div>
-              <!-- /declassifie-entries -->
-
-              <p class="declassifie-footer">
-                Extrait autorisé — OHI-FYRENTIS-ST-SITREP-03 · Déclassification
-                partielle accordée par le Commandement du Chapitre
-              </p>
-            </div>
-            <!-- /declassifie-bloc -->
-
-            <!-- Note inquisitoriale -->
-            <div class="nota-bene reveal">
-              <p class="nota-bene-label">
-                Nota Inquisitoriale — Ordo Hereticus
-              </p>
-              <p>
-                « Le détachement des Silver Templars engagé dans le sous-secteur
-                Fyrentis opère sous le commandement direct du Chapitre. Leur
-                coopération avec les forces impériales alliés lors des batailles
-                de Jakku et de Colchis a été jugée exemplaire par le Conseil de
-                Guerre sectoriel. Tout incident impliquant ce détachement devra
-                être rapporté immédiatement à l'Inquisitoriat. »
-              </p>
-              <p class="u-mt-05">
-                —
-                <em
-                  >Inquisiteur ██████ ████████████, Ordo Hereticus, Fyrentis
-                  Ultima</em
-                >
-              </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer id="site-footer"></footer>
-
 
     <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>

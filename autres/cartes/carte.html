@@ -1,10 +1,19 @@
 <!doctype html>
+<!-- Ces pages "cartes" sont volontairement dark-only : leur CSS dédié
+     (pages/carte.css, pages/sanctum.css) ne définit pas de thème clair,
+     contrairement au reste du site (style.css + bouton de bascule). -->
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Carte du sous-secteur Fyrentis — Vue d'ensemble des systèmes stellaires de la campagne Warhammer 40K.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Carte du sous-secteur Fyrentis — Vue d'ensemble des systèmes stellaires de la campagne Warhammer 40K."
+    />
     <title>Carte — Sous-Secteur Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,15 +24,19 @@
     <link rel="stylesheet" href="../../assets/css/pages/carte.css" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <nav>
-      <span class="nav-title">⚔ Sous-Secteur Fyrentis</span>
+      <!-- h1 (et non span) : chaque page doit avoir un titre principal
+           pour la hiérarchie Hn (WCAG / RGAA 9.1). Le style reste porté
+           par la classe .nav-title. -->
+      <h1 class="nav-title">⚔ Sous-Secteur Fyrentis</h1>
       <ul class="nav-links">
         <li><a href="../../index.html">Campagne</a></li>
         <li><a href="sanctum.html">Sanctum</a></li>
       </ul>
     </nav>
 
-    <div class="page">
+    <main class="page" id="main-content">
       <!-- MAP SVG -->
       <div class="map-zone">
         <svg
@@ -120,6 +133,18 @@
           </text>
 
           <!-- ══ SYSTÈMES ══ -->
+
+          <!-- ══════════════════════════════════════════════════════════
+             MAINTENANCE — Ajouter un système stellaire :
+             1. Dupliquer un <g class="sys-group"> ci-dessous, définir
+                data-sys="mon-id" (identifiant unique, kebab-case) ;
+             2. Ajuster cx/cy des <circle> et x/y des <text> (coordonnées
+                dans le viewBox 900×650) ;
+             3. Créer le panneau <div class="system-detail" id="detail-mon-id">
+                dans la sidebar plus bas — carte.js relie les deux par l'id ;
+             4. Tracer les routes warp (<line class="route route--warp">)
+                vers les systèmes voisins.
+        ══════════════════════════════════════════════════════════ -->
 
           <!-- BALVARUM — Impérium / Black Templars -->
           <g
@@ -591,7 +616,8 @@
           >
             SOUS-SECTEUR FYRENTIS
           </text>
-          <text class="u-italic"
+          <text
+            class="u-italic"
             x="450"
             y="52"
             text-anchor="middle"
@@ -941,51 +967,37 @@
           <h4>Légende</h4>
           <div class="legend-items">
             <div class="legend-item">
-              <div
-                class="legend-dot u-swatch-blue"
-              ></div>
+              <div class="legend-dot u-swatch-blue"></div>
               Impérium Sanctus
             </div>
             <div class="legend-item">
-              <div
-                class="legend-dot u-swatch-gold"
-              ></div>
+              <div class="legend-dot u-swatch-gold"></div>
               Impérium Militias
             </div>
             <div class="legend-item">
-              <div
-                class="legend-dot u-swatch-red"
-              ></div>
+              <div class="legend-dot u-swatch-red"></div>
               Contesté / Chaos
             </div>
             <div class="legend-item">
-              <div
-                class="legend-dot u-swatch-green"
-              ></div>
+              <div class="legend-dot u-swatch-green"></div>
               Nécrons / Inconnu
             </div>
             <div class="legend-item">
-              <div
-                class="legend-line u-swatch-goldgrad"
-              ></div>
+              <div class="legend-line u-swatch-goldgrad"></div>
               Route Warp
             </div>
             <div class="legend-item">
-              <div
-                class="legend-line u-swatch-redbright"
-              ></div>
+              <div class="legend-line u-swatch-redbright"></div>
               Zone contestée
             </div>
             <div class="legend-item">
-              <div
-                class="legend-line u-swatch-muted"
-              ></div>
+              <div class="legend-line u-swatch-muted"></div>
               Route inconnue
             </div>
           </div>
         </div>
       </aside>
-    </div>
+    </main>
 
     <script type="module" src="../../assets/js/carte.js"></script>
   </body>

@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="World Eaters — Mécaniques spéciales, vaisseau amiral Le Conqueror et bonus de campagne Fyrentis.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="World Eaters — Mécaniques spéciales, vaisseau amiral Le Conqueror et bonus de campagne Fyrentis."
+    />
     <title>World Eaters</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,41 +24,43 @@
   <body data-base="../../" data-active="">
     <div id="site-nav"></div>
 
-    <!-- HERO MINI -->
-    <header class="page-hero" id="top">
-      <div class="container">
-        <h1 class="section-title"><span>WORLD EATERS</span></h1>
-        <p class="section-desc">
-          Spécificités de l'armée World Eaters : le vaisseau amiral Le
-          Conqueror, ses bonus de campagne, ainsi que les mécaniques spéciales
-          liées aux Crânes, au Sang et à Saint Carnage.
-        </p>
-        <a href="../../index.html#personnages" class="back-link">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </header>
+    <!-- Contenu principal : cible du lien d'évitement injecté par layout.js -->
+    <main id="main-content">
+      <!-- HERO MINI -->
+      <header class="page-hero" id="top">
+        <div class="container">
+          <h1 class="section-title"><span>WORLD EATERS</span></h1>
+          <p class="section-desc">
+            Spécificités de l'armée World Eaters : le vaisseau amiral Le
+            Conqueror, ses bonus de campagne, ainsi que les mécaniques spéciales
+            liées aux Crânes, au Sang et à Saint Carnage.
+          </p>
+          <a href="../../index.html#personnages" class="back-link">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Retour à l'accueil
+          </a>
+        </div>
+      </header>
 
-    <!-- CONTENU WORLD EATERS -->
-    <section id="specificites-jean" class="ship-section">
-      <div class="container">
-        <div id="mecaniques-container"><!-- injecté par JS --></div>
-      </div>
-    </section>
+      <!-- CONTENU WORLD EATERS -->
+      <section id="specificites-jean" class="ship-section">
+        <div class="container">
+          <div id="mecaniques-container"><!-- injecté par JS --></div>
+        </div>
+      </section>
+    </main>
 
     <footer id="site-footer"></footer>
-
 
     <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/world-eaters.js"></script>

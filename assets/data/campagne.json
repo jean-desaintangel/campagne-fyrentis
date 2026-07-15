@@ -2,6 +2,7 @@
   "joueurs": [
     {
       "nom": "Freddy",
+      "id": "freddy",
       "role": "Maître du jeu",
       "couleur": "gold",
       "delai": 2,
@@ -18,6 +19,7 @@
     },
     {
       "nom": "Jean",
+      "id": "jean",
       "role": "Du sang pour le Dieu du sang",
       "couleur": "red",
       "delai": 1,
@@ -25,6 +27,7 @@
     },
     {
       "nom": "David",
+      "id": "david",
       "role": "Une compagnie en péril",
       "couleur": "blue",
       "delai": 3,
@@ -32,6 +35,7 @@
     },
     {
       "nom": "Jérémy",
+      "id": "jeremy",
       "role": "Apporter la liberté dans les étoiles",
       "couleur": "green",
       "delai": 4,
@@ -39,6 +43,7 @@
     },
     {
       "nom": "Vincent",
+      "id": "vincent",
       "role": "Cœur de fer, Main de fer",
       "couleur": "purple",
       "delai": 1,
@@ -82,7 +87,7 @@
       "description": "L'agri-monde organisé autour de 10 stations gérant les méga-récoltes. La Waaagh! Dégotte a débarqué, la Death Guard a corrompu des populations entières, et les World Eaters ont saigné le monde pour Khorne.",
       "statut": "Front Actif",
       "statut_classe": "front-status--active",
-      "image": "assets/img/jakku.png",
+      "image": "assets/img/jakku.webp",
       "image_alt": "Bataille sur Jakku - les agro-stations en flammes",
       "stations": [
         {
@@ -172,7 +177,7 @@
       "description": "Principal fournisseur d'armes du sous-secteur depuis huit millénaires, lié à Metallica. Angron investit les villes-forge tandis que le Fabricator-Général Horgell Dyass tisse ses intrigues. Le Collegia Titanica est la cible ultime.",
       "statut": "Contesté",
       "statut_classe": "front-status--contested",
-      "image": "assets/img/sanctum.png",
+      "image": "assets/img/sanctum.webp",
       "image_alt": "Vue panoramique du monde-forge Sanctum, avec cité-usine gothique et Titan en maintenance",
       "batailles": [
         {
@@ -219,7 +224,7 @@
       "description": "Un système inconnu, apparu sur les auspex des forces impériales. Khârn et le Conqueror font face à une flotte Nécron encerclant une immense Forteresse Noire. Le centre narratif ultime de la campagne.",
       "statut": "??? Mystère",
       "statut_classe": "front-status--secret",
-      "image": "assets/img/system_secret.png",
+      "image": "assets/img/system_secret.webp",
       "image_alt": "Forteresse Noire encerclée par une flotte nécron dans le Système Secret",
       "batailles": [
         {
@@ -248,7 +253,7 @@
   ],
   "mecaniques": {
     "vaisseau": {
-      "image": "assets/img/vaisseau_le_conqueror.png",
+      "image": "assets/img/vaisseau_le_conqueror.webp",
       "image_alt": "Le Conqueror — vaisseau amiral des World Eaters",
       "bonus": [
         {
@@ -315,35 +320,35 @@
       "nom": "Angron",
       "titre": "Primarque des World Eaters",
       "faction": "World Eaters · Primarque",
-      "image": "assets/img/personnages/angron.jpg",
+      "image": "assets/img/personnages/angron-960.webp",
       "lore": "Angron naquit dans la boue rouge de Nuceria et ne connut jamais que la chaîne, le fouet et le cri des arènes. Les clous du boucher martelèrent son crâne jusqu'à ce que toute pensée devienne douleur, et que seule la guerre apaise le tumulte. Quand il mena ses gladiateurs vers une dernière révolte, l'Empereur le vola à son unique victoire, et la rancœur d'Angron hurle encore à travers les vox, noyée dans le rugissement des canons du Conqueror. Aujourd'hui, il est plus qu'un primarque : il est un ouragan de sang qui cherche, dans chaque massacre, un instant de silence intérieur. Dans ses rares moments de lucidité, il craint de ne plus se souvenir du visage de ses frères d'arène. Certains World Eaters jurent entendre Angron murmurer des noms de gladiateurs morts, comme s'il les cherchait encore dans le Warp."
     },
     {
       "nom": "Lotara Sarrin",
       "titre": "Âme du Conqueror",
       "faction": "World Eaters · le Conqueror",
-      "image": "assets/img/personnages/lotara.jpg",
+      "image": "assets/img/personnages/lotara-960.webp",
       "lore": "Lotara Sarrin, « la rose nourrie par le sang », règne sur le Conqueror. À trente ans à peine, elle commande l'un des plus vastes Gloriana de l'impérium. Simple mortelle au milieu des demi-dieux enragés, elle oppose à leur frénésie une volonté d'acier. Elle impose une discipline de fer sur le Conqueror, n'hésitant pas à abattre le capitaine World Eaters Delvarus sur le pont de commandement d'un tir de pistolet laser en pleine tête pour rappeler que la seule autorité sur le Conqueror, c'est elle. Elle ne supplie pas, ne flatte pas, ne fuit pas. Elle maintient le vaisseau prêt à la guerre, quitte à abattre ses propres alliés. On chuchote qu'elle garde, dans ses quartiers, la liste précise de tous les World Eaters qu'elle a menacé d'abattre… et que la plupart des noms y sont barrés. Mais Lotara Sarrin n'est plus une simple mortelle. Désormais liée au Conqueror, elle en est devenue l'âme indissociable, une volonté spectrale qui imprègne chaque coursive. Le vaisseau est sa chair, ses systèmes l'expression de son autorité absolue. Les vox tonnent parfois de sa voix impérieuse, les armes s'orientent comme guidées par un décret invisible, et même les World Eaters — pourtant esclaves de leur rage — vacillent un instant sous son regard que nul ne peut fuir."
     },
     {
       "nom": "Khârn le Sanglant",
       "titre": "Le Félon — Champion de Khorne",
       "faction": "World Eaters · 8ème capitaine",
-      "image": "assets/img/personnages/kharne.jpg",
+      "image": "assets/img/personnages/kharne-960.webp",
       "lore": "Khârn le sanglant avance au cœur du fracas, là où les vox sont saturés de hurlements, et où la chaleur des bolters déforme l'air. Les clous du boucher étouffent tout sauf le plaisir brut du carnage. Il est devenu le félon, celui qui, sur Skalathrax, brisa la XIIe Légion dans une nuit de givre, de feu et de sang, frappant amis et ennemis jusqu'à ce qu'il ne reste que le silence et l'odeur métallique de la vapeur rouge. Aujourd'hui, chaque crâne pris est un pas de plus sur une route qu'il ne contrôle plus vraiment. On dit que son compteur de morts s'est arrêté depuis longtemps, incapable de suivre ses massacres, mais qu'il continue de cliquer dans le noir."
     },
     {
       "nom": "Morgath le Faucheur",
       "titre": "Maître des Exécutions",
       "faction": "World Eaters",
-      "image": "assets/img/personnages/morgath.jpg",
+      "image": "assets/img/personnages/morgath-960.webp",
       "lore": "Croiser le Maître des Exécutions Morgath le Faucheur est une condamnation à mort, sa hache de démembrement tuant sans discontinuer. À la station 9 de Jakku, il éventra le capitaine Essios des Silver Templars « comme on ouvre une boîte de conserve rouillée », avant d'être apparemment fauché par un déluge de tirs croisés et l'appui-feu du dreadnought Thaddeus. Sa chute rompit l'équilibre précaire qu'il maintenait par la peur et le respect. Pourtant, parmi les survivants – loyalistes comme renégats – courent des rumeurs affirmant que nul n'a jamais retrouvé le corps de Morgath, seulement une traînée de sang séché. Certains Inquisiteurs parlent d'un Maître des Exécutions aperçu fugacement sur d'autres mondes du sous-secteur Fyrentis, hache au poing et armure cabossée, suggérant que le Morgath a peut-être offert sa mort à Khorne en échange du droit de revenir moissonner encore davantage de têtes."
     },
     {
       "nom": "Kharak le Sanguinaire",
       "titre": "Berserker assoifé de Khorne",
       "faction": "World Eaters",
-      "image": "assets/img/personnages/kharak.jpg",
+      "image": "assets/img/personnages/kharak-960.webp",
       "lore": "Sur Jakku, Kharak le Sanguinaire suivit d'abord Morgath le Faucheur à la station 9, où la mort de son Maître des Exécutions fit voler en éclats ses dernières brides mentales et laissa son esprit dériver dans un voile écarlate dont il ne garda que des flashes de crânes explosés à mains nues. Lorsque les guerres pour les agro-stations s'étendirent, Kharak fut à nouveau lâché sur Jakku, cette fois contre les défenses disciplinées des Silver Templars autour de la station 7. Il se jeta hors des Rhinos, traversant le feu croisé des bolters pour atteindre le choc brutal des lames énergétiques et des tronçonneuses, face au capitaine Cassius et à son fer de lance d'Intercessors. Dans la mêlée confuse, alors que Thaddeus tombait, que les Ferrocerberus se brisaient et que les lignes loyalistes s'effritaient, Kharak continua de frapper en hurlant le nom de Khorne. On raconte que, lorsque la station 7 devint un avant-poste sanglant dédié au Dieu du Sang, c'est sur un tas de cadavres Silver Templars marqué par ses coups que les premiers autels improvisés furent élevés, liant à jamais le nom de Kharak au massacre de Jakku."
     }
   ]

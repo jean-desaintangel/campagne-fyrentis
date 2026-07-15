@@ -71,7 +71,11 @@ function renderMecaniques(m) {
 }
 
 fetch("../../assets/data/campagne.json")
-  .then((r) => r.json())
+  .then((r) => {
+    // r.ok distingue une vraie erreur HTTP (404, 500) d'un JSON invalide.
+    if (!r.ok) throw new Error(`HTTP ${r.status} sur campagne.json`);
+    return r.json();
+  })
   .then((d) => {
     renderMecaniques(d.mecaniques);
     document.querySelectorAll(".reveal:not(.visible)").forEach((el) =>

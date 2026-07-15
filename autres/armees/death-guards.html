@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Death Guard — Armée du Chaos de la campagne Fyrentis 40K, sous-secteur Fyrentis.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Death Guard — Armée du Chaos de la campagne Fyrentis 40K, sous-secteur Fyrentis."
+    />
     <title>Death Guard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,446 +24,453 @@
   <body data-base="../../" data-active="">
     <div id="site-nav"></div>
 
-    <!-- HERO MINI -->
-    <header class="page-hero" id="top">
-      <div class="container">
-        <p class="section-eyebrow">Armée PNJ</p>
-        <h1 class="section-title"><span>DEATH GUARD</span></h1>
-        <p class="section-desc">
-          Fils corrompus de Mortarion, porteurs de la Grâce de Nurgle. Leur
-          dossier de campagne dans le sous-secteur Fyrentis est placé sous
-          scellé inquisitorial.
-        </p>
-        <a href="../../index.html#specificites-freddy" class="back-link">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </header>
+    <!-- Contenu principal : cible du lien d'évitement injecté par layout.js -->
+    <main id="main-content">
+      <!-- HERO MINI -->
+      <header class="page-hero" id="top">
+        <div class="container">
+          <p class="section-eyebrow">Armée PNJ</p>
+          <h1 class="section-title"><span>DEATH GUARD</span></h1>
+          <p class="section-desc">
+            Fils corrompus de Mortarion, porteurs de la Grâce de Nurgle. Leur
+            dossier de campagne dans le sous-secteur Fyrentis est placé sous
+            scellé inquisitorial.
+          </p>
+          <a href="../../index.html#specificites-freddy" class="back-link">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Retour à l'accueil
+          </a>
+        </div>
+      </header>
 
-    <!-- CONTENU CENSURÉ -->
-    <section class="censure-section">
-      <div class="container">
-        <div class="censure-wrapper">
-          <div class="censure-stamp">
-            <!-- Cachet inquisitorial -->
-            <div class="inquisition-seal reveal">
-              <svg
-                class="inquisition-seal-icon"
-                viewBox="0 0 72 72"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="34"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                  stroke-dasharray="4 3"
-                />
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="26"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.5"
-                />
-                <text
-                  x="36"
-                  y="44"
-                  text-anchor="middle"
-                  font-family="serif"
-                  font-size="26"
-                  font-weight="700"
-                  fill="currentColor"
-                >
-                  I
-                </text>
-                <ellipse
-                  cx="36"
-                  cy="53"
-                  rx="5"
-                  ry="3.5"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="34"
-                  y1="56"
-                  x2="33"
-                  y2="59"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="38"
-                  y1="56"
-                  x2="39"
-                  y2="59"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="2"
-                  y1="36"
-                  x2="10"
-                  y2="36"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                />
-                <line
-                  x1="62"
-                  y1="36"
-                  x2="70"
-                  y2="36"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                />
-                <polygon
-                  points="36,4 38,10 36,8 34,10"
-                  fill="currentColor"
-                  opacity="0.7"
-                />
-              </svg>
-              <span class="inquisition-seal-title"
-                >Ordo Malleus — Inquisitoriat Impérial</span
-              >
-            </div>
-
-            <!-- Bandeau principal -->
-            <div class="censure-bandeau reveal">
-              <span class="censure-bandeau-text"
-                >Censuré par l'Inquisition</span
-              >
-            </div>
-
-            <!-- Référence de document -->
-            <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OMI-FYRENTIS-DG-██████ — Classifié
-              <strong>Extremis Obscura</strong><br />
-              Ce dossier a été placé sous scellé inquisitorial par décision de
-              l'Ordo Malleus,
-              <em
-                >en raison de la présence avérée d'entités du Chaos Immonde dans
-                le sous-secteur Fyrentis.</em
-              >
-              Tout personnel impérial ayant été en contact avec les porteurs de
-              la Contagion Bénie doit se signaler immédiatement à l'Arbitre
-              local sous peine d'exécution sommaire.
-            </p>
-
-            <!-- Bloc I : Historique de campagne -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
+      <!-- CONTENU CENSURÉ -->
+      <section class="censure-section">
+        <div class="container">
+          <div class="censure-wrapper">
+            <div class="censure-stamp">
+              <!-- Cachet inquisitorial -->
+              <div class="inquisition-seal reveal">
                 <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
+                  class="inquisition-seal-icon"
+                  viewBox="0 0 72 72"
                   fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
                   aria-hidden="true"
                 >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <line x1="9" y1="9" x2="15" y2="9" />
-                  <line x1="9" y1="13" x2="15" y2="13" />
-                  <line x1="9" y1="17" x2="12" y2="17" />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="34"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="26"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.5"
+                  />
+                  <text
+                    x="36"
+                    y="44"
+                    text-anchor="middle"
+                    font-family="serif"
+                    font-size="26"
+                    font-weight="700"
+                    fill="currentColor"
+                  >
+                    I
+                  </text>
+                  <ellipse
+                    cx="36"
+                    cy="53"
+                    rx="5"
+                    ry="3.5"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="34"
+                    y1="56"
+                    x2="33"
+                    y2="59"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="38"
+                    y1="56"
+                    x2="39"
+                    y2="59"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="2"
+                    y1="36"
+                    x2="10"
+                    y2="36"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  />
+                  <line
+                    x1="62"
+                    y1="36"
+                    x2="70"
+                    y2="36"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  />
+                  <polygon
+                    points="36,4 38,10 36,8 34,10"
+                    fill="currentColor"
+                    opacity="0.7"
+                  />
                 </svg>
-                Historique de Campagne — Fyrentis
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-              </div>
-            </div>
-
-            <!-- Bloc II : Spécificités d'armée -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+                <span class="inquisition-seal-title"
+                  >Ordo Malleus — Inquisitoriat Impérial</span
                 >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                Spécificités de Campagne — Death Guard
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
               </div>
-            </div>
 
-            <!-- Bloc III : Règles spéciales / Contagion -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+              <!-- Bandeau principal -->
+              <div class="censure-bandeau reveal">
+                <span class="censure-bandeau-text"
+                  >Censuré par l'Inquisition</span
                 >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                Règles Spéciales &amp; Bonus de Campagne
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
               </div>
-            </div>
 
-            <!-- ════════════════════════════════════════════════════
+              <!-- Référence de document -->
+              <p class="censure-ref reveal">
+                <strong>Réf. Doc. :</strong> OMI-FYRENTIS-DG-██████ — Classifié
+                <strong>Extremis Obscura</strong><br />
+                Ce dossier a été placé sous scellé inquisitorial par décision de
+                l'Ordo Malleus,
+                <em
+                  >en raison de la présence avérée d'entités du Chaos Immonde
+                  dans le sous-secteur Fyrentis.</em
+                >
+                Tout personnel impérial ayant été en contact avec les porteurs
+                de la Contagion Bénie doit se signaler immédiatement à l'Arbitre
+                local sous peine d'exécution sommaire.
+              </p>
+
+              <!-- Bloc I : Historique de campagne -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="9" y1="13" x2="15" y2="13" />
+                    <line x1="9" y1="17" x2="12" y2="17" />
+                  </svg>
+                  Historique de Campagne — Fyrentis
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- Bloc II : Spécificités d'armée -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Spécificités de Campagne — Death Guard
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                </div>
+              </div>
+
+              <!-- Bloc III : Règles spéciales / Contagion -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  Règles Spéciales &amp; Bonus de Campagne
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- ════════════════════════════════════════════════════
              BLOC IV : DÉCLASSIFICATION PARTIELLE — MENACE BIOLOGIQUE & WARP
              ════════════════════════════════════════════════════ -->
-            <div class="declassifie-bloc reveal">
-              <div class="declassifie-header">
-                <span class="declassifie-badge">Déclassifié</span>
-                <span class="declassifie-header-title"
-                  >Menace Active — Contagion &amp; Opérations Warp</span
-                >
+              <div class="declassifie-bloc reveal">
+                <div class="declassifie-header">
+                  <span class="declassifie-badge">Déclassifié</span>
+                  <span class="declassifie-header-title"
+                    >Menace Active — Contagion &amp; Opérations Warp</span
+                  >
+                </div>
+
+                <div class="declassifie-entries">
+                  <!-- Entrée 1 : Rituels de Nurgle -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                        <path d="M12 2a10 10 0 0 1 10 10" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Rituels de Nurgle
+                        <span class="status-tag status-tag--actif"
+                          >Accès confirmé</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Les forces de la Death Guard opérant dans le
+                        sous-secteur Fyrentis ont accès à l'intégralité des
+                        <em>Rituels de Nurgle</em> homologués pour cette
+                        campagne. Parmi ceux-ci figure notamment l'arsenal
+                        personnel du Seigneur de Contagion <em>Typhus</em>,
+                        porteur du <em>Fistule du Warp</em> — relique maudite de
+                        la Fourbe Pestilentielle dont la seule présence corrompt
+                        l'éther environnant. Son emploi en campagne est
+                        considéré comme une menace de niveau Terminus par l'Ordo
+                        Malleus.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 2 : Invasion de Jakku -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                        />
+                        <path d="M9 22V12h6v10" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Agri-Monde Jakku
+                        <span class="status-tag status-tag--critique"
+                          >En cours d'invasion</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Les <em>Émissaires de Typhus</em> ont pénétré
+                        l'agri-monde <em>Jakku</em> et en entreprennent la
+                        corruption systématique. Les cultures, réseaux d'eau et
+                        bassins de population sont affectés par des vecteurs
+                        biologiques non identifiés. Les équipes d'intervention
+                        de l'Adeptus Arbites ont été déclarées
+                        <em>disparues</em> lors des opérations de reconnaissance
+                        initiales. La situation évolue rapidement — les
+                        dernières transmissions indiquent une progression de la
+                        corruption sur l'ensemble du secteur agro-occidental.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 3 : Canal Warp Ork -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <polygon
+                          points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                        />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Canal Warp — Origine Ork
+                        <span class="status-tag status-tag--alerte"
+                          >Événement non planifié</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Selon les rapports préliminaires de l'Ordo Malleus, la
+                        brèche permettant l'accès des forces de Nurgle à Jakku
+                        est
+                        <em>d'origine accidentelle</em>. Les tribus Ork actives
+                        dans le secteur ont servi involontairement de
+                        <em>carburant et de ressource psycho-orgoide</em> pour
+                        l'ouverture d'un canal instable dans l'Immaterium. La
+                        violence organique des Orks aurait catalysé et
+                        déstabilisé le voile de l'Éther, créant une anomalie
+                        expéditée par les Émissaires de Typhus. Les détails
+                        complets de cet événement font l'objet d'un rapport
+                        séparé —
+                        <em>informations complémentaires à venir.</em>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 4 : État de Jakku -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                        />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        État de Corruption — Jakku
+                        <span class="status-tag status-tag--critique"
+                          >Stade avancé</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Si aucune intervention militaire impériale n'est
+                        conduite dans les délais impartis, l'agri-monde
+                        <em
+                          >Jakku sera intégralement recouvert par les «
+                          bienfaits du Grand Père »</em
+                        >. La transformation totale du monde en territoire
+                        nurglesque est projetée comme imminente selon les
+                        modèles de contagion de l'Ordo Malleus. Jakku représente
+                        désormais un
+                        <em>objectif narratif prioritaire de la campagne</em> :
+                        sa reconquête ou sa perte déterminera l'évolution de la
+                        menace dans le sous-secteur Fyrentis.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /declassifie-entries -->
+
+                <p class="declassifie-footer">
+                  Extrait autorisé — OMI-FYRENTIS-DG-SITREP-02 ·
+                  Déclassification partielle — Informations complémentaires à
+                  venir
+                </p>
               </div>
+              <!-- /declassifie-bloc -->
 
-              <div class="declassifie-entries">
-                <!-- Entrée 1 : Rituels de Nurgle -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
-                      <path d="M12 2a10 10 0 0 1 10 10" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Rituels de Nurgle
-                      <span class="status-tag status-tag--actif"
-                        >Accès confirmé</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Les forces de la Death Guard opérant dans le sous-secteur
-                      Fyrentis ont accès à l'intégralité des
-                      <em>Rituels de Nurgle</em> homologués pour cette campagne.
-                      Parmi ceux-ci figure notamment l'arsenal personnel du
-                      Seigneur de Contagion <em>Typhus</em>, porteur du
-                      <em>Fistule du Warp</em> — relique maudite de la Fourbe
-                      Pestilentielle dont la seule présence corrompt l'éther
-                      environnant. Son emploi en campagne est considéré comme
-                      une menace de niveau Terminus par l'Ordo Malleus.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 2 : Invasion de Jakku -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                      />
-                      <path d="M9 22V12h6v10" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Agri-Monde Jakku
-                      <span class="status-tag status-tag--critique"
-                        >En cours d'invasion</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Les <em>Émissaires de Typhus</em> ont pénétré l'agri-monde
-                      <em>Jakku</em> et en entreprennent la corruption
-                      systématique. Les cultures, réseaux d'eau et bassins de
-                      population sont affectés par des vecteurs biologiques non
-                      identifiés. Les équipes d'intervention de l'Adeptus
-                      Arbites ont été déclarées <em>disparues</em> lors des
-                      opérations de reconnaissance initiales. La situation
-                      évolue rapidement — les dernières transmissions indiquent
-                      une progression de la corruption sur l'ensemble du secteur
-                      agro-occidental.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 3 : Canal Warp Ork -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <polygon
-                        points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
-                      />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Canal Warp — Origine Ork
-                      <span class="status-tag status-tag--alerte"
-                        >Événement non planifié</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Selon les rapports préliminaires de l'Ordo Malleus, la
-                      brèche permettant l'accès des forces de Nurgle à Jakku est
-                      <em>d'origine accidentelle</em>. Les tribus Ork actives
-                      dans le secteur ont servi involontairement de
-                      <em>carburant et de ressource psycho-orgoide</em> pour
-                      l'ouverture d'un canal instable dans l'Immaterium. La
-                      violence organique des Orks aurait catalysé et déstabilisé
-                      le voile de l'Éther, créant une anomalie expéditée par les
-                      Émissaires de Typhus. Les détails complets de cet
-                      événement font l'objet d'un rapport séparé —
-                      <em>informations complémentaires à venir.</em>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 4 : État de Jakku -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-                      />
-                      <line x1="12" y1="9" x2="12" y2="13" />
-                      <line x1="12" y1="17" x2="12.01" y2="17" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      État de Corruption — Jakku
-                      <span class="status-tag status-tag--critique"
-                        >Stade avancé</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Si aucune intervention militaire impériale n'est conduite
-                      dans les délais impartis, l'agri-monde
-                      <em
-                        >Jakku sera intégralement recouvert par les « bienfaits
-                        du Grand Père »</em
-                      >. La transformation totale du monde en territoire
-                      nurglesque est projetée comme imminente selon les modèles
-                      de contagion de l'Ordo Malleus. Jakku représente désormais
-                      un <em>objectif narratif prioritaire de la campagne</em> :
-                      sa reconquête ou sa perte déterminera l'évolution de la
-                      menace dans le sous-secteur Fyrentis.
-                    </p>
-                  </div>
-                </div>
+              <!-- Note inquisitoriale -->
+              <div class="nota-bene reveal">
+                <p class="nota-bene-label">Nota Inquisitoriale</p>
+                <p>
+                  « Les forces de la Death Guard opérant dans le sous-secteur
+                  Fyrentis font l'objet d'une procédure de confinement
+                  biologique de niveau Oméga de l'Ordo Malleus. Des rapports de
+                  contamination par la Contagion Bénie de Nurgle ont été
+                  signalés sur Colchis après leur passage. Ces informations
+                  demeureront classifiées jusqu'à l'issue des opérations de
+                  purification en cours. Tout territoire infecté sera soumis à
+                  une purge orbitale si nécessaire. »
+                </p>
+                <p class="u-mt-05">
+                  —
+                  <em
+                    >Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis
+                    Ultima</em
+                  >
+                </p>
               </div>
-              <!-- /declassifie-entries -->
-
-              <p class="declassifie-footer">
-                Extrait autorisé — OMI-FYRENTIS-DG-SITREP-02 · Déclassification
-                partielle — Informations complémentaires à venir
-              </p>
-            </div>
-            <!-- /declassifie-bloc -->
-
-            <!-- Note inquisitoriale -->
-            <div class="nota-bene reveal">
-              <p class="nota-bene-label">Nota Inquisitoriale</p>
-              <p>
-                « Les forces de la Death Guard opérant dans le sous-secteur
-                Fyrentis font l'objet d'une procédure de confinement biologique
-                de niveau Oméga de l'Ordo Malleus. Des rapports de contamination
-                par la Contagion Bénie de Nurgle ont été signalés sur Colchis
-                après leur passage. Ces informations demeureront classifiées
-                jusqu'à l'issue des opérations de purification en cours. Tout
-                territoire infecté sera soumis à une purge orbitale si
-                nécessaire. »
-              </p>
-              <p class="u-mt-05">
-                —
-                <em
-                  >Inquisiteur-Sénior ██████ █████████, Ordo Malleus, Fyrentis
-                  Ultima</em
-                >
-              </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer id="site-footer"></footer>
-
 
     <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>

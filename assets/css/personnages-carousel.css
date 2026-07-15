@@ -149,13 +149,6 @@
   opacity: 1;
 }
 
-/* Placeholder quand l'image est absente ou en erreur */
-.perso-carousel__img--missing {
-  object-fit: contain;
-  opacity: 0.3;
-  filter: sepia(1) hue-rotate(-20deg);
-}
-
 .perso-carousel__img-placeholder {
   position: absolute;
   inset: 0;

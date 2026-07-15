@@ -1,3 +1,11 @@
+/**
+ * carte.js — Carte interactive du sous-secteur (autres/cartes/carte.html).
+ * Sélection des systèmes stellaires + zoom/pan du SVG.
+ * Aucune dépendance : la page est autonome (dark-only, nav dédiée).
+ * @author  Jean
+ * @since   2026-07
+ */
+
 // ── SÉLECTION SYSTÈME ──────────────────────────────────────────
 const groups = document.querySelectorAll(".sys-group");
 const details = document.querySelectorAll(".system-detail");
@@ -90,13 +98,18 @@ if (svg) {
   );
 
   // ── Pan (déplacement) : lit/écrit le viewBox courant ───────────
+  // Pointer Events plutôt que mouse* : ils unifient souris, tactile et
+  // stylet. L'ancien code mousedown/mousemove rendait la carte impossible
+  // à déplacer au doigt sur mobile. Le touch-action:none posé sur #map-svg
+  // (carte.css) empêche le navigateur de confisquer le geste pour faire
+  // défiler la page à la place du pan.
   let isDragging = false,
     startX = 0,
     startY = 0,
     startVBX = 0,
     startVBY = 0;
 
-  svg.addEventListener("mousedown", (e) => {
+  svg.addEventListener("pointerdown", (e) => {
     if (e.target.closest(".sys-group")) return;
     isDragging = true;
     startX = e.clientX;
@@ -104,8 +117,11 @@ if (svg) {
     const [ox, oy] = getViewBox();
     startVBX = ox;
     startVBY = oy;
+    // Capture : les pointermove/pointerup continuent d'arriver sur le SVG
+    // même si le doigt/curseur sort de l'élément pendant le glissement.
+    svg.setPointerCapture(e.pointerId);
   });
-  window.addEventListener("mousemove", (e) => {
+  svg.addEventListener("pointermove", (e) => {
     if (!isDragging) return;
     const rect = svg.getBoundingClientRect();
     const [, , ow, oh] = getViewBox();
@@ -113,7 +129,9 @@ if (svg) {
     const dy = (-(e.clientY - startY) / rect.height) * oh;
     setViewBox(startVBX + dx, startVBY + dy, ow, oh);
   });
-  window.addEventListener("mouseup", () => {
+  const endPan = () => {
     isDragging = false;
-  });
+  };
+  svg.addEventListener("pointerup", endPan);
+  svg.addEventListener("pointercancel", endPan);
 }

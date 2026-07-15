@@ -1,3 +1,11 @@
+/**
+ * index.js — Page d'accueil : rendu des sections (joueurs, lore, fronts,
+ * personnages) depuis campagne.json + carrousel d'images du hero.
+ * Dépendances : utils.js (échappement anti-XSS), pages.js (reveal),
+ *               personnages-carousel.js, assets/data/campagne.json
+ * @author  Jean
+ * @since   2026-07
+ */
 import { escapeHTML, escapeAttr } from "./utils.js";
 import { initPersonnagesCarousel } from "./personnages-carousel.js";
 import { FyrentisReveal } from "./pages.js";
@@ -33,11 +41,14 @@ function delayClass(n) {
 }
 
 // ── RENDER : JOUEURS ───────────────────────────────────────────────────────
+// L'id "specificites-<joueur>" sert de cible aux liens « Retour à l'accueil »
+// des pages armées (ex. index.html#specificites-freddy). Il vient du champ
+// `id` de campagne.json : le garder synchronisé avec les liens des pages.
 function renderJoueurs(joueurs) {
   document.getElementById("players-grid").innerHTML = joueurs
     .map(
       (j) =>
-        `<article class="player-card player-card--${escapeAttr(j.couleur)} reveal${delayClass(j.delai)}">
+        `<article${j.id ? ` id="specificites-${escapeAttr(j.id)}"` : ""} class="player-card player-card--${escapeAttr(j.couleur)} reveal${delayClass(j.delai)}">
         <p class="player-name">${escapeHTML(j.nom)}</p>
         <p class="player-role">${escapeHTML(j.role)}</p>
         <ul class="player-armies" role="list">${(j.armees || []).map((a) => `<li>${escapeHTML(a)}</li>`).join("")}</ul>
@@ -125,7 +136,12 @@ function renderFronts(fronts) {
 
 // ── MAIN : FETCH + RENDER ──────────────────────────────────────────────────
 fetch("assets/data/campagne.json")
-  .then((r) => r.json())
+  .then((r) => {
+    // r.ok distingue une vraie erreur HTTP (404, 500) d'un JSON invalide :
+    // sans ce test, un 404 produirait un SyntaxError JSON trompeur au débogage.
+    if (!r.ok) throw new Error(`HTTP ${r.status} sur campagne.json`);
+    return r.json();
+  })
   .then((d) => {
     validateCampagne(d);
     renderJoueurs(d.joueurs);
@@ -133,6 +149,13 @@ fetch("assets/data/campagne.json")
     renderFronts(d.fronts);
     initTabs();
     initPersonnagesCarousel(d);
+    // Les ancres #specificites-<joueur> n'existent qu'après ce rendu JS :
+    // quand on arrive d'une page armée avec un hash, le navigateur a déjà
+    // tenté (et raté) le défilement initial — on le rejoue maintenant.
+    if (location.hash) {
+      const cible = document.getElementById(location.hash.slice(1));
+      if (cible) cible.scrollIntoView();
+    }
   })
   .catch((err) => {
     console.error("Erreur chargement campagne.json :", err);
@@ -152,42 +175,40 @@ fetch("assets/data/campagne.json")
   const carousel = document.getElementById("main-carousel");
   if (!carousel) return;
   const slides = Array.from(carousel.querySelectorAll(".carousel__slide"));
-  const dotsWrap = carousel.querySelector(".carousel__dots");
   const btnPrev = carousel.querySelector(".carousel__btn--prev");
   const btnNext = carousel.querySelector(".carousel__btn--next");
-  if (!slides.length || !dotsWrap || !btnPrev || !btnNext) return;
+  if (!slides.length || !btnPrev || !btnNext) return;
   const INTERVAL = 3500;
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
   let current = 0;
   let timer = null;
-  const dots = slides.map((_, i) => {
-    const dot = document.createElement("button");
-    dot.classList.add("carousel__dot");
-    dot.setAttribute("role", "tab");
-    dot.setAttribute("aria-label", `Image ${i + 1} sur ${slides.length}`);
-    dot.setAttribute("aria-selected", i === 0 ? "true" : "false");
-    if (i === 0) dot.classList.add("is-active");
-    dot.addEventListener("click", () => {
-      goTo(i);
-      if (!reducedMotion) {
-        stop();
-        start();
-      }
-    });
-    dotsWrap.appendChild(dot);
-    return dot;
-  });
+
+  // Chargement différé « réel » des slides.
+  // Le loading="lazy" natif est inopérant ici : les slides sont empilées en
+  // position:absolute/opacity:0, donc toutes « visibles » pour le navigateur,
+  // qui téléchargerait les 31 images dès l'arrivée (~13 Mo en JPEG à l'époque).
+  // On ne résout donc data-src/data-srcset qu'au moment où la slide devient
+  // active — plus une slide d'avance pour que la transition reste fluide.
+  function loadSlide(index) {
+    const i = ((index % slides.length) + slides.length) % slides.length;
+    const img = slides[i].querySelector("img[data-src]");
+    if (!img) return; // déjà chargée
+    img.srcset = img.dataset.srcset || "";
+    img.src = img.dataset.src;
+    img.removeAttribute("data-src");
+    img.removeAttribute("data-srcset");
+  }
+
   function goTo(index) {
     slides[current].classList.remove("is-active");
-    dots[current].classList.remove("is-active");
-    dots[current].setAttribute("aria-selected", "false");
     current = ((index % slides.length) + slides.length) % slides.length;
+    loadSlide(current);
+    loadSlide(current + 1); // pré-chargement de la suivante
     slides[current].classList.add("is-active");
-    dots[current].classList.add("is-active");
-    dots[current].setAttribute("aria-selected", "true");
   }
+
   function start() {
     if (reducedMotion) return;
     stop();
@@ -221,5 +242,6 @@ fetch("assets/data/campagne.json")
     if (e.key === "ArrowLeft") goTo(current - 1);
     if (e.key === "ArrowRight") goTo(current + 1);
   });
+  loadSlide(1); // la slide 1 est eager dans le HTML ; on prépare la n°2
   start();
 })();

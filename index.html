@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Campagne narrative Warhammer 40K dans le sous-secteur Fyrentis — suivi des batailles, armées, fronts et personnages.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Campagne narrative Warhammer 40K dans le sous-secteur Fyrentis — suivi des batailles, armées, fronts et personnages."
+    />
     <title>Campagne Fyrentis — Warhammer 40K</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,245 +25,424 @@
   <body data-base="" data-active="">
     <div id="site-nav"></div>
 
-    <header class="hero" id="top">
-      <div class="hero-bg">
-        <img
-          class="hero-img"
-          src="assets/img/berserk.png"
-          alt="Angron et le Titan Syrgalah mènent les World Eaters à la bataille"
-          width="1920"
-          height="1080"
-          loading="eager"
-        />
-        <div class="hero-overlay"></div>
-      </div>
-      <div class="hero-content">
-        <p class="hero-eyebrow">Warhammer 40 000 • Campagne Narrative</p>
-        <h1 class="hero-title">Sous-Secteur<br /><span>Fyrentis</span></h1>
-        <p class="hero-subtitle">
-          Dans les ténèbres du 41ème millénaire, cinq seigneurs de guerre
-          façonnent le destin d'un secteur entier. Des ruines de Jakku aux
-          forges de Sanctum, la guerre n'a pas de fin.
-        </p>
-        <div class="hero-badges">
-          <a href="autres/armees/iron-warriors-de-khorne.html" class="btn-armee btn-armee--iw"
-            >⚒ Iron Warriors de Khorne</a
-          >
-          <a href="autres/armees/silver-templars.html" class="btn-armee btn-armee--st"
-            >🗡 Silver Templars</a
-          >
-          <a href="autres/armees/world-eaters.html" class="btn-armee btn-armee--we"
-            >🪓 World Eaters</a
-          >
-          <a href="autres/armees/black-templars.html" class="btn-armee btn-armee--bt"
-            >✠ Black Templars</a
-          >
-          <a href="autres/armees/blood-angels.html" class="btn-armee btn-armee--ba"
-            >🩸 Blood Angels</a
-          >
-          <a href="autres/armees/death-guards.html" class="btn-armee btn-armee--dg"
-            >☣ Death Guard</a
-          >
-          <a href="autres/armees/garde-imperiale.html" class="btn-armee btn-armee--gi"
-            >🦅 Garde Impériale</a
-          >
-          <a href="autres/armees/necrons.html" class="btn-armee btn-armee--nc">☥ Nécrons</a>
-          <a href="autres/armees/adeptus-mechanicus.html" class="btn-armee btn-armee--am"
-            >⚙ Adeptus Mechanicus</a
-          >
+    <!-- Contenu principal : cible du lien d'évitement injecté par layout.js -->
+    <main id="main-content">
+      <header class="hero" id="top">
+        <div class="hero-bg">
+          <img
+            class="hero-img"
+            src="assets/img/berserk-1920.webp"
+            srcset="
+              assets/img/berserk-960.webp   960w,
+              assets/img/berserk-1920.webp 1920w
+            "
+            sizes="100vw"
+            alt="Angron et le Titan Syrgalah mènent les World Eaters à la bataille"
+            width="1920"
+            height="1080"
+            loading="eager"
+          />
+          <div class="hero-overlay"></div>
         </div>
-      </div>
-      <span class="hero-scroll" aria-hidden="true">Défiler</span>
-    </header>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Warhammer 40 000 • Campagne Narrative</p>
+          <h1 class="hero-title">Sous-Secteur<br /><span>Fyrentis</span></h1>
+          <p class="hero-subtitle">
+            Dans les ténèbres du 41ème millénaire, cinq seigneurs de guerre
+            façonnent le destin d'un secteur entier. Des ruines de Jakku aux
+            forges de Sanctum, la guerre n'a pas de fin.
+          </p>
+          <div class="hero-badges">
+            <a
+              href="autres/armees/iron-warriors-de-khorne.html"
+              class="btn-armee btn-armee--iw"
+              >⚒ Iron Warriors de Khorne</a
+            >
+            <a
+              href="autres/armees/silver-templars.html"
+              class="btn-armee btn-armee--st"
+              >🗡 Silver Templars</a
+            >
+            <a
+              href="autres/armees/world-eaters.html"
+              class="btn-armee btn-armee--we"
+              >🪓 World Eaters</a
+            >
+            <a
+              href="autres/armees/black-templars.html"
+              class="btn-armee btn-armee--bt"
+              >✠ Black Templars</a
+            >
+            <a
+              href="autres/armees/blood-angels.html"
+              class="btn-armee btn-armee--ba"
+              >🩸 Blood Angels</a
+            >
+            <a
+              href="autres/armees/death-guards.html"
+              class="btn-armee btn-armee--dg"
+              >☣ Death Guard</a
+            >
+            <a
+              href="autres/armees/garde-imperiale.html"
+              class="btn-armee btn-armee--gi"
+              >🦅 Garde Impériale</a
+            >
+            <a href="autres/armees/necrons.html" class="btn-armee btn-armee--nc"
+              >☥ Nécrons</a
+            >
+            <a
+              href="autres/armees/adeptus-mechanicus.html"
+              class="btn-armee btn-armee--am"
+              >⚙ Adeptus Mechanicus</a
+            >
+          </div>
+        </div>
+        <span class="hero-scroll" aria-hidden="true">Défiler</span>
+      </header>
 
-    <!-- ============================================================
+      <!-- ============================================================
      CARROUSEL — Galerie de la Campagne Fyrentis
      Images actives : 1–31
 ============================================================ -->
-    <section
-      class="carousel-section"
-      aria-label="Galerie de la campagne Fyrentis"
-      role="region"
-    >
-      <div class="carousel" id="main-carousel">
-        <ul class="carousel__track-wrapper" role="list">
-          <li class="carousel__slide is-active" role="listitem">
-            <img src="assets/img/carroussel/1.jpg" alt="" loading="eager" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/2.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/3.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/4.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/5.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/6.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/7.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/8.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/9.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/10.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/11.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/12.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/13.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/14.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/15.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/16.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/17.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/18.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/19.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/20.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/21.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/22.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/23.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/24.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/25.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/26.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/27.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/28.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/29.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/30.jpg" alt="" loading="lazy" />
-          </li>
-          <li class="carousel__slide" role="listitem">
-            <img src="assets/img/carroussel/31.jpg" alt="" loading="lazy" />
-          </li>
-        </ul>
+      <section
+        class="carousel-section"
+        aria-label="Galerie de la campagne Fyrentis"
+        role="region"
+      >
+        <div class="carousel" id="main-carousel">
+          <ul class="carousel__track-wrapper carousel__track" role="list">
+            <li class="carousel__slide is-active" role="listitem">
+              <img
+                src="assets/img/carroussel/1-1600.webp"
+                srcset="
+                  assets/img/carroussel/1-800.webp   800w,
+                  assets/img/carroussel/1-1600.webp 1600w
+                "
+                sizes="100vw"
+                alt=""
+                loading="eager"
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/2-1600.webp"
+                data-srcset="assets/img/carroussel/2-800.webp 800w, assets/img/carroussel/2-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/3-1600.webp"
+                data-srcset="assets/img/carroussel/3-800.webp 800w, assets/img/carroussel/3-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/4-1600.webp"
+                data-srcset="assets/img/carroussel/4-800.webp 800w, assets/img/carroussel/4-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/5-1600.webp"
+                data-srcset="assets/img/carroussel/5-800.webp 800w, assets/img/carroussel/5-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/6-1600.webp"
+                data-srcset="assets/img/carroussel/6-800.webp 800w, assets/img/carroussel/6-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/7-1600.webp"
+                data-srcset="assets/img/carroussel/7-800.webp 800w, assets/img/carroussel/7-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/8-1600.webp"
+                data-srcset="assets/img/carroussel/8-800.webp 800w, assets/img/carroussel/8-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/9-1600.webp"
+                data-srcset="assets/img/carroussel/9-800.webp 800w, assets/img/carroussel/9-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/10-1600.webp"
+                data-srcset="assets/img/carroussel/10-800.webp 800w, assets/img/carroussel/10-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/11-1600.webp"
+                data-srcset="assets/img/carroussel/11-800.webp 800w, assets/img/carroussel/11-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/12-1600.webp"
+                data-srcset="assets/img/carroussel/12-800.webp 800w, assets/img/carroussel/12-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/13-1600.webp"
+                data-srcset="assets/img/carroussel/13-800.webp 800w, assets/img/carroussel/13-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/14-1600.webp"
+                data-srcset="assets/img/carroussel/14-800.webp 800w, assets/img/carroussel/14-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/15-1600.webp"
+                data-srcset="assets/img/carroussel/15-800.webp 800w, assets/img/carroussel/15-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/16-1600.webp"
+                data-srcset="assets/img/carroussel/16-800.webp 800w, assets/img/carroussel/16-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/17-1600.webp"
+                data-srcset="assets/img/carroussel/17-800.webp 800w, assets/img/carroussel/17-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/18-1600.webp"
+                data-srcset="assets/img/carroussel/18-800.webp 800w, assets/img/carroussel/18-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/19-1600.webp"
+                data-srcset="assets/img/carroussel/19-800.webp 800w, assets/img/carroussel/19-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/20-1600.webp"
+                data-srcset="assets/img/carroussel/20-800.webp 800w, assets/img/carroussel/20-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/21-1600.webp"
+                data-srcset="assets/img/carroussel/21-800.webp 800w, assets/img/carroussel/21-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/22-1600.webp"
+                data-srcset="assets/img/carroussel/22-800.webp 800w, assets/img/carroussel/22-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/23-1600.webp"
+                data-srcset="assets/img/carroussel/23-800.webp 800w, assets/img/carroussel/23-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/24-1600.webp"
+                data-srcset="assets/img/carroussel/24-800.webp 800w, assets/img/carroussel/24-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/25-1600.webp"
+                data-srcset="assets/img/carroussel/25-800.webp 800w, assets/img/carroussel/25-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/26-1600.webp"
+                data-srcset="assets/img/carroussel/26-800.webp 800w, assets/img/carroussel/26-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/27-1600.webp"
+                data-srcset="assets/img/carroussel/27-800.webp 800w, assets/img/carroussel/27-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/28-1600.webp"
+                data-srcset="assets/img/carroussel/28-800.webp 800w, assets/img/carroussel/28-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/29-1600.webp"
+                data-srcset="assets/img/carroussel/29-800.webp 800w, assets/img/carroussel/29-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/30-1600.webp"
+                data-srcset="assets/img/carroussel/30-800.webp 800w, assets/img/carroussel/30-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+            <li class="carousel__slide" role="listitem">
+              <img
+                data-src="assets/img/carroussel/31-1600.webp"
+                data-srcset="assets/img/carroussel/31-800.webp 800w, assets/img/carroussel/31-1600.webp 1600w"
+                sizes="100vw"
+                alt=""
+              />
+            </li>
+          </ul>
 
-        <button
-          class="carousel__btn carousel__btn--prev"
-          aria-label="Image précédente"
-        >
-          &#10094;
-        </button>
-        <button
-          class="carousel__btn carousel__btn--next"
-          aria-label="Image suivante"
-        >
-          &#10095;
-        </button>
-        <div
-          class="carousel__dots"
-          role="tablist"
-          aria-label="Sélection de slide"
-        ></div>
-      </div>
-    </section>
-
-    <!-- JOUEURS -->
-    <section id="joueurs">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-eyebrow">Les Protagonistes</p>
-          <h2 class="section-title">Les <span>seigneurs de guerre</span></h2>
-          <p class="section-desc">
-            Cinq seigneurs de guerre — cinq destins entremêlés dans le carnage
-            du sous-secteur Fyrentis.
-          </p>
+          <button
+            class="carousel__btn carousel__btn--prev"
+            aria-label="Image précédente"
+          >
+            &#10094;
+          </button>
+          <button
+            class="carousel__btn carousel__btn--next"
+            aria-label="Image suivante"
+          >
+            &#10095;
+          </button>
         </div>
-        <div class="players-grid" id="players-grid"></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CONTEXTE -->
-    <section id="contexte" class="bg-surface">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-eyebrow">Histoire &amp; Lore</p>
-          <h2 class="section-title">Le Sous-Secteur <span>Fyrentis</span></h2>
-          <p class="section-desc" id="lore-desc"></p>
+      <!-- JOUEURS -->
+      <section id="joueurs">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="section-eyebrow">Les Protagonistes</p>
+            <h2 class="section-title">Les <span>seigneurs de guerre</span></h2>
+            <p class="section-desc">
+              Cinq seigneurs de guerre — cinq destins entremêlés dans le carnage
+              du sous-secteur Fyrentis.
+            </p>
+          </div>
+          <div class="players-grid" id="players-grid"></div>
         </div>
-        <div class="lore-grid" id="lore-grid"></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FRONTS -->
-    <section id="fronts">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-eyebrow">Théâtres d'Opérations</p>
-          <h2 class="section-title">Les <span>Fronts</span> de Bataille</h2>
-          <p class="section-desc">
-            Trois systèmes stellaires, trois théâtres de guerre simultanés.
-            Chaque victoire, chaque défaite résonne à travers le secteur.
-          </p>
+      <!-- CONTEXTE -->
+      <section id="contexte" class="bg-surface">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="section-eyebrow">Histoire &amp; Lore</p>
+            <h2 class="section-title">Le Sous-Secteur <span>Fyrentis</span></h2>
+            <p class="section-desc" id="lore-desc"></p>
+          </div>
+          <div class="lore-grid" id="lore-grid"></div>
         </div>
-        <div class="fronts-tabs" id="fronts-tabs" role="tablist"></div>
-        <div id="fronts-panels"></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PERSONNAGES -->
-    <section id="personnages" class="bg-surface perso-carousel-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-eyebrow">Légendes du Secteur</p>
-          <h2 class="section-title">Personnages <span>Clés</span></h2>
-          <p class="section-desc">
-            Des héros et des monstres dont les actes résonneront à travers les
-            âges.
-          </p>
+      <!-- FRONTS -->
+      <section id="fronts">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="section-eyebrow">Théâtres d'Opérations</p>
+            <h2 class="section-title">Les <span>Fronts</span> de Bataille</h2>
+            <p class="section-desc">
+              Trois systèmes stellaires, trois théâtres de guerre simultanés.
+              Chaque victoire, chaque défaite résonne à travers le secteur.
+            </p>
+          </div>
+          <div class="fronts-tabs" id="fronts-tabs" role="tablist"></div>
+          <div id="fronts-panels"></div>
         </div>
-      </div>
+      </section>
 
-      <!-- Zone d'injection du carrousel — remplie par personnages-carousel.js -->
-      <div id="perso-carousel-container" class="container"></div>
-    </section>
+      <!-- PERSONNAGES -->
+      <section id="personnages" class="bg-surface perso-carousel-section">
+        <div class="container">
+          <div class="section-header reveal">
+            <p class="section-eyebrow">Légendes du Secteur</p>
+            <h2 class="section-title">Personnages <span>Clés</span></h2>
+            <p class="section-desc">
+              Des héros et des monstres dont les actes résonneront à travers les
+              âges.
+            </p>
+          </div>
+        </div>
+
+        <!-- Zone d'injection du carrousel — remplie par personnages-carousel.js -->
+        <div id="perso-carousel-container" class="container"></div>
+      </section>
+    </main>
 
     <footer id="site-footer"></footer>
-
 
     <script type="module" src="assets/js/layout.js"></script>
     <script type="module" src="assets/js/index.js"></script>

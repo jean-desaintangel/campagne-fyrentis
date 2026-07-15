@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Adeptus Mechanicus — Armée de la campagne Fyrentis 40K, sous-secteur Fyrentis.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Adeptus Mechanicus — Armée de la campagne Fyrentis 40K, sous-secteur Fyrentis."
+    />
     <title>Adeptus Mechanicus — Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,422 +19,427 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../assets/css/style.css" />
-    <link rel="stylesheet" href="../../assets/css/pages/adeptus-mechanicus.css" />
+    <link
+      rel="stylesheet"
+      href="../../assets/css/pages/adeptus-mechanicus.css"
+    />
   </head>
   <body data-base="../../" data-active="">
     <div id="site-nav"></div>
 
-    <!-- HERO MINI -->
-    <header class="page-hero" id="top">
-      <div class="container">
-        <p class="section-eyebrow">Dossier Mechanicus — Monde-forge Sanctum</p>
-        <p class="binary-ticker" aria-hidden="true">
-          01001101 01000001 01000011 01001000 01001001 01001110 01000001
-          00100000 01000101 01010011 01010100 00100000 01010110 01001001
-          01010100 01000001
-        </p>
-        <h1 class="section-title"><span>ADEPTUS MECHANICUS</span></h1>
-        <p class="section-desc">
-          Prêtres-ingénieurs du Dieu-Mécanique, gardiens des secrets de
-          l'Omnimessie. Leur protocole d'engagement dans le sous-secteur
-          Fyrentis est classifié <em>Mechanicus Extremis</em> et placé sous
-          scellé conjoint Inquisition-Méchanicus.
-        </p>
-        <a href="../../index.html" class="back-link">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </header>
+    <!-- Contenu principal : cible du lien d'évitement injecté par layout.js -->
+    <main id="main-content">
+      <!-- HERO MINI -->
+      <header class="page-hero" id="top">
+        <div class="container">
+          <p class="section-eyebrow">
+            Dossier Mechanicus — Monde-forge Sanctum
+          </p>
+          <p class="binary-ticker" aria-hidden="true">
+            01001101 01000001 01000011 01001000 01001001 01001110 01000001
+            00100000 01000101 01010011 01010100 00100000 01010110 01001001
+            01010100 01000001
+          </p>
+          <h1 class="section-title"><span>ADEPTUS MECHANICUS</span></h1>
+          <p class="section-desc">
+            Prêtres-ingénieurs du Dieu-Mécanique, gardiens des secrets de
+            l'Omnimessie. Leur protocole d'engagement dans le sous-secteur
+            Fyrentis est classifié <em>Mechanicus Extremis</em> et placé sous
+            scellé conjoint Inquisition-Méchanicus.
+          </p>
+          <a href="../../index.html" class="back-link">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Retour à l'accueil
+          </a>
+        </div>
+      </header>
 
-    <!-- CONTENU CENSURÉ -->
-    <section class="censure-section">
-      <div class="container">
-        <div class="censure-wrapper">
-          <div class="censure-stamp">
-            <!-- Cachet Mechanicus / Inquisition -->
-            <div class="inquisition-seal reveal">
-              <svg
-                class="inquisition-seal-icon"
-                viewBox="0 0 72 72"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="34"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                  stroke-dasharray="4 3"
-                />
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="22"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.55"
-                />
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="9"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="34"
-                  y="2"
-                  width="4"
-                  height="9"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.85"
-                />
-                <rect
-                  x="34"
-                  y="61"
-                  width="4"
-                  height="9"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.85"
-                />
-                <rect
-                  x="2"
-                  y="34"
-                  width="9"
-                  height="4"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.85"
-                />
-                <rect
-                  x="61"
-                  y="34"
-                  width="9"
-                  height="4"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.85"
-                />
-                <rect
-                  x="13.5"
-                  y="13.5"
-                  width="4"
-                  height="9"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.7"
-                  transform="rotate(45 15.5 18)"
-                />
-                <rect
-                  x="54.5"
-                  y="13.5"
-                  width="4"
-                  height="9"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.7"
-                  transform="rotate(-45 56.5 18)"
-                />
-                <rect
-                  x="13.5"
-                  y="49.5"
-                  width="4"
-                  height="9"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.7"
-                  transform="rotate(-45 15.5 54)"
-                />
-                <rect
-                  x="54.5"
-                  y="49.5"
-                  width="4"
-                  height="9"
-                  rx="1"
-                  fill="currentColor"
-                  opacity="0.7"
-                  transform="rotate(45 56.5 54)"
-                />
-                <circle
-                  cx="36"
-                  cy="34"
-                  r="4"
-                  fill="currentColor"
-                  opacity="0.9"
-                />
-                <rect
-                  x="33.5"
-                  y="37.5"
-                  width="2.5"
-                  height="3"
-                  rx="0.5"
-                  fill="currentColor"
-                  opacity="0.7"
-                />
-                <rect
-                  x="36"
-                  y="37.5"
-                  width="2.5"
-                  height="3"
-                  rx="0.5"
-                  fill="currentColor"
-                  opacity="0.7"
-                />
-              </svg>
-              <span class="inquisition-seal-title"
-                >Adeptus Mechanicus — Forge Sanctum · Inquisitoriat
-                Impérial</span
-              >
-            </div>
-
-            <!-- Bandeau principal -->
-            <div class="censure-bandeau reveal">
-              <span class="censure-bandeau-text"
-                >Censuré par l'Inquisition</span
-              >
-            </div>
-
-            <!-- Référence de document -->
-            <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> AMI-FYRENTIS-SM-██████ — Classifié
-              <strong>Mechanicus Extremis / Obscura</strong><br />
-              Ce dossier a été placé sous scellé conjoint par l'Ordo Machinum et
-              l'Inquisitoriat Impérial,
-              <em
-                >en raison de la nature ultra-sensible des protocoles
-                techno-hérétiques détectés sur le Monde-forge Sanctum.</em
-              >
-              La divulgation des spécifications de combat de l'Adeptus
-              Mechanicus dans ce sous-secteur constitue une violation du Traité
-              de Mars, passible de
-              <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span>.
-            </p>
-
-            <!-- Bloc I : Monde-forge Sanctum -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
+      <!-- CONTENU CENSURÉ -->
+      <section class="censure-section">
+        <div class="container">
+          <div class="censure-wrapper">
+            <div class="censure-stamp">
+              <!-- Cachet Mechanicus / Inquisition -->
+              <div class="inquisition-seal reveal">
                 <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
+                  class="inquisition-seal-icon"
+                  viewBox="0 0 72 72"
                   fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
                   aria-hidden="true"
                 >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="34"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="22"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.55"
+                  />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                  <rect
+                    x="34"
+                    y="2"
+                    width="4"
+                    height="9"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                  <rect
+                    x="34"
+                    y="61"
+                    width="4"
+                    height="9"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                  <rect
+                    x="2"
+                    y="34"
+                    width="9"
+                    height="4"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                  <rect
+                    x="61"
+                    y="34"
+                    width="9"
+                    height="4"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.85"
+                  />
+                  <rect
+                    x="13.5"
+                    y="13.5"
+                    width="4"
+                    height="9"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.7"
+                    transform="rotate(45 15.5 18)"
+                  />
+                  <rect
+                    x="54.5"
+                    y="13.5"
+                    width="4"
+                    height="9"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.7"
+                    transform="rotate(-45 56.5 18)"
+                  />
+                  <rect
+                    x="13.5"
+                    y="49.5"
+                    width="4"
+                    height="9"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.7"
+                    transform="rotate(-45 15.5 54)"
+                  />
+                  <rect
+                    x="54.5"
+                    y="49.5"
+                    width="4"
+                    height="9"
+                    rx="1"
+                    fill="currentColor"
+                    opacity="0.7"
+                    transform="rotate(45 56.5 54)"
+                  />
+                  <circle
+                    cx="36"
+                    cy="34"
+                    r="4"
+                    fill="currentColor"
+                    opacity="0.9"
+                  />
+                  <rect
+                    x="33.5"
+                    y="37.5"
+                    width="2.5"
+                    height="3"
+                    rx="0.5"
+                    fill="currentColor"
+                    opacity="0.7"
+                  />
+                  <rect
+                    x="36"
+                    y="37.5"
+                    width="2.5"
+                    height="3"
+                    rx="0.5"
+                    fill="currentColor"
+                    opacity="0.7"
                   />
                 </svg>
-                Monde-forge Sanctum — Rapport de Situation
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-              </div>
-            </div>
-
-            <!-- Bloc II : Historique de Campagne -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <line x1="9" y1="9" x2="15" y2="9" />
-                  <line x1="9" y1="13" x2="15" y2="13" />
-                  <line x1="9" y1="17" x2="12" y2="17" />
-                </svg>
-                Historique de Campagne — Fyrentis
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-              </div>
-            </div>
-
-            <!-- Bloc III : Spécificités de campagne -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                Spécificités de Campagne — Adeptus Mechanicus
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-              </div>
-            </div>
-
-            <!-- Bloc IV : Règles spéciales -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                Règles Spéciales &amp; Bonus de Campagne
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-              </div>
-            </div>
-
-            <!-- Séparateur Forces Alliées -->
-            <div class="u-block-center">
-              <p class="u-am-label"
-              >
-                — Forces Alliées — Protocole de Déploiement Conjoint —
-              </p>
-            </div>
-
-            <!-- Allié confirmé : Chevaliers de Riga -->
-            <div class="allie-bloc reveal">
-              <p class="allie-label">Allié Confirmé — Statut : Actif</p>
-              <p class="allie-nom">
-                <svg class="u-am-icon-inline"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  <line x1="9" y1="12" x2="15" y2="12" />
-                  <line x1="12" y1="9" x2="12" y2="15" />
-                </svg>
-                Les Chevaliers de Riga
-                <span class="u-am-quote"
-                >
-                  — Imperial Knights</span
-                >
-              </p>
-              <p class="allie-desc">
-                Maison Chevaleresque liée au Monde-forge Sanctum par serment
-                d'allégeance ancestral. Les Seigneurs-Chevaliers de Riga
-                fournissent une puissance de feu colossale à l'avant-garde
-                mécanicus dans le sous-secteur Fyrentis. Leur engagement est
-                confirmé et documenté au registre de campagne —
-                <em>Réf. KNI-RIGA-FYR-04█</em>.
-              </p>
-            </div>
-
-            <!-- Allié scellé : Forces inconnues -->
-            <div class="allie-scelle reveal">
-              <div class="allie-scelle-header">
-                <span class="allie-scelle-badge">⚠ Inquisition Seal</span>
-                <span class="allie-scelle-titre"
-                  >Allié(s) Supplémentaire(s) — Accès Restreint Niveau Ω</span
+                <span class="inquisition-seal-title"
+                  >Adeptus Mechanicus — Forge Sanctum · Inquisitoriat
+                  Impérial</span
                 >
               </div>
-              <div class="allie-scelle-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-              </div>
-              <p class="allie-scelle-footer">
-                — <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> —
-                Bonus scellé par décision de l'Inquisitoriat. Réf. interne :
-                <span class="u-am-mono"
-                  >INQ-██████-SEAL-Ω</span
-                >
-              </p>
-            </div>
 
-            <!-- Note inquisitoriale -->
-            <div class="nota-bene reveal">
-              <p class="nota-bene-label">Nota Inquisitoriale — Ordo Machinum</p>
-              <p>
-                « Les forces de l'Adeptus Mechanicus opérant depuis le
-                Monde-forge Sanctum font l'objet d'une surveillance renforcée de
-                l'Ordo Machinum. Des rapports signalant l'utilisation de
-                technologies
-                <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> lors
-                des engagements sur ██████ ont motivé l'ouverture d'un protocole
-                d'inspection. L'accès aux schémas de déploiement du Magos-Prime
-                <span class="expurge">███████ ████████████</span> reste soumis à
-                validation par le Sénat Méchanicus. »
-              </p>
-              <p class="u-mt-05">
-                —
+              <!-- Bandeau principal -->
+              <div class="censure-bandeau reveal">
+                <span class="censure-bandeau-text"
+                  >Censuré par l'Inquisition</span
+                >
+              </div>
+
+              <!-- Référence de document -->
+              <p class="censure-ref reveal">
+                <strong>Réf. Doc. :</strong> AMI-FYRENTIS-SM-██████ — Classifié
+                <strong>Mechanicus Extremis / Obscura</strong><br />
+                Ce dossier a été placé sous scellé conjoint par l'Ordo Machinum
+                et l'Inquisitoriat Impérial,
                 <em
-                  >Inquisiteur-Délégué ██████ ██████████, Ordo Machinum,
-                  Fyrentis Ultima</em
+                  >en raison de la nature ultra-sensible des protocoles
+                  techno-hérétiques détectés sur le Monde-forge Sanctum.</em
                 >
+                La divulgation des spécifications de combat de l'Adeptus
+                Mechanicus dans ce sous-secteur constitue une violation du
+                Traité de Mars, passible de
+                <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span>.
               </p>
+
+              <!-- Bloc I : Monde-forge Sanctum -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    />
+                  </svg>
+                  Monde-forge Sanctum — Rapport de Situation
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- Bloc II : Historique de Campagne -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="9" y1="13" x2="15" y2="13" />
+                    <line x1="9" y1="17" x2="12" y2="17" />
+                  </svg>
+                  Historique de Campagne — Fyrentis
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                </div>
+              </div>
+
+              <!-- Bloc III : Spécificités de campagne -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Spécificités de Campagne — Adeptus Mechanicus
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- Bloc IV : Règles spéciales -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  Règles Spéciales &amp; Bonus de Campagne
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- Séparateur Forces Alliées -->
+              <div class="u-block-center">
+                <p class="u-am-label">
+                  — Forces Alliées — Protocole de Déploiement Conjoint —
+                </p>
+              </div>
+
+              <!-- Allié confirmé : Chevaliers de Riga -->
+              <div class="allie-bloc reveal">
+                <p class="allie-label">Allié Confirmé — Statut : Actif</p>
+                <p class="allie-nom">
+                  <svg
+                    class="u-am-icon-inline"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <line x1="9" y1="12" x2="15" y2="12" />
+                    <line x1="12" y1="9" x2="12" y2="15" />
+                  </svg>
+                  Les Chevaliers de Riga
+                  <span class="u-am-quote"> — Imperial Knights</span>
+                </p>
+                <p class="allie-desc">
+                  Maison Chevaleresque liée au Monde-forge Sanctum par serment
+                  d'allégeance ancestral. Les Seigneurs-Chevaliers de Riga
+                  fournissent une puissance de feu colossale à l'avant-garde
+                  mécanicus dans le sous-secteur Fyrentis. Leur engagement est
+                  confirmé et documenté au registre de campagne —
+                  <em>Réf. KNI-RIGA-FYR-04█</em>.
+                </p>
+              </div>
+
+              <!-- Allié scellé : Forces inconnues -->
+              <div class="allie-scelle reveal">
+                <div class="allie-scelle-header">
+                  <span class="allie-scelle-badge">⚠ Inquisition Seal</span>
+                  <span class="allie-scelle-titre"
+                    >Allié(s) Supplémentaire(s) — Accès Restreint Niveau Ω</span
+                  >
+                </div>
+                <div class="allie-scelle-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                </div>
+                <p class="allie-scelle-footer">
+                  — <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span> —
+                  Bonus scellé par décision de l'Inquisitoriat. Réf. interne :
+                  <span class="u-am-mono">INQ-██████-SEAL-Ω</span>
+                </p>
+              </div>
+
+              <!-- Note inquisitoriale -->
+              <div class="nota-bene reveal">
+                <p class="nota-bene-label">
+                  Nota Inquisitoriale — Ordo Machinum
+                </p>
+                <p>
+                  « Les forces de l'Adeptus Mechanicus opérant depuis le
+                  Monde-forge Sanctum font l'objet d'une surveillance renforcée
+                  de l'Ordo Machinum. Des rapports signalant l'utilisation de
+                  technologies
+                  <span class="donnees-expurgees">[DONNÉES EXPURGÉES]</span>
+                  lors des engagements sur ██████ ont motivé l'ouverture d'un
+                  protocole d'inspection. L'accès aux schémas de déploiement du
+                  Magos-Prime
+                  <span class="expurge">███████ ████████████</span> reste soumis
+                  à validation par le Sénat Méchanicus. »
+                </p>
+                <p class="u-mt-05">
+                  —
+                  <em
+                    >Inquisiteur-Délégué ██████ ██████████, Ordo Machinum,
+                    Fyrentis Ultima</em
+                  >
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer id="site-footer"></footer>
-
 
     <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>

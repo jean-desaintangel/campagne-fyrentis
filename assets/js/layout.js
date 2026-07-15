@@ -121,6 +121,14 @@ const backTopHTML = `<a href="#top" class="back-top" id="back-top" aria-label="R
   </svg>
 </a>`;
 
+// Lien d'évitement (RGAA 12.7) : injecté en tout premier dans le <body> pour
+// que les utilisateurs clavier puissent sauter la navigation. Il cible
+// <main id="main-content">, présent sur chaque page qui charge ce module.
+const skipLinkHTML =
+  '<a href="#main-content" class="skip-link">Aller au contenu principal</a>';
+if (!document.querySelector(".skip-link"))
+  document.body.insertAdjacentHTML("afterbegin", skipLinkHTML);
+
 const navMount = document.getElementById("site-nav");
 if (navMount) navMount.outerHTML = navHTML;
 

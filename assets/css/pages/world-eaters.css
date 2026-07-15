@@ -1,21 +1,21 @@
 /* ── WORLD EATERS : ROUGE SANG ── */
-      :root {
-        --page-accent: #c84040;
-        --page-accent-light: #e06060;
-        --page-accent-dim: rgba(200, 60, 60, 0.4);
-        --page-accent-bg: rgba(200, 60, 60, 0.07);
-        --page-accent-hover-bg: rgba(200, 60, 60, 0.18);
-        --page-accent-glow: rgba(200, 60, 60, 0.25);
-        --page-hero-glow: rgba(139, 28, 28, 0.18);
-        --page-hero-border: rgba(139, 28, 28, 0.2);
-      }
-      [data-theme="light"] {
-        --page-accent: #8b1c1c;
-        --page-accent-light: #6b0e0e;
-        --page-accent-dim: rgba(139, 28, 28, 0.4);
-        --page-accent-bg: rgba(139, 28, 28, 0.06);
-        --page-accent-hover-bg: rgba(139, 28, 28, 0.14);
-        --page-accent-glow: rgba(139, 28, 28, 0.2);
-        --page-hero-glow: rgba(139, 28, 28, 0.14);
-        --page-hero-border: rgba(139, 28, 28, 0.2);
-      }
+:root {
+  --page-accent: #c84040;
+  --page-accent-light: #e06060;
+  --page-accent-dim: rgba(200, 60, 60, 0.4);
+  --page-accent-bg: rgba(200, 60, 60, 0.07);
+  --page-accent-hover-bg: rgba(200, 60, 60, 0.18);
+  --page-accent-glow: rgba(200, 60, 60, 0.25);
+  --page-hero-glow: rgba(139, 28, 28, 0.18);
+  --page-hero-border: rgba(139, 28, 28, 0.2);
+}
+[data-theme="light"] {
+  --page-accent: #8b1c1c;
+  --page-accent-light: #6b0e0e;
+  --page-accent-dim: rgba(139, 28, 28, 0.4);
+  --page-accent-bg: rgba(139, 28, 28, 0.06);
+  --page-accent-hover-bg: rgba(139, 28, 28, 0.14);
+  --page-accent-glow: rgba(139, 28, 28, 0.2);
+  --page-hero-glow: rgba(139, 28, 28, 0.14);
+  --page-hero-border: rgba(139, 28, 28, 0.2);
+}

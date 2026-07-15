@@ -1,356 +1,423 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Prise du Conqueror — Campagne Fyrentis</title>
-  <meta name="description" content="Rapport de bataille : Khârn et les World Eaters affrontent une incursion nécron à bord du Conqueror. Trois tours de combat épique dans l'arène sacrée de Khorne." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <title>La Prise du Conqueror — Campagne Fyrentis</title>
+    <meta
+      name="description"
+      content="Rapport de bataille : Khârn et les World Eaters affrontent une incursion nécron à bord du Conqueror. Trois tours de combat épique dans l'arène sacrée de Khorne."
+    />
 
-  <!-- Polices Google Fonts — même chargement que le reste du site -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+    <!-- Polices Google Fonts — même chargement que le reste du site -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- CSS global du site -->
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/pages/conquete-du-conqueror.css" />
-</head>
+    <!-- CSS global du site -->
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="../../assets/css/pages/conquete-du-conqueror.css"
+    />
+  </head>
 
-<body data-base="../../" data-active="">
-  <!-- Skip to content — accessibilité clavier -->
-  <a href="#main-content" class="sr-only" style="position:absolute;top:-9999px;left:0;">
-    Aller au contenu principal
-  </a>
+  <body data-base="../../" data-active="">
+    <!-- Le lien d'évitement est injecté par layout.js (classe .skip-link) -->
+    <!-- Navigation globale injectée par layout.js -->
+    <div
+      id="site-nav"
+      role="banner"
+      aria-label="Navigation principale du site"
+    ></div>
 
-  <!-- Navigation globale injectée par layout.js -->
-  <div id="site-nav" role="banner" aria-label="Navigation principale du site"></div>
-
-  <!-- ============================================================
+    <!-- ============================================================
        CONTENU PRINCIPAL
   ============================================================ -->
-  <main id="main-content">
-
-    <!-- HERO -->
-    <header class="battle-hero" aria-labelledby="page-title">
-      <div class="battle-hero-content">
-        <p class="battle-hero-eyebrow" aria-label="Catégorie : Rapport de Bataille">
-          Rapport de Bataille
-        </p>
-        <h1 class="battle-hero-title reveal" id="page-title">
-          La Prise du <span>Conqueror</span>
-        </h1>
-        <p class="battle-hero-subtitle reveal reveal-delay-1">
-          Quand les morts-vivants xenos osèrent profaner le Conqueror,
-          Khârn le Félon répondit par le seul langage que le dieu du sang comprend —
-          la violence absolue.
-        </p>
-        <div class="battle-hero-tags reveal reveal-delay-2" role="list" aria-label="Factions impliquées">
-          <span class="faction-tag faction-tag--we" role="listitem">World Eaters — VIIIe Légion</span>
-          <span class="faction-tag faction-tag--nc" role="listitem">Nécrons — Fragment du C'tan</span>
+    <main id="main-content">
+      <!-- HERO -->
+      <header class="battle-hero" id="top" aria-labelledby="page-title">
+        <div class="battle-hero-content">
+          <p
+            class="battle-hero-eyebrow"
+            aria-label="Catégorie : Rapport de Bataille"
+          >
+            Rapport de Bataille
+          </p>
+          <h1 class="battle-hero-title reveal" id="page-title">
+            La Prise du <span>Conqueror</span>
+          </h1>
+          <p class="battle-hero-subtitle reveal reveal-delay-1">
+            Quand les morts-vivants xenos osèrent profaner le Conqueror, Khârn
+            le Félon répondit par le seul langage que le dieu du sang comprend —
+            la violence absolue.
+          </p>
+          <div
+            class="battle-hero-tags reveal reveal-delay-2"
+            role="list"
+            aria-label="Factions impliquées"
+          >
+            <span class="faction-tag faction-tag--we" role="listitem"
+              >World Eaters — VIIIe Légion</span
+            >
+            <span class="faction-tag faction-tag--nc" role="listitem"
+              >Nécrons — Fragment du C'tan</span
+            >
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- SECTION 1 — Contexte narratif -->
-    <section aria-labelledby="section-contexte" style="padding-block: clamp(var(--space-12), 8vw, var(--space-20));">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="section-eyebrow" aria-hidden="true">Contexte</p>
-          <h2 class="section-title" id="section-contexte">
-            L'Intrusion à Bord du <span>Conqueror</span>
-          </h2>
-        </header>
+      <!-- SECTION 1 — Contexte narratif -->
+      <section aria-labelledby="section-contexte" class="section-pad">
+        <div class="container">
+          <header class="section-header reveal">
+            <p class="section-eyebrow" aria-hidden="true">Contexte</p>
+            <h2 class="section-title" id="section-contexte">
+              L'Intrusion à Bord du <span>Conqueror</span>
+            </h2>
+          </header>
 
-        <div class="narrative-intro reveal reveal-delay-1">
-          <p>
-            Khârn le Félon mena cinquante Berzerkers à bord du <em>Conqueror</em> — l'équivalent d'une demi-compagnie.
-            Leur ennemi n'était pas humain : une expédition nécron, téléportée par le Tétrarque qui commandait la force xenos,
-            avait pris pied dans les couloirs du Conqueror avec un objectif clair — détruire le puissant vaisseau de la Légion.
-          </p>
-          <p>
-            Pour assurer leur victoire, les Nécrons avaient amené plus qu'un simple contingent guerrier : une
-            <em>Écharde de C'tan</em>, fragment d'un dieu stellaire prisonnier dans un sarcophage de nécroderme.
-            Ce C'tan, nommé le <em>Dragon du Vide</em>, étendait sa corruption sur tous les systèmes du navire —
-            vox, auspex, machines-démons, cogitators — jusqu'à ce que Lotara, l'Esprit vivant du <em>Conqueror</em>,
-            soit contrainte d'affronter l'entité sur le plan mental.
-          </p>
-          <p>
-            Deux cibles prioritaires avaient été identifiées par le Tétrarque : les cogitators de ciblage protégés
-            derrière des batteries d'armes plasma, et l'une des arènes de combat du Temple de Khorne dissimulé dans
-            les profondeurs du vaisseau. Le C'tan, se moquant ouvertement des dieux de l'immatérium, défia Khorne en
-            humiliant ses fidèles sur ce sol sacré.
-          </p>
+          <div class="narrative-intro reveal reveal-delay-1">
+            <p>
+              Khârn le Félon mena cinquante Berzerkers à bord du
+              <em>Conqueror</em> — l'équivalent d'une demi-compagnie. Leur
+              ennemi n'était pas humain : une expédition nécron, téléportée par
+              le Tétrarque qui commandait la force xenos, avait pris pied dans
+              les couloirs du Conqueror avec un objectif clair — détruire le
+              puissant vaisseau de la Légion.
+            </p>
+            <p>
+              Pour assurer leur victoire, les Nécrons avaient amené plus qu'un
+              simple contingent guerrier : une
+              <em>Écharde de C'tan</em>, fragment d'un dieu stellaire prisonnier
+              dans un sarcophage de nécroderme. Ce C'tan, nommé le
+              <em>Dragon du Vide</em>, étendait sa corruption sur tous les
+              systèmes du navire — vox, auspex, machines-démons, cogitators —
+              jusqu'à ce que Lotara, l'Esprit vivant du <em>Conqueror</em>, soit
+              contrainte d'affronter l'entité sur le plan mental.
+            </p>
+            <p>
+              Deux cibles prioritaires avaient été identifiées par le Tétrarque
+              : les cogitators de ciblage protégés derrière des batteries
+              d'armes plasma, et l'une des arènes de combat du Temple de Khorne
+              dissimulé dans les profondeurs du vaisseau. Le C'tan, se moquant
+              ouvertement des dieux de l'immatérium, défia Khorne en humiliant
+              ses fidèles sur ce sol sacré.
+            </p>
+          </div>
+
+          <!-- Séparateur ornemental -->
+          <div class="battle-sep reveal reveal-delay-2" aria-hidden="true">
+            <span class="battle-sep-icon">⚡ Ordre de Bataille ⚡</span>
+          </div>
+
+          <!-- Grille des forces -->
+          <div
+            class="forces-grid"
+            aria-label="Ordre de bataille des deux camps"
+          >
+            <article
+              class="force-bloc force-bloc--we reveal reveal-delay-1"
+              aria-labelledby="forces-we"
+            >
+              <p class="force-label force-label--we">Défenseurs</p>
+              <h3 class="force-name" id="forces-we">World Eaters</h3>
+              <ul
+                class="force-list force-list--we"
+                aria-label="Unités World Eaters"
+              >
+                <li>Khârn le Félon — 8e Capitaine</li>
+                <li>50 Berzerkers (équiv. demi-compagnie loyaliste)</li>
+                <li>3 Champions de Khorne — élus du dieu</li>
+              </ul>
+            </article>
+
+            <article
+              class="force-bloc force-bloc--nc reveal reveal-delay-2"
+              aria-labelledby="forces-nc"
+            >
+              <p class="force-label force-label--nc">Assaillants Xenos</p>
+              <h3 class="force-name" id="forces-nc">Expédition Nécron</h3>
+              <ul class="force-list force-list--nc" aria-label="Unités nécrons">
+                <li>Tétrarque Nécron — commandant de l'expédition</li>
+                <li>Seigneur Skorpekh et ses Destroyers</li>
+                <li>Un Garde Royal</li>
+                <li>20 Guerriers Nécrons</li>
+                <li>Plasmancien (Cryptek)</li>
+                <li>Psychomancien (Cryptek)</li>
+                <li>Dragon du Vide — Écharde de C'tan</li>
+              </ul>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <!-- Séparateur ornemental -->
-        <div class="battle-sep reveal reveal-delay-2" aria-hidden="true">
-          <span class="battle-sep-icon">⚡ Ordre de Bataille ⚡</span>
+      <!-- SECTION 2 — Sabotage -->
+      <section
+        aria-labelledby="section-sabotage"
+        class="bg-surface section-pad-sm section-bordered"
+      >
+        <div class="container">
+          <header class="section-header reveal">
+            <p class="section-eyebrow" aria-hidden="true">Incident</p>
+            <h2 class="section-title" id="section-sabotage">
+              Le <span>Sabotage</span> des Cogitators
+            </h2>
+          </header>
+
+          <div
+            class="sabotage-bloc reveal reveal-delay-1"
+            role="region"
+            aria-label="Rapport de sabotage nécron"
+          >
+            <p class="sabotage-label">— Rapport des dommages subis</p>
+            <p>
+              Malgré la furie des Berzerkers et les efforts désespérés des World
+              Eaters pour protéger les installations vitales du
+              <em>Conqueror</em>, le sabotage des cogitators de visée et des
+              systèmes d'artillerie plasma ne put être empêché. Le Dragon du
+              Vide, opérant simultanément sur le plan mental aux côtés du
+              contingent physique nécron, paralysa les défenses mécaniques avant
+              que les World Eaters puissent intervenir.
+            </p>
+            <p class="mt-3">
+              La corruption du C'tan atteignit les vox, les auspex et les
+              machines-démons du vaisseau — forçant même l'Esprit du
+              <em>Conqueror</em>, la maitresse Lotara Sarrin dans sa forme
+              éthérée, à livrer un combat purement mental contre l'entité
+              cosmique pour préserver l'intégrité du navire.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <!-- Grille des forces -->
-        <div class="forces-grid" aria-label="Ordre de bataille des deux camps">
-          <article class="force-bloc force-bloc--we reveal reveal-delay-1"
-                   aria-labelledby="forces-we">
-            <p class="force-label force-label--we">Défenseurs</p>
-            <h3 class="force-name" id="forces-we">World Eaters</h3>
-            <ul class="force-list force-list--we" aria-label="Unités World Eaters">
-              <li>Khârn le Félon — 8e Capitaine</li>
-              <li>50 Berzerkers (équiv. demi-compagnie loyaliste)</li>
-              <li>3 Champions de Khorne — élus du dieu</li>
-            </ul>
-          </article>
+      <!-- SECTION 3 — Les Combats -->
+      <section aria-labelledby="section-combat" class="section-pad">
+        <div class="container">
+          <header class="section-header reveal">
+            <p class="section-eyebrow" aria-hidden="true">
+              Déroulement des Combats
+            </p>
+            <h2 class="section-title" id="section-combat">
+              L'Arène du <span>Temple de Khorne</span>
+            </h2>
+            <p class="section-desc">
+              Trois tours de combat dans l'arène sacrée à bord du
+              <em>Conqueror</em>, sous le regard ardent du Dieu du Sang.
+            </p>
+          </header>
 
-          <article class="force-bloc force-bloc--nc reveal reveal-delay-2"
-                   aria-labelledby="forces-nc">
-            <p class="force-label force-label--nc">Assaillants Xenos</p>
-            <h3 class="force-name" id="forces-nc">Expédition Nécron</h3>
-            <ul class="force-list force-list--nc" aria-label="Unités nécrons">
-              <li>Tétrarque Nécron — commandant de l'expédition</li>
-              <li>Seigneur Skorpekh et ses Destroyers</li>
-              <li>Un Garde Royal</li>
-              <li>20 Guerriers Nécrons</li>
-              <li>Plasmancien (Cryptek)</li>
-              <li>Psychomancien (Cryptek)</li>
-              <li>Dragon du Vide — Écharde de C'tan</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
+          <!-- Citation -->
+          <blockquote
+            class="khorne-quote reveal reveal-delay-1"
+            aria-label="Citation narrative"
+          >
+            <p class="khorne-quote-text">
+              « Nul dieu de l'immatérium n'avait jamais vu l'un de ses temples
+              profané ainsi sans riposter. Khorne observait. Et Khorne se
+              souvenait. »
+            </p>
+            <footer class="khorne-quote-author" aria-label="Narrateur">
+              — Chronique du Huitième, sources extrapolées
+            </footer>
+          </blockquote>
 
-    <!-- SECTION 2 — Sabotage -->
-    <section aria-labelledby="section-sabotage" class="bg-surface"
-             style="padding-block: clamp(var(--space-10), 6vw, var(--space-16)); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="section-eyebrow" aria-hidden="true">Incident</p>
-          <h2 class="section-title" id="section-sabotage">
-            Le <span>Sabotage</span> des Cogitators
-          </h2>
-        </header>
-
-        <div class="sabotage-bloc reveal reveal-delay-1" role="region" aria-label="Rapport de sabotage nécron">
-          <p class="sabotage-label">— Rapport des dommages subis</p>
-          <p>
-            Malgré la furie des Berzerkers et les efforts désespérés des World Eaters pour protéger les
-            installations vitales du <em>Conqueror</em>, le sabotage des cogitators de visée et des systèmes
-            d'artillerie plasma ne put être empêché. Le Dragon du Vide, opérant simultanément sur le plan mental
-            aux côtés du contingent physique nécron, paralysa les défenses mécaniques avant que les World Eaters
-            puissent intervenir.
-          </p>
-          <p style="margin-top: var(--space-3);">
-            La corruption du C'tan atteignit les vox, les auspex et les machines-démons du vaisseau — forçant
-            même l'Esprit du <em>Conqueror</em>, la maitresse Lotara Sarrin dans sa forme éthérée, à livrer un combat
-            purement mental contre l'entité cosmique pour préserver l'intégrité du navire.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3 — Les Combats -->
-    <section aria-labelledby="section-combat"
-             style="padding-block: clamp(var(--space-12), 8vw, var(--space-20));">
-      <div class="container">
-        <header class="section-header reveal">
-          <p class="section-eyebrow" aria-hidden="true">Déroulement des Combats</p>
-          <h2 class="section-title" id="section-combat">
-            L'Arène du <span>Temple de Khorne</span>
-          </h2>
-          <p class="section-desc">
-            Trois tours de combat dans l'arène sacrée à bord du <em>Conqueror</em>, sous le regard ardent du Dieu du Sang.
-          </p>
-        </header>
-
-        <!-- Citation -->
-        <blockquote class="khorne-quote reveal reveal-delay-1"
-                    aria-label="Citation narrative">
-          <p class="khorne-quote-text">
-            « Nul dieu de l'immatérium n'avait jamais vu l'un de ses temples profané ainsi sans riposter.
-              Khorne observait. Et Khorne se souvenait. »
-          </p>
-          <footer class="khorne-quote-author" aria-label="Narrateur">
-            — Chronique du Huitième, sources extrapolées
-          </footer>
-        </blockquote>
-
-        <!-- Les trois tours -->
-        <div class="tours-container" aria-label="Récit des trois tours de combat">
-
-          <!-- Tour 1 -->
-          <article class="tour-card reveal" aria-labelledby="tour1-title">
-            <header class="tour-header">
-              <span class="tour-num" aria-label="Tour un">I</span>
-              <div class="tour-divider" aria-hidden="true"></div>
-              <div class="tour-title-wrap">
-                <p class="tour-label">Premier Tour</p>
-                <h3 class="tour-title" id="tour1-title">La Bénédiction Initiale</h3>
+          <!-- Les trois tours -->
+          <div
+            class="tours-container"
+            aria-label="Récit des trois tours de combat"
+          >
+            <!-- Tour 1 -->
+            <article class="tour-card reveal" aria-labelledby="tour1-title">
+              <header class="tour-header">
+                <span class="tour-num" aria-label="Tour un">I</span>
+                <div class="tour-divider" aria-hidden="true"></div>
+                <div class="tour-title-wrap">
+                  <p class="tour-label">Premier Tour</p>
+                  <h3 class="tour-title" id="tour1-title">
+                    La Bénédiction Initiale
+                  </h3>
+                </div>
+              </header>
+              <div class="tour-body">
+                <p>
+                  Khorne bénit les World Eaters dès l'ouverture des hostilités :
+                  résistance aux coups et force physique accrues. Les berzerkers
+                  encaissent les tirs des Guerriers Nécrons et les assauts du
+                  Seigneur Skorpekh avec une endurance surhumaine. Les combats
+                  sont équilibrés — chaque camp tenant ses positions, les World
+                  Eaters absorbant les pertes par la pure grâce warp de leur
+                  dieu tandis que les Nécrons reconstituent leurs rangs par le
+                  <em>Protocole de Résurrection</em>.
+                </p>
               </div>
-            </header>
-            <div class="tour-body">
-              <p>
-                Khorne bénit les World Eaters dès l'ouverture des hostilités : résistance aux coups et force physique accrues.
-                Les berzerkers encaissent les tirs des Guerriers Nécrons et les assauts du Seigneur Skorpekh avec une
-                endurance surhumaine. Les combats sont équilibrés — chaque camp tenant ses positions, les World Eaters
-                absorbant les pertes par la pure grâce warp de leur dieu tandis que les Nécrons reconstituent leurs rangs
-                par le <em>Protocole de Résurrection</em>.
-              </p>
-            </div>
-          </article>
+            </article>
 
-          <!-- Tour 2 -->
-          <article class="tour-card reveal reveal-delay-1" aria-labelledby="tour2-title">
-            <header class="tour-header">
-              <span class="tour-num" aria-label="Tour deux">II</span>
-              <div class="tour-divider" aria-hidden="true"></div>
-              <div class="tour-title-wrap">
-                <p class="tour-label">Deuxième Tour</p>
-                <h3 class="tour-title" id="tour2-title">Khorne Entend les Prières</h3>
+            <!-- Tour 2 -->
+            <article
+              class="tour-card reveal reveal-delay-1"
+              aria-labelledby="tour2-title"
+            >
+              <header class="tour-header">
+                <span class="tour-num" aria-label="Tour deux">II</span>
+                <div class="tour-divider" aria-hidden="true"></div>
+                <div class="tour-title-wrap">
+                  <p class="tour-label">Deuxième Tour</p>
+                  <h3 class="tour-title" id="tour2-title">
+                    Khorne Entend les Prières
+                  </h3>
+                </div>
+              </header>
+              <div class="tour-body">
+                <p>
+                  Le regard de Khorne se pose sur trois champions parmi les
+                  siens et sur Khârn lui-même. Touché par leurs exploits, le
+                  dieu du sang leur offre une
+                  <em>semi-bénédiction-possession</em> — une puissance warp
+                  brûlante qui galvanise corps et esprit au-delà de toute limite
+                  humaine ou posthumaine. La foudre voltaïque parcourt les
+                  flancs du <em>Conqueror</em>, faisant vibrer les plaques de
+                  blindage. C'est alors que l'Écharde se révèle pleinement : le
+                  Dragon du Vide manifeste sa présence physique dans l'arène,
+                  prêt à défier le dieu du sang sur son propre terrain sacré.
+                </p>
               </div>
-            </header>
-            <div class="tour-body">
-              <p>
-                Le regard de Khorne se pose sur trois champions parmi les siens et sur Khârn lui-même. Touché par leurs
-                exploits, le dieu du sang leur offre une <em>semi-bénédiction-possession</em> — une puissance warp brûlante
-                qui galvanise corps et esprit au-delà de toute limite humaine ou posthumaine. La foudre voltaïque parcourt
-                les flancs du <em>Conqueror</em>, faisant vibrer les plaques de blindage. C'est alors que l'Écharde se révèle
-                pleinement : le Dragon du Vide manifeste sa présence physique dans l'arène, prêt à défier le dieu du sang sur
-                son propre terrain sacré.
-              </p>
-            </div>
-          </article>
+            </article>
 
-          <!-- Tour 3 -->
-          <article class="tour-card reveal reveal-delay-2" aria-labelledby="tour3-title">
-            <header class="tour-header">
-              <span class="tour-num" aria-label="Tour trois">III</span>
-              <div class="tour-divider" aria-hidden="true"></div>
-              <div class="tour-title-wrap">
-                <p class="tour-label">Troisième Tour</p>
-                <h3 class="tour-title" id="tour3-title">Khorne Brûle de Fierté</h3>
+            <!-- Tour 3 -->
+            <article
+              class="tour-card reveal reveal-delay-2"
+              aria-labelledby="tour3-title"
+            >
+              <header class="tour-header">
+                <span class="tour-num" aria-label="Tour trois">III</span>
+                <div class="tour-divider" aria-hidden="true"></div>
+                <div class="tour-title-wrap">
+                  <p class="tour-label">Troisième Tour</p>
+                  <h3 class="tour-title" id="tour3-title">
+                    Khorne Brûle de Fierté
+                  </h3>
+                </div>
+              </header>
+              <div class="tour-body">
+                <p>
+                  Khârn et l'Écharde de C'tan s'affrontent directement — et
+                  s'entre-tuent. Mais tous deux se relèvent. Le Dragon du Vide,
+                  immortel dans son enveloppe de nécroderme, retrouve cohérence
+                  en quelques instants. Khârn, lui, est relevé par la pure
+                  énergie warp de sa colère et par la volonté inflexible de
+                  Khorne lui-même. Le Temple est ravagé, les champions cèdent du
+                  terrain face à la pression nécron, et les forces semblent
+                  basculer vers l'irrémédiable.
+                </p>
+                <p class="mt-3">
+                  Alors, dans un dernier acte de furie absolue, le fidèle
+                  Huitième Capitaine abat le fragment du dieu stellaire de sa
+                  hache — <em>Gorechild</em> s'enfonçant dans le nécroderme là
+                  où nul autre n'aurait pu frapper. Le Dragon du Vide est
+                  dissous. L'arène appartient à Khorne.
+                </p>
               </div>
-            </header>
-            <div class="tour-body">
-              <p>
-                Khârn et l'Écharde de C'tan s'affrontent directement —
-                et s'entre-tuent. Mais tous deux se relèvent. Le Dragon du Vide, immortel dans son enveloppe de nécroderme,
-                retrouve cohérence en quelques instants. Khârn, lui, est relevé par la pure énergie warp de sa colère
-                et par la volonté inflexible de Khorne lui-même. Le Temple est ravagé, les champions cèdent du terrain
-                face à la pression nécron, et les forces semblent basculer vers l'irrémédiable.
-              </p>
-              <p style="margin-top: var(--space-3);">
-                Alors, dans un dernier acte de furie absolue, le fidèle Huitième Capitaine abat le fragment du dieu stellaire
-                de sa hache — <em>Gorechild</em> s'enfonçant dans le nécroderme là où nul autre n'aurait pu frapper.
-                Le Dragon du Vide est dissous. L'arène appartient à Khorne.
-              </p>
-            </div>
-          </article>
+            </article>
+          </div>
+          <!-- /tours-container -->
 
-        </div><!-- /tours-container -->
+          <!-- Galerie photos — la bataille sur la table de jeu -->
+          <div
+            class="battle-gallery reveal reveal-delay-1"
+            role="group"
+            aria-label="Photographies de la bataille sur table"
+          >
+            <figure class="battle-figure">
+              <img
+                src="../../assets/img/rapport/conqueror/dragon-du-vide.webp"
+                alt="Le Dragon du Vide, Écharde de C'tan, se dresse face aux World Eaters dans l'arène du Conqueror."
+                loading="lazy"
+                width="1536"
+                height="2048"
+              />
+              <figcaption class="battle-figcaption">
+                <strong>Le Dragon du Vide se dresse</strong>
+                L'Écharde de C'tan manifeste sa présence physique et défie les
+                fidèles de Khorne sur le sol même du Temple.
+              </figcaption>
+            </figure>
+            <figure class="battle-figure">
+              <img
+                src="../../assets/img/rapport/conqueror/melee-arene.webp"
+                alt="Mêlée dans l'arène : Berzerkers et Space Marines s'étreignent avec un guerrier nécron incandescent."
+                loading="lazy"
+                width="1536"
+                height="2048"
+              />
+              <figcaption class="battle-figcaption">
+                <strong>La mêlée dans l'arène</strong>
+                Berzerkers et Nécrons s'entre-déchirent au corps à corps, sous
+                le regard ardent du Dieu du Sang.
+              </figcaption>
+            </figure>
+          </div>
 
-        <!-- Galerie photos — la bataille sur la table de jeu -->
-        <div class="battle-gallery reveal reveal-delay-1"
-             role="group" aria-label="Photographies de la bataille sur table">
-          <figure class="battle-figure">
-            <img src="../../assets/img/rapport/conqueror/dragon-du-vide.jpg"
-                 alt="Le Dragon du Vide, Écharde de C'tan, se dresse face aux World Eaters dans l'arène du Conqueror."
-                 loading="lazy" width="1536" height="2048" />
-            <figcaption class="battle-figcaption">
-              <strong>Le Dragon du Vide se dresse</strong>
-              L'Écharde de C'tan manifeste sa présence physique et défie les fidèles de Khorne sur le sol même du Temple.
-            </figcaption>
-          </figure>
-          <figure class="battle-figure">
-            <img src="../../assets/img/rapport/conqueror/melee-arene.jpg"
-                 alt="Mêlée dans l'arène : Berzerkers et Space Marines s'étreignent avec un guerrier nécron incandescent."
-                 loading="lazy" width="1536" height="2048" />
-            <figcaption class="battle-figcaption">
-              <strong>La mêlée dans l'arène</strong>
-              Berzerkers et Nécrons s'entre-déchirent au corps à corps, sous le regard ardent du Dieu du Sang.
-            </figcaption>
-          </figure>
+          <!-- Séparateur -->
+          <div class="battle-sep reveal mt-12" aria-hidden="true">
+            <span class="battle-sep-icon">✦ Résolution ✦</span>
+          </div>
+
+          <!-- Résultat final -->
+          <div
+            class="resultat-finale reveal reveal-delay-1"
+            role="region"
+            aria-labelledby="resultat-heading"
+          >
+            <h3 class="resultat-title" id="resultat-heading">
+              Victoire — Au Sang de <span>Khârn</span>
+            </h3>
+            <p class="resultat-desc">
+              Le Temple est souillé mais tenu. Le sabotage nécron aura laissé
+              des séquelles durables sur les systèmes d'artillerie du
+              <em>Conqueror</em>. Pourtant, l'essentiel est préservé : le
+              Conqueror navigue encore. Et l'Écharde du Dragon du Vide ne se
+              reformera pas — Khârn en a décidé ainsi. Khorne grave les noms des
+              champions dans le métal même du vaisseau, et la rage continue de
+              brûler.
+            </p>
+          </div>
         </div>
+      </section>
+      <!-- /combats -->
 
-        <!-- Séparateur -->
-        <div class="battle-sep reveal" aria-hidden="true" style="margin-top: var(--space-12);">
-          <span class="battle-sep-icon">✦ Résolution ✦</span>
-        </div>
+      <!-- LIEN RETOUR -->
+      <nav class="back-home-wrap" aria-label="Navigation de retour">
+        <a
+          href="../../index.html"
+          class="back-link"
+          aria-label="Retourner à l'accueil de la Campagne Fyrentis"
+        >
+          ← Retour à l'accueil
+        </a>
+      </nav>
+    </main>
+    <!-- /main -->
 
-        <!-- Résultat final -->
-        <div class="resultat-finale reveal reveal-delay-1"
-             role="region" aria-labelledby="resultat-heading">
-          <h3 class="resultat-title" id="resultat-heading">
-            Victoire — Au Sang de <span>Khârn</span>
-          </h3>
-          <p class="resultat-desc">
-            Le Temple est souillé mais tenu. Le sabotage nécron aura laissé des séquelles durables sur
-            les systèmes d'artillerie du <em>Conqueror</em>. Pourtant, l'essentiel est préservé : le Conqueror
-            navigue encore. Et l'Écharde du Dragon du Vide ne se reformera pas — Khârn en a décidé ainsi.
-            Khorne grave les noms des champions dans le métal même du vaisseau, et la rage continue de brûler.
-          </p>
-        </div>
+    <!-- Footer injecté par layout.js -->
+    <footer
+      id="site-footer"
+      role="contentinfo"
+      aria-label="Pied de page du site"
+    ></footer>
 
-      </div>
-    </section><!-- /combats -->
-
-    <!-- LIEN RETOUR -->
-    <nav class="back-home-wrap" aria-label="Navigation de retour">
-      <a href="../../index.html" class="back-link" aria-label="Retourner à l'accueil de la Campagne Fyrentis">
-        ← Retour à l'accueil
-      </a>
-    </nav>
-
-  </main><!-- /main -->
-
-  <!-- Footer injecté par layout.js -->
-  <footer id="site-footer" role="contentinfo" aria-label="Pied de page du site"></footer>
-
-  <!-- Bouton retour en haut -->
-  <button class="back-top" id="back-top"
-          aria-label="Retour en haut de la page"
-          title="Retour en haut">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2" stroke-linecap="round"
-         stroke-linejoin="round" aria-hidden="true">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-
-  <!-- Script layout.js — navigation + footer + reveal -->
-  <script type="module" src="../../assets/js/layout.js"></script>
-
-  <script>
-    // ── Animations reveal au scroll (Intersection Observer) ──────
-    (function () {
-      const els = document.querySelectorAll('.reveal');
-      if (!els.length) return;
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) {
-        els.forEach(el => el.classList.add('visible'));
-        return;
-      }
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      els.forEach(el => obs.observe(el));
-    })();
-
-    // ── Bouton retour en haut ─────────────────────────────────────
-    (function () {
-      const btn = document.getElementById('back-top');
-      if (!btn) return;
-      window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 400);
-      }, { passive: true });
-      btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    })();
-  </script>
-
-</body>
+    <!-- Le bouton « retour en haut » est injecté par layout.js, et les
+       comportements (thème, menu mobile, reveal, back-top) sont attachés
+       par pages.js — même architecture que toutes les autres pages.
+       L'ancien script inline dupliquait pages.js et violait la CSP. -->
+    <script type="module" src="../../assets/js/layout.js"></script>
+    <script type="module" src="../../assets/js/pages.js"></script>
+  </body>
 </html>

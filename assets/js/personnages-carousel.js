@@ -1,14 +1,35 @@
+/**
+ * personnages-carousel.js — Carrousel des personnages clés (page d'accueil).
+ * Injecte le HTML depuis les données `personnages` de campagne.json, puis
+ * gère navigation clavier, swipe tactile, drag souris et ARIA.
+ * Dépendances : utils.js (échappement anti-XSS)
+ * @author  Jean
+ * @since   2026-07
+ */
 import { escapeHTML, escapeAttr } from "./utils.js";
 
 const PLACEHOLDER_SVG =
   '<svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="52" height="52" rx="2"/><path d="M4 40 l14-14 10 10 12-16 16 20"/><circle cx="42" cy="18" r="5"/></svg>';
 
+// Les portraits existent en deux tailles : <nom>-480.webp et <nom>-960.webp.
+// campagne.json référence la version 960 ; on dérive le srcset par convention
+// de nommage pour que le mobile ne télécharge que la 480 (~40 Ko au lieu de 130).
+function buildSrcset(image) {
+  if (!/-960\.webp$/.test(image)) return ""; // image hors convention : pas de srcset
+  const small = image.replace(/-960\.webp$/, "-480.webp");
+  return `${small} 480w, ${image} 960w`;
+}
+
 function buildSlide(perso, index, total) {
+  const srcset = buildSrcset(perso.image);
   const imgHTML = [
     '<div class="perso-carousel__img-wrap">',
     "<img",
     '  class="perso-carousel__img"',
     `  src="${escapeAttr(perso.image)}"`,
+    srcset
+      ? `  srcset="${escapeAttr(srcset)}" sizes="(max-width: 700px) 100vw, 860px"`
+      : "",
     `  alt="${escapeAttr(perso.nom)}"`,
     `  loading="${index === 0 ? "eager" : "lazy"}"`,
     '  width="860"',

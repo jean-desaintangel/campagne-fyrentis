@@ -12,7 +12,6 @@ Site web statique pour la campagne narrative Warhammer 40,000 — Sous-secteur F
 campagne-fyrentis/
 ├── index.html                              # Page d'accueil — hub de navigation
 ├── README.md
-├── REVUE-CODE.md                           # Rapport de revue de code
 ├── assets/
 │   ├── css/                                # Feuilles de style (thème Warhammer 40K)
 │   │   ├── style.css                       # Style commun aux pages intérieures
@@ -47,10 +46,12 @@ campagne-fyrentis/
     ├── cartes/                             # Cartes du sous-secteur
     │   ├── carte.html                      # Carte interactive
     │   └── sanctum.html                    # Fiche du système Sanctum
-    └── rapports/                           # Rapports de bataille
-        ├── rapport-inquisiteur.html        # Rapports des inquisiteurs
-        ├── rapport-bataille-brokha.html    # Rapport — Bataille de Brokha
-        └── coalition-vox.html              # Situation de la campagne (Coalition Vox)
+    ├── rapports/                           # Rapports de bataille
+    │   ├── rapport-inquisiteur.html        # Rapports des inquisiteurs
+    │   ├── rapport-bataille-brokha.html    # Rapport — Bataille de Brokha
+    │   └── coalition-vox.html              # Situation de la campagne (Coalition Vox)
+    └── batailles/                          # Rapports de bataille narratifs
+        └── conquete-du-conqueror.html      # Rapport — La Prise du Conqueror
 ```
 
 ---
@@ -100,7 +101,7 @@ Pour activer ou vérifier :
 
 1. Aller dans **Settings** du dépôt → section **Pages**
 2. Source : `Deploy from a branch` → branche `main` → dossier `/ (root)`
-3. Site accessible à : `https://djaunie.github.io/campagne-fyrentis`
+3. Site accessible à : `https://jean-desaintangel.github.io/campagne-fyrentis`
 
 Chaque `git push` sur `main` déclenche une mise à jour automatique (délai ~1 minute).
 
@@ -121,7 +122,3 @@ git add autres/armees/nouvelle-faction.html index.html
 git commit -m "Ajout fiche armée nouvelle-faction"
 git push origin main
 ```
-
----
-
-## Comma

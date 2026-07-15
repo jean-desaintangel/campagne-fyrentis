@@ -1,42 +1,42 @@
 /* ── IRON WARRIORS DE KHORNE : MÉTAL & ROUGE SANG ── */
-      :root {
-        --iw-iron: #7a6a5a;
-        --iw-iron-light: #a89880;
-        --iw-iron-dim: rgba(122, 106, 90, 0.45);
-        --iw-iron-bg: rgba(122, 106, 90, 0.07);
-        --iw-iron-hover-bg: rgba(122, 106, 90, 0.18);
-        --iw-iron-glow: rgba(122, 106, 90, 0.32);
-        --iw-blood: #8c1a1a;
-        --iw-blood-dim: rgba(140, 26, 26, 0.4);
-        --page-accent: #7a6a5a;
-        --page-accent-light: #a89880;
-        --page-accent-dim: rgba(122, 106, 90, 0.45);
-        --page-accent-bg: rgba(122, 106, 90, 0.07);
-        --page-accent-hover-bg: rgba(122, 106, 90, 0.18);
-        --page-accent-glow: rgba(122, 106, 90, 0.32);
-        --page-hero-glow: rgba(122, 106, 90, 0.14);
-        --page-hero-border: rgba(122, 106, 90, 0.2);
-        --page-symbol: "✦";
-        --page-nota-accent: #8c1a1a;
-        --page-nota-accent-dim: rgba(140, 26, 26, 0.4);
-      }
-      [data-theme="light"] {
-        --iw-iron: #524438;
-        --iw-iron-light: #382e24;
-        --iw-iron-dim: rgba(82, 68, 56, 0.4);
-        --iw-iron-bg: rgba(82, 68, 56, 0.06);
-        --iw-iron-hover-bg: rgba(82, 68, 56, 0.14);
-        --iw-iron-glow: rgba(82, 68, 56, 0.2);
-        --iw-blood: #6b1010;
-        --iw-blood-dim: rgba(107, 16, 16, 0.35);
-        --page-accent: #524438;
-        --page-accent-light: #382e24;
-        --page-accent-dim: rgba(82, 68, 56, 0.4);
-        --page-accent-bg: rgba(82, 68, 56, 0.06);
-        --page-accent-hover-bg: rgba(82, 68, 56, 0.14);
-        --page-accent-glow: rgba(82, 68, 56, 0.2);
-        --page-hero-glow: rgba(82, 68, 56, 0.1);
-        --page-hero-border: rgba(82, 68, 56, 0.18);
-        --page-nota-accent: #6b1010;
-        --page-nota-accent-dim: rgba(107, 16, 16, 0.35);
-      }
+:root {
+  --iw-iron: var(--page-accent);
+  --iw-iron-light: var(--page-accent-light);
+  --iw-iron-dim: var(--page-accent-dim);
+  --iw-iron-bg: var(--page-accent-bg);
+  --iw-iron-hover-bg: var(--page-accent-hover-bg);
+  --iw-iron-glow: var(--page-accent-glow);
+  --iw-blood: var(--page-nota-accent);
+  --iw-blood-dim: var(--page-nota-accent-dim);
+  --page-accent: #7a6a5a;
+  --page-accent-light: #a89880;
+  --page-accent-dim: rgba(122, 106, 90, 0.45);
+  --page-accent-bg: rgba(122, 106, 90, 0.07);
+  --page-accent-hover-bg: rgba(122, 106, 90, 0.18);
+  --page-accent-glow: rgba(122, 106, 90, 0.32);
+  --page-hero-glow: rgba(122, 106, 90, 0.14);
+  --page-hero-border: rgba(122, 106, 90, 0.2);
+  --page-symbol: "✦";
+  --page-nota-accent: #8c1a1a;
+  --page-nota-accent-dim: rgba(140, 26, 26, 0.4);
+}
+[data-theme="light"] {
+  --iw-iron: var(--page-accent);
+  --iw-iron-light: var(--page-accent-light);
+  --iw-iron-dim: var(--page-accent-dim);
+  --iw-iron-bg: var(--page-accent-bg);
+  --iw-iron-hover-bg: var(--page-accent-hover-bg);
+  --iw-iron-glow: var(--page-accent-glow);
+  --iw-blood: var(--page-nota-accent);
+  --iw-blood-dim: var(--page-nota-accent-dim);
+  --page-accent: #524438;
+  --page-accent-light: #382e24;
+  --page-accent-dim: rgba(82, 68, 56, 0.4);
+  --page-accent-bg: rgba(82, 68, 56, 0.06);
+  --page-accent-hover-bg: rgba(82, 68, 56, 0.14);
+  --page-accent-glow: rgba(82, 68, 56, 0.2);
+  --page-hero-glow: rgba(82, 68, 56, 0.1);
+  --page-hero-border: rgba(82, 68, 56, 0.18);
+  --page-nota-accent: #6b1010;
+  --page-nota-accent-dim: rgba(107, 16, 16, 0.35);
+}

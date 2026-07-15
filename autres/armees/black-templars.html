@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Black Templars — Croisés éternels de la campagne Fyrentis 40K. Dossier inquisitorial.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Black Templars — Croisés éternels de la campagne Fyrentis 40K. Dossier inquisitorial."
+    />
     <title>Black Templars</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,429 +24,433 @@
   <body data-base="../../" data-active="">
     <div id="site-nav"></div>
 
-    <!-- HERO MINI -->
-    <header class="page-hero" id="top">
-      <div class="container">
-        <p class="section-eyebrow">Armée de Freddy</p>
-        <h1 class="section-title"><span>BLACK TEMPLARS</span></h1>
-        <p class="section-desc">
-          Croisés éternels de l'Adeptus Astartes. Leur dossier de campagne dans
-          le sous-secteur Fyrentis est sous scellé inquisitorial.
-        </p>
-        <a href="../../index.html#specificites-freddy" class="back-link">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Retour à l'accueil
-        </a>
-      </div>
-    </header>
+    <!-- Contenu principal : cible du lien d'évitement injecté par layout.js -->
+    <main id="main-content">
+      <!-- HERO MINI -->
+      <header class="page-hero" id="top">
+        <div class="container">
+          <p class="section-eyebrow">Armée de Freddy</p>
+          <h1 class="section-title"><span>BLACK TEMPLARS</span></h1>
+          <p class="section-desc">
+            Croisés éternels de l'Adeptus Astartes. Leur dossier de campagne
+            dans le sous-secteur Fyrentis est sous scellé inquisitorial.
+          </p>
+          <a href="../../index.html#specificites-freddy" class="back-link">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Retour à l'accueil
+          </a>
+        </div>
+      </header>
 
-    <!-- CONTENU CENSURÉ -->
-    <section class="censure-section">
-      <div class="container">
-        <div class="censure-wrapper">
-          <div class="censure-stamp">
-            <!-- Cachet inquisitorial -->
-            <div class="inquisition-seal reveal">
-              <svg
-                class="inquisition-seal-icon"
-                viewBox="0 0 72 72"
-                fill="none"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="34"
-                  stroke="currentColor"
-                  stroke-width="1.2"
-                  stroke-dasharray="4 3"
-                />
-                <circle
-                  cx="36"
-                  cy="36"
-                  r="26"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.5"
-                />
-                <text
-                  x="36"
-                  y="44"
-                  text-anchor="middle"
-                  font-family="serif"
-                  font-size="26"
-                  font-weight="700"
-                  fill="currentColor"
-                >
-                  I
-                </text>
-                <ellipse
-                  cx="36"
-                  cy="53"
-                  rx="5"
-                  ry="3.5"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="34"
-                  y1="56"
-                  x2="33"
-                  y2="59"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="38"
-                  y1="56"
-                  x2="39"
-                  y2="59"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                  opacity="0.6"
-                />
-                <line
-                  x1="2"
-                  y1="36"
-                  x2="10"
-                  y2="36"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                />
-                <line
-                  x1="62"
-                  y1="36"
-                  x2="70"
-                  y2="36"
-                  stroke="currentColor"
-                  stroke-width="0.8"
-                />
-                <polygon
-                  points="36,4 38,10 36,8 34,10"
-                  fill="currentColor"
-                  opacity="0.7"
-                />
-              </svg>
-              <span class="inquisition-seal-title"
-                >Ordo Hereticus — Inquisitoriat Impérial</span
-              >
-            </div>
-
-            <!-- Bandeau principal -->
-            <div class="censure-bandeau reveal">
-              <span class="censure-bandeau-text"
-                >Censuré par l'Inquisition</span
-              >
-            </div>
-
-            <!-- Référence de document -->
-            <p class="censure-ref reveal">
-              <strong>Réf. Doc. :</strong> OHI-FYRENTIS-BT-██████ — Classifié
-              <strong>Extremis Obscura</strong><br />
-              Ce dossier a été placé sous scellé inquisitorial par décision de
-              l'Ordo Hereticus,
-              <em
-                >en attente de vérification des activités du Réclusiarque
-                Grimaldus dans le sous-secteur Fyrentis.</em
-              >
-              Tout accès non autorisé constitue un acte d'hérésie passible du
-              bûcher.
-            </p>
-
-            <!-- Bloc I : Historique de croisade -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
+      <!-- CONTENU CENSURÉ -->
+      <section class="censure-section">
+        <div class="container">
+          <div class="censure-wrapper">
+            <div class="censure-stamp">
+              <!-- Cachet inquisitorial -->
+              <div class="inquisition-seal reveal">
                 <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
+                  class="inquisition-seal-icon"
+                  viewBox="0 0 72 72"
                   fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
                   aria-hidden="true"
                 >
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <line x1="9" y1="9" x2="15" y2="9" />
-                  <line x1="9" y1="13" x2="15" y2="13" />
-                  <line x1="9" y1="17" x2="12" y2="17" />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="34"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-dasharray="4 3"
+                  />
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="26"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.5"
+                  />
+                  <text
+                    x="36"
+                    y="44"
+                    text-anchor="middle"
+                    font-family="serif"
+                    font-size="26"
+                    font-weight="700"
+                    fill="currentColor"
+                  >
+                    I
+                  </text>
+                  <ellipse
+                    cx="36"
+                    cy="53"
+                    rx="5"
+                    ry="3.5"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="34"
+                    y1="56"
+                    x2="33"
+                    y2="59"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="38"
+                    y1="56"
+                    x2="39"
+                    y2="59"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    opacity="0.6"
+                  />
+                  <line
+                    x1="2"
+                    y1="36"
+                    x2="10"
+                    y2="36"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  />
+                  <line
+                    x1="62"
+                    y1="36"
+                    x2="70"
+                    y2="36"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  />
+                  <polygon
+                    points="36,4 38,10 36,8 34,10"
+                    fill="currentColor"
+                    opacity="0.7"
+                  />
                 </svg>
-                Historique de Croisade — Fyrentis
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-              </div>
-            </div>
-
-            <!-- Bloc II : Spécificités d'armée -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+                <span class="inquisition-seal-title"
+                  >Ordo Hereticus — Inquisitoriat Impérial</span
                 >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                Spécificités de Campagne — Black Templars
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
               </div>
-            </div>
 
-            <!-- Bloc III : Bonus de vaisseau / règles spéciales -->
-            <div class="censure-bloc reveal">
-              <p class="censure-titre">
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
+              <!-- Bandeau principal -->
+              <div class="censure-bandeau reveal">
+                <span class="censure-bandeau-text"
+                  >Censuré par l'Inquisition</span
                 >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <line x1="12" y1="16" x2="12.01" y2="16" />
-                </svg>
-                Règles Spéciales &amp; Bonus de Campagne
-              </p>
-              <div class="censure-lignes">
-                <div class="censure-ligne censure-ligne--moyen"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--court"></div>
-                <div class="censure-ligne censure-ligne--long"></div>
-                <div class="censure-ligne censure-ligne--moyen"></div>
               </div>
-            </div>
 
-            <!-- ══════════════════════════════════════════════════════════
+              <!-- Référence de document -->
+              <p class="censure-ref reveal">
+                <strong>Réf. Doc. :</strong> OHI-FYRENTIS-BT-██████ — Classifié
+                <strong>Extremis Obscura</strong><br />
+                Ce dossier a été placé sous scellé inquisitorial par décision de
+                l'Ordo Hereticus,
+                <em
+                  >en attente de vérification des activités du Réclusiarque
+                  Grimaldus dans le sous-secteur Fyrentis.</em
+                >
+                Tout accès non autorisé constitue un acte d'hérésie passible du
+                bûcher.
+              </p>
+
+              <!-- Bloc I : Historique de croisade -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="9" y1="9" x2="15" y2="9" />
+                    <line x1="9" y1="13" x2="15" y2="13" />
+                    <line x1="9" y1="17" x2="12" y2="17" />
+                  </svg>
+                  Historique de Croisade — Fyrentis
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- Bloc II : Spécificités d'armée -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Spécificités de Campagne — Black Templars
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                </div>
+              </div>
+
+              <!-- Bloc III : Bonus de vaisseau / règles spéciales -->
+              <div class="censure-bloc reveal">
+                <p class="censure-titre">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  Règles Spéciales &amp; Bonus de Campagne
+                </p>
+                <div class="censure-lignes">
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--court"></div>
+                  <div class="censure-ligne censure-ligne--long"></div>
+                  <div class="censure-ligne censure-ligne--moyen"></div>
+                </div>
+              </div>
+
+              <!-- ══════════════════════════════════════════════════════════
              BLOC IV : DÉCLASSIFICATION PARTIELLE — SITUATION TACTIQUE
              ══════════════════════════════════════════════════════════ -->
-            <div class="declassifie-bloc reveal">
-              <div class="declassifie-header">
-                <span class="declassifie-badge">Déclassifié</span>
-                <span class="declassifie-header-title"
-                  >Situation Tactique — Secteur Sanctum &amp; Orbite</span
-                >
+              <div class="declassifie-bloc reveal">
+                <div class="declassifie-header">
+                  <span class="declassifie-badge">Déclassifié</span>
+                  <span class="declassifie-header-title"
+                    >Situation Tactique — Secteur Sanctum &amp; Orbite</span
+                  >
+                </div>
+
+                <div class="declassifie-entries">
+                  <!-- Entrée 1 : Lune-Forteresse Brokha -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                        />
+                        <circle cx="17" cy="5" r="1.5" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Lune-Forteresse Brokha
+                        <span class="status-tag status-tag--actif"
+                          >En orbite — Sanctum</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Station orbitale de classe forteresse, en orbite
+                        stabilisée autour de <em>Sanctum</em>. Les garnisons du
+                        Chapitre — désignées collectivement sous l'appellation
+                        <em>Croisés de Brokha</em> — en tiennent l'intégralité
+                        des secteurs défensifs. Aucune brèche signalée. L'accès
+                        y est conditionnel à l'accréditation de rang Croisé ou
+                        supérieur.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 2 : Bastion Alpha -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <polyline points="9 12 11 14 15 10" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Bastion Alpha
+                        <span class="status-tag status-tag--operationnel"
+                          >Intact — Sous contrôle</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        Position fortifiée confirmée comme opérationnelle. Les
+                        défenses périmètriques sont intactes et le commandement
+                        du Bastion Alpha est assuré par les frères du Chapitre.
+                        <em
+                          >Aucune menace ennemie active n'a été enregistrée à ce
+                          poste lors du dernier rapport de situation.</em
+                        >
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 3 : Bastion Bêta -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <line x1="9" y1="9" x2="15" y2="15" />
+                        <line x1="15" y1="9" x2="9" y2="15" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Bastion Bêta
+                        <span class="status-tag status-tag--ruine"
+                          >En ruines</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        La position est <em>hors d'état de combattre</em>. Les
+                        structures du Bastion Bêta ont été réduites en ruines
+                        lors d'engagements antérieurs non documentés dans ce
+                        rapport. Le secteur est à considérer comme zone de
+                        combat potentielle et constitue un objectif tactique de
+                        reconquête ou de déni d'accès à l'ennemi.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="declassifie-separator"></div>
+
+                  <!-- Entrée 4 : Flotte de Croisade Helbrecht -->
+                  <div class="declassifie-entry">
+                    <div class="declassifie-entry-icon" aria-hidden="true">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                        />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                      </svg>
+                    </div>
+                    <div class="declassifie-entry-content">
+                      <p class="declassifie-entry-label">
+                        Flotte de Croisade — Helbrecht
+                        <span class="status-tag status-tag--actif"
+                          >Visible depuis Sanctum</span
+                        >
+                      </p>
+                      <p class="declassifie-entry-text">
+                        La flotte de croisade placée sous le commandement du
+                        Haut Maréchal <em>Helbrecht</em> est visible à l'œil nu
+                        depuis la surface de Sanctum. Son envergure — vaisseaux
+                        de ligne, croiseurs d'escorte et transports d'assaut —
+                        est telle qu'elle constitue à elle seule
+                        <em>un théâtre d'opérations à part entière</em>,
+                        susceptible d'accueillir des missions d'abordage, de
+                        défense orbitale ou de représailles. Son statut tactique
+                        est classé
+                        <em>Zone d'Engagement Secondaire — Priorité Croisade</em
+                        >.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- /declassifie-entries -->
+
+                <p class="declassifie-footer">
+                  Extrait autorisé — OHI-FYRENTIS-BT-SITREP-04 ·
+                  Déclassification partielle accordée par autorité du Commandeur
+                  de la Croisade
+                </p>
               </div>
+              <!-- /declassifie-bloc -->
 
-              <div class="declassifie-entries">
-                <!-- Entrée 1 : Lune-Forteresse Brokha -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                      />
-                      <circle cx="17" cy="5" r="1.5" fill="currentColor" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Lune-Forteresse Brokha
-                      <span class="status-tag status-tag--actif"
-                        >En orbite — Sanctum</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Station orbitale de classe forteresse, en orbite
-                      stabilisée autour de <em>Sanctum</em>. Les garnisons du
-                      Chapitre — désignées collectivement sous l'appellation
-                      <em>Croisés de Brokha</em> — en tiennent l'intégralité des
-                      secteurs défensifs. Aucune brèche signalée. L'accès y est
-                      conditionnel à l'accréditation de rang Croisé ou
-                      supérieur.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 2 : Bastion Alpha -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <polyline points="9 12 11 14 15 10" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Bastion Alpha
-                      <span class="status-tag status-tag--operationnel"
-                        >Intact — Sous contrôle</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      Position fortifiée confirmée comme opérationnelle. Les
-                      défenses périmètriques sont intactes et le commandement du
-                      Bastion Alpha est assuré par les frères du Chapitre.
-                      <em
-                        >Aucune menace ennemie active n'a été enregistrée à ce
-                        poste lors du dernier rapport de situation.</em
-                      >
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 3 : Bastion Bêta -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                      <line x1="9" y1="9" x2="15" y2="15" />
-                      <line x1="15" y1="9" x2="9" y2="15" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Bastion Bêta
-                      <span class="status-tag status-tag--ruine"
-                        >En ruines</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      La position est <em>hors d'état de combattre</em>. Les
-                      structures du Bastion Bêta ont été réduites en ruines lors
-                      d'engagements antérieurs non documentés dans ce rapport.
-                      Le secteur est à considérer comme zone de combat
-                      potentielle et constitue un objectif tactique de
-                      reconquête ou de déni d'accès à l'ennemi.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="declassifie-separator"></div>
-
-                <!-- Entrée 4 : Flotte de Croisade Helbrecht -->
-                <div class="declassifie-entry">
-                  <div class="declassifie-entry-icon" aria-hidden="true">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                      />
-                      <polyline points="9 22 9 12 15 12 15 22" />
-                    </svg>
-                  </div>
-                  <div class="declassifie-entry-content">
-                    <p class="declassifie-entry-label">
-                      Flotte de Croisade — Helbrecht
-                      <span class="status-tag status-tag--actif"
-                        >Visible depuis Sanctum</span
-                      >
-                    </p>
-                    <p class="declassifie-entry-text">
-                      La flotte de croisade placée sous le commandement du Haut
-                      Maréchal <em>Helbrecht</em> est visible à l'œil nu depuis
-                      la surface de Sanctum. Son envergure — vaisseaux de ligne,
-                      croiseurs d'escorte et transports d'assaut — est telle
-                      qu'elle constitue à elle seule
-                      <em>un théâtre d'opérations à part entière</em>,
-                      susceptible d'accueillir des missions d'abordage, de
-                      défense orbitale ou de représailles. Son statut tactique
-                      est classé
-                      <em>Zone d'Engagement Secondaire — Priorité Croisade</em>.
-                    </p>
-                  </div>
-                </div>
+              <!-- Note inquisitoriale -->
+              <div class="nota-bene reveal">
+                <p class="nota-bene-label">Nota Inquisitoriale</p>
+                <p>
+                  « Les activités du Chapitre dans le sous-secteur Fyrentis font
+                  l'objet d'une enquête préliminaire de l'Ordo Hereticus. Les
+                  présentes informations seront déclassifiées à l'issue de la
+                  vérification des antécédents du Réclusiarque Grimaldus. En
+                  attendant, tout citoyen impérial ayant connaissance du contenu
+                  de ce dossier est prié de se présenter à son Arbitre local. »
+                </p>
+                <p class="u-mt-05">
+                  —
+                  <em
+                    >Inquisiteur-Sénior ██████ █████████, Ordo Hereticus,
+                    Fyrentis Ultima</em
+                  >
+                </p>
               </div>
-              <!-- /declassifie-entries -->
-
-              <p class="declassifie-footer">
-                Extrait autorisé — OHI-FYRENTIS-BT-SITREP-04 · Déclassification
-                partielle accordée par autorité du Commandeur de la Croisade
-              </p>
-            </div>
-            <!-- /declassifie-bloc -->
-
-            <!-- Note inquisitoriale -->
-            <div class="nota-bene reveal">
-              <p class="nota-bene-label">Nota Inquisitoriale</p>
-              <p>
-                « Les activités du Chapitre dans le sous-secteur Fyrentis font
-                l'objet d'une enquête préliminaire de l'Ordo Hereticus. Les
-                présentes informations seront déclassifiées à l'issue de la
-                vérification des antécédents du Réclusiarque Grimaldus. En
-                attendant, tout citoyen impérial ayant connaissance du contenu
-                de ce dossier est prié de se présenter à son Arbitre local. »
-              </p>
-              <p class="u-mt-05">
-                —
-                <em
-                  >Inquisiteur-Sénior ██████ █████████, Ordo Hereticus, Fyrentis
-                  Ultima</em
-                >
-              </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer id="site-footer"></footer>
-
 
     <script type="module" src="../../assets/js/layout.js"></script>
     <script type="module" src="../../assets/js/pages.js"></script>

@@ -1,10 +1,19 @@
 <!doctype html>
+<!-- Ces pages "cartes" sont volontairement dark-only : leur CSS dédié
+     (pages/carte.css, pages/sanctum.css) ne définit pas de thème clair,
+     contrairement au reste du site (style.css + bouton de bascule). -->
 <html lang="fr" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
-    <meta name="description" content="Système Sanctum — Carte tactique interactive du système stellaire de la campagne Fyrentis.">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';"
+    />
+    <meta
+      name="description"
+      content="Système Sanctum — Carte tactique interactive du système stellaire de la campagne Fyrentis."
+    />
     <title>Système Sanctum — Fyrentis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,15 +24,19 @@
     <link rel="stylesheet" href="../../assets/css/pages/sanctum.css" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <nav>
-      <span class="nav-title">⚙ Système Sanctum</span>
+      <!-- h1 (et non span) : chaque page doit avoir un titre principal
+           pour la hiérarchie Hn (WCAG / RGAA 9.1). Le style reste porté
+           par la classe .nav-title. -->
+      <h1 class="nav-title">⚙ Système Sanctum</h1>
       <ul class="nav-links">
         <li><a href="../../index.html">Campagne</a></li>
         <li><a href="carte.html">Carte</a></li>
       </ul>
     </nav>
 
-    <div class="page-layout">
+    <main class="page-layout" id="main-content">
       <div class="orrery-zone">
         <div class="orrery-header">
           <div class="orrery-title" id="star-name">Chargement…</div>
@@ -131,9 +144,7 @@
             Clic droit sur une planète pour y planter le drapeau de la faction
             sélectionnée. Clic droit sur un drapeau existant pour le retirer.
             Fais glisser un vaisseau pour le déplacer.
-            <strong class="u-color-gold-dim"
-              >Clic droit sur un vaisseau</strong
-            >
+            <strong class="u-color-gold-dim">Clic droit sur un vaisseau</strong>
             pour le supprimer instantanément.
           </p>
         </div>
@@ -143,7 +154,7 @@
           <div id="figures-list"></div>
         </div>
       </aside>
-    </div>
+    </main>
 
     <script type="module" src="../../assets/js/sanctum.js"></script>
   </body>

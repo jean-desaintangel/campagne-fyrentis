@@ -1,3 +1,14 @@
+/**
+ * pages.js — Comportements communs à toutes les pages « site » :
+ * bascule de thème (persistée en localStorage), menu mobile, ombre de nav
+ * au scroll, bouton retour en haut, animations reveal (IntersectionObserver).
+ * À charger APRÈS layout.js (qui injecte la nav et le bouton back-top).
+ * Exception : carte.html et sanctum.html ont leur propre nav (dark-only)
+ * et ne chargent pas ce module.
+ * @author  Jean
+ * @since   2026-07
+ */
+
 // ── THEME TOGGLE (avec persistance localStorage)
 const themeBtn = document.querySelector("[data-theme-toggle]");
 const root = document.documentElement;

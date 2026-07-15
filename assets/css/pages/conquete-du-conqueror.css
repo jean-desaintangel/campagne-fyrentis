@@ -6,30 +6,30 @@
 /* Variables de page (héritées par .page-hero, .back-link, etc.) */
 :root,
 [data-theme="dark"] {
-  --page-hero-glow:    rgba(224, 80, 80, 0.20);
-  --page-hero-border:  rgba(224, 80, 80, 0.30);
-  --page-accent:       var(--army-we-fg);          /* #e05050 */
-  --page-accent-dim:   var(--army-we-border);      /* rgba(224,80,80,.45) */
-  --page-accent-bg:    var(--army-we-bg);          /* rgba(224,80,80,.10) */
+  --page-hero-glow: rgba(224, 80, 80, 0.2);
+  --page-hero-border: rgba(224, 80, 80, 0.3);
+  --page-accent: var(--army-we-fg); /* #e05050 */
+  --page-accent-dim: var(--army-we-border); /* rgba(224,80,80,.45) */
+  --page-accent-bg: var(--army-we-bg); /* rgba(224,80,80,.10) */
   --page-accent-hover-bg: rgba(224, 80, 80, 0.18);
-  --page-accent-glow:  rgba(224, 80, 80, 0.35);
+  --page-accent-glow: rgba(224, 80, 80, 0.35);
   --page-accent-light: #f07070;
-  --page-symbol:       "⚡";
+  --page-symbol: "⚡";
   /* Nota bene secondaire — vert nécron */
-  --page-nota-accent:        var(--army-nc-fg);    /* #40dd88 */
-  --page-nota-accent-dim:    var(--army-nc-border);
+  --page-nota-accent: var(--army-nc-fg); /* #40dd88 */
+  --page-nota-accent-dim: var(--army-nc-border);
 }
 [data-theme="light"] {
-  --page-hero-glow:    rgba(154, 26, 26, 0.14);
-  --page-hero-border:  rgba(154, 26, 26, 0.22);
-  --page-accent:       var(--army-we-fg);
-  --page-accent-dim:   var(--army-we-border);
-  --page-accent-bg:    var(--army-we-bg);
+  --page-hero-glow: rgba(154, 26, 26, 0.14);
+  --page-hero-border: rgba(154, 26, 26, 0.22);
+  --page-accent: var(--army-we-fg);
+  --page-accent-dim: var(--army-we-border);
+  --page-accent-bg: var(--army-we-bg);
   --page-accent-hover-bg: rgba(154, 26, 26, 0.14);
-  --page-accent-glow:  rgba(154, 26, 26, 0.25);
+  --page-accent-glow: rgba(154, 26, 26, 0.25);
   --page-accent-light: var(--army-we-fg);
-  --page-nota-accent:        var(--army-nc-fg);
-  --page-nota-accent-dim:    var(--army-nc-border);
+  --page-nota-accent: var(--army-nc-fg);
+  --page-nota-accent-dim: var(--army-nc-border);
 }
 
 /* ── HERO LARGE — override section standard ─────────────── */
@@ -133,7 +133,9 @@
   margin-bottom: var(--space-4);
   max-width: 72ch;
 }
-.narrative-intro p:last-child { margin-bottom: 0; }
+.narrative-intro p:last-child {
+  margin-bottom: 0;
+}
 
 /* ── SEPARATOR ORNEMENTAL ───────────────────────────────── */
 .battle-sep {
@@ -169,7 +171,9 @@
   gap: var(--space-6);
 }
 @media (max-width: 640px) {
-  .forces-grid { grid-template-columns: 1fr; }
+  .forces-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .force-bloc {
   background: var(--color-surface);
@@ -182,12 +186,18 @@
 .force-bloc::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
-.force-bloc--we::before { background: var(--army-we-fg); }
-.force-bloc--nc::before { background: var(--army-nc-fg); }
+.force-bloc--we::before {
+  background: var(--army-we-fg);
+}
+.force-bloc--nc::before {
+  background: var(--army-nc-fg);
+}
 
 .force-label {
   font-family: var(--font-display);
@@ -196,8 +206,12 @@
   text-transform: uppercase;
   margin-bottom: var(--space-2);
 }
-.force-label--we { color: var(--army-we-fg); }
-.force-label--nc { color: var(--army-nc-fg); }
+.force-label--we {
+  color: var(--army-we-fg);
+}
+.force-label--nc {
+  color: var(--army-nc-fg);
+}
 
 .force-name {
   font-family: var(--font-display);
@@ -252,7 +266,9 @@
 .tour-card::after {
   content: "";
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 4px;
   background: var(--army-we-fg);
   border-radius: 0;
@@ -281,7 +297,9 @@
   background: var(--color-divider);
   flex-shrink: 0;
 }
-.tour-title-wrap { flex: 1; }
+.tour-title-wrap {
+  flex: 1;
+}
 .tour-label {
   font-family: var(--font-display);
   font-size: var(--text-xs);
@@ -383,11 +401,11 @@
 /* ── RÉSULTAT FINAL ─────────────────────────────────────── */
 .resultat-finale {
   background: radial-gradient(
-    ellipse 80% 60% at center,
-    rgba(224, 80, 80, 0.12) 0%,
-    transparent 70%
-  ),
-  var(--color-surface);
+      ellipse 80% 60% at center,
+      rgba(224, 80, 80, 0.12) 0%,
+      transparent 70%
+    ),
+    var(--color-surface);
   border: 1px solid var(--army-we-border);
   border-radius: var(--radius-xl);
   padding: var(--space-10) var(--space-8);
@@ -403,7 +421,9 @@
   text-shadow: 0 0 30px rgba(224, 80, 80, 0.5);
   margin-bottom: var(--space-4);
 }
-.resultat-title span { color: var(--army-we-fg); }
+.resultat-title span {
+  color: var(--army-we-fg);
+}
 .resultat-desc {
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -422,7 +442,9 @@
   margin-top: var(--space-10);
 }
 @media (max-width: 640px) {
-  .battle-gallery { grid-template-columns: 1fr; }
+  .battle-gallery {
+    grid-template-columns: 1fr;
+  }
 }
 .battle-figure {
   margin: 0;
@@ -435,7 +457,9 @@
 .battle-figure::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   background: var(--army-we-fg);
   z-index: 2;
@@ -476,9 +500,42 @@
 
 /* ── UTILITAIRES RESPONSIVES ────────────────────────────── */
 @media (max-width: 600px) {
-  .battle-hero { padding: 5rem 0 2.5rem; }
-  .tour-header { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
-  .tour-divider { display: none; }
-  .tour-body { padding: var(--space-4) var(--space-4); }
-  .resultat-finale { padding: var(--space-8) var(--space-4); }
+  .battle-hero {
+    padding: 5rem 0 2.5rem;
+  }
+  .tour-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .tour-divider {
+    display: none;
+  }
+  .tour-body {
+    padding: var(--space-4) var(--space-4);
+  }
+  .resultat-finale {
+    padding: var(--space-8) var(--space-4);
+  }
+}
+
+/* ============================================================
+   UTILITAIRES DE PAGE — remplacent les anciens styles inline,
+   incompatibles avec la CSP (style-src 'self', sans 'unsafe-inline').
+============================================================ */
+.section-pad {
+  padding-block: clamp(var(--space-12), 8vw, var(--space-20));
+}
+.section-pad-sm {
+  padding-block: clamp(var(--space-10), 6vw, var(--space-16));
+}
+.section-bordered {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.mt-3 {
+  margin-top: var(--space-3);
+}
+.mt-12 {
+  margin-top: var(--space-12);
 }

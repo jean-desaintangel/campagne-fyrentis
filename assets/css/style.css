@@ -32,7 +32,9 @@
   /* Text */
   --color-text: #e8e0d4;
   --color-text-muted: #9a9080;
-  --color-text-faint: #5a5248;
+  /* 4,5:1 minimum sur --color-bg (WCAG AA) : l'ancien #5a5248 plafonnait à
+     2,6:1 alors que .battle-label et .station-num l'utilisent pour du texte. */
+  --color-text-faint: #8a8070;
   --color-text-inverse: #0a0807;
 
   /* Primary Accent — Blood Red */
@@ -146,10 +148,11 @@
   --army-nc-bar: #40dd88;
 
   /* Adeptus Mechanicus — rouge sang / acier rouillé */
-  --army-am-fg: #c8303a;
+  /* #e04850 = 4,96:1 sur --color-bg (l'ancien #c8303a échouait à 3,75:1) */
+  --army-am-fg: #e04850;
   --army-am-border: rgba(192, 40, 50, 0.55);
   --army-am-bg: rgba(160, 24, 32, 0.1);
-  --army-am-bar: #c8303a;
+  --army-am-bar: #e04850;
 }
 
 [data-theme="light"] {
@@ -162,7 +165,8 @@
   --color-border: rgba(139, 28, 28, 0.25);
   --color-text: #1a1208;
   --color-text-muted: #4a3e30;
-  --color-text-faint: #8a7a68;
+  /* 4,99:1 sur --color-bg clair (l'ancien #8a7a68 échouait à 3,5:1) */
+  --color-text-faint: #6f6252;
   --color-text-inverse: #f0ebe3;
   --color-primary: #7a1515;
   --color-primary-bright: #b01e1e;
@@ -889,12 +893,6 @@ section {
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
-.front-visual--sanctum {
-  border-color: rgba(200, 160, 40, 0.28);
-  box-shadow:
-    0 20px 45px rgba(0, 0, 0, 0.42),
-    0 0 0 1px rgba(200, 160, 40, 0.08) inset;
-}
 .front-status::before {
   content: "";
   width: 6px;
@@ -961,9 +959,6 @@ section {
 .battle-entry--contested::before {
   background: var(--color-gold);
 }
-.battle-entry--defeat::before {
-  background: #3a6fa8;
-}
 .battle-entry--nurgle::before {
   background: #4a7a1a;
 }
@@ -1010,11 +1005,6 @@ section {
   border-color: var(--army-iw-border);
   color: var(--army-iw-fg);
   background: var(--army-iw-bg);
-}
-.faction-tag--st {
-  border-color: var(--army-st-border);
-  color: var(--army-st-fg);
-  background: var(--army-st-bg);
 }
 .faction-tag--we {
   border-color: var(--army-we-border);
@@ -1091,52 +1081,22 @@ section {
 }
 
 /* --- STATION OWNERS — liés à la palette armée --- */
-.station-owner--iw {
-  background: var(--army-iw-bg);
-  color: var(--army-iw-fg);
-  border: 1px solid var(--army-iw-border);
-}
 .station-owner--st {
   background: var(--army-st-bg);
   color: var(--army-st-fg);
   border: 1px solid var(--army-st-border);
-}
-.station-owner--we {
-  background: var(--army-we-bg);
-  color: var(--army-we-fg);
-  border: 1px solid var(--army-we-border);
 }
 .station-owner--bt {
   background: var(--army-bt-bg);
   color: var(--army-bt-fg);
   border: 1px solid var(--army-bt-border);
 }
-.station-owner--ba {
-  background: var(--army-ba-bg);
-  color: var(--army-ba-fg);
-  border: 1px solid var(--army-ba-border);
-}
 .station-owner--dg {
   background: var(--army-dg-bg);
   color: var(--army-dg-fg);
   border: 1px solid var(--army-dg-border);
 }
-.station-owner--gi {
-  background: var(--army-gi-bg);
-  color: var(--army-gi-fg);
-  border: 1px solid var(--army-gi-border);
-}
-.station-owner--nc {
-  background: var(--army-nc-bg);
-  color: var(--army-nc-fg);
-  border: 1px solid var(--army-nc-border);
-}
-/* Ork / ruine — inchangés */
-.station-owner--ork {
-  background: oklch(12% 0.06 140 / 0.3);
-  color: #6aaa3c;
-  border: 1px solid rgba(58, 106, 28, 0.3);
-}
+/* Ruine — inchangée */
 .station-owner--ruine {
   background: oklch(10% 0 0 / 0.3);
   color: var(--color-text-faint);
@@ -1601,27 +1561,6 @@ footer .footer-line {
   -webkit-user-drag: none;
 }
 
-/* --- Légende (caption) --- */
-.carousel__caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-  padding: var(--space-6) var(--space-8) var(--space-4);
-  background: linear-gradient(
-    transparent,
-    oklch(from var(--color-bg) l c h / 0.85)
-  );
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  text-align: center;
-  pointer-events: none;
-}
-
 /* --- Boutons précédent / suivant --- */
 .carousel__btn {
   position: absolute;
@@ -1632,8 +1571,9 @@ footer .footer-line {
   color: var(--color-text);
   border: 1px solid rgba(200, 160, 40, 0.35);
   border-radius: 50%;
-  width: clamp(38px, 5vw, 56px);
-  height: clamp(38px, 5vw, 56px);
+  /* 44px minimum : taille de cible tactile recommandée (WCAG 2.5.5) */
+  width: clamp(44px, 5vw, 56px);
+  height: clamp(44px, 5vw, 56px);
   font-size: clamp(14px, 2.2vw, 20px);
   cursor: pointer;
   display: flex;
@@ -1660,11 +1600,6 @@ footer .footer-line {
   right: var(--space-3);
 }
 
-/* --- Dots indicateurs : masqués --- */
-.carousel__dots {
-  display: none;
-}
-
 /* --- Responsive mobile < 480px --- */
 @media (max-width: 480px) {
   .carousel {
@@ -1686,11 +1621,6 @@ footer .footer-line {
   .carousel__btn:hover,
   .carousel__btn:focus-visible {
     transform: scale(1.08);
-  }
-
-  .carousel__caption {
-    padding: var(--space-4) var(--space-4) var(--space-2);
-    font-size: 0.65rem;
   }
 }
 
@@ -2139,3 +2069,25 @@ footer .footer-line {
 .u-mt-075 { margin-top: 0.75rem; }
 .u-ml-06 { margin-left: 0.6rem; }
 .u-block-center { width: 100%; text-align: center; padding: 0.25rem 0; }
+
+/* ============================================================
+   LIEN D'ÉVITEMENT (accessibilité clavier — RGAA 12.7)
+   Masqué hors écran tant qu'il n'a pas le focus, puis affiché
+   en surimpression : ne perturbe pas la mise en page.
+============================================================ */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
